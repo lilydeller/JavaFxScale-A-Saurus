@@ -1,0 +1,52 @@
+{
+    "songlist.json": [
+      {
+        "id": "a12b34c5-678d-90ef-ab12-34567890abcd",
+        "name": "Beginner Songs",
+        "difficulty": "Easy",
+        "length": "Short",
+        "genre": "Classical",
+        "songs": [
+          {
+            "id": "98d47b10-91d1-48a5-a68c-2b1d1ffb1c01",
+            "name": "Twinkle Twinkle Little Star",
+            "difficulty": 1,
+            "length": "1:30",
+            "genre": "Classical"
+          }
+        ]
+      },
+      {
+        "id": "b23c45d6-789e-01fa-bc23-45678901bcde",
+        "name": "Intermediate Songs",
+        "difficulty": "Medium",
+        "length": "Varied",
+        "genre": "Jazz",
+        "songs": [
+          {
+            "id": "d56e7f89-1234-5678-90ab-cd12ef345678",
+            "name": "Autumn Leaves",
+            "difficulty": 3,
+            "length": "4:15","genre": "Jazz"
+          }
+        ]
+      },
+      {
+        "id": "c34d56e7-890f-12ab-cd34-56789012cdef",
+        "name": "Advanced Songs",
+        "difficulty": "Hard",
+        "length": "Long",
+        "genre": "Rock",
+        "songs": [
+          {
+            "id": "e78f9012-3456-789a-bcde-f1234567890a",
+            "name": "Bohemian Rhapsody",
+            "difficulty": 5,
+            "length": "5:55",
+            "genre": "Rock"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,17 @@
+{
+    "instrument.json": [
+      {
+        "id": "31817487-6b4c-4b70-aa81-0e0b583c7727",
+        "name": "Piano",
+        "notes": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
+        "piano": {
+          "id": "4a398902-4ed0-4559-b5e1-a4b52fc71a84",
+          "keys": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
+          "activeKeys": [],
+          "octave": 4,
+          "volume": 5
+        }
+      }
+    ]
+  }
+  
