@@ -1,6 +1,4 @@
-/*
- * @author lily deller
- */
+
 package model;
 
 import java.util.ArrayList;
