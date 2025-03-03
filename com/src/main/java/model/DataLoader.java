@@ -82,6 +82,61 @@ public class DataLoader {
     }
 
     public void loadSongs() {
-      
+      JSONParser parser = new JSONParser();
+
+      try (FileReader reader = new FileReader("songlist.json")){
+        JSONObject rootJson = (JSONObject) parser.parse(reader);
+
+        JSONArray songCategoriesArray = (JSONArray) rootJson.get("songlist");
+
+        for (Object categoryObj : songCategoriesArray){
+            JSONObject categoryJson = (JSONObject) categoryObj;
+
+            String categoryId = (String) categoryJson.get("id");
+            String categoryName = (String) categoryJson.get("name");
+            String difficulty = (String) categoryJson.get("difficulty");
+            String length = (String) categoryJson.get("length");
+            String genre = (String) categoryJson.get("genre");
+
+            ArrayList<Song> songs = new ArrayList<>();
+
+            JSONArray songsArray = (JSONArray) categoryJson.get("songs");
+            for (Object songObj : songsArray){
+                JSONObject songJson = (JSONObject) songObj;
+
+                String songId = (String) songJson.get("id");
+                String songName = (String) songJson.get("name");
+                int songDifficulty = ((Long) songJson.get("difficulty")).intValue();
+                String songLength = (String) songJson.get("length");
+                String songGenre = (String) songJson.get("genre");
+
+                JSONArray measuresArray = (JSONArray) songJson.get("measures");
+                ArrayList<Measure> measures = new ArrayList<>();
+
+                for (Object measureObj : measuresArray){
+                    JSONObject measureJson = (JSONObject) measureObj;
+                    int measureNumber = ((Long) measureJson.get("measureNumber")).intValue();
+
+                    JSONArray chordsArray = (JSONArray) measureJson.get("chords");
+                    ArrayList<String> chords = new ArrayList<>();
+                    for (Object chord : chordsArray) {
+                        chords.add(chord.toString());
+                    }
+
+                    measures.add(new Measure(measureNumber, chords));
+                }
+
+                String sheetMusic = (String) songJson.get("sheetMusic");
+                String tabsMusic = (String) songJson.get("tabsMusic");
+                boolean metronome = (boolean) songJson.get("metronome");
+
+                Song song = new Song(songId, songName, songDifficulty, songLength, songGenre, measures, sheetMusic,tabsMusic, metronome);
+                songs.add(song);
+            }
+        }
+    }
+    catch (IOException | ParseException e){
+        e.printStackTrace();
+    }
     }
 }

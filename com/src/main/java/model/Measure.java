@@ -9,7 +9,7 @@ public class Measure {
         //this.chords = new ArrayList<>();
     }
 
-    public void addChord(Chord chord) {
+    public void addChord(int measureNumber, Chord chord) {
 
     }
     
