@@ -12,8 +12,8 @@ public class Song {
     private Song tabsMusic;
     private boolean metronome;
     private Genre genre;
-
-    public Song(ArrayList<Note> song) {
+/*
+ * public Song (ArrayList<Note> song) {
         this.song = new ArrayList<>();
         this.metronome = false;
     }
@@ -47,3 +47,7 @@ public class Song {
         song.add(measure);
     }
 }
+
+ */
+}
+    

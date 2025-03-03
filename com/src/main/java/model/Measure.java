@@ -1,15 +1,12 @@
 package model;
-/*
- * @author lily deller 
- */
 import java.util.ArrayList;
 
 
 public class Measure {
-    private ArrayList<Chord> chords;
+    // private ArrayList<Chord> chords;
 
     public Measure() {
-        this.chords = new ArrayList<>();
+        //this.chords = new ArrayList<>();
     }
 
     public void addChord(Chord chord) {
@@ -19,9 +16,14 @@ public class Measure {
     public void removeChords(Chord chord) {
 
     }
-
-    public ArrayList<Note> getChords() {
-        return new ArrayList<>(); // stub 
+/*
+ * public ArrayList<Note> getChords() {
+        return new ArrayList<>();
     }
+ */
     
 }
+    
+
+    
+
