@@ -1,7 +1,4 @@
 
-/*
- * @author lily deller 
- */
 package model;
 public enum Pitch {
 
