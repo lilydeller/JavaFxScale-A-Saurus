@@ -5,6 +5,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
 //import json simple
 
 public class DataLoader {
@@ -28,6 +32,52 @@ public class DataLoader {
 
 
     public void loadUsers() {
+
+        JSONParser parser = new JSONParser();
+
+        try(FileReader reader = new FileReader("userlist.json")){
+            JSONObject rootJson = (JSONObject) parser.parse(reader);
+            JSONObject userListJson = (JSONObject) rootJson.get("userlist.json");
+            if(userListJson == null)
+            {
+                System.out.println("Invalid JSON format: 'userlist.json' key not found.");
+                return;
+            }
+
+            JSONArray userArray = (JSONArray) userListJson.get("users");
+
+            for (Object obj : userArray){
+                JSONObject userJson = (JSONObject) obj;
+
+                String uuid = (String) userJson.get("uuid");
+                String firstName = (String) userJson.get("firstname");
+                String lastName = (String) userJson.get("lastname");
+                String username = (String) userJson.get("username");
+                String email = (String) userJson.get("email");
+                String password = (String) userJson.get("password");
+                int streak = ((Long) userJson.get("streak")).intValue();
+                int level = ((Long) userJson.get("level")).intValue();
+
+                JSONArray achievementArray = (JSONArray) userJson.get("achievements");
+                ArrayList<String> achievements = new ArrayList<>();
+                for (Object achievement : achievementArray){
+                    achievements.add(achievement.toString());
+                }
+
+                JSONArray leaderboardArray = (JSONArray) userJson.get("leaderboard-ranking");
+                ArrayList<String> leaderboardRankings = new ArrayList<>();
+                for(Object ranking : leaderboardArray){
+                    leaderboardRankings.add(ranking.toString());
+                }
+
+                User user = new User(uuid, username, firstName, lastName, password, email);
+                userList.addUser(user);
+            }
+        }
+        catch(IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
       
     }
 

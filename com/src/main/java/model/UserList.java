@@ -20,7 +20,7 @@ public class UserList {
     }
 
    
-    public void addUser(String firstName, String lastName, String userName, String password) {
+    public void addUser(User user) {
  
     }
 

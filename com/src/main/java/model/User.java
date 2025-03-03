@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 public class User {
+    private String uuid;
     private String username;
     private String firstname;
     private String lastname;
@@ -17,7 +18,8 @@ public class User {
     //private ArrayList<Achievement> achievements;
     private int rankings;
 
-    public User(String username, String firstname, String lastname, String password, String email) {
+    public User(String uuid, String username, String firstname, String lastname, String password, String email) {
+        this.uuid = uuid;
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
