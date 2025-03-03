@@ -1,11 +1,12 @@
-// package com.model;
+package model;
 /*
  * @author lily deller 
  */
 import java.util.ArrayList;
 
-public class measure {
-    private ArraList<Chord> chords;
+
+public class Measure {
+    private ArrayList<Chord> chords;
 
     public Measure() {
         this.chords = new ArrayList<>();

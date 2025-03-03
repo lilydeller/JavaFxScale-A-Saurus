@@ -1,8 +1,9 @@
-//package com.model
+
 /*
  * @author lily deller 
  */
-public enum pitch {
+package model;
+public enum Pitch {
 
     C,
     C_SHARP,

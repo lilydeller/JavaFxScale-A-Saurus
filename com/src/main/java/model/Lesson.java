@@ -1,4 +1,4 @@
-// package com.model;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +53,9 @@ public class Lesson {
     public void recordResponse(User user, String answer) {
         
     }
-
+/*
     public void saveFlashcardProgress(User user, String lessonID, ProgressData progressData) {
       
     }
+     */
 }

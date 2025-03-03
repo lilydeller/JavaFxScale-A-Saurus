@@ -1,7 +1,7 @@
 /*
  * @author lily deller
  */
-package com.model;
+package model;
 
 import java.util.ArrayList;
 

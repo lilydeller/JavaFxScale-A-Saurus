@@ -1,7 +1,8 @@
-//package com.model;
+
 /*
  * lily 
  */
+package model;
 import java.util.ArrayList;
 
 public class SongList {

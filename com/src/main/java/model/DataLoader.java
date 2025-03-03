@@ -1,4 +1,6 @@
-// package com.model;
+package model;
+
+//import json simple
 
 public class DataLoader {
     private static DataLoader instance;

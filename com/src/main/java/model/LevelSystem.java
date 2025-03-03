@@ -1,9 +1,9 @@
-// package com.model;
+package model;
 public class LevelSystem implements GamificationSystem {
     private int currentLevel;
     private int maxLevel;
 
-    public Levelsystem(int maxLevel) {
+    public LevelSystem(int maxLevel) {
         this.currentLevel = 1;
         this.maxLevel = maxLevel;
     }

@@ -1,7 +1,7 @@
 /*
  * @author lily deller 
  */
-// package com.model;
+package model;
 import java.util.ArrayList;
 
 
@@ -14,7 +14,7 @@ public class User {
     private ArrayList<Lesson> lessons;
     private int streak;
     private int level;
-    private ArrayList<Achievement> achievements;
+    //private ArrayList<Achievement> achievements;
     private int rankings;
 
     public User(String username, String firstname, String lastname, String password, String email) {
@@ -24,7 +24,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.lessons = new ArrayList<>();
-        this.achievements = new ArrayList<>();
+        //this.achievements = new ArrayList<>();
         this.streak = 0;
         this.level = 1;
         this.rankings = 0;
@@ -45,11 +45,11 @@ public class User {
     public void addFriend(String userName) {
         // Stub 
     }
-
+/*
     public void addAchievement(Achievement achievement) {
         achievements.add(achievement);
     }
-
+ */
     public int getLeaderboardRanking() {
         return rankings;
     }
@@ -98,11 +98,11 @@ public class User {
     public ArrayList<User> viewLeaderBoard() {
         return new ArrayList<>(); // Stub 
     }
-
+/*
     public ArrayList<Achievement> viewAchievements() {
         return achievements;
     }
-
+ */
     public void startFlashcardSession() {
         // Stub 
     }

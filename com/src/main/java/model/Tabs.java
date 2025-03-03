@@ -1,10 +1,11 @@
-// package com.model;
+
 /*
  * @author lily deller 
  */
+package model;
 import java.util.ArrayList;
 
-public class tabs {
+public class Tabs {
     private ArrayList<Measure> measures;
 
     public Tabs() {

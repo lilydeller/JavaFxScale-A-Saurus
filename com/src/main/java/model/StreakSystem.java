@@ -1,7 +1,7 @@
 /*
  * @author lily deller
  */
-// package com.model;
+package model;
 public class StreakSystem implements GamificationSystem {
     private int streakCount;
 

@@ -1,5 +1,5 @@
-// package com.model;
-public class flashcard {
+package model;
+public class Flashcard {
     private String question;
     private String answer;
 

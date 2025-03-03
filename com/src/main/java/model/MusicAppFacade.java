@@ -1,7 +1,7 @@
 /*
  * lily 
  */
-//package com.model;
+package model;
 
 public class MusicAppFacade {
     private static MusicAppFacade instance;
@@ -12,7 +12,7 @@ public class MusicAppFacade {
 
     // priv cnstructer
     private MusicAppFacade() {
-        userList = new UserList();
+        userList = UserList.getInstance();
         songList = SongList.getInstance();
         currentUser = null;
         currentSong = null;
