@@ -6,12 +6,12 @@ public class UserList {
     private static UserList instance;
     private ArrayList<User> users;
 
-    // private constucter
+    //prrivate constructor for singleton pattern
     private UserList() {
         users = new ArrayList<>();
     }
 
-    // singleton pettern : get instance of UserList
+    // singleton pattern: get instance of UserList
     public static UserList getInstance() {
         if (instance == null) {
             instance = new UserList();
@@ -20,20 +20,39 @@ public class UserList {
     }
 
    
-    public void addUser(User user) {
+    public void addUser(String firstName, String lastName, String userName, String password) {
  
     }
 
     public User getUser(String userName, String password) {
-
-        return null;
+        User user = getUserByUsername(userName);
+        if (user != null && user.login(userName, password)) {  // use user's login) method
+            return user;
+        }
+        return null; // no matching user found or incorrect password
     }
 
-    public void editUser() {
-
+    public void editUser(String userName, String newFirstName, String newLastName, String newEmail) {
+        User user = getUserByUsername(userName);
+        if (user != null) {
+            user.updateProfile(newFirstName, newEmail);
+        }
     }
 
     public void saveUsers() {
-  
+        // placeholder for JSON /  database writing logic
+    }
+
+    public User getUserByUsername(String userName) {
+        for (User user : users) {
+            if (user.getUsername().equals(userName)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 }

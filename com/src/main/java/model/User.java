@@ -1,9 +1,6 @@
-/*
- * @author lily deller 
- */
 package model;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 
 public class User {
     private String uuid;
@@ -15,8 +12,9 @@ public class User {
     private ArrayList<Lesson> lessons;
     private int streak;
     private int level;
-    //private ArrayList<Achievement> achievements;
+    private ArrayList<Achievement> achievements;
     private int rankings;
+    private ArrayList<User> friends; //add friends list to the uml 
 
     public User(String uuid, String username, String firstname, String lastname, String password, String email) {
         this.uuid = uuid;
@@ -26,42 +24,51 @@ public class User {
         this.password = password;
         this.email = email;
         this.lessons = new ArrayList<>();
-        //this.achievements = new ArrayList<>();
+        this.achievements = new ArrayList<>();
+        this.friends = new ArrayList<>(); // initialize friends list
         this.streak = 0;
         this.level = 1;
         this.rankings = 0;
     }
 
+    // getter for username (needed for UserList) - add to uml 
+    public String getUsername() {
+        return username;
+    }
+
     public boolean login(String username, String password) {
-        return false; // Stub 
+        return this.username.equals(username) && this.password.equals(password);
     }
 
     public void increaseStreak() {
-        // Stub 
+        streak++;
     }
 
     public void removeFriend(User friend) {
-        // Stub 
+        if (friends.contains(friend)) {
+            friends.remove(friend);
+            friend.friends.remove(this); // remove mutual friendship
+        }
     }
 
-    public void addFriend(String userName) {
-        // Stub 
+    public void addFriend(String username) {
+        User friend = UserList.getInstance().getUserByUsername(username);
+        if (friend != null && !friends.contains(friend)) {
+            friends.add(friend);
+            friend.friends.add(this); // mutual friendship
+        }
     }
-/*
-    public void addAchievement(Achievement achievement) {
-        achievements.add(achievement);
-    }
- */
+
     public int getLeaderboardRanking() {
         return rankings;
     }
 
     public void updateRanking() {
-        // Stub 
+        rankings++; // placeholder logic needs to be based on score system
     }
 
     public void displayLeaderboard() {
-        // Stub 
+        System.out.println("Displaying leaderboard"); // placeholder
     }
 
     public static User register(String name, String email, String password) {
@@ -69,7 +76,11 @@ public class User {
     }
 
     public boolean changePassword(String oldPassword, String newPassword) {
-        return false; // Stub 
+        if (this.password.equals(oldPassword)) {
+            this.password = newPassword;
+            return true;
+        }
+        return false;
     }
 
     public void updateProfile(String name, String email) {
@@ -78,38 +89,38 @@ public class User {
     }
 
     public void resumeLesson() {
-        // Stub 
+        System.out.println("Resuming last lesson"); // placeholder
     }
 
     public boolean takeQuiz(String lessonID) {
-        return false; // Stub 
+        return true; // placeholder method just assumes that our user took the quiz successful
     }
 
     public void enableMetronome(int bpm) {
-        // Stub 
+        System.out.println("Metronome enabled at " + bpm + " BPM.");
     }
 
     public void recordPracticeSession() {
-        // Stub 
+        System.out.println("Recording practice session");
     }
 
     public void stopPracticeSession() {
-        // Stub 
+        System.out.println("Practice session stopped.");
     }
 
     public ArrayList<User> viewLeaderBoard() {
-        return new ArrayList<>(); // Stub 
+        return new ArrayList<>(); // placeholder for leaderboard retrieval
     }
-/*
+
     public ArrayList<Achievement> viewAchievements() {
         return achievements;
     }
- */
+
     public void startFlashcardSession() {
-        // Stub 
+        System.out.println("Starting flashcard session.");
     }
 
     public boolean answerFlashcard(String flashcardID, String answer) {
-        return false; // Stub
+        return true; // assumes answer is correct
     }
 }

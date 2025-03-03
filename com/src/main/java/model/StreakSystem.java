@@ -1,7 +1,5 @@
-/*
- * @author lily deller
- */
 package model;
+
 public class StreakSystem implements GamificationSystem {
     private int streakCount;
 
@@ -10,25 +8,24 @@ public class StreakSystem implements GamificationSystem {
     }
 
     public void increaseStreak() {
-
+        streakCount++;
     }
 
     public void updateStreakCount() {
-
+        System.out.println("current streak: " + streakCount);
     }
 
     public void resetStreak() {
-
+        streakCount = 0;
     }
 
     @Override 
     public void updateProgress() {
-
+        System.out.println("progress updated for streak system. current streak: " + streakCount);
     }
 
     @Override 
     public void displayRewards() {
-        
+        System.out.println("rewards for maintaining streak: " + (streakCount > 5 ? "bonus unlocked!" : "keep going!"));
     }
-    
 }
