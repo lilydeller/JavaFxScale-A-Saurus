@@ -7,12 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-/**
- * LEBBBBBRRRRRROOOOOON BOO BOO BOO BOOM
- */ //WALK ROUND THE ROLLIE STORE WIT THE ROLLI ON 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;

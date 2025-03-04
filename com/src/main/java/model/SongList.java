@@ -8,7 +8,7 @@ public class SongList {
     private ArrayList<Song> songs;
     private static SongList songList;
 
-    // constructer
+    // constructor
     private SongList() {
         songs = new ArrayList<>();
     }
@@ -21,39 +21,39 @@ public class SongList {
         return songList;
     }
 
-    // ad a song to the list
+
     public void addSong(Song song) {
         if (song != null) {
             songs.add(song);
         }
     }
 
-    // remove a song from the list
+
     public void removeSong(Song song) {
         songs.remove(song);
     }
 
-    // sort by song name
+
     public void sortByName() {
         Collections.sort(songs, Comparator.comparing(Song::getSongName));
     }
 
-    // sort by difficulty 
+    // Sort by difficulty
     public void sortByDifficulty() {
         Collections.sort(songs, Comparator.comparingInt(Song::getDifficulty));
     }
 
-    // sort by song length 
+    // sort by song length (Fixed: Ensure `getLength()` returns an int in `Song.java`)
     public void sortByLength() {
-        Collections.sort(songs, Comparator.comparingInt(Song::getLength));
+        Collections.sort(songs, Comparator.comparing(Song::getLength));
     }
 
-    // sort by genre 
+    // sort by genre
     public void sortByGenre() {
         Collections.sort(songs, Comparator.comparing(Song::getGenre));
     }
 
-    // get a song by its name
+    // get the a song by its name
     public Song getSong(String songName) {
         for (Song song : songs) {
             if (song.getSongName().equalsIgnoreCase(songName)) {
@@ -63,15 +63,20 @@ public class SongList {
         return null; // will return null if not found
     }
 
-    // to display all songs
+
     public void display() {
         for (Song song : songs) {
             System.out.println(song.getSongName() + " - Genre: " + song.getGenre());
         }
     }
 
-    // placeholder for saving songs (JSON/database handling) also don't know if we're getting rid of this function
+    // placeholder for saving songs (JSON/database handling)
     public void saveSongs() {
         System.out.println("Saving songs...");
+    }
+
+    // get all songs for testing or UI display
+    public ArrayList<Song> getSongs() {
+        return songs;
     }
 }

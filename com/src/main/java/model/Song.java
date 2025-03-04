@@ -5,25 +5,31 @@ import java.util.ArrayList;
 public class Song {
     private String songId;
     private String songName;
-    private ArrayList<Measure> songMeasures;
-    private boolean metronome;
-    private String genre;
     private int difficulty;
-    private int length;
+    private String length;
+    private String genre;
+    private ArrayList<Measure> measures;
     private String sheetMusic;
     private String tabsMusic;
+    private boolean metronome;
 
-    public Song(String songId, String songName, int difficulty, int length, String genre,
+    // corrected constructor to match DataLoader.java
+    public Song(String songId, String songName, int difficulty, String length, String genre,
                 ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome) {
         this.songId = songId;
         this.songName = songName;
         this.difficulty = difficulty;
         this.length = length;
         this.genre = genre;
-        this.songMeasures = measures != null ? measures : new ArrayList<>(); // make sure it's not null
+        this.measures = measures != null ? measures : new ArrayList<>();
         this.sheetMusic = sheetMusic;
         this.tabsMusic = tabsMusic;
         this.metronome = metronome;
+    }
+
+    // getter methods
+    public String getSongId() {
+        return songId;
     }
 
     public String getSongName() {
@@ -34,7 +40,7 @@ public class Song {
         return difficulty;
     }
 
-    public int getLength() {
+    public String getLength() {
         return length;
     }
 
@@ -42,8 +48,26 @@ public class Song {
         return genre;
     }
 
+    public ArrayList<Measure> getMeasures() {
+        return measures;
+    }
+
+    public String getSheetMusic() {
+        return sheetMusic;
+    }
+
+    public String getTabsMusic() {
+        return tabsMusic;
+    }
+
+    public boolean isMetronomeEnabled() {
+        return metronome;
+    }
+
     public void addMeasure(Measure measure) {
-        songMeasures.add(measure);
+        if (measure != null) {
+            measures.add(measure);
+        }
     }
 
     public void toggleMetronome() {
