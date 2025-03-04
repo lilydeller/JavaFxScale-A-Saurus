@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.UUID; // import for generating unique UUIDs ? or think about json files here i think 
 
 public class User {
     private String uuid;
@@ -14,7 +15,7 @@ public class User {
     private int level;
     private ArrayList<Achievement> achievements;
     private int rankings;
-    private ArrayList<User> friends; //add friends list to the uml 
+    private ArrayList<User> friends; // add friends list in uml
 
     public User(String uuid, String username, String firstname, String lastname, String password, String email) {
         this.uuid = uuid;
@@ -25,15 +26,20 @@ public class User {
         this.email = email;
         this.lessons = new ArrayList<>();
         this.achievements = new ArrayList<>();
-        this.friends = new ArrayList<>(); // initialize friends list
+        this.friends = new ArrayList<>(); // iitialize friends list
         this.streak = 0;
         this.level = 1;
         this.rankings = 0;
     }
 
-    // getter for username (needed for UserList) - add to uml 
+    // getter for username (needed for UserList)
     public String getUsername() {
         return username;
+    }
+
+    // getter for password 
+    public String getPassword() {
+        return password;
     }
 
     public boolean login(String username, String password) {
@@ -55,24 +61,25 @@ public class User {
         User friend = UserList.getInstance().getUserByUsername(username);
         if (friend != null && !friends.contains(friend)) {
             friends.add(friend);
-            friend.friends.add(this); // mutual friendship
+            friend.friends.add(this); // friendship
         }
-    }
+    } 
 
     public int getLeaderboardRanking() {
         return rankings;
     }
 
     public void updateRanking() {
-        rankings++; // placeholder logic needs to be based on score system
+        rankings++; // placeholder logic
     }
 
     public void displayLeaderboard() {
         System.out.println("Displaying leaderboard"); // placeholder
     }
 
+    // adding UUID generation
     public static User register(String name, String email, String password) {
-        return new User(name, "", "", password, email);
+        return new User(UUID.randomUUID().toString(), name, "", "", password, email);
     }
 
     public boolean changePassword(String oldPassword, String newPassword) {
@@ -93,7 +100,7 @@ public class User {
     }
 
     public boolean takeQuiz(String lessonID) {
-        return true; // placeholder method just assumes that our user took the quiz successful
+        return true; // placeholder
     }
 
     public void enableMetronome(int bpm) {
@@ -109,7 +116,7 @@ public class User {
     }
 
     public ArrayList<User> viewLeaderBoard() {
-        return new ArrayList<>(); // placeholder for leaderboard retrieval
+        return new ArrayList<>(); // placeholder
     }
 
     public ArrayList<Achievement> viewAchievements() {
@@ -121,6 +128,6 @@ public class User {
     }
 
     public boolean answerFlashcard(String flashcardID, String answer) {
-        return true; // assumes answer is correct
+        return true; // placeholder
     }
 }
