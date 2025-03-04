@@ -22,6 +22,7 @@ public class UserList {
 <<<<<<< HEAD
    
     public void addUser(User user) {
+<<<<<<< HEAD
  
 =======
     public void addUser(String firstName, String lastName, String userName, String password, String email) {
@@ -30,7 +31,11 @@ public class UserList {
             users.add(newUser);
         }
 >>>>>>> 350befe01d2f69b773e3da440f4ccfba6bd3c08b
+=======
+        users.add(user);
+>>>>>>> 6560787b0b92bac136d87ada52ee114856c7fbe9
     }
+    
 
     public User getUser(String userName, String password) {
         User user = getUserByUsername(userName);

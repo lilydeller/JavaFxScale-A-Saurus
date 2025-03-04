@@ -1,29 +1,27 @@
-/*
- * @author lily deller
- */
 package model;
+
 public class Keys {
     private Pitch key;
-    //private Length keyLength;
+    private int keyLength; 
 
     public Keys(String note, int noteLength) {
-
+        this.key = Pitch.valueOf(note.toUpperCase()); // convert note string to enum
+        this.keyLength = noteLength;
     }
     
     public Pitch getKey() {
-        return null; // stub 
+        return key;
     }
-/*
-    public Length getKeyLength() {
-        return null; // stub 
-    }
- */
-    public void setKey(Pitch pitch) {
 
+    public int getKeyLength() {
+        return keyLength;
     }
-/* 
-    public void setKeyLength(Length length) {
-        
+
+    public void setKey(Pitch pitch) {
+        this.key = pitch;
     }
-    */
+
+    public void setKeyLength(int length) {
+        this.keyLength = length;
+    }
 }

@@ -1,7 +1,3 @@
-
-/*
- * @author lily deller 
- */
 package model;
 import java.util.ArrayList;
 
@@ -10,19 +6,22 @@ public class Tabs {
 
     public Tabs() {
         this.measures = new ArrayList<>();
-
     }
 
     public Measure getMeasure(int index) {
-        return null; // stub 
+        if (index >= 0 && index < measures.size()) {
+            return measures.get(index);
+        }
+        return null; //  null if index is out of bounds
     }
 
-    public void addMEasure(Measure measure) {
-        
+    public void addMeasure(Measure measure) {
+        if (measure != null) {
+            measures.add(measure);
+        }
     }
 
-    public void removeMeasure(Measure mesasure) {
-
+    public void removeMeasure(Measure measure) {
+        measures.remove(measure);
     }
-    
 }

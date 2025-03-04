@@ -14,12 +14,12 @@ import java.util.ArrayList;
 public class DataLoader {
     private static DataLoader instance;
     private UserList userList;
-    private SongList songList;
+    private SongList SongList;
 
     // priivate constructer
     private DataLoader() {
         userList = UserList.getInstance();
-        songList = SongList.getInstance();
+        SongList = SongList.getInstance();
     }
 
     // singleton pattern to get instance of DataLoader
