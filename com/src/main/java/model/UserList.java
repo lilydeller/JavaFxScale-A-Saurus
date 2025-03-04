@@ -20,9 +20,10 @@ public class UserList {
     }
 
    
-    public void addUser(String firstName, String lastName, String userName, String password) {
- 
+    public void addUser(User user) {
+        users.add(user);
     }
+    
 
     public User getUser(String userName, String password) {
         User user = getUserByUsername(userName);
