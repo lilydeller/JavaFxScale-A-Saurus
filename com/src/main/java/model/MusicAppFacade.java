@@ -1,6 +1,3 @@
-/*
- * lily 
- */
 package model;
 
 public class MusicAppFacade {
