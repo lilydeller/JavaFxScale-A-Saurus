@@ -49,7 +49,7 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getUserJSON(User user) {
-        JSONObject 
+        JSONObject
     }
 
     public void saveSongs() {

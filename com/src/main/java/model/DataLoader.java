@@ -31,23 +31,17 @@ public class DataLoader {
     }
 
 
-    public void loadUsers() {
-
+    public static ArrayList<User> loadUsers() {
+        ArrayList<User> users = new ArrayList<User>();
         JSONParser parser = new JSONParser();
 
         try(FileReader reader = new FileReader("userlist.json")){
-            JSONObject rootJson = (JSONObject) parser.parse(reader);
-            JSONObject userListJson = (JSONObject) rootJson.get("userlist.json");
-            if(userListJson == null)
-            {
-                System.out.println("Invalid JSON format: 'userlist.json' key not found.");
-                return;
-            }
+            JSONArray rootJson = (JSONArray)new JSONParser().parse(reader);
 
-            JSONArray userArray = (JSONArray) userListJson.get("users");
 
-            for (Object obj : userArray){
-                JSONObject userJson = (JSONObject) obj;
+
+            for (int i = 0; i < rootJson.size(); i++){
+                JSONObject userJson = (JSONObject) rootJson.get(i);
 
                 String uuid = (String) userJson.get("uuid");
                 String firstName = (String) userJson.get("firstname");
@@ -71,14 +65,15 @@ public class DataLoader {
                 }
 
                 User user = new User(uuid, username, firstName, lastName, password, email);
-                userList.addUser(user);
+                users.add(user);
             }
+            return users;
         }
         catch(IOException | ParseException e) {
             e.printStackTrace();
         }
 
-      
+      return users;
     }
 
     public void loadSongs() {
@@ -139,4 +134,15 @@ public class DataLoader {
         e.printStackTrace();
     }
     }
+
+    public static void main(String[] args)
+    {
+        ArrayList<User> users = DataLoader.loadUsers();
+
+        for (User user : users){
+            System.out.println(user);
+        }
+    }
 }
+
+
