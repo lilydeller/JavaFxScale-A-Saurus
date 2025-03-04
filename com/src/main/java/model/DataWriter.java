@@ -28,8 +28,7 @@ public class DataWriter extends DataConstants {
 
 
     public void saveUsers() {
-        User users = users.getInstace();
-        ArrayList<User> userList = users.getUser();
+        ArrayList<User> userList = this.userList.getUsers();
 
         JSONArray jsonUsers = new JSONArray();
 
@@ -39,25 +38,118 @@ public class DataWriter extends DataConstants {
 
         }
         //write json
-        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        try {
+            FileWriter file = new FileWriter(USER_FILE_NAME);
             file.write(jsonUsers.toJSONString());
             file.flush();
-        } 
-        //catch {
-        //    e.printStackTrace();
-        //}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     public static JSONObject getUserJSON(User user) {
-        JSONObject
+        JSONObject userDetails = new JSONObject();
+        userDetails.put(USER_ID, user.getId().toString());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName());
+        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(USER_USER_NAME, user.getUserName());
+        userDetails.put(USER_EMAIL, user.getEmail());
+        userDetails.put(USER_PASSWORD, user.getPassword());
+        userDetails.put(USER_STREAK, user.getStreak());
+        userDetails.put(USER_LEVEL, user.getLevel());
+        userDetails.put(USER_ACHIEVEMENTS, user.getAchievements());
+        userDetails.put(USER_LEADERBOARD_RANKING, user.getLeaderboardRanking());
+    
+
+        return userDetails;
     }
+    /*
+     * //user constants 
+    protected static final String USER_FILE_NAME = "json\\userlist.json";
+	protected static final String USER_ID = "uuid";
+    protected static final String USER_FIRST_NAME = "firstName";
+    protected static final String USER_LAST_NAME = "lastName";
+	protected static final String USER_USER_NAME = "userName";
+	protected static final String USER_EMAIL = "email";
+	protected static final String USER_PASSWORD = "password";
+    protected static final String USER_STREAK = "streak";
+    protected static final String USER_LEVEL = "level";
+    protected static final String USER_ACHIEVEMENTS = "achievement";
+    protected static final String USER_LEADERBOARD_RANKING = "leaderboard-ranking";
+
+     */
 
     public void saveSongs() {
-     
+        //get song list
+        JSONArray jsonSongList = new JSONArray();
+        String[] difficulties = {"Easy", "Medium", "Hard"};
+
+        //group songs by difficulty 
+        for (int i = 0; i < difficulties.length; i++) {
+            JSONObject difficultyGroup = new JSONObject();
+            difficultyGroup.put(SONG_DIFFICULTY, difficulties[i]);
+
+            //get songs for current difficulty 
+            ArrayList<Song> songs = songList.getSongsByDifficulty(difficulties[i]);
+            JSONArray jsonSongs = new JSONArray();
+
+            for (int e = 0; e < songs.size(); e++) {
+                jsonSongs.add(getSongJSON(songs.get(e)));
+            }
+            difficultyGroup.put(SONGS, jsonSongs);
+            jsonSongList.add(difficultyGroup);
+        }
+        //write into json file 
+        try {
+            FileWriter file = new FileWriter(SONG_FILE_NAME);
+            file.write(jsonSongList.toJSONString());
+            file.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //convert song into JSONObject 
+    public static JSONObject getSongJSON(Song song) {
+        JSONObject songJSON = new JSONObject();
+        songJSON.put(SONG_ID, song.getSongId().toString());
+        songJSON.put(SONG_NAME, song.getSongName());
+        songJSON.put(SONG_DIFFICULTY, song.getDifficulty());
+        songJSON.put(SONG_LENGTH, song.getLength());
+        songJSON.put(SONG_GENRE, song.getGenre());
+        songJSON.put(SHEET_MUSIC, song.getSheetMusic());
+        songJSON.put(TABS_MUSIC, song.getTabsMusic());
+        songJSON.put(METRONOME, song.isMetronomeEnabled());
+
+        JSONArray jsonMeasures = new JSONArray();
+        ArrayList<Measure> measures = song.getMeasures();
+
+        for (int i = 0; i < measures.size(); i++) {
+            jsonMeasures.add(getMeasureJSON(measures.get(i)));
+        }
+        songJSON.put(MEASURES, jsonMeasures);
+        return songJSON;
+    }
+    //convert measure into JSON object 
+    public static JSONObject getMeasureJSON(Measure measure) {
+        JSONObject measureJSON = new JSONObject();
+        measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
+
+        JSONArray jsonChords = new JSONArray();
+        ArrayList<String> chords = measure.getChords();
+
+        for (int i = 0; i < chords.size(); i++) {
+            jsonChords.add(chords.get(i));
+        }
+        measureJSON.put(CHORDS, jsonChords);
+        return measureJSON;
     }
 
     public void saveUserData(User user) {
-
+        ArrayList<User> userList = this.userList.getUsers();
+        userList.add(user);
+        saveUsers();
     }
 
     public void saveFlashcardProgress(User user, String lessonID, ProgressData progressData) {
