@@ -156,8 +156,10 @@ public class DataWriter extends DataConstants {
     
     }
 
+    
     // a method for testing and debugging
     public static void main(String[] args) {
+
         // to load users and songs
         ArrayList<User> users = DataLoader.loadUsers();
         for (User user : users) {

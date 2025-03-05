@@ -10,12 +10,12 @@ public class UserList {
     private static UserList instance;
     private ArrayList<User> users;
 
-    // Private constructor for singleton pattern
+    // private constructor for singleton pattern
     private UserList() {
         users = new ArrayList<>();
     }
 
-    // Singleton pattern: get instance of UserList
+    // singleton pattern to get instance of UserList
     public static synchronized UserList getInstance() {
         if (instance == null) {
             instance = new UserList();
@@ -30,10 +30,10 @@ public class UserList {
 
     public User getUser(String userName, String password) {
         User user = getUserByUsername(userName);
-        if (user != null && user.login(userName, password)) {  // Use user's login method
+        if (user != null && user.login(userName, password)) {  //  user's login method
             return user;
         }
-        return null; // No matching user found or incorrect password
+        return null; // no matching user found or  like incorrect password
     }
 
     public void editUser(String userName, String newFirstName, String newLastName, String newEmail) {

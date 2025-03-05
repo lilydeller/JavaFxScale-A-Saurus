@@ -17,9 +17,9 @@ public class User {
     private int rankings;
     private ArrayList<User> friends;
 
-    // Constructor with auto-generated UUID
+    // costructer with auto generated UUID
     public User(String userName, String firstName, String lastName, String password, String email) {
-        this.id = UUID.randomUUID();  // Automatically generate UUID
+        this.id = UUID.randomUUID();  // automatically generate UUID
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,7 +33,7 @@ public class User {
         this.rankings = 0;
     }
 
-    // Constructor with all fields (including UUID passed in)
+    // costructor with all fields and get the UUID passed in
     public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements) {
         this.id = id;
         this.userName = userName;
@@ -47,7 +47,7 @@ public class User {
         this.friends = new ArrayList<>();
     }
 
-    // Getters and Setters
+    // getters and setters
     public UUID getId() {
         return id;
     }
@@ -137,11 +137,11 @@ public class User {
     }
 
     public void updateRanking() {
-        // Logic to update rankings
+        // logic to update rankings
     }
 
     public void displayLeaderboard() {
-        // Logic to display leaderboard
+        // logic to display leaderboard
     }
 
     public User register(String name, String email, String password) {
@@ -163,28 +163,28 @@ public class User {
     }
 
     public void resumeLesson() {
-        // Logic to resume a lesson
+        // logic to resume a lesson
     }
 
     public boolean takeQuiz(String lessonID) {
-        // Logic for taking a quiz
+        // logic for taking a quiz
         return true;
     }
 
     public void enableMetronome(int bpm) {
-        // Logic for enabling metronome
+        // logic for enabling metronome
     }
 
     public void recordPracticeSession() {
-        // Logic to record a practice session
+        // logic to record a practice session
     }
 
     public void stopPracticeSession() {
-        // Logic to stop a practice session
+        // logic to stop a practice session
     }
 
     public ArrayList<User> viewLeaderBoard() {
-        return new ArrayList<>(); // Placeholder
+        return new ArrayList<>(); // placeholder
     }
 
     public ArrayList<String> viewAchievements() {
@@ -192,11 +192,11 @@ public class User {
     }
 
     public void startFlashcardSession() {
-        // Logic to start a flashcard session
+        // logic to start a flashcard session
     }
 
     public boolean answerFlashcard(String flashcardID, String answer) {
-        // Logic for answering a flashcard
+        // logic for answering a flashcard
         return true;
     }
 }
