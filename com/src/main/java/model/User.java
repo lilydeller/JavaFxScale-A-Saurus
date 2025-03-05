@@ -12,7 +12,8 @@ public class User {
     private String email;
     private ArrayList<Lesson> lessons;
     private int level;
-    private ArrayList<Achievement> achievements;
+    private int streak;
+    private ArrayList<String> achievements;
     private int rankings;
     private ArrayList<User> friends;
 
@@ -27,6 +28,7 @@ public class User {
         this.achievements = new ArrayList<>();
         this.friends = new ArrayList<>();
         this.level = 1;
+        this.streak = 0;
         this.rankings = 0;
     }
 
@@ -54,6 +56,46 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getStreak() {
+        return streak;
+    }
+
+    public void setStreak(int streak) {
+        this.streak = streak;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public ArrayList<String> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(ArrayList<String> achievements) {
+        this.achievements = achievements;
+    }
+
     public boolean login(String userName, String password) {
         return this.userName.equals(userName) && this.password.equals(password);
     }
@@ -66,7 +108,7 @@ public class User {
         friends.remove(friend);
     }
 
-    public void addAchievement(Achievement achievement) {
+    public void addAchievement(String achievement) {
         achievements.add(achievement);
     }
 
@@ -124,7 +166,7 @@ public class User {
         return new ArrayList<>(); // Placeholder
     }
 
-    public ArrayList<Achievement> viewAchievements() {
+    public ArrayList<String> viewAchievements() {
         return achievements;
     }
 
