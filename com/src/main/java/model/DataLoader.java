@@ -73,8 +73,9 @@ public class DataLoader {
         return users;
     }
 
-    public void loadSongs() {
+    public static ArrayList<Song> loadSongs() {
         JSONParser parser = new JSONParser();
+        ArrayList<Song> songs = new ArrayList<>();
 
         try (FileReader reader = new FileReader("songlist.json")) {
             JSONObject rootJson = (JSONObject) parser.parse(reader);
@@ -89,7 +90,6 @@ public class DataLoader {
                 String length = (String) categoryJson.get("length");
                 String genre = (String) categoryJson.get("genre");
 
-                ArrayList<Song> songs = new ArrayList<>();
 
                 JSONArray songsArray = (JSONArray) categoryJson.get("songs");
                 for (Object songObj : songsArray) {
@@ -123,11 +123,13 @@ public class DataLoader {
 
                     Song song = new Song(songId, songName, songDifficulty, songLength, songGenre, measures, sheetMusic, tabsMusic, metronome);
                     songs.add(song);
+                    return songs;
                 }
             }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+        return songs;
     }
 
     public static void main(String[] args) {
