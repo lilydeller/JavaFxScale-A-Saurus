@@ -155,5 +155,27 @@ public class DataWriter extends DataConstants {
     public void saveFlashcardProgress(User user, String lessonID, ProgressData progressData) {
     
     }
-    
+
+    // a method for testing and debugging
+    public static void main(String[] args) {
+        // to load users and songs
+        ArrayList<User> users = DataLoader.loadUsers();
+        for (User user : users) {
+            System.out.println(user.getUserName() + " - " + user.getEmail());
+        }
+
+        // to display all songs
+        SongList songList = SongList.getInstance();
+        songList.sortByDifficulty();  // trying to sort by difficulty before displaying
+        for (Song song : songList.getSongs()) {
+            System.out.println(song.getSongName() + " - Difficulty: " + song.getDifficulty());
+        }
+
+        // call save functions for testing
+        DataWriter writer = DataWriter.getInstance();
+        writer.saveUsers();
+        writer.saveSongs();
+    }
 }
+    
+

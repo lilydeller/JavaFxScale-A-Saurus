@@ -21,29 +21,26 @@ public class SongList {
         return songList;
     }
 
-
     public void addSong(Song song) {
         if (song != null) {
             songs.add(song);
         }
     }
 
-
     public void removeSong(Song song) {
         songs.remove(song);
     }
-
 
     public void sortByName() {
         Collections.sort(songs, Comparator.comparing(Song::getSongName));
     }
 
-    // Sort by difficulty
+    // sort by difficulty
     public void sortByDifficulty() {
         Collections.sort(songs, Comparator.comparingInt(Song::getDifficulty));
     }
 
-    // sort by song length (Fixed: Ensure `getLength()` returns an int in `Song.java`)
+    // sort by song length 
     public void sortByLength() {
         Collections.sort(songs, Comparator.comparing(Song::getLength));
     }
@@ -53,7 +50,7 @@ public class SongList {
         Collections.sort(songs, Comparator.comparing(Song::getGenre));
     }
 
-    // get the a song by its name
+    // get a song by its name
     public Song getSong(String songName) {
         for (Song song : songs) {
             if (song.getSongName().equalsIgnoreCase(songName)) {
@@ -63,6 +60,28 @@ public class SongList {
         return null; // will return null if not found
     }
 
+    // get songs by difficulty level
+    public ArrayList<Song> getSongsByDifficulty(String difficulty) {
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+        int difficultyLevel = 0;
+        switch (difficulty) {
+            case "Easy":
+                difficultyLevel = 1;
+                break;
+            case "Medium":
+                difficultyLevel = 2;
+                break;
+            case "Hard":
+                difficultyLevel = 3;
+                break;
+        }
+        for (Song song : songs) {
+            if (song.getDifficulty() == difficultyLevel) {
+                filteredSongs.add(song);
+            }
+        }
+        return filteredSongs;
+    }
 
     public void display() {
         for (Song song : songs) {

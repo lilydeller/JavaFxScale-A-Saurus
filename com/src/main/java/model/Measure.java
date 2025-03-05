@@ -26,7 +26,9 @@ public class Measure {
     public ArrayList<String> getChords() {
         return chords;
     }
+
+
+    public int getMeasureNumber() {
+        return measureNumber;
+    }
 }
-
-    
-
