@@ -17,8 +17,9 @@ public class User {
     private int rankings;
     private ArrayList<User> friends;
 
+    // Constructor with auto-generated UUID
     public User(String userName, String firstName, String lastName, String password, String email) {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID();  // Automatically generate UUID
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,6 +33,21 @@ public class User {
         this.rankings = 0;
     }
 
+    // Constructor with all fields (including UUID passed in)
+    public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.streak = streak;
+        this.level = level;
+        this.achievements = achievements;
+        this.friends = new ArrayList<>();
+    }
+
+    // Getters and Setters
     public UUID getId() {
         return id;
     }
@@ -100,8 +116,8 @@ public class User {
         return this.userName.equals(userName) && this.password.equals(password);
     }
 
-    public void addFriend(String userName) {
-        // Implementation logic to find and add a friend
+    public void addFriend(User friend) {
+        friends.add(friend);
     }
 
     public void removeFriend(User friend) {
@@ -114,6 +130,10 @@ public class User {
 
     public int getLeaderboardRanking() {
         return rankings;
+    }
+
+    public void setLeaderboardRanking(int rankings) {
+        this.rankings = rankings;
     }
 
     public void updateRanking() {
@@ -136,8 +156,9 @@ public class User {
         return false;
     }
 
-    public void updateProfile(String name, String email) {
-        this.userName = name;
+    public void updateProfile(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
     }
 
