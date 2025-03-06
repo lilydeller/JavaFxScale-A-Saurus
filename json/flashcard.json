@@ -1,0 +1,35 @@
+{
+    "flashcards": [
+      {
+        "flashcardID": "550e8400-e29b-41d4-a716-446655440000",
+        "question": "How many keys are on a standard piano?",
+        "answer": "88"
+      },
+      {
+        "flashcardID": "c0a80112-4b6c-4fc2-9d9e-2f7a7c35e3d1",
+        "question": "What is the interval between C and G called?",
+        "answer": "Perfect fifth"
+      },
+      {
+        "flashcardID": "3f4a7a7b-732b-4e8a-84c9-06e1e2b3a76f",
+        "question": "Which composer is famous for 'Moonlight Sonata'?",
+        "answer": "Ludwig van Beethoven"
+      },
+      {
+        "flashcardID": "7a5d5a32-9a0d-4f3c-bf7e-8c3d90f2a111",
+        "question": "What are the white keys on a piano called?",
+        "answer": "Natural notes"
+      },
+      {
+        "flashcardID": "9e8baf3c-2b4a-42e9-b8f3-981fe23cd999",
+        "question": "What is the Italian term for 'slow' in music?",
+        "answer": "Adagio"
+      },
+      {
+        "flashcardID": "b7e5dc9d-27f3-4a16-92c9-7d3f5fa9babc",
+        "question": "What does the sustain pedal on a piano do?",
+        "answer": "It allows notes to continue sounding after the key is released"
+      }
+    ]
+  }
+  
