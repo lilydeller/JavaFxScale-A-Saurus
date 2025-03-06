@@ -33,7 +33,7 @@ public class DataLoader {
         ArrayList<User> users = new ArrayList<>();
 
         try (FileReader reader = new FileReader("userlist.json")) {
-            JSONArray rootJson = (JSONArray) parser.parser(reader);
+            JSONArray rootJson = (JSONArray) new JSONParser().parse(reader);
 
             for (int i = 0; i < rootJson.size(); i++) {
                 JSONObject userJson = (JSONObject)rootJson.get(i);
