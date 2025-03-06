@@ -127,14 +127,14 @@ public class MusicProgram {
     }
 
     private void playAutumnLine2() {
-        Music.playNote("Am7");
+        Music.playNote("Amin7");
         Music.playNote("D7");
         Music.playNote("Gm7");
         Music.playNote("C7");
     }
 
     private void playAutumnLine3() {
-        Music.playNote("Fm7");
+        Music.playNote("Fmin7");
         Music.playNote("Bb7");
         Music.playNote("EbM7");
         Music.playNote("AbM7");
@@ -149,7 +149,7 @@ public class MusicProgram {
     }
 
     private void playBohemianLine2() {
-        Music.playNote("Cm");
+        Music.playNote("Cmin");
         Music.playNote("G7");
         Music.playNote("F");
         Music.playNote("Bb");
