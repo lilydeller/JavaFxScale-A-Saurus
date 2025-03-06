@@ -31,13 +31,12 @@ public class DataLoader {
 
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();
-        JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader("json/userlist.json")) {
+        try (FileReader reader = new FileReader("userlist.json")) {
             JSONArray rootJson = (JSONArray) parser.parse(reader);
 
-            for (Object obj : rootJson) {
-                JSONObject userJson = (JSONObject) obj;
+            for (int i = 0; i < rootJson.size(); i++) {
+                JSONObject userJson = (JSONObject)rootJson.get(i);
 
                 String uuidString = (String) userJson.get("uuid");
                 UUID uuid = UUID.fromString(uuidString);  // Convert String to UUID
@@ -77,7 +76,7 @@ public class DataLoader {
         JSONParser parser = new JSONParser();
         ArrayList<Song> songs = new ArrayList<>();
 
-        try (FileReader reader = new FileReader("songlist.json")) {
+        try (FileReader reader = new FileReader("json/songlist.json")) {
             JSONObject rootJson = (JSONObject) parser.parse(reader);
             JSONArray songCategoriesArray = (JSONArray) rootJson.get("songlist");
 
@@ -134,9 +133,13 @@ public class DataLoader {
 
     public static void main(String[] args) {
         ArrayList<User> users = DataLoader.loadUsers();
+        ArrayList<Song> songs = DataLoader.loadSongs();
 
         for (User user : users) {
             System.out.println(user);
+        }
+        for(Song song : songs){
+            System.out.println(song);
         }
     }
 }
