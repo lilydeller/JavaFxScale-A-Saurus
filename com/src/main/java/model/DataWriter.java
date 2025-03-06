@@ -152,6 +152,36 @@ public class DataWriter extends DataConstants {
         saveUsers();
     }
 
+    public void saveFlashcards() {
+        ArrayList<Flashcard> flashcards = FlashcardList.getInstance().getFlashcards();
+
+        JSONArray jsonFlashcards = new JSONArray();
+
+        for (int i = 0; i < flashcards.size(); i++) {
+            jsonFlashcards.add(getFlashcardJSON(flashcards.get(i)));
+        }
+
+        try (FileWriter file = new FileWriter(FLASHCARD_FILE_NAME)) { //add to constants once json is made TODO
+            file.write(jsonFlashcards.toJSONString());
+            file.flush();
+            System.out.println("Flashcards have been saved");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    public static JSONObject getFlashcardJSON() {
+        JSONObject jsonFlashcard = new JSONObject();
+    jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());
+    jsonFlashcard.put(FLASHCARD_QUESTION, flashcard.getQuestion());
+    jsonFlashcard.put(FLASHCARD_ANSWER, flashcard.getAnswer());
+
+    return jsonFlashcard;
+
+    }
+
   
 
     
