@@ -8,12 +8,12 @@ public class SongList {
     private ArrayList<Song> songs;
     private static SongList songList;
 
-    // constructor
+
     private SongList() {
         songs = new ArrayList<>();
     }
 
-    // singleton pattern
+
     public static SongList getInstance() {
         if (songList == null) {
             songList = new SongList();
@@ -35,32 +35,32 @@ public class SongList {
         Collections.sort(songs, Comparator.comparing(Song::getSongName));
     }
 
-    // sort by difficulty
+
     public void sortByDifficulty() {
         Collections.sort(songs, Comparator.comparingInt(Song::getDifficulty));
     }
 
-    // sort by song length 
+
     public void sortByLength() {
         Collections.sort(songs, Comparator.comparing(Song::getLength));
     }
 
-    // sort by genre
+
     public void sortByGenre() {
         Collections.sort(songs, Comparator.comparing(Song::getGenre));
     }
 
-    // get a song by its name
+
     public Song getSong(String songName) {
         for (Song song : songs) {
             if (song.getSongName().equalsIgnoreCase(songName)) {
                 return song;
             }
         }
-        return null; // will return null if not found
+        return null; 
     }
 
-    // get songs by difficulty level
+
     public ArrayList<Song> getSongsByDifficulty(String difficulty) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
         int difficultyLevel = 0;
