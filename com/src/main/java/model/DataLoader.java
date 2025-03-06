@@ -31,15 +31,16 @@ public class DataLoader {
 
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();
-
-        try (FileReader reader = new FileReader("userlist.json")) {
-            JSONArray rootJson = (JSONArray) new JSONParser().parse(reader);
-
-            for (int i = 0; i < rootJson.size(); i++) {
-                JSONObject userJson = (JSONObject)rootJson.get(i);
-
+    
+        try (FileReader reader = new FileReader("json/userlist.json")) {
+            JSONObject rootJson = (JSONObject) new JSONParser().parse(reader); // parse as JSONObject
+            JSONArray usersArray = (JSONArray) rootJson.get("users"); // get the users array directly
+    
+            for (Object userObj : usersArray) {
+                JSONObject userJson = (JSONObject) userObj;
+    
                 String uuidString = (String) userJson.get("uuid");
-                UUID uuid = UUID.fromString(uuidString);  // Convert String to UUID
+                UUID uuid = UUID.fromString(uuidString);
                 String firstName = (String) userJson.get("firstname");
                 String lastName = (String) userJson.get("lastname");
                 String username = (String) userJson.get("username");
@@ -47,30 +48,30 @@ public class DataLoader {
                 String password = (String) userJson.get("password");
                 int streak = ((Long) userJson.get("streak")).intValue();
                 int level = ((Long) userJson.get("level")).intValue();
-
+    
                 JSONArray achievementArray = (JSONArray) userJson.get("achievements");
                 ArrayList<String> achievements = new ArrayList<>();
                 for (Object achievement : achievementArray) {
                     achievements.add(achievement.toString());
                 }
-
-
+    
                 JSONArray leaderboardArray = (JSONArray) userJson.get("leaderboard-ranking");
                 ArrayList<String> leaderboardRankings = new ArrayList<>();
                 for (Object ranking : leaderboardArray) {
                     leaderboardRankings.add(ranking.toString());
                 }
-
-                // create a User object
+    
+                // Create User object and add to list
                 User user = new User(uuid, username, firstName, lastName, password, email, streak, level, achievements);
                 users.add(user);
             }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-
+    
         return users;
     }
+    
 
     public static ArrayList<Song> loadSongs() {
         JSONParser parser = new JSONParser();
