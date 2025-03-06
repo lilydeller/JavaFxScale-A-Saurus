@@ -152,9 +152,7 @@ public class DataWriter extends DataConstants {
         saveUsers();
     }
 
-    public void saveFlashcardProgress(User user, String lessonID, ProgressData progressData) {
-    
-    }
+  
 
     
     // a method for testing and debugging
