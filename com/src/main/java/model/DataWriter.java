@@ -172,7 +172,7 @@ public class DataWriter extends DataConstants {
         
     }
 
-    public static JSONObject getFlashcardJSON() {
+    public static JSONObject getFlashcardJSON(Flashcard flashcard) {
         JSONObject jsonFlashcard = new JSONObject();
     jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());
     jsonFlashcard.put(FLASHCARD_QUESTION, flashcard.getQuestion());

@@ -45,4 +45,10 @@ public abstract class DataConstants {
     protected static final String SHEET_MUSIC = "sheetMusic";
     protected static final String TABS_MUSIC = "tabsMusic";
     protected static final String METRONOME = "metronome";
+
+    //flashcard constants 
+    protected static final String FLASHCARD_FILE_NAME = "json\\flashcard.json";
+    protected static final String FLASHCARD_ID = "flashcardID";
+    protected static final String FLASHCARD_QUESTION = "question";
+    protected static final String FLASHCARD_ANSWER = "answer";
 }
