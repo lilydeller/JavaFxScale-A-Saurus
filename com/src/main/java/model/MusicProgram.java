@@ -80,4 +80,15 @@ public class MusicProgram {
         Music.playNote("D");
         Music.playNote("C");
     }
+
+    private void playLine3() {
+        Music.playNote("F");
+        Music.playNote("F");
+        Music.playNote("E");
+        Music.playNote("E");
+        Music.playNote("D");
+        Music.playNote("D");
+        Music.playNote("C");
+    }
+
 }
