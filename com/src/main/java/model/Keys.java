@@ -1,27 +1,27 @@
 package model;
 
 public class Keys {
-    private String note;
-    private int noteLength;
+    private Pitch pitch;
+    private int length;
 
-    public Keys(String note, int noteLength) {
-        this.note = note;
-        this.noteLength = noteLength;
+    public Keys(Pitch pitch, int length) {
+        this.pitch = pitch;
+        this.length = length;
     }
 
-    public String getNote() {
-        return note;
+    public Pitch getPitch() {
+        return pitch;
     }
 
-    public int getNoteLength() {
-        return noteLength;
+    public int getLength() {
+        return length;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setPitch(Pitch pitch) {
+        this.pitch = pitch;
     }
 
-    public void setNoteLength(int noteLength) {
-        this.noteLength = noteLength;
+    public void setLength(int length) {
+        this.length = length;
     }
 }
