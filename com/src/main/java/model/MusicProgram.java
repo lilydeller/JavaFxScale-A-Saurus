@@ -91,4 +91,19 @@ public class MusicProgram {
         Music.playNote("C");
     }
 
+
+    // Autumn Leaves
+    private void playAutumnLine1() {
+        Music.playNote("C");
+        Music.playNote("F");
+        Music.playNote("Bb");
+        Music.playNote("Eb");
+    }
+
+    private void playAutumnLine2() {
+        Music.playNote("Amin");
+        Music.playNote("D7");
+        Music.playNote("Gm");
+        Music.playNote("C");
+    }
 }
