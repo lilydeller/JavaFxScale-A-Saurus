@@ -106,4 +106,20 @@ public class MusicProgram {
         Music.playNote("Gm");
         Music.playNote("C");
     }
+
+    // Bohemian Rhapsody
+    private void playBohemianLine1() {
+        Music.playNote("G");
+        Music.playNote("C");
+        Music.playNote("F");
+        Music.playNote("Bb");
+    }
+
+    private void playBohemianLine2() {
+        Music.playNote("C");
+        Music.playNote("G");
+        Music.playNote("F");
+        Music.playNote("Bb");
+    }
+
 }
