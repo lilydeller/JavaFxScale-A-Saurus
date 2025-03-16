@@ -3,11 +3,11 @@ package model;
 import music.Music;
 
 public class MusicProgram {
-    public void playsong(String songName) {
+    public void playSong(String songName) {
         try {
             if (songName.equalsIgnoreCase("Twinkle Twinkle Little Star")) {
                 playTwinkle();
-            }else if (songName.equalsIgnoreCase("Autumn Leaves")) {
+            } else if (songName.equalsIgnoreCase("Autumn Leaves")) {
                 playAutumnLeaves();
             } else if (songName.equalsIgnoreCase("Bohemian Rhapsody")) {
                 playBohemianRhapsody();
@@ -18,6 +18,7 @@ public class MusicProgram {
             System.out.println(e);
         }
     }
+
     private void playTwinkle() {
         playLine1();
         try {
@@ -58,9 +59,25 @@ public class MusicProgram {
             Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }     
+        }
     }
-    //Twinkle Twinkle Little Star
+
+    private void playBohemianRhapsody() {
+        playBohemianLine1();
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        playBohemianLine2();
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Twinkle Twinkle Little Star
     private void playLine1() {
         Music.playNote("C");
         Music.playNote("C");
@@ -90,7 +107,6 @@ public class MusicProgram {
         Music.playNote("D");
         Music.playNote("C");
     }
-
 
     // Autumn Leaves
     private void playAutumnLine1() {
@@ -122,4 +138,10 @@ public class MusicProgram {
         Music.playNote("Bb");
     }
 
+    public static void main(String[] args) {
+        MusicProgram player = new MusicProgram();
+        player.playSong("Twinkle Twinkle Little Star");  // Test Twinkle Twinkle
+        player.playSong("Autumn Leaves");  // Test Autumn Leaves
+        player.playSong("Bohemian Rhapsody");  // Test Bohemian Rhapsody
+    }
 }
