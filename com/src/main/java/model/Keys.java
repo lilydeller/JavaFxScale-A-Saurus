@@ -1,27 +1,27 @@
 package model;
 
 public class Keys {
-    private Pitch key;
-    private int keyLength; 
+    private String note;
+    private int noteLength;
 
     public Keys(String note, int noteLength) {
-        this.key = Pitch.valueOf(note.toUpperCase()); // convert note string to enum
-        this.keyLength = noteLength;
-    }
-    
-    public Pitch getKey() {
-        return key;
+        this.note = note;
+        this.noteLength = noteLength;
     }
 
-    public int getKeyLength() {
-        return keyLength;
+    public String getNote() {
+        return note;
     }
 
-    public void setKey(Pitch pitch) {
-        this.key = pitch;
+    public int getNoteLength() {
+        return noteLength;
     }
 
-    public void setKeyLength(int length) {
-        this.keyLength = length;
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public void setNoteLength(int noteLength) {
+        this.noteLength = noteLength;
     }
 }
