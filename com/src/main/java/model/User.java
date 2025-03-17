@@ -1,85 +1,151 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.UUID; // import for generating unique UUIDs ? or think about json files here i think 
+import java.util.UUID;
 
 public class User {
-    private String uuid;
-    private String username;
-    private String firstname;
-    private String lastname;
+    private UUID id;
+    private String userName;
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
     private ArrayList<Lesson> lessons;
-    private int streak;
     private int level;
-    private ArrayList<Achievement> achievements;
+    private int streak;
+    private ArrayList<String> achievements;
     private int rankings;
-    private ArrayList<User> friends; // add friends list in uml
+    private ArrayList<User> friends;
 
-    public User(String uuid, String username, String firstname, String lastname, String password, String email) {
-        this.uuid = uuid;
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    // costructer with auto generated UUID
+    public User(String userName, String firstName, String lastName, String password, String email) {
+        this.id = UUID.randomUUID();  // automatically generate UUID
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.email = email;
         this.lessons = new ArrayList<>();
         this.achievements = new ArrayList<>();
-        this.friends = new ArrayList<>(); // iitialize friends list
-        this.streak = 0;
+        this.friends = new ArrayList<>();
         this.level = 1;
+        this.streak = 0;
         this.rankings = 0;
     }
 
-    // getter for username (needed for UserList)
-    public String getUsername() {
-        return username;
+    // costructor with all fields and get the UUID passed in
+    public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.streak = streak;
+        this.level = level;
+        this.achievements = achievements;
+        this.friends = new ArrayList<>();
     }
 
-    // getter for password 
+    // getters and setters
+    public UUID getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public boolean login(String username, String password) {
-        return this.username.equals(username) && this.password.equals(password);
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void increaseStreak() {
-        streak++;
+    public int getStreak() {
+        return streak;
+    }
+
+    public void setStreak(int streak) {
+        this.streak = streak;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public ArrayList<String> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(ArrayList<String> achievements) {
+        this.achievements = achievements;
+    }
+
+    public boolean login(String userName, String password) {
+        return this.userName.equals(userName) && this.password.equals(password);
+    }
+
+    public void addFriend(User friend) {
+        friends.add(friend);
     }
 
     public void removeFriend(User friend) {
-        if (friends.contains(friend)) {
-            friends.remove(friend);
-            friend.friends.remove(this); // remove mutual friendship
-        }
+        friends.remove(friend);
     }
 
-    public void addFriend(String username) {
-        User friend = UserList.getInstance().getUserByUsername(username);
-        if (friend != null && !friends.contains(friend)) {
-            friends.add(friend);
-            friend.friends.add(this); // friendship
-        }
-    } 
+    public void addAchievement(String achievement) {
+        achievements.add(achievement);
+    }
 
     public int getLeaderboardRanking() {
         return rankings;
     }
 
+    public void setLeaderboardRanking(int rankings) {
+        this.rankings = rankings;
+    }
+
     public void updateRanking() {
-        rankings++; // placeholder logic
+        // logic to update rankings
     }
 
     public void displayLeaderboard() {
-        System.out.println("Displaying leaderboard"); // placeholder
+        // logic to display leaderboard
     }
 
-    // adding UUID generation
-    public static User register(String name, String email, String password) {
-        return new User(UUID.randomUUID().toString(), name, "", "", password, email);
+    public User register(String name, String email, String password) {
+        return new User(name, "", "", password, email);
     }
 
     public boolean changePassword(String oldPassword, String newPassword) {
@@ -90,44 +156,47 @@ public class User {
         return false;
     }
 
-    public void updateProfile(String name, String email) {
-        this.firstname = name;
+    public void updateProfile(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
     }
 
     public void resumeLesson() {
-        System.out.println("Resuming last lesson"); // placeholder
+        // logic to resume a lesson
     }
 
     public boolean takeQuiz(String lessonID) {
-        return true; // placeholder
+        // logic for taking a quiz
+        return true;
     }
 
     public void enableMetronome(int bpm) {
-        System.out.println("Metronome enabled at " + bpm + " BPM.");
+        // logic for enabling metronome
     }
 
     public void recordPracticeSession() {
-        System.out.println("Recording practice session");
+        // logic to record a practice session
     }
 
     public void stopPracticeSession() {
-        System.out.println("Practice session stopped.");
+        // logic to stop a practice session
     }
 
     public ArrayList<User> viewLeaderBoard() {
         return new ArrayList<>(); // placeholder
     }
 
-    public ArrayList<Achievement> viewAchievements() {
+    public ArrayList<String> viewAchievements() {
         return achievements;
     }
 
     public void startFlashcardSession() {
-        System.out.println("Starting flashcard session.");
+        // logic to start a flashcard session
     }
 
     public boolean answerFlashcard(String flashcardID, String answer) {
-        return true; // placeholder
+        // logic for answering a flashcard
+        return true;
     }
 }

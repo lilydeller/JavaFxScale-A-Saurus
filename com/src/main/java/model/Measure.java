@@ -21,4 +21,9 @@ public class Measure {
     public List<Chord> getChords() {
         return chords;
     }
+
+
+    public int getMeasureNumber() {
+        return measureNumber;
+    }
 }
