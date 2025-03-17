@@ -182,9 +182,21 @@ public class MusicProgram {
         player.playSong("Autumn Leaves");
         player.playSong("Bohemian Rhapsody");
 
-        // Start and Stop Recording
+        // Start and Stop Recording TTLS
         player.startRecording();
         player.playSong("Twinkle Twinkle Little Star");
+        player.stopRecording();
+        player.playRecording();
+
+        // Start and Stop Recording AL
+        player.startRecording();
+        player.playSong("Autumn Leaves");
+        player.stopRecording();
+        player.playRecording();
+
+        // Start and Stop Recording BR
+        player.startRecording();
+        player.playSong("Bohemian Rhapsody");
         player.stopRecording();
         player.playRecording();
     }
