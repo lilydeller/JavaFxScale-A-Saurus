@@ -137,7 +137,7 @@ public class DataWriter extends DataConstants {
         measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
 
         JSONArray jsonChords = new JSONArray();
-        ArrayList<String> chords = measure.getChords();
+        ArrayList<String> chords = measure.getChord();
 
         for (int i = 0; i < chords.size(); i++) {
             jsonChords.add(chords.get(i));

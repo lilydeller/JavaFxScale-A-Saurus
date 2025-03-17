@@ -1,27 +1,32 @@
 package model;
 
 public class Keys {
-    private Pitch key;
-    private int keyLength; 
+    private Pitch pitch;
+    private int length;
 
-    public Keys(String note, int noteLength) {
-        this.key = Pitch.valueOf(note.toUpperCase()); // convert note string to enum
-        this.keyLength = noteLength;
-    }
-    
-    public Pitch getKey() {
-        return key;
+    public Keys(Pitch pitch, int length) {
+        this.pitch = pitch;
+        this.length = length;
     }
 
-    public int getKeyLength() {
-        return keyLength;
+    public Pitch getPitch() {
+        return pitch;
     }
 
-    public void setKey(Pitch pitch) {
-        this.key = pitch;
+    public int getLength() {
+        return length;
     }
 
-    public void setKeyLength(int length) {
-        this.keyLength = length;
+    public void setPitch(Pitch pitch) {
+        this.pitch = pitch;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    // Added getKey() method to fix the error in Piano class
+    public String getKey() {
+        return pitch.toString(); // Assuming Pitch has a meaningful toString() method
     }
 }

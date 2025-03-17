@@ -9,7 +9,8 @@ public class Instrument {
     private ArrayList<Flashcard> flashcards;
     private ArrayList<Lesson> lessons;
     private boolean isRecording;
-    private ArrayList<String> recordedNotes; // sttores recorded notes add to uml 
+    private ArrayList<String> recordedNotes; // Stores recorded notes
+    private Piano piano; // Link to piano for interaction
 
     public Instrument(String name) {
         this.name = name;
@@ -19,9 +20,10 @@ public class Instrument {
         this.lessons = new ArrayList<>();
         this.isRecording = false;
         this.recordedNotes = new ArrayList<>();
+        this.piano = new Piano(); // Initialize the piano
     }
 
-    // gtters
+    // Getters
     public String getName() {
         return name;
     }
@@ -42,49 +44,62 @@ public class Instrument {
         return lessons;
     }
 
-    // toggle sustain effect
+    // Toggle sustain effect
     public void toggleSustain() {
+        piano.toggleSustain();
         System.out.println(name + " sustain toggled.");
     }
 
-    // start recording
+    // Start recording
     public void startRecording() {
         isRecording = true;
         recordedNotes.clear();
-        System.out.println("recording started.");
+        System.out.println("Recording started.");
     }
 
-    // stop recording
+    // Stop recording
     public void stopRecording() {
         isRecording = false;
-        System.out.println("recording stopped.");
+        System.out.println("Recording stopped.");
     }
 
-    // play the recorded notes
+    // Play the recorded notes
     public void playRecording() {
         if (recordedNotes.isEmpty()) {
-            System.out.println("no recording available.");
+            System.out.println("No recording available.");
         } else {
-            System.out.println("playing recording: " + String.join(", ", recordedNotes));
+            System.out.println("Playing recording: " + String.join(", ", recordedNotes));
         }
     }
 
-    // clear the recording
+    // Clear the recording
     public void clearRecording() {
         recordedNotes.clear();
-        System.out.println("recording cleared.");
+        System.out.println("Recording cleared.");
     }
 
-    // to simulate pressing a key and record it if the recording thing is active
+    // Simulate pressing a key and recording it if active
     public void pressKey(Keys key) {
-        System.out.println("Key " + key.getKey() + " pressed.");
+        piano.pressKey(key);
         if (isRecording) {
             recordedNotes.add(key.getKey().toString());
         }
     }
 
-    // to simulate releasing a key
+    // Simulate releasing a key
     public void releaseKey(Keys key) {
-        System.out.println("Key " + key.getKey() + " released.");
+        piano.releaseKey(key);
+    }
+
+    // Play a song using stored measures
+    public void playSong(Song song) {
+        System.out.println("Now playing: " + song.getSongName());
+        for (Measure measure : song.getMeasures()) {
+            System.out.println("Measure: " + measure.toString());
+        }
+        if (song.isMetronomeEnabled()) {
+            System.out.println("Metronome is ON.");
+        }
+        System.out.println("Song ended.");
     }
 }

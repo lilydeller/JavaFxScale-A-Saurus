@@ -3,39 +3,40 @@ package model;
 import java.util.ArrayList;
 
 public class Piano {
-   // private ArrayList<Note> keys;
-   // private ArrayList<Note> activeKeys;
     private int octave;
     private int volume;
     private boolean isRecording;
-   // private ArrayList<Note> recordedNotes;
+    private ArrayList<String> recordedNotes;
 
     public Piano() {
-    //    this.keys = new ArrayList<>();
-     //   this.activeKeys = new ArrayList<>();
-        this.octave = 0;
-        this.volume = 0;
+        this.octave = 4; // Default middle octave
+        this.volume = 50; // Default volume
         this.isRecording = false;
-      //  this.recordedNotes = new ArrayList<>();
+        this.recordedNotes = new ArrayList<>();
     }
 
-   // public void pressKey(Key key) {
+    public void pressKey(Keys key) {
+        System.out.println("Piano Key " + key.getKey() + " pressed.");
+        if (isRecording) {
+            recordedNotes.add(key.getKey().toString());
+        }
+    }
 
-    
-
-   // public void releaseKey(Key key) {
-
-    
+    public void releaseKey(Keys key) {
+        System.out.println("Piano Key " + key.getKey() + " released.");
+    }
 
     public void toggleSustain() {
- 
+        System.out.println("Piano sustain toggled.");
     }
 
     public void changeOctave(int newOctave) {
-
+        this.octave = newOctave;
+        System.out.println("Piano octave changed to: " + octave);
     }
 
     public void adjustVolume(int newVolume) {
-
+        this.volume = newVolume;
+        System.out.println("Piano volume set to: " + volume);
     }
 }
