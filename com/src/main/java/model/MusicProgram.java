@@ -1,8 +1,37 @@
 package model;
 
 import music.Music;
+import java.util.ArrayList;
+
 
 public class MusicProgram {
+    private ArrayList<Instrument> instruments = new ArrayList<>();
+    private Instrument currentInstrument;
+    private SongList songList = SongList.getInstance();
+
+    public void addInstrument(Instrument instrument) {
+        if (instrument != null) {
+            instruments.add(instrument);
+        }
+    }
+
+    public void displaySongs() {
+        System.out.println("Available Songs:");
+        songList.display(); // Uses songList to avoid "unused variable" warning
+    }
+    
+
+    public void setCurrentInstrument(String instrumentName) {
+        for (Instrument instrument : instruments) {
+            if (instrument.getName().equalsIgnoreCase(instrumentName)) {
+                this.currentInstrument = instrument;
+                System.out.println("Current instrument set to: " + instrumentName);
+                return;
+            }
+        }
+        System.out.println("Instrument not found.");
+    }
+
     public void playSong(String songName) {
         try {
             if (songName.equalsIgnoreCase("Twinkle Twinkle Little Star")) {
@@ -21,127 +50,142 @@ public class MusicProgram {
 
     private void playTwinkle() {
         playLine1();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playLine2();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playLine3();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playLine1();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playLine2();
     }
 
     private void playAutumnLeaves() {
         playAutumnLine1();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playAutumnLine2();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
     private void playBohemianRhapsody() {
         playBohemianLine1();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playBohemianLine2();
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
     // Twinkle Twinkle Little Star
     private void playLine1() {
-        Music.playNote("C");
-        Music.playNote("C");
-        Music.playNote("G");
-        Music.playNote("G");
-        Music.playNote("A");
-        Music.playNote("A");
-        Music.playNote("G");
+        playNote("C");
+        playNote("C");
+        playNote("G");
+        playNote("G");
+        playNote("A");
+        playNote("A");
+        playNote("G");
     }
 
     private void playLine2() {
-        Music.playNote("F");
-        Music.playNote("F");
-        Music.playNote("E");
-        Music.playNote("E");
-        Music.playNote("D");
-        Music.playNote("D");
-        Music.playNote("C");
+        playNote("F");
+        playNote("F");
+        playNote("E");
+        playNote("E");
+        playNote("D");
+        playNote("D");
+        playNote("C");
     }
 
     private void playLine3() {
-        Music.playNote("F");
-        Music.playNote("F");
-        Music.playNote("E");
-        Music.playNote("E");
-        Music.playNote("D");
-        Music.playNote("D");
-        Music.playNote("C");
+        playNote("F");
+        playNote("F");
+        playNote("E");
+        playNote("E");
+        playNote("D");
+        playNote("D");
+        playNote("C");
     }
 
     // Autumn Leaves
     private void playAutumnLine1() {
-        Music.playNote("C");
-        Music.playNote("F");
-        Music.playNote("Bb");
-        Music.playNote("Eb");
+        playNote("C");
+        playNote("F");
+        playNote("Bb");
+        playNote("Eb");
     }
 
     private void playAutumnLine2() {
-        Music.playNote("Amin");
-        Music.playNote("D7");
-        Music.playNote("Gm");
-        Music.playNote("C");
+        playNote("Amin");
+        playNote("D7");
+        playNote("Gm");
+        playNote("C");
     }
 
     // Bohemian Rhapsody
     private void playBohemianLine1() {
-        Music.playNote("G");
-        Music.playNote("C");
-        Music.playNote("F");
-        Music.playNote("Bb");
+        playNote("G");
+        playNote("C");
+        playNote("F");
+        playNote("Bb");
     }
 
     private void playBohemianLine2() {
-        Music.playNote("C");
-        Music.playNote("G");
-        Music.playNote("F");
-        Music.playNote("Bb");
+        playNote("C");
+        playNote("G");
+        playNote("F");
+        playNote("Bb");
+    }
+
+    private void playNote(String note) {
+        if (currentInstrument != null) {
+            System.out.println("Playing " + note + " on " + currentInstrument.getName());
+            Music.playNote(note);
+        } else {
+            System.out.println("No instrument selected. Playing " + note + " using default sound.");
+            Music.playNote(note);
+        }
+    }
+
+    public void startRecording() {
+        if (currentInstrument != null) {
+            currentInstrument.startRecording();
+        } else {
+            System.out.println("No instrument selected to record.");
+        }
+    }
+
+    public void stopRecording() {
+        if (currentInstrument != null) {
+            currentInstrument.stopRecording();
+        } else {
+            System.out.println("No instrument selected to stop recording.");
+        }
+    }
+
+    public void playRecording() {
+        if (currentInstrument != null) {
+            currentInstrument.playRecording();
+        } else {
+            System.out.println("No instrument selected to play recording.");
+        }
     }
 
     public static void main(String[] args) {
         MusicProgram player = new MusicProgram();
-        player.playSong("Twinkle Twinkle Little Star");  // Test Twinkle Twinkle
-        player.playSong("Autumn Leaves");  // Test Autumn Leaves
-        player.playSong("Bohemian Rhapsody");  // Test Bohemian Rhapsody
+
+        // Adding Instruments
+        Instrument piano = new Instrument("Piano");
+        player.addInstrument(piano);
+        player.setCurrentInstrument("Piano");
+
+        // Playing Songs
+        player.playSong("Twinkle Twinkle Little Star");
+        player.playSong("Autumn Leaves");
+        player.playSong("Bohemian Rhapsody");
+
+        // Start and Stop Recording
+        player.startRecording();
+        player.playSong("Twinkle Twinkle Little Star");
+        player.stopRecording();
+        player.playRecording();
     }
 }
