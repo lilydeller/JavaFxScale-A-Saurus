@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Measure {
     private List<Chord> chords;
+    private int measureNumber; 
 
-    public Measure() {
+    public Measure(int measureNumber) { 
         this.chords = new ArrayList<>();
+        this.measureNumber = measureNumber; 
     }
 
     public void addChord(Chord chord) {
@@ -21,7 +23,6 @@ public class Measure {
     public List<Chord> getChords() {
         return chords;
     }
-
 
     public int getMeasureNumber() {
         return measureNumber;
