@@ -1,6 +1,3 @@
-/*
- * @author lily 
- */
 package model;
 
 import java.util.ArrayList;
