@@ -13,7 +13,6 @@ public class Song {
     private String tabsMusic;
     private boolean metronome;
 
-    // constructor to match dataloader 
     public Song(String songId, String songName, int difficulty, String length, String genre,
                 ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome) {
         this.songId = songId;

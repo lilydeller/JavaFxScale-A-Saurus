@@ -17,9 +17,9 @@ public class User {
     private int rankings;
     private ArrayList<User> friends;
 
-    // costructer with auto generated UUID
+
     public User(String userName, String firstName, String lastName, String password, String email) {
-        this.id = UUID.randomUUID();  // automatically generate UUID
+        this.id = UUID.randomUUID();  
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,7 +33,7 @@ public class User {
         this.rankings = 0;
     }
 
-    // costructor with all fields and get the UUID passed in
+
     public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements) {
         this.id = id;
         this.userName = userName;
@@ -47,7 +47,20 @@ public class User {
         this.friends = new ArrayList<>();
     }
 
-    // getters and setters
+
+    public static void addUser(String firstName, String lastName, String userName, String password, String email) {
+        User newUser = new User(userName, firstName, lastName, password, email);
+        UserList.getInstance().addUser(newUser);
+    }
+
+
+    public static User register(String userName, String firstName, String lastName, String email, String password) {
+        User newUser = new User(userName, firstName, lastName, password, email);
+        UserList.getInstance().addUser(newUser);
+        return newUser;
+    }
+
+    // Getters & Setters
     public UUID getId() {
         return id;
     }
@@ -137,54 +150,35 @@ public class User {
     }
 
     public void updateRanking() {
-        // logic to update rankings
+    
     }
 
     public void displayLeaderboard() {
-        // logic to display leaderboard
-    }
-
-    public User register(String name, String email, String password) {
-        return new User(name, "", "", password, email);
-    }
-
-    public boolean changePassword(String oldPassword, String newPassword) {
-        if (this.password.equals(oldPassword)) {
-            this.password = newPassword;
-            return true;
-        }
-        return false;
-    }
-
-    public void updateProfile(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+     
     }
 
     public void resumeLesson() {
-        // logic to resume a lesson
+      
     }
 
     public boolean takeQuiz(String lessonID) {
-        // logic for taking a quiz
-        return true;
+        return true; 
     }
 
     public void enableMetronome(int bpm) {
-        // logic for enabling metronome
+  
     }
 
     public void recordPracticeSession() {
-        // logic to record a practice session
+  
     }
 
     public void stopPracticeSession() {
-        // logic to stop a practice session
+   
     }
 
     public ArrayList<User> viewLeaderBoard() {
-        return new ArrayList<>(); // placeholder
+        return new ArrayList<>(); 
     }
 
     public ArrayList<String> viewAchievements() {
@@ -192,11 +186,10 @@ public class User {
     }
 
     public void startFlashcardSession() {
-        // logic to start a flashcard session
+
     }
 
     public boolean answerFlashcard(String flashcardID, String answer) {
-        // logic for answering a flashcard
-        return true;
+        return true; 
     }
 }

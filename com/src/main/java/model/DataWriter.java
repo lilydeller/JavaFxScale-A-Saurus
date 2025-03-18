@@ -64,21 +64,7 @@ public class DataWriter extends DataConstants {
 
         return userDetails;
     }
-    /*
-     * //user constants 
-    protected static final String USER_FILE_NAME = "json\\userlist.json";
-	protected static final String USER_ID = "uuid";
-    protected static final String USER_FIRST_NAME = "firstName";
-    protected static final String USER_LAST_NAME = "lastName";
-	protected static final String USER_USER_NAME = "userName";
-	protected static final String USER_EMAIL = "email";
-	protected static final String USER_PASSWORD = "password";
-    protected static final String USER_STREAK = "streak";
-    protected static final String USER_LEVEL = "level";
-    protected static final String USER_ACHIEVEMENTS = "achievement";
-    protected static final String USER_LEADERBOARD_RANKING = "leaderboard-ranking";
-
-     */
+   
 
     public void saveSongs() {
         //get song list
@@ -137,7 +123,7 @@ public class DataWriter extends DataConstants {
         measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
 
         JSONArray jsonChords = new JSONArray();
-        ArrayList<String> chords = measure.getChord();
+        ArrayList<String> chords = measure.getChords();
 
         for (int i = 0; i < chords.size(); i++) {
             jsonChords.add(chords.get(i));
