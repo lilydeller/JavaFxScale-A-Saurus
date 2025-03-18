@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -117,20 +119,25 @@ public class DataWriter extends DataConstants {
         songJSON.put(MEASURES, jsonMeasures);
         return songJSON;
     }
-    //convert measure into JSON object 
+
     public static JSONObject getMeasureJSON(Measure measure) {
         JSONObject measureJSON = new JSONObject();
         measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
-
+    
         JSONArray jsonChords = new JSONArray();
-        ArrayList<String> chords = measure.getChords();
-
-        for (int i = 0; i < chords.size(); i++) {
-            jsonChords.add(chords.get(i));
+        List<Chord> chords = measure.getChords(); 
+    
+       
+        for (Chord chord : chords) {
+            String chordName = Chord.chordToString(chord.getNotes()); 
+            jsonChords.add(chordName);  
         }
+    
         measureJSON.put(CHORDS, jsonChords);
         return measureJSON;
     }
+    
+
 
     public void saveUserData(User user) {
         ArrayList<User> userList = this.userList.getUsers();

@@ -9,26 +9,31 @@ import java.util.Map;
 public class Chord {
     private List<Pitch> notes;
 
+
     public Chord(List<Pitch> notes) {
-        this.notes = notes;
+        this.notes = notes != null ? notes : new ArrayList<>(); 
     }
 
+  
     public List<Pitch> getNotes() {
         return notes;
     }
+
 
     public void addNote(Pitch note) {
         notes.add(note);
     }
 
+    
     public void removeNote(Pitch note) {
         notes.remove(note);
     }
 
-     // Maps chord names to their corresponding pitches
+
     private static final Map<String, List<Pitch>> CHORD_MAP = new HashMap<>();
 
     static {
+
         CHORD_MAP.put("C", Arrays.asList(Pitch.C, Pitch.E, Pitch.G));
         CHORD_MAP.put("C#", Arrays.asList(Pitch.C_SHARP, Pitch.F, Pitch.G_SHARP));
         CHORD_MAP.put("D", Arrays.asList(Pitch.D, Pitch.F_SHARP, Pitch.A));
@@ -41,6 +46,8 @@ public class Chord {
         CHORD_MAP.put("A", Arrays.asList(Pitch.A, Pitch.C_SHARP, Pitch.E));
         CHORD_MAP.put("A#", Arrays.asList(Pitch.A_SHARP, Pitch.D, Pitch.F));
         CHORD_MAP.put("B", Arrays.asList(Pitch.B, Pitch.D_SHARP, Pitch.F_SHARP));
+        
+     
         CHORD_MAP.put("Am", Arrays.asList(Pitch.A, Pitch.C, Pitch.E));
         CHORD_MAP.put("Cm", Arrays.asList(Pitch.C, Pitch.D_SHARP, Pitch.G));
         CHORD_MAP.put("Dm", Arrays.asList(Pitch.D, Pitch.F, Pitch.A));
@@ -51,6 +58,16 @@ public class Chord {
     }
 
     public static Chord fromString(String chordName) {
-        return new Chord(CHORD_MAP.getOrDefault(chordName, new ArrayList<>()));
+        return new Chord(CHORD_MAP.getOrDefault(chordName, new ArrayList<>()));  
+    }
+
+    
+    public static String chordToString(List<Pitch> pitches) {
+        for (Map.Entry<String, List<Pitch>> entry : CHORD_MAP.entrySet()) {
+            if (entry.getValue().equals(pitches)) {
+                return entry.getKey();  
+            }
+        }
+        return "Unknown";  
     }
 }
