@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public class MusicProgram {
     private ArrayList<Instrument> instruments = new ArrayList<>();
-    private Instrument currentInstrument;
+    private static Instrument currentInstrument;
     private SongList songList = SongList.getInstance();
+    private static Thread currentSongThread; //control song playback 
+    private static boolean isSongPlaying = false;
 
     public void addInstrument(Instrument instrument) {
         if (instrument != null) {
@@ -32,7 +34,7 @@ public class MusicProgram {
         System.out.println("Instrument not found.");
     }
 
-    public void playSong(String songName) {
+    public static void playSong(String songName) {
         try {
             if (songName.equalsIgnoreCase("Twinkle Twinkle Little Star")) {
                 playTwinkle();
@@ -47,8 +49,19 @@ public class MusicProgram {
             System.out.println(e);
         }
     }
+    public static void stopSong() {
+        //check if song is playing 
+        if (isSongPlaying) {
+            currentSongThread.interrupt();
+            System.out.println("Song stopped ");
+            isSongPlaying = false;
+        }
+        else {
+            System.out.println("no song is playing currently ");
+        }
+    }
 
-    private void playTwinkle() {
+    private static void playTwinkle() {
         playLine1();
         try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playLine2();
@@ -60,14 +73,14 @@ public class MusicProgram {
         playLine2();
     }
 
-    private void playAutumnLeaves() {
+    private static void playAutumnLeaves() {
         playAutumnLine1();
         try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playAutumnLine2();
         try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
     }
 
-    private void playBohemianRhapsody() {
+    private static void playBohemianRhapsody() {
         playBohemianLine1();
         try { Thread.sleep(300); } catch (InterruptedException e) { e.printStackTrace(); }
         playBohemianLine2();
@@ -75,7 +88,7 @@ public class MusicProgram {
     }
 
     // Twinkle Twinkle Little Star
-    private void playLine1() {
+    private static void playLine1() {
         playNote("C");
         playNote("C");
         playNote("G");
@@ -85,7 +98,7 @@ public class MusicProgram {
         playNote("G");
     }
 
-    private void playLine2() {
+    private static void playLine2() {
         playNote("F");
         playNote("F");
         playNote("E");
@@ -95,7 +108,7 @@ public class MusicProgram {
         playNote("C");
     }
 
-    private void playLine3() {
+    private static void playLine3() {
         playNote("F");
         playNote("F");
         playNote("E");
@@ -106,14 +119,14 @@ public class MusicProgram {
     }
 
     // Autumn Leaves
-    private void playAutumnLine1() {
+    private static void playAutumnLine1() {
         playNote("C");
         playNote("F");
         playNote("Bb");
         playNote("Eb");
     }
 
-    private void playAutumnLine2() {
+    private static void playAutumnLine2() {
         playNote("Amin");
         playNote("D7");
         playNote("Gm");
@@ -121,21 +134,21 @@ public class MusicProgram {
     }
 
     // Bohemian Rhapsody
-    private void playBohemianLine1() {
+    private static void playBohemianLine1() {
         playNote("G");
         playNote("C");
         playNote("F");
         playNote("Bb");
     }
 
-    private void playBohemianLine2() {
+    private static void playBohemianLine2() {
         playNote("C");
         playNote("G");
         playNote("F");
         playNote("Bb");
     }
 
-    private void playNote(String note) {
+    private static void playNote(String note) {
         if (currentInstrument != null) {
             System.out.println("Playing " + note + " on " + currentInstrument.getName());
             Music.playNote(note);
