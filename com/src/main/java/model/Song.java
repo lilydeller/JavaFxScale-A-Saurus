@@ -71,4 +71,16 @@ public class Song {
     public void toggleMetronome() {
         metronome = !metronome;
     }
+
+    @Override
+public String toString() {
+    return "Song{" +
+            "id='" + songId + '\'' +
+            ", name='" + songName + '\'' +
+            ", difficulty=" + difficulty +
+            ", length='" + length + '\'' +
+            ", genre='" + genre + '\'' +
+            ", measures=" + measures +
+            '}';
+}
 }

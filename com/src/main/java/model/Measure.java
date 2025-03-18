@@ -27,4 +27,12 @@ public class Measure {
     public int getMeasureNumber() {
         return measureNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Measure{" +
+                "measureNumber=" + measureNumber +
+                ", chords=" + chords +
+                '}';
+    }
 }

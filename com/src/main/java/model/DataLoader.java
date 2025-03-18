@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class DataLoader {
@@ -111,8 +112,8 @@ public class DataLoader {
                         JSONArray chordsArray = (JSONArray) measureJson.get("chords");
                         ArrayList<Chord> chords = new ArrayList<>();
                         for (Object chordObj : chordsArray) {
-                            String chordStr = (String) chordObj;
-                            Chord chord = Chord.fromString(chordStr);
+                            String chordStr = (String) chordObj;  // Extract string from JSON
+                            Chord chord = Chord.fromString(chordStr); // Convert string to Chord object
                             chords.add(chord);
                         }
 
@@ -125,7 +126,6 @@ public class DataLoader {
 
                     Song song = new Song(songId, songName, songDifficulty, songLength, songGenre, measures, sheetMusic, tabsMusic, metronome);
                     songs.add(song);
-                    return songs;
                 }
             }
         }

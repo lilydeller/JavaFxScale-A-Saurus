@@ -192,4 +192,18 @@ public class User {
     public boolean answerFlashcard(String flashcardID, String answer) {
         return true; 
     }
+
+    @Override
+public String toString() {
+    return "User{" +
+            "uuid=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", username='" + userName + '\'' +
+            ", email='" + email + '\'' +
+            ", streak=" + streak +
+            ", level=" + level +
+            ", achievements=" + achievements +
+            '}';
+}
 }
