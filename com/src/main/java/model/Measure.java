@@ -7,7 +7,7 @@ public class Measure {
     private List<Chord> chords;
     private int measureNumber; 
 
-    public Measure(int measureNumber) { 
+    public Measure(int measureNumber, ArrayList<Chord> chords) { 
         this.chords = new ArrayList<>();
         this.measureNumber = measureNumber; 
     }

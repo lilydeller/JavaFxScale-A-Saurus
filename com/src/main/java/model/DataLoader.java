@@ -109,13 +109,15 @@ public class DataLoader {
                         int measureNumber = ((Long) measureJson.get("measureNumber")).intValue();
 
                         JSONArray chordsArray = (JSONArray) measureJson.get("chords");
-                        ArrayList<String> chords = new ArrayList<>();
-                        for (Object chord : chordsArray) {
-                            chords.add(chord.toString());
+                        ArrayList<Chord> chords = new ArrayList<>();
+                        for (Object chordObj : chordsArray) {
+                            String chordStr = (String) chordObj;
+                            Chord chord = Chord.fromString(chordStr);
+                            chords.add(chord);
                         }
 
                         measures.add(new Measure(measureNumber, chords));
-                    }
+
 
                     String sheetMusic = (String) songJson.get("sheetMusic");
                     String tabsMusic = (String) songJson.get("tabsMusic");
@@ -126,6 +128,7 @@ public class DataLoader {
                     return songs;
                 }
             }
+        }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
