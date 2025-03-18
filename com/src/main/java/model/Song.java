@@ -13,7 +13,6 @@ public class Song {
     private String tabsMusic;
     private boolean metronome;
 
-    // constructor to match dataloader 
     public Song(String songId, String songName, int difficulty, String length, String genre,
                 ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome) {
         this.songId = songId;
@@ -72,4 +71,16 @@ public class Song {
     public void toggleMetronome() {
         metronome = !metronome;
     }
+
+    @Override
+public String toString() {
+    return "Song{" +
+            "id='" + songId + '\'' +
+            ", name='" + songName + '\'' +
+            ", difficulty=" + difficulty +
+            ", length='" + length + '\'' +
+            ", genre='" + genre + '\'' +
+            ", measures=" + measures +
+            '}';
+}
 }

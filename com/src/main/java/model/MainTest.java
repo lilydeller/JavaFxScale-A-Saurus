@@ -8,17 +8,17 @@ public class MainTest {
 
  
         UserList userList = UserList.getInstance();
-       // userList.addUser("Lily", "Deller", "lily123", "password123", "lily@email.sc.edu");
+        userList.addUser("Lily", "Deller", "lily123", "password123", "lily@email.sc.edu");
         User testUser = userList.getUser("lily123", "password123");
 
         if (testUser != null) {
-           // System.out.println("user created and logged in successfully: " + testUser.getUsername());
+        System.out.println("user created and logged in successfully: " + testUser.getUsername());
         } else {
             System.out.println("user login failed.");
         }
 
      
-        //DataWriter.saveUsers();
+        DataWriter.saveUsers();
         System.out.println("user data saved to JSON.");
 
    
@@ -33,7 +33,7 @@ public class MainTest {
         }
 
    
-        //DataWriter.saveSongs();
+        DataWriter.saveSongs();
         System.out.println("song data saved to JSON.");
 
 
@@ -45,7 +45,7 @@ public class MainTest {
         }
 
         ProgressData progressData = new ProgressData();
-       // DataWriter.saveFlashcardProgress(testUser, "lesson1", progressData);
+        DataWriter.saveFlashcardProgress(testUser, "lesson1", progressData);
         System.out.println("flashcard progress saved.");
 
  

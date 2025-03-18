@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class DataLoader {
@@ -109,13 +110,15 @@ public class DataLoader {
                         int measureNumber = ((Long) measureJson.get("measureNumber")).intValue();
 
                         JSONArray chordsArray = (JSONArray) measureJson.get("chords");
-                        ArrayList<String> chords = new ArrayList<>();
-                        for (Object chord : chordsArray) {
-                            chords.add(chord.toString());
+                        ArrayList<Chord> chords = new ArrayList<>();
+                        for (Object chordObj : chordsArray) {
+                            String chordStr = (String) chordObj;  // Extract string from JSON
+                            Chord chord = Chord.fromString(chordStr); // Convert string to Chord object
+                            chords.add(chord);
                         }
 
                         measures.add(new Measure(measureNumber, chords));
-                    }
+
 
                     String sheetMusic = (String) songJson.get("sheetMusic");
                     String tabsMusic = (String) songJson.get("tabsMusic");
@@ -123,9 +126,9 @@ public class DataLoader {
 
                     Song song = new Song(songId, songName, songDifficulty, songLength, songGenre, measures, sheetMusic, tabsMusic, metronome);
                     songs.add(song);
-                    return songs;
                 }
             }
+        }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

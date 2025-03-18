@@ -7,7 +7,7 @@ public class Measure {
     private List<Chord> chords;
     private int measureNumber; 
 
-    public Measure(int measureNumber) { 
+    public Measure(int measureNumber, ArrayList<Chord> chords) { 
         this.chords = new ArrayList<>();
         this.measureNumber = measureNumber; 
     }
@@ -26,5 +26,13 @@ public class Measure {
 
     public int getMeasureNumber() {
         return measureNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Measure{" +
+                "measureNumber=" + measureNumber +
+                ", chords=" + chords +
+                '}';
     }
 }
