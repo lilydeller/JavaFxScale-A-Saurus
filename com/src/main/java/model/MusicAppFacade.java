@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
-
+/*
+ * operates the frontend actions a use can do 
+ */
 public class MusicAppFacade {
     private static MusicAppFacade instance;
     private UserList userList;
@@ -9,7 +11,9 @@ public class MusicAppFacade {
     private User currentUser;
     private Song currentSong;
 
-    // priv cnstructer
+    /*
+     * construct singleton instance of facade 
+     */
     private MusicAppFacade() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
@@ -17,7 +21,10 @@ public class MusicAppFacade {
         currentSong = null;
     }
 
-    // singleton pattern: to get instance of MusicAppFacade
+    /*
+     * getter method for facade instance 
+     * @return instance of facade 
+     */
     public static MusicAppFacade getInstance() {
         if (instance == null) {
             instance = new MusicAppFacade();
@@ -25,13 +32,26 @@ public class MusicAppFacade {
         return instance;
     }
 
+    /*
+     * logs in the user 
+     * @param username 
+     * @param password
+     * @return the current logged in user 
+     */
     public User login(String username, String password) {
         UserList userlist = UserList.getInstance();
         currentUser = userList.getUser(username, password);
         return currentUser;
         
     }
-
+    
+    /*
+     * creates new account for user to log into 
+     * @param username
+     * @param email
+     * @param password
+     * @return the new user, if already exists return null
+     */
     public User signup(String username, String email, String password) {
         if (userList.getUserByUsername(username) == null) { //make sure user doesnt alread exist;
             currentUser = new User(username, "", "", password, ""); //call random UUID constructor 
@@ -41,6 +61,12 @@ public class MusicAppFacade {
         return null; //user already exists
     }
 
+    /*
+     * update users info 
+     * @param firstName
+     * @param lastName
+     * @return currentUser , if user does not exist return null
+     */
     public User addUserInfo(String firstName, String lastName) {
         if (currentUser != null) { //make sure current user is already assigned 
             currentUser.setFirstName(firstName);
@@ -50,6 +76,11 @@ public class MusicAppFacade {
         return null; //no current user exists 
     }
 
+    /*
+     * opens a song
+     * @param songName 
+     * @RETURN currentSong
+     */
     public Song openSong(String songName) {
         currentSong = songList.getSong(songName);
         return currentSong;
