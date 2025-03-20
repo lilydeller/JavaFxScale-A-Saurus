@@ -29,8 +29,8 @@ public class DataWriter extends DataConstants {
     }
 
 
-    public void saveUsers() {
-        ArrayList<User> userList = this.userList.getUsers();
+    public static void saveUsers() {
+        ArrayList<User> userList = UserList.getInstance().getUsers();
 
         JSONArray jsonUsers = new JSONArray();
 
@@ -68,7 +68,7 @@ public class DataWriter extends DataConstants {
     }
    
 
-    public void saveSongs() {
+    public static void saveSongs() {
         //get song list
         JSONArray jsonSongList = new JSONArray();
         String[] difficulties = {"Easy", "Medium", "Hard"};

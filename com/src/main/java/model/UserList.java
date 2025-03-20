@@ -61,6 +61,6 @@ public class UserList {
     }
 
     public void saveUsers() {
-        instance.saveUsers();
+        DataWriter.saveUsers();
     }
 }
