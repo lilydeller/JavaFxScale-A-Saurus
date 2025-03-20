@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class MusicAppFacade {
     private static MusicAppFacade instance;
     private UserList userList;
@@ -15,17 +17,16 @@ public class MusicAppFacade {
         currentSong = null;
     }
 
-    // singleton pettern: to get instance of MusicAppFacade
+    // singleton pattern: to get instance of MusicAppFacade
     public static MusicAppFacade getInstance() {
         if (instance == null) {
             instance = new MusicAppFacade();
         }
         return instance;
     }
-//llll
 
     public User login(String username, String password) {
-
+        UserList userlist = UserList.getInstance();
         currentUser = userList.getUser(username, password);
         return currentUser;
         
@@ -57,7 +58,7 @@ public class MusicAppFacade {
     public void addMeasure() {
         if (currentSong != null) {
             int newMeasureNumber = currentSong.getMeasures().size() + 1; //number of measures until append new measure
-            Measure newMeasure = new Measure(newMeasureNumber);
+            Measure newMeasure = new Measure(newMeasureNumber, new ArrayList<>());
 
             currentSong.addMeasure(newMeasure); //append measure to song 
             System.out.println("Added measure " + newMeasureNumber + " to song: " + currentSong.getSongName());
@@ -89,6 +90,7 @@ public class MusicAppFacade {
 
     public void logout() {
         if (currentUser != null) {
+            saveAll();
             System.out.println("logging out: " + currentUser.getUserName());
 
             currentUser = null;
@@ -99,5 +101,12 @@ public class MusicAppFacade {
         else {
             System.out.println("No one is logged in");
         }
+    }
+
+    public void saveAll() {
+        UserList userList = UserList.getInstance();
+        SongList songList = SongList.getInstance();
+        userList.saveUsers();
+        songList.saveSongs();
     }
 }

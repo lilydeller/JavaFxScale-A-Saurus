@@ -59,4 +59,8 @@ public class UserList {
     public ArrayList<User> getUsers() {
         return users;
     }
+
+    public void saveUsers() {
+        instance.saveUsers();
+    }
 }

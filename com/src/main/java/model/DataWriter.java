@@ -145,7 +145,7 @@ public class DataWriter extends DataConstants {
         saveUsers();
     }
 
-    public void saveFlashcards() {
+    public static void saveFlashcards() {
         ArrayList<Flashcard> flashcards = FlashcardList.getInstance().getFlashcards();
 
         JSONArray jsonFlashcards = new JSONArray();
@@ -173,6 +173,12 @@ public class DataWriter extends DataConstants {
 
     return jsonFlashcard;
 
+    }
+
+    public static void saveAll() {
+        DataWriter.saveUsers();
+        DataWriter.saveSongs();
+        DataWriter.saveFlashcards();
     }
 
   
