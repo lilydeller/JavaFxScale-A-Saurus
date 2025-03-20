@@ -36,6 +36,13 @@ public class MusicProgram {
 
     public static void playSong(String songName) {
         try {
+            if (currentInstrument == null) {
+                System.out.println("No instrument selected, Defaulting to Piano.");
+                currentInstrument = new Instrument("Piano");  
+            }
+    
+            System.out.println("\n🎵 Now Playing: " + songName + " on " + currentInstrument.getName());
+    
             if (songName.equalsIgnoreCase("Twinkle Twinkle Little Star")) {
                 playTwinkle();
             } else if (songName.equalsIgnoreCase("Autumn Leaves")) {
@@ -149,14 +156,15 @@ public class MusicProgram {
     }
 
     private static void playNote(String note) {
-        if (currentInstrument != null) {
-            System.out.println("Playing " + note + " on " + currentInstrument.getName());
-            Music.playNote(note);
-        } else {
-            System.out.println("No instrument selected. Playing " + note + " using default sound.");
-            Music.playNote(note);
+        if (currentInstrument == null) {
+            System.out.println("no instrument selected - defaulting to piano.");
+            currentInstrument = new Instrument("Piano");
         }
+    
+        System.out.println("Playing " + note + " on " + currentInstrument.getName());
+        Music.playNote(note);
     }
+    
 
     public void startRecording() {
         if (currentInstrument != null) {
