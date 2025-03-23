@@ -69,35 +69,39 @@ public class DataWriter extends DataConstants {
    
 
     public static void saveSongs() {
-        //get song list
         JSONArray jsonSongList = new JSONArray();
+        SongList songList = SongList.getInstance(); 
+    
+        
         String[] difficulties = {"Easy", "Medium", "Hard"};
-
-        //group songs by difficulty 
+    
+        
         for (int i = 0; i < difficulties.length; i++) {
             JSONObject difficultyGroup = new JSONObject();
-            difficultyGroup.put(SONG_DIFFICULTY, difficulties[i]);
-
-            
-            ArrayList<Song> songs = songList.getSongsByDifficulty(difficulties[i]);
+            difficultyGroup.put("difficulty_level", i + 1); 
+    
+            ArrayList<Song> songs = songList.getSongsByDifficulty(i + 1); 
             JSONArray jsonSongs = new JSONArray();
-            
-
-            for (int e = 0; e < songs.size(); e++) {
-                jsonSongs.add(getSongJSON(songs.get(e)));
+    
+            for (Song song : songs) {
+                jsonSongs.add(getSongJSON(song));
             }
-            difficultyGroup.put(SONGS, jsonSongs);
+    
+            difficultyGroup.put("songs", jsonSongs);
             jsonSongList.add(difficultyGroup);
         }
-        //write into json file 
-        try {
-            FileWriter file = new FileWriter(SONG_FILE_NAME);
+    
+        
+        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
             file.write(jsonSongList.toJSONString());
             file.flush();
-        } catch (Exception e) {
+            System.out.println("Songs successfully saved to " + SONG_FILE_NAME);
+        } catch (IOException e) {
+            System.err.println("Error saving songs: " + e.getMessage());
             e.printStackTrace();
         }
     }
+    
 
     //convert song into JSONObject 
     public static JSONObject getSongJSON(Song song) {

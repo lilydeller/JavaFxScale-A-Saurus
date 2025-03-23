@@ -22,7 +22,7 @@ public class SongList {
     public void addSong(Song song) {
         if (song != null) {
             songs.add(song);
-            System.out.println("dded song: " + song.getSongName());
+            System.out.println("added song: " + song.getSongName());
         }
     }
 
@@ -54,10 +54,15 @@ public class SongList {
     }
 
     private int convertLengthToSeconds(String length) {
-        String[] parts = length.split(":");
-        int minutes = Integer.parseInt(parts[0]);
-        int seconds = Integer.parseInt(parts[1]);
-        return (minutes * 60) + seconds;
+        try {
+            String[] parts = length.split(":");
+            int minutes = Integer.parseInt(parts[0]);
+            int seconds = Integer.parseInt(parts[1]);
+            return (minutes * 60) + seconds;
+        } catch (Exception e) {
+            System.out.println("Invalid song length format: " + length);
+            return 0;  
+        }
     }
 
     public void sortByGenre() {
@@ -92,5 +97,5 @@ public class SongList {
     public ArrayList<Song> getSongs() {
         return songs;
     }
-    public 
+ 
 }
