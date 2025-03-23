@@ -60,10 +60,14 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_PASSWORD, user.getPassword());
         userDetails.put(USER_STREAK, user.getStreak());
         userDetails.put(USER_LEVEL, user.getLevel());
-        userDetails.put(USER_ACHIEVEMENTS, user.getAchievements());
         userDetails.put(USER_LEADERBOARD_RANKING, user.getLeaderboardRanking());
     
-
+        JSONArray achievementsArray = new JSONArray();
+        for (Achievement achievement : user.viewAchievements()) {
+            achievementsArray.add(achievement.getName());
+        }
+        userDetails.put(USER_ACHIEVEMENTS, achievementsArray);
+        
         return userDetails;
     }
    

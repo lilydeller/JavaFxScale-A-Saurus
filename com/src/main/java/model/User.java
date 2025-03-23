@@ -181,9 +181,6 @@ public class User {
         return new ArrayList<>(); 
     }
 
-    public ArrayList<String> viewAchievements() {
-        return achievements;
-    }
 
     public void startFlashcardSession() {
 
@@ -192,6 +189,23 @@ public class User {
     public boolean answerFlashcard(String flashcardID, String answer) {
         return true; 
     }
+
+    private ArrayList<Achievement> unlockedAchievements = new ArrayList<>();
+
+    public void unlockAchievement(String achievementName) {
+        for (Achievement achievement : DataLoader.getAchievements()) {
+            if (achievement.getName().equals(achievementName) && !unlockedAchievements.contains(achievement)) {
+                unlockedAchievements.add(achievement);
+                achievement.unlock();
+                System.out.println("Unlocked Achievement: " + achievementName);
+            }
+        }
+    }
+
+    public ArrayList<Achievement> viewAchievements() {
+        return unlockedAchievements;
+    }
+
 
     @Override
 public String toString() {

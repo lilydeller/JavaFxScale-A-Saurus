@@ -15,6 +15,7 @@ public class DataLoader {
     private static DataLoader instance;
     private UserList userList;
     private SongList songList;
+    private static ArrayList<Achievement> achievements = new ArrayList<>();
 
     // private constructor
     private DataLoader() {
@@ -29,6 +30,37 @@ public class DataLoader {
         }
         return instance;
     }
+
+    
+       
+    
+        
+    public static void loadAchievements() {
+        JSONParser parser = new JSONParser();
+
+        try (FileReader reader = new FileReader("json/achievements.json")) {
+            JSONObject rootJson = (JSONObject) parser.parse(reader);
+            JSONArray achievementsArray = (JSONArray) rootJson.get("achievements");
+
+            for (Object obj : achievementsArray) {
+                JSONObject achievementJson = (JSONObject) obj;
+                String id = (String) achievementJson.get("id");
+                String name = (String) achievementJson.get("name");
+                String description = (String) achievementJson.get("description");
+
+                achievements.add(new Achievement(id, name, description));
+            }
+
+            System.out.println("Achievements Loaded: " + achievements.size());
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Achievement> getAchievements() {
+        return achievements;
+    }
+    
 
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();

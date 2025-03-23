@@ -1,16 +1,15 @@
 package model;
-
 public class Driver {
     public static void main(String[] args) {
         UserList userList = UserList.getInstance();
         SongList songList = SongList.getInstance();
         DataLoader.getInstance().loadUsers();
         DataLoader.getInstance().loadSongs();
+        DataLoader.getInstance().loadAchievements(); 
 
         System.out.println("Welcome to Scale-A-Saurus! \n");
 
-
-        String testUsername = "lily123";
+        String testUsername = "lilydeller";
         String testPassword = "password123";
 
         User currentUser = userList.getUser(testUsername, testPassword);
@@ -26,17 +25,14 @@ public class Driver {
             return;
         }
 
-        System.out.println("🎤 Logged in as: " + currentUser.getUserName());
+        System.out.println("Logged in as: " + currentUser.getUserName());
 
-      
         Instrument piano = new Instrument("Piano");
         System.out.println(" Default Instrument: " + piano.getName());
-
 
         MusicProgram musicProgram = new MusicProgram();
         musicProgram.addInstrument(piano);
         musicProgram.setCurrentInstrument("Piano");
-
 
         Song testSong = songList.getSong("Bohemian Rhapsody");
         if (testSong == null) {
@@ -47,19 +43,20 @@ public class Driver {
             System.out.println(" Added song: " + testSong.getSongName());
         }
 
- 
         Song retrievedSong = songList.getSong("Bohemian Rhapsody");
 
         if (retrievedSong != null) {
-            System.out.println("\nNow Playing: " + retrievedSong.getSongName() + " on " + piano.getName());
-            MusicProgram.playSong(retrievedSong.getSongName());  
+            System.out.println("\n🎵 Now Playing: " + retrievedSong.getSongName() + " on " + piano.getName());
+            MusicProgram.playSong(retrievedSong.getSongName());
+        
+            currentUser.addAchievement("First Song Played!");
+            currentUser.unlockAchievement("First Song Played!"); // Unlock achievement
         } else {
-            System.out.println("Song retrieval failed.");
+            System.out.println(" Song retrieval failed.");
         }
-
- 
+        
         System.out.println("\nAchievements:");
-        currentUser.viewAchievements().forEach(System.out::println);
+        currentUser.viewAchievements().forEach(System.out::println); // Display achievements
 
         System.out.println("\nExiting Scale-A-Saurus!");
     }
