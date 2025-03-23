@@ -78,9 +78,10 @@ public class DataWriter extends DataConstants {
             JSONObject difficultyGroup = new JSONObject();
             difficultyGroup.put(SONG_DIFFICULTY, difficulties[i]);
 
-            //get songs for current difficulty 
+            
             ArrayList<Song> songs = songList.getSongsByDifficulty(difficulties[i]);
             JSONArray jsonSongs = new JSONArray();
+            
 
             for (int e = 0; e < songs.size(); e++) {
                 jsonSongs.add(getSongJSON(songs.get(e)));

@@ -38,6 +38,17 @@ public class SongList {
         Collections.sort(songs, Comparator.comparingInt(Song::getDifficulty));
     }
 
+    public ArrayList<Song> getSongsByDifficulty(int difficulty) {
+        ArrayList<Song> result = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getDifficulty() == difficulty) {
+                result.add(song);
+            }
+        }
+        return result;
+    }
+
+
     public void sortByLength() {
         Collections.sort(songs, Comparator.comparingInt(song -> convertLengthToSeconds(song.getLength())));
     }
