@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Song {
     private String songId;
     private String songName;
+    private String artist;
     private int difficulty;
     private String length;
     private String genre;
@@ -12,21 +13,22 @@ public class Song {
     private String sheetMusic;
     private String tabsMusic;
     private boolean metronome;
-    private String artist;
 
     public Song(String songId, String songName, int difficulty, String length, String genre,
-                ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome) {
-        this.songId = songId;
-        this.songName = songName;
-        this.difficulty = difficulty;
-        this.artist = artist;
-        this.length = length;
-        this.genre = genre;
-        this.measures = measures != null ? measures : new ArrayList<>();
-        this.sheetMusic = sheetMusic;
-        this.tabsMusic = tabsMusic;
-        this.metronome = metronome;
-    }
+            ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome, String artist) {
+    this.songId = songId;
+    this.songName = songName;
+    this.difficulty = difficulty;
+    this.length = length;
+    this.genre = genre;
+    this.measures = measures != null ? measures : new ArrayList<>();
+    this.sheetMusic = sheetMusic;
+    this.tabsMusic = tabsMusic;
+    this.metronome = metronome;
+    this.artist = artist; 
+}
+
+
 
     public String getSongId() {
         return songId;
@@ -34,6 +36,14 @@ public class Song {
 
     public String getSongName() {
         return songName;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getArtist() {
+        return artist;
     }
 
     public int getDifficulty() {
@@ -46,10 +56,6 @@ public class Song {
 
     public String getGenre() {
         return genre;
-    }
-
-    public String getArtist() {
-        return artist;
     }
 
     public ArrayList<Measure> getMeasures() {
@@ -79,15 +85,15 @@ public class Song {
     }
 
     @Override
-public String toString() {
-    return "Song{" +
-            "id='" + songId + '\'' +
-            ", name='" + songName + '\'' +
-            ", difficulty=" + difficulty +
-            ", artist='" + artist + '\'' +
-            ", length='" + length + '\'' +
-            ", genre='" + genre + '\'' +
-            ", measures=" + measures +
-            '}';
-}
+    public String toString() {
+        return "Song{" +
+                "id='" + songId + '\'' +
+                ", name='" + songName + '\'' +
+                ", artist='" + artist + '\'' +
+                ", difficulty=" + difficulty +
+                ", length='" + length + '\'' +
+                ", genre='" + genre + '\'' +
+                ", measures=" + measures +
+                '}';
+    }
 }

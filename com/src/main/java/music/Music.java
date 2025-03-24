@@ -1,17 +1,18 @@
 package music;
 
 import org.jfugue.player.Player;
+import org.jfugue.pattern.Pattern;
 
 public class Music {
+    private static final Player player = new Player();
+
     public static void playNote(String note) {
-        try {
-            System.out.println(" Debug: Attempting to play note: " + note);
-            Player player = new Player();
-            player.play(note);
-            System.out.println(" Debug: Successfully played note: " + note);
-        } catch (Exception e) {
-            System.out.println(" Error playing note: " + note);
-            e.printStackTrace();
-        }
+       
+        player.play(note + "q"); 
+    }
+
+    public static void playPattern(String patternStr) {
+        Pattern pattern = new Pattern(patternStr);
+        player.play(pattern);
     }
 }

@@ -1,33 +1,40 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Measure {
-    private List<Chord> chords;
-    private int measureNumber; 
+    private ArrayList<Chord> chords;
+    private int measureNumber;
 
-    public Measure(int measureNumber, ArrayList<Chord> chords) { 
-        this.chords = new ArrayList<>();
-        this.measureNumber = measureNumber; 
+ 
+    public Measure(int measureNumber, ArrayList<Chord> chords) {
+        this.measureNumber = measureNumber;
+        this.chords = (chords != null) ? chords : new ArrayList<>();
     }
 
+ 
     public void addChord(Chord chord) {
-        chords.add(chord);
+        if (chord != null) {
+            chords.add(chord);
+        }
     }
 
+  
     public void removeChord(Chord chord) {
         chords.remove(chord);
     }
 
-    public List<Chord> getChords() {
+    
+    public ArrayList<Chord> getChords() {
         return chords;
     }
+
 
     public int getMeasureNumber() {
         return measureNumber;
     }
 
+   
     @Override
     public String toString() {
         return "Measure{" +

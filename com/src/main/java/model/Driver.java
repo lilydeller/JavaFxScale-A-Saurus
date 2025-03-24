@@ -1,4 +1,5 @@
 package model;
+import model.Measure;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,15 +19,13 @@ public class Driver {
 
         User currentUser = null;
 
-        /*
-         * user login and registration 
-         */
+        // Login or Register
         while (currentUser == null) {
             System.out.println("1. Login");
             System.out.println("2. Register");
             System.out.print("Select an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine();  
+            scanner.nextLine();
 
             if (choice == 1) {
                 System.out.print("Enter username: ");
@@ -34,7 +33,6 @@ public class Driver {
                 System.out.print("Enter password: ");
                 String password = scanner.nextLine();
                 currentUser = userList.getUser(username, password);
-
                 if (currentUser == null) {
                     System.out.println("Invalid credentials. Try again.");
                 }
@@ -60,9 +58,7 @@ public class Driver {
 
         System.out.println("Logged in as: " + currentUser.getUserName());
 
-        /*
-         * main menu 
-         */
+        // Main Menu
         boolean running = true;
         while (running) {
             System.out.println("\nMain Menu:");
@@ -72,17 +68,12 @@ public class Driver {
             System.out.println("4. Start a Lesson");
             System.out.println("5. View Achievements");
             System.out.println("6. Logout");
-
             System.out.print("Select an option: ");
             int option = scanner.nextInt();
-            scanner.nextLine();  
+            scanner.nextLine();
 
             switch (option) {
-                case 1: 
-                /*
-                 * play a song 
-                 */
-                    System.out.println("Available Songs:");
+                case 1:
                     songList.display();
                     System.out.print("Enter song name: ");
                     String songName = scanner.nextLine();
@@ -96,26 +87,26 @@ public class Driver {
                     }
                     break;
 
-                case 2: 
-                /*
-                 * search a song
-                 */
+                case 2:
                     System.out.print("Enter artist name: ");
                     String artist = scanner.nextLine();
-                    System.out.println(" Searching for songs by " + artist + "...");
-                    for (Song s : songList.getSongs()) {
-                        if (s.getGenre().equalsIgnoreCase(artist)) {
-                            System.out.println("Found: " + s.getSongName());
+                    System.out.println("Searching for songs by " + artist + "...\n");
+                    ArrayList<Song> foundSongs = songList.getSongsByArtist(artist);
+                    if (foundSongs.isEmpty()) {
+                        System.out.println("No songs found for artist: " + artist);
+                    } else {
+                        System.out.println("Songs by " + artist + ":");
+                        for (Song s : foundSongs) {
+                            System.out.println("- " + s.getSongName() + " (" + s.getGenre() + ", " + s.getLength() + ")");
                         }
                     }
                     break;
 
-                case 3: 
-                /*
-                 * create a song 
-                 */
+                case 3:
                     System.out.print("Enter song title: ");
                     String newSongName = scanner.nextLine();
+                    System.out.print("Enter artist: ");
+                    String newArtist = scanner.nextLine();
                     System.out.print("Enter genre: ");
                     String genre = scanner.nextLine();
                     System.out.print("Enter length (MM:SS): ");
@@ -123,17 +114,21 @@ public class Driver {
                     System.out.print("Enter difficulty (1-3): ");
                     int difficulty = scanner.nextInt();
                     scanner.nextLine();
+                    
+                    Song newSong = new Song(
+                        "song" + (songList.getSongs().size() + 1),
+                        newSongName, difficulty, length, genre,
+                        new ArrayList<>(), "sheetMusic.txt", "tabsMusic.txt", false,
+                        newArtist
+                    );
 
-                    Song newSong = new Song("song" + (songList.getSongs().size() + 1), newSongName, difficulty, length, genre, new ArrayList<>(), "sheetMusic.txt", "tabsMusic.txt", false);
+                    newSong.setArtist(newArtist);
                     songList.addSong(newSong);
                     songList.saveSongs();
-                    System.out.println("Song '" + newSongName + "' added successfully!");
+                    System.out.println("Song '" + newSongName + "' by " + newArtist + " added successfully!");
                     break;
 
-                case 4: 
-                /*
-                 * start a lesson
-                 */
+                case 4:
                     System.out.println("Starting a Lesson...");
                     Lesson lesson = new Lesson("Beginner Piano Lesson", songList.getSongs().get(0), "lesson1", 1, "Learn the basics of piano", 5.0, new Instrument("Piano"));
                     lesson.startLesson();
@@ -141,18 +136,12 @@ public class Driver {
                     lesson.completeLesson();
                     break;
 
-                case 5: 
-                /*
-                 * view achievements
-                 */
+                case 5:
                     System.out.println("\nAchievements:");
                     currentUser.viewAchievements().forEach(System.out::println);
                     break;
 
-                case 6: 
-                /*
-                 * logout
-                 */
+                case 6:
                     System.out.println("Logging out...");
                     currentUser = null;
                     running = false;
@@ -167,22 +156,40 @@ public class Driver {
         scanner.close();
     }
 
-    /*
-     * save sheet music 
-     */
     private static void saveSheetMusic(Song song) {
         try {
-            FileWriter fileWriter = new FileWriter("sheetMusic_" + song.getSongName() + ".txt");
-            fileWriter.write("Sheet Music for " + song.getSongName() + "\n");
+            String fileName = "sheetMusic_" + song.getSongName().replaceAll(" ", "_") + ".txt";
+            FileWriter fileWriter = new FileWriter(fileName);
+    
+            fileWriter.write("Sheet Music for: " + song.getSongName() + "\n");
+            fileWriter.write("Artist: " + song.getArtist() + "\n");
             fileWriter.write("Instrument: Piano\n");
-            fileWriter.write("Measures:\n");
+            fileWriter.write("Length: " + song.getLength() + "\n");
+            fileWriter.write("Genre: " + song.getGenre() + "\n");
+            fileWriter.write("Difficulty: " + song.getDifficulty() + "\n");
+            fileWriter.write("Metronome: " + (song.isMetronomeEnabled() ? "On" : "Off") + "\n\n");
+    
+            fileWriter.write("🎵 Measures:\n");
+    
             for (Measure measure : song.getMeasures()) {
-                fileWriter.write("- " + measure.getChords() + "\n");
+                fileWriter.write("Measure " + measure.getMeasureNumber() + ": ");
+    
+                ArrayList<Chord> chords = measure.getChords();
+                if (chords == null || chords.isEmpty()) {
+                    fileWriter.write("[No chords]\n");
+                } else {
+                    for (Chord chord : chords) {
+                        String chordStr = Chord.chordToString(chord.getNotes());
+                        fileWriter.write(chordStr + " ");
+                    }
+                    fileWriter.write("\n");
+                }
             }
+    
             fileWriter.close();
-            System.out.println("Sheet music saved: sheetMusic_" + song.getSongName() + ".txt");
+            System.out.println("Sheet music saved: " + fileName);
         } catch (IOException e) {
-            System.out.println("Error saving sheet music.");
+            System.out.println("Error saving sheet music: " + e.getMessage());
         }
     }
 }

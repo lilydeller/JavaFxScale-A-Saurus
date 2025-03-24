@@ -47,11 +47,15 @@
           "measures": [
             {
               "measureNumber": 1,
-              "chords": ["Cmaj7", "D", "Em7", "G"]
+              "chords": ["F#m", "A", "E", "D"]
             },
             {
               "measureNumber": 2,
-              "chords": ["Am7", "G", "D", "Cmaj7"]
+              "chords": ["C#m", "D", "Bm", "E"]
+            },
+            {
+              "measureNumber": 3,
+              "chords": ["F#m", "E", "D", "A"]
             }
           ],
           "sheetMusic": "KeepDriving_Sheet.pdf",

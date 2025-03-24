@@ -115,10 +115,7 @@ public class MusicAppFacade {
  */
   
 
-    public void stopSong() {
-        MusicProgram.stopSong();
-    }
-
+    
     public void logout() {
         if (currentUser != null) {
             saveAll();
@@ -182,8 +179,7 @@ public class MusicAppFacade {
         System.out.println("\nTesting Play Song:");
         facade.playSong();
 
-        System.out.println("\nTesting Stop Song:");
-        facade.stopSong();
+      
 
         // Test logout
         System.out.println("\nTesting Logout:");

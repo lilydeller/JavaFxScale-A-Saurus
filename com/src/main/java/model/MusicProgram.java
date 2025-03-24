@@ -25,7 +25,7 @@ public class MusicProgram {
 
     public static void playSong(String songName) {
         if (currentInstrument == null) {
-            System.out.println("No instrument selected. Defaulting to Piano.");
+            System.out.println("No instrument selected, defaulting to Piano.");
             currentInstrument = new Instrument("Piano");
         }
 
@@ -33,42 +33,43 @@ public class MusicProgram {
 
         switch (songName.toLowerCase()) {
             case "twinkle twinkle little star":
-                playPattern("Cq Cq Gq Gq Aq Aq Gh | Fq Fq Eq Eq Dq Dq Ch");
+                playTwinkle();
                 break;
             case "autumn leaves":
-                playPattern("Cm7q F7q BbM7q EbM7q | Am7q D7q Gm7q C7h");
+                playAutumnLeaves();
                 break;
             case "bohemian rhapsody":
-                playPattern("Gq Cq Fq Bbq | Cq Gq Fq Bbh");
+                playBohemianRhapsody();
                 break;
             case "keep driving":
-                playPattern("F#mq Aq Eq Dq | F#mq Aq Eq Dq | C#mq Dq Bmq Eq | F#mq Eq Dq");
+                playKeepDriving();
                 break;
             default:
-                System.out.println("Song not found.");
+                System.out.println("Song not found!");
         }
     }
 
-    // Helper to send full musical pattern to player
-    private static void playPattern(String pattern) {
-        Music.playNote(pattern);
+    private static void playTwinkle() {
+        String pattern = "C5q C5q G5q G5q A5q A5q G5h | F5q F5q E5q E5q D5q D5q C5h";
+        Music.playPattern(pattern);
     }
 
-    // ----------- Recording Support -----------
-    public void startRecording() {
-        if (currentInstrument != null) currentInstrument.startRecording();
-        else System.out.println("No instrument selected to record.");
+    private static void playAutumnLeaves() {
+        String pattern = "C5q F5q Bb4q Eb5q | Am4q D4q Gm4q C4h";
+        Music.playPattern(pattern);
     }
 
-    public void stopRecording() {
-        if (currentInstrument != null) currentInstrument.stopRecording();
-        else System.out.println("No instrument selected to stop recording.");
+    private static void playBohemianRhapsody() {
+        String pattern = "G4q C5q F4q Bb4q | C5q G4q F4q Bb4h";
+        Music.playPattern(pattern);
     }
 
-    public void playRecording() {
-        if (currentInstrument != null) currentInstrument.playRecording();
-        else System.out.println("No instrument selected to play recording.");
+    private static void playKeepDriving() {
+        String pattern = "F#4q A4q E4q D4q | F#4q A4q E4q D4q | C#4q D4q B3q E4q | F#4q E4q D4h";
+        Music.playPattern(pattern);
     }
+
+   
 
     public static void main(String[] args) {
         MusicProgram player = new MusicProgram();
