@@ -14,7 +14,7 @@ public class Driver {
         DataLoader.getInstance().loadSongs();
         DataLoader.getInstance().loadAchievements();
 
-        System.out.println("🎵 Welcome to Scale-A-Saurus! \n");
+        System.out.println("Welcome to Scale-A-Saurus! \n");
 
         User currentUser = null;
 

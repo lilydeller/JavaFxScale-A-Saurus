@@ -12,12 +12,14 @@ public class Song {
     private String sheetMusic;
     private String tabsMusic;
     private boolean metronome;
+    private String artist;
 
     public Song(String songId, String songName, int difficulty, String length, String genre,
                 ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome) {
         this.songId = songId;
         this.songName = songName;
         this.difficulty = difficulty;
+        this.artist = artist;
         this.length = length;
         this.genre = genre;
         this.measures = measures != null ? measures : new ArrayList<>();
@@ -44,6 +46,10 @@ public class Song {
 
     public String getGenre() {
         return genre;
+    }
+
+    public String getArtist() {
+        return artist;
     }
 
     public ArrayList<Measure> getMeasures() {
@@ -78,6 +84,7 @@ public String toString() {
             "id='" + songId + '\'' +
             ", name='" + songName + '\'' +
             ", difficulty=" + difficulty +
+            ", artist='" + artist + '\'' +
             ", length='" + length + '\'' +
             ", genre='" + genre + '\'' +
             ", measures=" + measures +

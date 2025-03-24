@@ -99,5 +99,15 @@ public class SongList {
     public ArrayList<Song> getSongs() {
         return songs;
     }
+
+    public ArrayList<Song> getSongsByArtist(String artistName) {
+        ArrayList<Song> result = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getArtist().equalsIgnoreCase(artistName)) {
+                result.add(song);
+            }
+        }
+        return result;
+    }
  
 }
