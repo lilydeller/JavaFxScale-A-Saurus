@@ -193,7 +193,13 @@ while (globalRunning) {
         System.out.println("\nExiting Scale-A-Saurus!");
        
     }
+<<<<<<< HEAD
 }
+=======
+    private static void convertToSheetMusic() {
+        
+    }
+>>>>>>> refs/remotes/origin/main
 
     private static void saveSheetMusic(Song song) {
         try {
