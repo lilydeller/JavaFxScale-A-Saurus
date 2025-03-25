@@ -28,18 +28,24 @@ public class DataWriter extends DataConstants {
     public static void saveUsers() {
         ArrayList<User> userList = UserList.getInstance().getUsers();
         JSONArray jsonUsers = new JSONArray();
-
+    
         for (User user : userList) {
             jsonUsers.add(getUserJSON(user));
         }
-
+    
+        
+        JSONObject root = new JSONObject();
+        root.put("users", jsonUsers);
+    
         try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
-            file.write(jsonUsers.toJSONString());
+            file.write(root.toJSONString());
             file.flush();
+            System.out.println("✅ Users saved to " + USER_FILE_NAME);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
@@ -51,17 +57,24 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_PASSWORD, user.getPassword());
         userDetails.put(USER_STREAK, user.getStreak());
         userDetails.put(USER_LEVEL, user.getLevel());
-        userDetails.put(USER_LEADERBOARD_RANKING, user.getLeaderboardRanking());
-
+    
         JSONArray achievementsArray = new JSONArray();
         for (Achievement achievement : user.viewAchievements()) {
             achievementsArray.add(achievement.getName());
         }
         userDetails.put(USER_ACHIEVEMENTS, achievementsArray);
-
+    
+        JSONArray leaderboardArray = new JSONArray();
+        if (user.getLeaderboardRanking() != null) {
+            for (String rank : user.getLeaderboardRanking()) {
+                leaderboardArray.add(rank);
+            }
+        }
+        userDetails.put(USER_LEADERBOARD_RANKING, leaderboardArray);
+    
         return userDetails;
     }
-
+    
     public static void saveSongs() {
         JSONArray jsonSongList = new JSONArray();
         SongList songList = SongList.getInstance();
