@@ -142,17 +142,34 @@ public class User {
 
     public void unlockAchievement(String achievementName) {
         for (Achievement achievement : DataLoader.getAchievements()) {
-            if (achievement.getName().equals(achievementName) && !unlockedAchievements.contains(achievement)) {
+            if (achievement.getName().equals(achievementName) && !hasAchievement(achievementName)) {
                 unlockedAchievements.add(achievement);
+                achievements.add(achievementName); 
                 achievement.unlock();
                 System.out.println("Unlocked Achievement: " + achievementName);
             }
         }
     }
+    
+    private boolean hasAchievement(String name) {
+        return achievements.contains(name);
+    }
+    
 
     public ArrayList<Achievement> viewAchievements() {
+        if (unlockedAchievements.isEmpty()) {
+            for (String name : achievements) {
+                for (Achievement a : DataLoader.getAchievements()) {
+                    if (a.getName().equals(name)) {
+                        unlockedAchievements.add(a);
+                        break;
+                    }
+                }
+            }
+        }
         return unlockedAchievements;
     }
+    
 
     @Override
     public String toString() {

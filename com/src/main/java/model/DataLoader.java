@@ -28,6 +28,38 @@ public class DataLoader {
         return instance;
     }
 
+    public void loadAll() {
+        loadUsers();
+        loadSongs();
+        loadAchievements();
+        loadFlashcards(); 
+    }
+
+    public static void loadFlashcards() {
+        JSONParser parser = new JSONParser();
+    
+        try (FileReader reader = new FileReader("json/flashcard.json")) {
+            JSONObject rootJson = (JSONObject) parser.parse(reader);
+            JSONArray flashcardArray = (JSONArray) rootJson.get("flashcards");
+    
+            for (Object obj : flashcardArray) {
+                JSONObject flashcardJson = (JSONObject) obj;
+                String question = (String) flashcardJson.get("question");
+                String answer = (String) flashcardJson.get("answer");
+    
+                Flashcard flashcard = new Flashcard(question, answer);
+                FlashcardList.getInstance().addFlashcard(flashcard);
+            }
+    
+            System.out.println("Flashcards Loaded: " + FlashcardList.getInstance().getFlashcards().size());
+    
+        } catch (IOException | ParseException e) {
+            System.out.println("Error loading flashcards");
+            e.printStackTrace();
+        }
+    }
+    
+
     public static void loadAchievements() {
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("json/achievements.json")) {
@@ -56,15 +88,15 @@ public class DataLoader {
         ArrayList<User> users = new ArrayList<>();
     
         try (FileReader reader = new FileReader("json/userlist.json")) {
-            // ✅ Parse the top-level array correctly
-            JSONArray usersArray = (JSONArray) new JSONParser().parse(reader);
+            JSONObject rootJson = (JSONObject) new JSONParser().parse(reader); 
+            JSONArray usersArray = (JSONArray) rootJson.get("users");          
     
             for (Object userObj : usersArray) {
                 JSONObject userJson = (JSONObject) userObj;
     
                 String uuidString = (String) userJson.get("uuid");
                 UUID uuid = UUID.fromString(uuidString);
-                String firstName = (String) userJson.get("firstName"); // match correct casing
+                String firstName = (String) userJson.get("firstName");
                 String lastName = (String) userJson.get("lastName");
                 String username = (String) userJson.get("userName");
                 String email = (String) userJson.get("email");
@@ -72,13 +104,22 @@ public class DataLoader {
                 int streak = ((Long) userJson.get("streak")).intValue();
                 int level = ((Long) userJson.get("level")).intValue();
     
-                JSONArray achievementArray = (JSONArray) userJson.get("achievement"); // check JSON key casing
+                // Handle achievements
+                JSONArray achievementArray = (JSONArray) userJson.get("achievement");
                 ArrayList<String> achievements = new ArrayList<>();
                 for (Object achievement : achievementArray) {
                     achievements.add(achievement.toString());
                 }
     
+                // Handle leaderboard
+                JSONArray leaderboardArray = (JSONArray) userJson.get("leaderboard-ranking");
+                ArrayList<String> leaderboardRankings = new ArrayList<>();
+                for (Object ranking : leaderboardArray) {
+                    leaderboardRankings.add(ranking.toString());
+                }
+    
                 User user = new User(uuid, username, firstName, lastName, password, email, streak, level, achievements);
+                user.setLeaderboardRanking(leaderboardRankings);
                 users.add(user);
             }
     

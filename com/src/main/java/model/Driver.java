@@ -10,9 +10,7 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
         UserList userList = UserList.getInstance();
         SongList songList = SongList.getInstance();
-        DataLoader.getInstance().loadUsers();
-        DataLoader.getInstance().loadSongs();
-        DataLoader.getInstance().loadAchievements();
+        DataLoader.getInstance().loadAll();
 
         System.out.println("Welcome to Scale-A-Saurus! \n");
 
@@ -130,7 +128,6 @@ public class Driver {
                     System.out.println("Starting a Lesson...");
                     Lesson lesson = new Lesson("Beginner Piano Lesson", songList.getSongs().get(0), "lesson1", 1, "Learn the basics of piano", 5.0, new Instrument("Piano"));
                     lesson.startLesson();
-                    System.out.println("Lesson Completed!");
                     lesson.completeLesson();
                     break;
 
