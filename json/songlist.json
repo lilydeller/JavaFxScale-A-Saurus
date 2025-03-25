@@ -82,6 +82,48 @@
           "sheetMusic": "Autumn_Leaves_Sheet.pdf",
           "tabsMusic": "Autumn_Leaves_Tabs.txt",
           "metronome": false
+        },
+        {
+          "id": "aa11bb22-cc33-dd44-ee55-ff6677889900",
+          "name": "Fine Line",
+          "artist": "Harry Styles",
+          "difficulty": 2,
+          "length": "3:45",
+          "genre": "Pop",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["C", "E", "G", "C"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["D", "F", "A", "D"]
+            }
+          ],
+          "sheetMusic": "FineLine_Sheet.pdf",
+          "tabsMusic": "FineLine_Tabs.txt",
+          "metronome": true
+        },
+        {
+          "id": "bb22cc33-dd44-ee55-ff66-77889900aabb",
+          "name": "Sign of the Times",
+          "artist": "Harry Styles",
+          "difficulty": 3,
+          "length": "4:10",
+          "genre": "Pop",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["G", "B", "D", "G"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["A", "C", "E", "A"]
+            }
+          ],
+          "sheetMusic": "SignOfTheTimes_Sheet.pdf",
+          "tabsMusic": "SignOfTheTimes_Tabs.txt",
+          "metronome": true
         }
       ]
     },

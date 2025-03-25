@@ -50,6 +50,12 @@ public class Driver {
                 DataWriter.saveUsers();
                 System.out.println("Account created successfully!");
                 currentUser = newUser;
+                
+                if (userList.getUserByUsername(username) != null) {
+                    System.out.println("Username already exists. Please choose a different one.");
+                    continue;
+                }
+                
             }
         }
 
@@ -128,7 +134,9 @@ public class Driver {
                     System.out.println("Starting a Lesson...");
                     Lesson lesson = new Lesson("Beginner Piano Lesson", songList.getSongs().get(0), "lesson1", 1, "Learn the basics of piano", 5.0, new Instrument("Piano"));
                     lesson.startLesson();
+                    System.out.println("Lesson Completed!");
                     lesson.completeLesson();
+                    currentUser.unlockAchievement("First Song Played!");
                     break;
 
                 case 5:

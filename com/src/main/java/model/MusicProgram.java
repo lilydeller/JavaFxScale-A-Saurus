@@ -44,6 +44,12 @@ public class MusicProgram {
             case "keep driving":
                 playKeepDriving();
                 break;
+                case "fine line":
+                playFineLine();
+                break;
+            case "sign of the times":
+                playSignOfTheTimes();
+                break;
             default:
                 System.out.println("Song not found!");
         }
@@ -68,6 +74,17 @@ public class MusicProgram {
         String pattern = "F#4q A4q E4q D4q | F#4q A4q E4q D4q | C#4q D4q B3q E4q | F#4q E4q D4h";
         Music.playPattern(pattern);
     }
+
+    private static void playFineLine() {
+        String pattern = "C4q E4q G4q C5q | D4q F4q A4q D5q | E4q G4q B4q E5q | F4q A4q C5q F5q";
+        Music.playPattern(pattern);
+    }
+    
+    private static void playSignOfTheTimes() {
+        String pattern = "G3q B3q D4q G4q | A3q C4q E4q A4q | F3q A3q C4q F4q | G3q B3q D4q G4h";
+        Music.playPattern(pattern);
+    }
+    
 
    
 
