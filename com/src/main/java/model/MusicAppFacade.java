@@ -114,12 +114,7 @@ public class MusicAppFacade {
         }
     }
 
-    /*
-     * stops the current song
-     */
-    public void stopSong() {
-        MusicProgram.stopSong();
-    }
+    
 
     /*
      * logs out current user 

@@ -118,12 +118,12 @@ public class Driver {
                         int difficulty = scanner.nextInt();
                         scanner.nextLine();
 
-    System.out.print("How many measures in your song? ");
-    int numMeasures = scanner.nextInt();
-    scanner.nextLine();
+                System.out.print("How many measures in your song? ");
+                int numMeasures = scanner.nextInt();
+                scanner.nextLine();
 
-    ArrayList<Measure> measures = new ArrayList<>();
-    for (int i = 0; i < numMeasures; i++) {
+        ArrayList<Measure> measures = new ArrayList<>();
+        for (int i = 0; i < numMeasures; i++) {
         System.out.println("Enter chords for Measure " + (i + 1) + " (comma-separated, e.g., C,G,Am,F):");
         String chordInput = scanner.nextLine();
         String[] chordNames = chordInput.split(",");
