@@ -16,52 +16,61 @@ public class Driver {
 
         User currentUser = null;
 
-        // Login or Register
-        while (currentUser == null) {
-            System.out.println("1. Login");
-            System.out.println("2. Register");
-            System.out.print("Select an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+        boolean globalRunning = true;
 
-            if (choice == 1) {
-                System.out.print("Enter username: ");
-                String username = scanner.nextLine();
-                System.out.print("Enter password: ");
-                String password = scanner.nextLine();
-                currentUser = userList.getUser(username, password);
-                if (currentUser == null) {
-                    System.out.println("Invalid credentials. Try again.");
-                }
-            } else if (choice == 2) {
-                System.out.print("Enter first name: ");
-                String firstName = scanner.nextLine();
-                System.out.print("Enter last name: ");
-                String lastName = scanner.nextLine();
-                System.out.print("Enter email: ");
-                String email = scanner.nextLine();
-                System.out.print("Choose a username: ");
-                String username = scanner.nextLine();
-                System.out.print("Choose a password: ");
-                String password = scanner.nextLine();
+while (globalRunning) {
+    currentUser = null;
 
-                User newUser = new User(username, firstName, lastName, password, email);
-                userList.addUser(newUser);
-                DataWriter.saveUsers();
-                System.out.println("Account created successfully!");
-                currentUser = newUser;
+    // Login/Register Loop
+    while (currentUser == null) {
+        System.out.println("1. Login");
+        System.out.println("2. Register");
+        System.out.print("Select an option: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice == 1) {
+            System.out.print("Enter username: ");
+            String username = scanner.nextLine();
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+            currentUser = userList.getUser(username, password);
+        
+            if (currentUser == null) {
+                System.out.println("Invalid credentials. Try again.");
+            } else {
                 
-                if (userList.getUserByUsername(username) != null) {
-                    System.out.println("Username already exists. Please choose a different one.");
-                    continue;
-                }
-                
+                SongList.getInstance().getSongs().clear();
+                DataLoader.getInstance().loadSongs();
             }
+        } else if (choice == 2) {
+            System.out.print("Enter first name: ");
+            String firstName = scanner.nextLine();
+            System.out.print("Enter last name: ");
+            String lastName = scanner.nextLine();
+            System.out.print("Enter email: ");
+            String email = scanner.nextLine();
+            System.out.print("Choose a username: ");
+            String username = scanner.nextLine();
+
+            if (userList.getUserByUsername(username) != null) {
+                System.out.println("Username already exists. Please choose a different one.");
+                continue;
+            }
+
+            System.out.print("Choose a password: ");
+            String password = scanner.nextLine();
+            User newUser = new User(username, firstName, lastName, password, email);
+            userList.addUser(newUser);
+            DataWriter.saveUsers();
+            System.out.println("Account created successfully!");
+            currentUser = newUser;
         }
+    }
 
-        System.out.println("Logged in as: " + currentUser.getUserName());
-
-        // Main Menu
+    System.out.println("Logged in as: " + currentUser.getUserName());
+        
+    // Main Menu
         boolean running = true;
         while (running) {
             System.out.println("\nMain Menu:");
@@ -150,7 +159,7 @@ public class Driver {
     System.out.println("Song '" + newSongName + "' by " + newArtist + " created and saved!");
 
     
-    System.out.println("\n🎵 Now Playing: " + newSongName);
+    System.out.println("\nNow Playing: " + newSongName);
     MusicProgram.playSong(newSongName);
     break;
                 
@@ -169,10 +178,11 @@ public class Driver {
                     currentUser.viewAchievements().forEach(System.out::println);
                     break;
 
-                case 6:
+                    case 6:
                     System.out.println("Logging out...");
-                    currentUser = null;
-                    running = false;
+                    SongList.getInstance().getSongs().clear();
+                    DataLoader.getInstance().loadSongs();
+                    running = false;  
                     break;
 
                 default:
@@ -181,8 +191,9 @@ public class Driver {
         }
 
         System.out.println("\nExiting Scale-A-Saurus!");
-        scanner.close();
+       
     }
+}
 
     private static void saveSheetMusic(Song song) {
         try {

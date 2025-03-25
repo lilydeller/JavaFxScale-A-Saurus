@@ -75,36 +75,6 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
     
-    public static void saveSongs() {
-        JSONArray jsonSongList = new JSONArray();
-        SongList songList = SongList.getInstance();
-        String[] difficulties = {"Easy", "Medium", "Hard"};
-
-        for (int i = 0; i < difficulties.length; i++) {
-            JSONObject difficultyGroup = new JSONObject();
-            difficultyGroup.put("difficulty_level", i + 1);
-            difficultyGroup.put("difficulty", difficulties[i]);
-            difficultyGroup.put("name", difficulties[i] + " Songs");
-
-            JSONArray jsonSongs = new JSONArray();
-            ArrayList<Song> songs = songList.getSongsByDifficulty(i + 1);
-            for (Song song : songs) {
-                jsonSongs.add(getSongJSON(song));
-            }
-
-            difficultyGroup.put("songs", jsonSongs);
-            jsonSongList.add(difficultyGroup);
-        }
-
-        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
-            file.write("{\"songlist\": " + jsonSongList.toJSONString() + "}");
-            file.flush();
-            System.out.println("Songs successfully saved to " + SONG_FILE_NAME);
-        } catch (IOException e) {
-            System.err.println("Error saving songs: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
     public static JSONObject getSongJSON(Song song) {
         JSONObject songJSON = new JSONObject();
@@ -116,6 +86,8 @@ public class DataWriter extends DataConstants {
         songJSON.put(SHEET_MUSIC, song.getSheetMusic());
         songJSON.put(TABS_MUSIC, song.getTabsMusic());
         songJSON.put(METRONOME, song.isMetronomeEnabled());
+        songJSON.put("artist", song.getArtist());  
+
 
         JSONArray jsonMeasures = new JSONArray();
         for (Measure measure : song.getMeasures()) {
@@ -124,7 +96,33 @@ public class DataWriter extends DataConstants {
 
         songJSON.put(MEASURES, jsonMeasures);
         return songJSON;
+
+        
+
     }
+
+    public static void saveSongs() {
+        JSONArray jsonSongs = new JSONArray();
+        ArrayList<Song> allSongs = SongList.getInstance().getSongs();
+    
+        for (Song song : allSongs) {
+            jsonSongs.add(getSongJSON(song));
+        }
+    
+        JSONObject root = new JSONObject();
+        root.put("songs", jsonSongs);
+    
+        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
+            file.write(root.toJSONString());
+            file.flush();
+            System.out.println("✅ Songs saved to " + SONG_FILE_NAME);
+        } catch (IOException e) {
+            System.err.println("Error saving songs: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+
 
     public static JSONObject getMeasureJSON(Measure measure) {
         JSONObject measureJSON = new JSONObject();

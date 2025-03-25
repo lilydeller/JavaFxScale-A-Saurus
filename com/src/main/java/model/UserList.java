@@ -60,6 +60,12 @@ public class UserList {
         return users;
     }
 
+    public boolean isUsernameTaken(String username) {
+        return users.stream().anyMatch(u -> u.getUserName().equalsIgnoreCase(username));
+    }
+    
+
+
     public void saveUsers() {
         DataWriter.saveUsers();
     }

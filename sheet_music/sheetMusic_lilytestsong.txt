@@ -1,4 +1,4 @@
-Sheet Music for: lily test song
+Sheet Music for: lilytestsong
 Artist: lily
 Instrument: Piano
 
@@ -7,4 +7,3 @@ Measure 1: | C  G  Am  F  |
 Measure 2: | C  G  Am  F  |
 Measure 3: | C  G  Am  F  |
 Measure 4: | C  G  Am  F  |
-Measure 5: | C  G  Am  F  |

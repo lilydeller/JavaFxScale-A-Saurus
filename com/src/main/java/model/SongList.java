@@ -100,14 +100,16 @@ public class SongList {
         return songs;
     }
 
-    public ArrayList<Song> getSongsByArtist(String artistName) {
-        ArrayList<Song> result = new ArrayList<>();
+    public ArrayList<Song> getSongsByArtist(String artist) {
+        ArrayList<Song> songsByArtist = new ArrayList<>();
         for (Song song : songs) {
-            if (song.getArtist().equalsIgnoreCase(artistName)) {
-                result.add(song);
+            String songArtist = song.getArtist();
+            if (songArtist != null && songArtist.equalsIgnoreCase(artist)) {
+                songsByArtist.add(song);
             }
         }
-        return result;
+        return songsByArtist;
     }
+}    
  
-}
+
