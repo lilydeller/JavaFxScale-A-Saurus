@@ -9,15 +9,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-
+/*
+ * list of flashcards 
+ */
 public class FlashcardList {
     private static FlashcardList instance;
     private ArrayList<Flashcard> flashcards;
 
+    /*
+     * creates singlton FlashcardList
+     */
     private FlashcardList() {
         flashcards = new ArrayList<>();
     }
 
+    /*
+     * gets instance of singleton FlashcardList
+     * @return instance
+     */
     public static FlashcardList getInstance() {
         if (instance == null) {
             instance = new FlashcardList();
@@ -25,19 +34,35 @@ public class FlashcardList {
         return instance;
     }
 
+    /*
+     * adds flashcard to flashcards list
+     * @param flashcard
+     */
     public void addFlashcard(Flashcard flashcard) {
         flashcards.add(flashcard);
     }
 
+    /*
+     * getter method
+     * @return flashcards
+     */
     public ArrayList<Flashcard> getFlashcards() {
         return flashcards;
     }
 
 
+    /*
+     * removes flashcard
+     * @param flashcardID
+     * @return flashcard.remove if flashcard exists
+     */
     public boolean removeFlashcard(UUID flashcardID) {
         return flashcards.removeIf(f -> f.getFlashcardID().equals(flashcardID));
     }
 
+    /*
+     * load flashcards from json 
+     */
     public void loadFlashcards() {
         JSONParser parser = new JSONParser();
 
