@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Chord {
     private List<Pitch> notes;
+    private String name;
 
 
     /*
@@ -25,6 +26,10 @@ public class Chord {
      */
     public List<Pitch> getNotes() {
         return notes;
+    }
+
+    public String getName() {
+        return name;
     }
 
 
