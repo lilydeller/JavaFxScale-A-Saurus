@@ -10,17 +10,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * loads the data from a JSON file into corresponding lists
+ */
 public class DataLoader {
     private static DataLoader instance;
     private UserList userList;
     private SongList songList;
     private static ArrayList<Achievement> achievements = new ArrayList<>();
 
+    /**
+     * Creates a DataLoader object
+     */
     private DataLoader() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
     }
 
+    /**
+     * Retrieves the singleton instance of DataLoader
+     * @return a DataLoader instance
+     */
     public static DataLoader getInstance() {
         if (instance == null) {
             instance = new DataLoader();
@@ -28,6 +38,9 @@ public class DataLoader {
         return instance;
     }
 
+    /**
+     * loads all data
+     */
     public void loadAll() {
         loadUsers();
         loadSongs();
@@ -35,6 +48,9 @@ public class DataLoader {
         loadFlashcards(); 
     }
 
+    /**
+     * loads flashcards from a JSON file
+     */
     public static void loadFlashcards() {
         JSONParser parser = new JSONParser();
     
@@ -60,6 +76,9 @@ public class DataLoader {
     }
     
 
+    /**
+     * loads acheivements from a JSON file
+     */
     public static void loadAchievements() {
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("json/achievements.json")) {
@@ -80,10 +99,18 @@ public class DataLoader {
         }
     }
 
+    /**
+     * gets the list of achievements
+     * @return an ArrayList of achievements
+     */
     public static ArrayList<Achievement> getAchievements() {
         return achievements;
     }
 
+    /**
+     * loads users from a JSON file
+     * @return an ArrayList of users
+     */
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();
     
@@ -132,6 +159,10 @@ public class DataLoader {
     
     
 
+    /**
+     * loads songs from a JSON file
+     * @return an ArrayList of songs
+     */
     public static ArrayList<Song> loadSongs() {
         JSONParser parser = new JSONParser();
         ArrayList<Song> songs = new ArrayList<>();
