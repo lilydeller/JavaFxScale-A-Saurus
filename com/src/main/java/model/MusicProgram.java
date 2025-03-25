@@ -28,9 +28,25 @@ public class MusicProgram {
             System.out.println("No instrument selected, defaulting to Piano.");
             currentInstrument = new Instrument("Piano");
         }
-
+    
         System.out.println("\n🎵 Now Playing: " + songName + " on " + currentInstrument.getName());
+    
 
+        Song found = SongList.getInstance().getSong(songName);
+        if (found != null) {
+            StringBuilder pattern = new StringBuilder();
+            for (Measure m : found.getMeasures()) {
+                for (Chord c : m.getChords()) {
+                   
+                    pattern.append(c.getNotes().get(0)).append("q ");
+                }
+                pattern.append("| ");
+            }
+            Music.playPattern(pattern.toString());
+            return;
+        }
+    
+       
         switch (songName.toLowerCase()) {
             case "twinkle twinkle little star":
                 playTwinkle();
@@ -44,7 +60,7 @@ public class MusicProgram {
             case "keep driving":
                 playKeepDriving();
                 break;
-                case "fine line":
+            case "fine line":
                 playFineLine();
                 break;
             case "sign of the times":

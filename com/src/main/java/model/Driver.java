@@ -105,30 +105,55 @@ public class Driver {
                     }
                     break;
 
-                case 3:
-                    System.out.print("Enter song title: ");
-                    String newSongName = scanner.nextLine();
-                    System.out.print("Enter artist: ");
-                    String newArtist = scanner.nextLine();
-                    System.out.print("Enter genre: ");
-                    String genre = scanner.nextLine();
-                    System.out.print("Enter length (MM:SS): ");
-                    String length = scanner.nextLine();
-                    System.out.print("Enter difficulty (1-3): ");
-                    int difficulty = scanner.nextInt();
-                    scanner.nextLine();
+                    case 3:
+                        System.out.print("Enter song title: ");
+                        String newSongName = scanner.nextLine();
+                        System.out.print("Enter artist: ");
+                        String newArtist = scanner.nextLine();
+                        System.out.print("Enter genre: ");
+                        String genre = scanner.nextLine();
+                        System.out.print("Enter length (MM:SS): ");
+                        String length = scanner.nextLine();
+                        System.out.print("Enter difficulty (1-5): ");
+                        int difficulty = scanner.nextInt();
+                        scanner.nextLine();
 
-                    Song newSong = new Song(
-                            "song" + (songList.getSongs().size() + 1),
-                            newSongName, difficulty, length, genre,
-                            new ArrayList<>(), "sheetMusic.txt", "tabsMusic.txt", false,
-                            newArtist
-                    );
+    System.out.print("How many measures in your song? ");
+    int numMeasures = scanner.nextInt();
+    scanner.nextLine();
 
-                    songList.addSong(newSong);
-                    songList.saveSongs();
-                    System.out.println("Song '" + newSongName + "' by " + newArtist + " added successfully!");
-                    break;
+    ArrayList<Measure> measures = new ArrayList<>();
+    for (int i = 0; i < numMeasures; i++) {
+        System.out.println("Enter chords for Measure " + (i + 1) + " (comma-separated, e.g., C,G,Am,F):");
+        String chordInput = scanner.nextLine();
+        String[] chordNames = chordInput.split(",");
+        ArrayList<Chord> chords = new ArrayList<>();
+        for (String chordStr : chordNames) {
+            chords.add(Chord.fromString(chordStr.trim()));
+        }
+        measures.add(new Measure(i + 1, chords));
+    }
+
+    Song customSong = new Song(
+        "song" + (songList.getSongs().size() + 1),
+        newSongName, difficulty, length, genre,
+        measures,
+        "sheet_music/sheetMusic_" + newSongName.replaceAll(" ", "_") + ".txt",
+        "tabs.txt", false,
+        newArtist
+    );
+
+    songList.addSong(customSong);
+    songList.saveSongs(); 
+    saveSheetMusic(customSong);
+
+    System.out.println("Song '" + newSongName + "' by " + newArtist + " created and saved!");
+
+    
+    System.out.println("\n🎵 Now Playing: " + newSongName);
+    MusicProgram.playSong(newSongName);
+    break;
+                
 
                 case 4:
                     System.out.println("Starting a Lesson...");
