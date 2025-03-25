@@ -158,6 +158,9 @@ public class Driver {
         System.out.println("\nExiting Scale-A-Saurus!");
         scanner.close();
     }
+    private static void convertToSheetMusic() {
+        
+    }
 
     private static void saveSheetMusic(Song song) {
         try {
