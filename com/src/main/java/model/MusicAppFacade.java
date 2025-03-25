@@ -86,6 +86,9 @@ public class MusicAppFacade {
         return currentSong;
     }
 
+    /*
+     * adds a measure 
+     */
     public void addMeasure() {
         if (currentSong != null) {
             int newMeasureNumber = currentSong.getMeasures().size() + 1; //number of measures until append new measure
@@ -99,6 +102,9 @@ public class MusicAppFacade {
         }
     }
 
+    /*
+     * plays a song 
+     */
     public void playSong() {
         if (currentSong != null) {
             MusicProgram.playSong(currentSong.getSongName());
@@ -107,18 +113,17 @@ public class MusicAppFacade {
             System.out.println("no song is currently selected");
         }
     }
-/*
 
-    public void selectMeasure(int measureNumber) {
-  
-    }
- */
-  
-
+    /*
+     * stops the current song
+     */
     public void stopSong() {
         MusicProgram.stopSong();
     }
 
+    /*
+     * logs out current user 
+     */
     public void logout() {
         if (currentUser != null) {
             saveAll();
@@ -134,6 +139,9 @@ public class MusicAppFacade {
         }
     }
 
+    /*
+     * 
+     */
     public void saveAll() {
         UserList userList = UserList.getInstance();
         SongList songList = SongList.getInstance();
