@@ -28,32 +28,57 @@ public class MusicProgram {
             System.out.println("No instrument selected, defaulting to Piano.");
             currentInstrument = new Instrument("Piano");
         }
-
+    
         System.out.println("\n🎵 Now Playing: " + songName + " on " + currentInstrument.getName());
-
+    
+        // Classic songs — hardcoded play
         switch (songName.toLowerCase()) {
             case "twinkle twinkle little star":
                 playTwinkle();
-                break;
+                return;
             case "autumn leaves":
                 playAutumnLeaves();
-                break;
+                return;
             case "bohemian rhapsody":
                 playBohemianRhapsody();
-                break;
+                return;
             case "keep driving":
                 playKeepDriving();
-                break;
-                case "fine line":
+                return;
+            case "fine line":
                 playFineLine();
-                break;
+                return;
             case "sign of the times":
                 playSignOfTheTimes();
-                break;
-            default:
-                System.out.println("Song not found!");
+                return;
         }
+    
+        // Otherwise, load dynamically from songList
+        Song song = SongList.getInstance().getSong(songName);
+        if (song == null) {
+            System.out.println("Song not found!");
+            return;
+        }
+    
+        StringBuilder pattern = new StringBuilder();
+    
+        for (Measure measure : song.getMeasures()) {
+            for (Chord chord : measure.getChords()) {
+                if (chord.getNotes() != null && !chord.getNotes().isEmpty()) {
+                    pattern.append(Chord.chordToString(chord.getNotes())).append("q ");
+                } else {
+                    pattern.append(chord.getName()).append("q "); // fallback if no notes
+                }
+            }
+            pattern.append("| ");
+        }
+    
+        Music.playPattern(pattern.toString().trim());
     }
+    
+    
+    
+       
 
     private static void playTwinkle() {
         String pattern = "C5q C5q G5q G5q A5q A5q G5h | F5q F5q E5q E5q D5q D5q C5h";
