@@ -20,7 +20,9 @@ public class Driver {
         while (globalRunning) {
             currentUser = null;
 
-            // Login/Register Loop
+            /*
+             * login/register loop
+             */
             while (currentUser == null) {
                 System.out.println("1. Login");
                 System.out.println("2. Register");
@@ -68,7 +70,9 @@ public class Driver {
 
             System.out.println("Logged in as: " + currentUser.getUserName());
 
-            // Main Menu
+            /*
+             * main menu 
+             */
             boolean running = true;
             while (running) {
                 System.out.println("\nMain Menu:");
@@ -160,12 +164,11 @@ public class Driver {
                         break;
 
                     case 4:
-                        System.out.println("Starting a Lesson...");
+                        System.out.println("Starting Lesson");
                         Lesson lesson = new Lesson("Beginner Piano Lesson", songList.getSongs().get(0), "lesson1", 1, "Learn the basics of piano", 5.0, new Instrument("Piano"));
                         lesson.startLesson();
-                        System.out.println("Lesson Completed!");
                         lesson.completeLesson();
-                        currentUser.unlockAchievement("First Song Played!");
+                        currentUser.unlockAchievement("First Lesson!");
                         break;
 
                     case 5:

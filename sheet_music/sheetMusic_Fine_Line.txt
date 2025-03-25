@@ -1,7 +1,32 @@
 Sheet Music for: Fine Line
-Artist: null
+Artist: Harry Styles
 Instrument: Piano
 
-Measures:
-Measure 1: | C  E  G  C  |
-Measure 2: | D  F  A  D  |
+
+=== Measure 1 ===
+B: - ♩ ♩ - 
+A#: - - - - 
+A: - - - - 
+G#: - - - - 
+G: ♩ - ♩ ♩ 
+F#: - - - - 
+F: - - - - 
+E: ♩ ♩ - ♩ 
+D#: - - - - 
+D: - - ♩ - 
+C#: - - - - 
+C: ♩ - - ♩ 
+
+=== Measure 2 ===
+B: - - - - 
+A#: - - - - 
+A: ♩ ♩ ♩ ♩ 
+G#: - - - - 
+G: - - - - 
+F#: - - - - 
+F: - ♩ - - 
+E: - - ♩ - 
+D#: - - - - 
+D: ♩ - - ♩ 
+C#: - - - - 
+C: - ♩ - - 

@@ -1,4 +1,4 @@
-Sheet Music for: lilytestsong
+Sheet Music for: lily'sbestsongever
 Artist: lily
 Instrument: Piano
 
@@ -32,34 +32,6 @@ C#: - - - -
 C: ♩ - ♩ ♩ 
 
 === Measure 3 ===
-B: - ♩ - - 
-A#: - - - - 
-A: - - ♩ ♩ 
-G#: - - - - 
-G: ♩ ♩ - - 
-F#: - - - - 
-F: - - - ♩ 
-E: ♩ - ♩ - 
-D#: - - - - 
-D: - ♩ - - 
-C#: - - - - 
-C: ♩ - ♩ ♩ 
-
-=== Measure 4 ===
-B: - ♩ - - 
-A#: - - - - 
-A: - - ♩ ♩ 
-G#: - - - - 
-G: ♩ ♩ - - 
-F#: - - - - 
-F: - - - ♩ 
-E: ♩ - ♩ - 
-D#: - - - - 
-D: - ♩ - - 
-C#: - - - - 
-C: ♩ - ♩ ♩ 
-
-=== Measure 5 ===
 B: - ♩ - - 
 A#: - - - - 
 A: - - ♩ ♩ 

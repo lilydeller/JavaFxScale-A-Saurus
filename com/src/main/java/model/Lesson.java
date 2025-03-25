@@ -74,7 +74,6 @@ public class Lesson {
      * Completes the lesson and checks your score
      */
     public void completeLesson() {
-        System.out.println("Lesson complete!");
         System.out.println("Your performance score: " + performanceScore + "%");
     
         if (performanceScore == 100) {
