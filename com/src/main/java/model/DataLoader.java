@@ -172,9 +172,8 @@ public class DataLoader {
         try (FileReader reader = new FileReader("json/songlist.json")) {
             JSONObject rootJson = (JSONObject) parser.parse(reader);
     
-            JSONArray songsArray = (JSONArray) rootJson.get("songs"); // new flat format
+            JSONArray songsArray = (JSONArray) rootJson.get("songs"); 
             if (songsArray == null) {
-                // fallback to old format
                 songsArray = new JSONArray();
                 JSONArray difficultyGroups = (JSONArray) rootJson.get("songlist");
                 for (Object groupObj : difficultyGroups) {
@@ -224,7 +223,7 @@ public class DataLoader {
                 songs.add(song);
             }
     
-            // Load into the singleton
+            
             SongList.getInstance().getSongs().clear();
             SongList.getInstance().getSongs().addAll(songs);
     

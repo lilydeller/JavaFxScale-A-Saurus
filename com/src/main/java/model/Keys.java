@@ -25,8 +25,7 @@ public class Keys {
         this.length = length;
     }
 
-    // Added getKey() method to fix the error in Piano class
     public String getKey() {
-        return pitch.toString(); // Assuming Pitch has a meaningful toString() method
+        return pitch.toString(); 
     }
 }

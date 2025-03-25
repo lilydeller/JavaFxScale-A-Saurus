@@ -9,8 +9,8 @@ public class Piano {
     private ArrayList<String> recordedNotes;
 
     public Piano() {
-        this.octave = 4; // Default middle octave
-        this.volume = 50; // Default volume
+        this.octave = 4; 
+        this.volume = 50; 
         this.isRecording = false;
         this.recordedNotes = new ArrayList<>();
     }

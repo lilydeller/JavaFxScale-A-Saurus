@@ -2,8 +2,73 @@ Sheet Music for: lilytestsong
 Artist: lily
 Instrument: Piano
 
-Measures:
-Measure 1: | C  G  Am  F  |
-Measure 2: | C  G  Am  F  |
-Measure 3: | C  G  Am  F  |
-Measure 4: | C  G  Am  F  |
+
+=== Measure 1 ===
+B: - B - - 
+A#: - - - - 
+A: - - A A 
+G#: - - - - 
+G: G G - - 
+F#: - - - - 
+F: - - - F 
+E: E - E - 
+D#: - - - - 
+D: - D - - 
+C#: - - - - 
+C: C - C C 
+
+=== Measure 2 ===
+B: - B - - 
+A#: - - - - 
+A: - - A A 
+G#: - - - - 
+G: G G - - 
+F#: - - - - 
+F: - - - F 
+E: E - E - 
+D#: - - - - 
+D: - D - - 
+C#: - - - - 
+C: C - C C 
+
+=== Measure 3 ===
+B: - B - - 
+A#: - - - - 
+A: - - A A 
+G#: - - - - 
+G: G G - - 
+F#: - - - - 
+F: - - - F 
+E: E - E - 
+D#: - - - - 
+D: - D - - 
+C#: - - - - 
+C: C - C C 
+
+=== Measure 4 ===
+B: - B - - 
+A#: - - - - 
+A: - - A A 
+G#: - - - - 
+G: G G - - 
+F#: - - - - 
+F: - - - F 
+E: E - E - 
+D#: - - - - 
+D: - D - - 
+C#: - - - - 
+C: C - C C 
+
+=== Measure 5 ===
+B: - B - - 
+A#: - - - - 
+A: - - A A 
+G#: - - - - 
+G: G G - - 
+F#: - - - - 
+F: - - - F 
+E: E - E - 
+D#: - - - - 
+D: - D - - 
+C#: - - - - 
+C: C - C C 

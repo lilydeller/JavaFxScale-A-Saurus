@@ -31,7 +31,7 @@ public class MusicProgram {
     
         System.out.println("\n🎵 Now Playing: " + songName + " on " + currentInstrument.getName());
     
-        // Classic songs — hardcoded play
+        
         switch (songName.toLowerCase()) {
             case "twinkle twinkle little star":
                 playTwinkle();
@@ -53,7 +53,7 @@ public class MusicProgram {
                 return;
         }
     
-        // Otherwise, load dynamically from songList
+        
         Song song = SongList.getInstance().getSong(songName);
         if (song == null) {
             System.out.println("Song not found!");
@@ -67,7 +67,7 @@ public class MusicProgram {
                 if (chord.getNotes() != null && !chord.getNotes().isEmpty()) {
                     pattern.append(Chord.chordToString(chord.getNotes())).append("q ");
                 } else {
-                    pattern.append(chord.getName()).append("q "); // fallback if no notes
+                    pattern.append(chord.getName()).append("q "); 
                 }
             }
             pattern.append("| ");

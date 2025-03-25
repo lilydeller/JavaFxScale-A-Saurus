@@ -65,8 +65,28 @@ public class SheetMusic {
         }
         System.out.println(); // Add a blank line between measures
     }
-    public static void main (String[] args) {
-        
+    public static String[][] generateVisualMeasure(Measure measure) {
+        String[][] visualMeasure = new String[ROWS][COLS];
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                visualMeasure[i][j] = "-";
+            }
+        }
+
+        ArrayList<Chord> chords = measure.getChords();
+        for (int beat = 0; beat < Math.min(chords.size(), COLS); beat++) {
+            Chord chord = chords.get(beat);
+            for (Pitch pitch : chord.getNotes()) {
+                int rowIndex = getNoteIndex(pitch);
+                if (rowIndex != -1) {
+                    visualMeasure[rowIndex][beat] = pitch.name();
+                }
+            }
+        }
+        return visualMeasure;
     }
-    
+
+    public static String getNoteName(int index) {
+        return NOTE_ORDER[index];
+    }
 }
