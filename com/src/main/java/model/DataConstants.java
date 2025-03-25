@@ -3,7 +3,7 @@ package model;
 public abstract class DataConstants {
 
     //user constants 
-    protected static final String USER_FILE_NAME = "json\\userlist.json";
+    protected static final String USER_FILE_NAME = "json/userlist.json";
 	protected static final String USER_ID = "uuid";
     protected static final String USER_FIRST_NAME = "firstName";
     protected static final String USER_LAST_NAME = "lastName";
@@ -16,7 +16,7 @@ public abstract class DataConstants {
     protected static final String USER_LEADERBOARD_RANKING = "leaderboard-ranking";
 
     // Songlist file location
-    protected static final String SONG_FILE_NAME = "json\\songlist.json";
+    protected static final String SONG_FILE_NAME = "json/songlist.json";
 
     // Root JSON key
     protected static final String SONG_LIST = "songlist";
@@ -47,7 +47,7 @@ public abstract class DataConstants {
     protected static final String METRONOME = "metronome";
 
     //flashcard constants 
-    protected static final String FLASHCARD_FILE_NAME = "json\\flashcard.json";
+    protected static final String FLASHCARD_FILE_NAME = "json/flashcard.json";
     protected static final String FLASHCARD_ID = "flashcardID";
     protected static final String FLASHCARD_QUESTION = "question";
     protected static final String FLASHCARD_ANSWER = "answer";

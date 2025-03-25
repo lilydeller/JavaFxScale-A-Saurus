@@ -1,5 +1,4 @@
 package model;
-import model.Measure;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -114,15 +113,14 @@ public class Driver {
                     System.out.print("Enter difficulty (1-3): ");
                     int difficulty = scanner.nextInt();
                     scanner.nextLine();
-                    
+
                     Song newSong = new Song(
-                        "song" + (songList.getSongs().size() + 1),
-                        newSongName, difficulty, length, genre,
-                        new ArrayList<>(), "sheetMusic.txt", "tabsMusic.txt", false,
-                        newArtist
+                            "song" + (songList.getSongs().size() + 1),
+                            newSongName, difficulty, length, genre,
+                            new ArrayList<>(), "sheetMusic.txt", "tabsMusic.txt", false,
+                            newArtist
                     );
 
-                    newSong.setArtist(newArtist);
                     songList.addSong(newSong);
                     songList.saveSongs();
                     System.out.println("Song '" + newSongName + "' by " + newArtist + " added successfully!");
@@ -158,38 +156,34 @@ public class Driver {
 
     private static void saveSheetMusic(Song song) {
         try {
+            String folderPath = "sheet_music";
+            java.io.File folder = new java.io.File(folderPath);
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+
             String fileName = "sheetMusic_" + song.getSongName().replaceAll(" ", "_") + ".txt";
-            FileWriter fileWriter = new FileWriter(fileName);
-    
+            String filePath = folderPath + "/" + fileName;
+
+            FileWriter fileWriter = new FileWriter(filePath);
             fileWriter.write("Sheet Music for: " + song.getSongName() + "\n");
             fileWriter.write("Artist: " + song.getArtist() + "\n");
-            fileWriter.write("Instrument: Piano\n");
-            fileWriter.write("Length: " + song.getLength() + "\n");
-            fileWriter.write("Genre: " + song.getGenre() + "\n");
-            fileWriter.write("Difficulty: " + song.getDifficulty() + "\n");
-            fileWriter.write("Metronome: " + (song.isMetronomeEnabled() ? "On" : "Off") + "\n\n");
-    
-            fileWriter.write("🎵 Measures:\n");
-    
+            fileWriter.write("Instrument: Piano\n\n");
+            fileWriter.write("Measures:\n");
+
             for (Measure measure : song.getMeasures()) {
-                fileWriter.write("Measure " + measure.getMeasureNumber() + ": ");
-    
-                ArrayList<Chord> chords = measure.getChords();
-                if (chords == null || chords.isEmpty()) {
-                    fileWriter.write("[No chords]\n");
-                } else {
-                    for (Chord chord : chords) {
-                        String chordStr = Chord.chordToString(chord.getNotes());
-                        fileWriter.write(chordStr + " ");
-                    }
-                    fileWriter.write("\n");
+                fileWriter.write("Measure " + measure.getMeasureNumber() + ": | ");
+                for (Chord chord : measure.getChords()) {
+                    fileWriter.write(Chord.chordToString(chord.getNotes()) + "  ");
                 }
+                fileWriter.write("|\n");
             }
-    
+
             fileWriter.close();
-            System.out.println("Sheet music saved: " + fileName);
+            System.out.println("Sheet music saved: " + filePath);
         } catch (IOException e) {
-            System.out.println("Error saving sheet music: " + e.getMessage());
+            System.out.println("Error saving sheet music.");
+            e.printStackTrace();
         }
     }
 }
