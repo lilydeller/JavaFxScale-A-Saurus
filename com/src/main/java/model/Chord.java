@@ -10,26 +10,44 @@ public class Chord {
     private List<Pitch> notes;
 
 
+    /*
+     *Chord constructor 
+     *@param notes
+     */
     public Chord(List<Pitch> notes) {
         this.notes = notes != null ? notes : new ArrayList<>(); 
     }
 
   
+    /*
+     * getter method
+     * @return notes
+     */
     public List<Pitch> getNotes() {
         return notes;
     }
 
 
+    /*
+     * adds note to chord 
+     * @param note
+     */
     public void addNote(Pitch note) {
         notes.add(note);
     }
 
-    
+    /*
+     * remove note from chord 
+     * @param note 
+     */
     public void removeNote(Pitch note) {
         notes.remove(note);
     }
 
 
+    /*
+     * creating a hashmap of notes to their corrosponding pitches 
+     */
     private static final Map<String, List<Pitch>> CHORD_MAP = new HashMap<>();
 
     static {
@@ -57,11 +75,20 @@ public class Chord {
         CHORD_MAP.put("Bm", Arrays.asList(Pitch.B, Pitch.D, Pitch.F_SHARP));
     }
 
+    /*
+     * reads the chord to return the pitch
+     * @param chordName
+     * @return Chord
+     */
     public static Chord fromString(String chordName) {
         return new Chord(CHORD_MAP.getOrDefault(chordName, new ArrayList<>()));  
     }
 
-    
+    /*
+     * chord toString method 
+     * @param pitches 
+     * @return entry.getkey // key 
+     */
     public static String chordToString(List<Pitch> pitches) {
         for (Map.Entry<String, List<Pitch>> entry : CHORD_MAP.entrySet()) {
             if (entry.getValue().equals(pitches)) {
