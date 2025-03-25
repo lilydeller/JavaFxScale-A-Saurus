@@ -1,91 +1,161 @@
 {
-    "songlist": [
-      {
-        "id": "a12b34c5-678d-90ef-ab12-34567890abcd",
-        "name": "Beginner Songs",
-        "difficulty": "Easy",
-        "length": "Short",
-        "genre": "Classical",
-        "songs": [
-          {
-            "id": "98d47b10-91d1-48a5-a68c-2b1d1ffb1c01",
-            "name": "Twinkle Twinkle Little Star",
-            "difficulty": 1,
-            "length": "1:30",
-            "genre": "Classical",
-            "measures": [
-              {
-                "measureNumber": 1,
-                "chords": ["C", "G", "A", "F"]
-              },
-              {
-                "measureNumber": 2,
-                "chords": ["F", "C", "G", "C"]
-              }
-            ],
-            "sheetMusic": "Twinkle_Sheet.pdf",
-            "tabsMusic": "Twinkle_Tabs.txt",
-            "metronome": true
-          }
-        ]
-      },
-      {
-        "id": "b23c45d6-789e-01fa-bc23-45678901bcde",
-        "name": "Intermediate Songs",
-        "difficulty": "Medium",
-        "length": "Varied",
-        "genre": "Jazz",
-        "songs": [
-          {
-            "id": "d56e7f89-1234-5678-90ab-cd12ef345678",
-            "name": "Autumn Leaves",
-            "difficulty": 3,
-            "length": "4:15",
-            "genre": "Jazz",
-            "measures": [
-              {
-                "measureNumber": 1,
-                "chords": ["Cm7", "F7", "BbM7", "EbM7"]
-              },
-              {
-                "measureNumber": 2,
-                "chords": ["Am7", "D7", "Gm7", "C7"]
-              }
-            ],
-            "sheetMusic": "Autumn_Leaves_Sheet.pdf",
-            "tabsMusic": "Autumn_Leaves_Tabs.txt",
-            "metronome": false
-          }
-        ]
-      },
-      {
-        "id": "c34d56e7-890f-12ab-cd34-56789012cdef",
-        "name": "Advanced Songs",
-        "difficulty": "Hard",
-        "length": "Long",
-        "genre": "Rock",
-        "songs": [
-          {
-            "id": "e78f9012-3456-789a-bcde-f1234567890a",
-            "name": "Bohemian Rhapsody",
-            "difficulty": 5,
-            "length": "5:55",
-            "genre": "Rock",
-            "measures": [
-              {
-                "measureNumber": 1,
-                "chords": ["Gm", "Bb", "Eb", "F"]
-              },
-              {
-                "measureNumber": 2,
-                "chords": ["Cm", "G7", "F", "Bb"]
-              }
-            ],
-            "sheetMusic": "Bohemian_Rhapsody_Sheet.pdf",
-            "tabsMusic": "Bohemian_Rhapsody_Tabs.txt",
-            "metronome": true
-          }
-        ]
-      }
-    ]
-  }
+  "songlist": [
+    {
+      "id": "a12b34c5-678d-90ef-ab12-34567890abcd",
+      "name": "Beginner Songs",
+      "difficulty": "Easy",
+      "length": "Short",
+      "genre": "Classical",
+      "songs": [
+        {
+          "id": "98d47b10-91d1-48a5-a68c-2b1d1ffb1c01",
+          "name": "Twinkle Twinkle Little Star",
+          "artist": "Traditional",
+          "difficulty": 1,
+          "length": "1:30",
+          "genre": "Classical",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["C", "G", "A", "F"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["F", "C", "G", "C"]
+            }
+          ],
+          "sheetMusic": "Twinkle_Sheet.pdf",
+          "tabsMusic": "Twinkle_Tabs.txt",
+          "metronome": true
+        }
+      ]
+    },
+    {
+      "id": "b23c45d6-789e-01fa-bc23-45678901bcde",
+      "name": "Intermediate Songs",
+      "difficulty": "Medium",
+      "length": "Varied",
+      "genre": "Pop",
+      "songs": [
+        {
+          "id": "f23c45d6-6789-01fa-bc34-567890abcdef",
+          "name": "Keep Driving",
+          "artist": "Harry Styles",
+          "difficulty": 3,
+          "length": "2:50",
+          "genre": "Pop",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["F#m", "A", "E", "D"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["C#m", "D", "Bm", "E"]
+            },
+            {
+              "measureNumber": 3,
+              "chords": ["F#m", "E", "D", "A"]
+            }
+          ],
+          "sheetMusic": "KeepDriving_Sheet.pdf",
+          "tabsMusic": "KeepDriving_Tabs.txt",
+          "metronome": false
+        },
+        {
+          "id": "d56e7f89-1234-5678-90ab-cd12ef345678",
+          "name": "Autumn Leaves",
+          "artist": "Joseph Kosma",
+          "difficulty": 3,
+          "length": "4:15",
+          "genre": "Jazz",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["Cm7", "F7", "BbM7", "EbM7"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["Am7", "D7", "Gm7", "C7"]
+            }
+          ],
+          "sheetMusic": "Autumn_Leaves_Sheet.pdf",
+          "tabsMusic": "Autumn_Leaves_Tabs.txt",
+          "metronome": false
+        },
+        {
+          "id": "aa11bb22-cc33-dd44-ee55-ff6677889900",
+          "name": "Fine Line",
+          "artist": "Harry Styles",
+          "difficulty": 2,
+          "length": "3:45",
+          "genre": "Pop",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["C", "E", "G", "C"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["D", "F", "A", "D"]
+            }
+          ],
+          "sheetMusic": "FineLine_Sheet.pdf",
+          "tabsMusic": "FineLine_Tabs.txt",
+          "metronome": true
+        },
+        {
+          "id": "bb22cc33-dd44-ee55-ff66-77889900aabb",
+          "name": "Sign of the Times",
+          "artist": "Harry Styles",
+          "difficulty": 3,
+          "length": "4:10",
+          "genre": "Pop",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["G", "B", "D", "G"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["A", "C", "E", "A"]
+            }
+          ],
+          "sheetMusic": "SignOfTheTimes_Sheet.pdf",
+          "tabsMusic": "SignOfTheTimes_Tabs.txt",
+          "metronome": true
+        }
+      ]
+    },
+    {
+      "id": "c34d56e7-890f-12ab-cd34-56789012cdef",
+      "name": "Advanced Songs",
+      "difficulty": "Hard",
+      "length": "Long",
+      "genre": "Rock",
+      "songs": [
+        {
+          "id": "e78f9012-3456-789a-bcde-f1234567890a",
+          "name": "Bohemian Rhapsody",
+          "artist": "Queen",
+          "difficulty": 5,
+          "length": "5:55",
+          "genre": "Rock",
+          "measures": [
+            {
+              "measureNumber": 1,
+              "chords": ["Gm", "Bb", "Eb", "F"]
+            },
+            {
+              "measureNumber": 2,
+              "chords": ["Cm", "G7", "F", "Bb"]
+            }
+          ],
+          "sheetMusic": "Bohemian_Rhapsody_Sheet.pdf",
+          "tabsMusic": "Bohemian_Rhapsody_Tabs.txt",
+          "metronome": true
+        }
+      ]
+    }
+  ]
+}

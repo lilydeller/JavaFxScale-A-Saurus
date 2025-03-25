@@ -1,0 +1,24 @@
+{
+    "achievements": [
+        {
+            "id": "1",
+            "name": "First Song Played!",
+            "description": "Play your first song."
+        },
+        {
+            "id": "2",
+            "name": "Music Enthusiast",
+            "description": "Play 5 songs."
+        },
+        {
+            "id": "3",
+            "name": "Rising Star",
+            "description": "Play a song with difficulty 3 or higher."
+        },
+        {
+            "id": "4",
+            "name": "Genre Queen",
+            "description": "Play a song from 3 different genres."
+        }
+    ]
+}

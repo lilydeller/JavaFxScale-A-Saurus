@@ -1,26 +1,23 @@
 package model;
 
-import java.io.File;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
     private static DataWriter instance;
     private UserList userList;
     private SongList songList;
 
-    // priivate constructor
     private DataWriter() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
     }
 
-    // singleton pettern to get instance of DataWriter
     public static DataWriter getInstance() {
         if (instance == null) {
             instance = new DataWriter();
@@ -28,27 +25,27 @@ public class DataWriter extends DataConstants {
         return instance;
     }
 
-
     public static void saveUsers() {
         ArrayList<User> userList = UserList.getInstance().getUsers();
-
         JSONArray jsonUsers = new JSONArray();
-
-        //create json objects 
-        for (int i = 0; i < userList.size(); i++) {
-            jsonUsers.add(getUserJSON(userList.get(i)));
-
+    
+        for (User user : userList) {
+            jsonUsers.add(getUserJSON(user));
         }
-        //write json
-        try {
-            FileWriter file = new FileWriter(USER_FILE_NAME);
-            file.write(jsonUsers.toJSONString());
+    
+        
+        JSONObject root = new JSONObject();
+        root.put("users", jsonUsers);
+    
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+            file.write(root.toJSONString());
             file.flush();
-        } catch (Exception e) {
+            System.out.println("✅ Users saved to " + USER_FILE_NAME);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
+    
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
@@ -60,48 +57,58 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_PASSWORD, user.getPassword());
         userDetails.put(USER_STREAK, user.getStreak());
         userDetails.put(USER_LEVEL, user.getLevel());
-        userDetails.put(USER_ACHIEVEMENTS, user.getAchievements());
-        userDetails.put(USER_LEADERBOARD_RANKING, user.getLeaderboardRanking());
     
-
+        JSONArray achievementsArray = new JSONArray();
+        for (Achievement achievement : user.viewAchievements()) {
+            achievementsArray.add(achievement.getName());
+        }
+        userDetails.put(USER_ACHIEVEMENTS, achievementsArray);
+    
+        JSONArray leaderboardArray = new JSONArray();
+        if (user.getLeaderboardRanking() != null) {
+            for (String rank : user.getLeaderboardRanking()) {
+                leaderboardArray.add(rank);
+            }
+        }
+        userDetails.put(USER_LEADERBOARD_RANKING, leaderboardArray);
+    
         return userDetails;
     }
-   
-
+    
     public static void saveSongs() {
-        //get song list
         JSONArray jsonSongList = new JSONArray();
+        SongList songList = SongList.getInstance();
         String[] difficulties = {"Easy", "Medium", "Hard"};
 
-        //group songs by difficulty 
         for (int i = 0; i < difficulties.length; i++) {
             JSONObject difficultyGroup = new JSONObject();
-            difficultyGroup.put(SONG_DIFFICULTY, difficulties[i]);
+            difficultyGroup.put("difficulty_level", i + 1);
+            difficultyGroup.put("difficulty", difficulties[i]);
+            difficultyGroup.put("name", difficulties[i] + " Songs");
 
-            //get songs for current difficulty 
-            ArrayList<Song> songs = songList.getSongsByDifficulty(difficulties[i]);
             JSONArray jsonSongs = new JSONArray();
-
-            for (int e = 0; e < songs.size(); e++) {
-                jsonSongs.add(getSongJSON(songs.get(e)));
+            ArrayList<Song> songs = songList.getSongsByDifficulty(i + 1);
+            for (Song song : songs) {
+                jsonSongs.add(getSongJSON(song));
             }
-            difficultyGroup.put(SONGS, jsonSongs);
+
+            difficultyGroup.put("songs", jsonSongs);
             jsonSongList.add(difficultyGroup);
         }
-        //write into json file 
-        try {
-            FileWriter file = new FileWriter(SONG_FILE_NAME);
-            file.write(jsonSongList.toJSONString());
+
+        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
+            file.write("{\"songlist\": " + jsonSongList.toJSONString() + "}");
             file.flush();
-        } catch (Exception e) {
+            System.out.println("Songs successfully saved to " + SONG_FILE_NAME);
+        } catch (IOException e) {
+            System.err.println("Error saving songs: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    //convert song into JSONObject 
     public static JSONObject getSongJSON(Song song) {
         JSONObject songJSON = new JSONObject();
-        songJSON.put(SONG_ID, song.getSongId().toString());
+        songJSON.put(SONG_ID, song.getSongId());
         songJSON.put(SONG_NAME, song.getSongName());
         songJSON.put(SONG_DIFFICULTY, song.getDifficulty());
         songJSON.put(SONG_LENGTH, song.getLength());
@@ -111,11 +118,10 @@ public class DataWriter extends DataConstants {
         songJSON.put(METRONOME, song.isMetronomeEnabled());
 
         JSONArray jsonMeasures = new JSONArray();
-        ArrayList<Measure> measures = song.getMeasures();
-
-        for (int i = 0; i < measures.size(); i++) {
-            jsonMeasures.add(getMeasureJSON(measures.get(i)));
+        for (Measure measure : song.getMeasures()) {
+            jsonMeasures.add(getMeasureJSON(measure));
         }
+
         songJSON.put(MEASURES, jsonMeasures);
         return songJSON;
     }
@@ -123,21 +129,16 @@ public class DataWriter extends DataConstants {
     public static JSONObject getMeasureJSON(Measure measure) {
         JSONObject measureJSON = new JSONObject();
         measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
-    
+
         JSONArray jsonChords = new JSONArray();
-        List<Chord> chords = measure.getChords(); 
-    
-       
-        for (Chord chord : chords) {
-            String chordName = Chord.chordToString(chord.getNotes()); 
-            jsonChords.add(chordName);  
+        for (Chord chord : measure.getChords()) {
+            String chordStr = Chord.chordToString(chord.getNotes());
+            jsonChords.add(chordStr);
         }
-    
+
         measureJSON.put(CHORDS, jsonChords);
         return measureJSON;
     }
-    
-
 
     public void saveUserData(User user) {
         ArrayList<User> userList = this.userList.getUsers();
@@ -147,62 +148,36 @@ public class DataWriter extends DataConstants {
 
     public static void saveFlashcards() {
         ArrayList<Flashcard> flashcards = FlashcardList.getInstance().getFlashcards();
-
         JSONArray jsonFlashcards = new JSONArray();
 
-        for (int i = 0; i < flashcards.size(); i++) {
-            jsonFlashcards.add(getFlashcardJSON(flashcards.get(i)));
+        for (Flashcard flashcard : flashcards) {
+            jsonFlashcards.add(getFlashcardJSON(flashcard));
         }
 
-        try (FileWriter file = new FileWriter(FLASHCARD_FILE_NAME)) { //add to constants once json is made TODO
+        try (FileWriter file = new FileWriter(FLASHCARD_FILE_NAME)) {
             file.write(jsonFlashcards.toJSONString());
             file.flush();
-            System.out.println("Flashcards have been saved");
-        }
-        catch (IOException e) {
+            System.out.println("Flashcards have been saved.");
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
     }
 
     public static JSONObject getFlashcardJSON(Flashcard flashcard) {
         JSONObject jsonFlashcard = new JSONObject();
-    jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());
-    jsonFlashcard.put(FLASHCARD_QUESTION, flashcard.getQuestion());
-    jsonFlashcard.put(FLASHCARD_ANSWER, flashcard.getAnswer());
-
-    return jsonFlashcard;
-
+        jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());
+        jsonFlashcard.put(FLASHCARD_QUESTION, flashcard.getQuestion());
+        jsonFlashcard.put(FLASHCARD_ANSWER, flashcard.getAnswer());
+        return jsonFlashcard;
     }
 
     public static void saveAll() {
-        DataWriter.saveUsers();
-        DataWriter.saveSongs();
-        DataWriter.saveFlashcards();
+        saveUsers();
+        saveSongs();
+        saveFlashcards();
     }
 
-  
-
-    
     public static void main(String[] args) {
-
-        ArrayList<User> users = DataLoader.loadUsers();
-        for (User user : users) {
-            System.out.println(user.getUserName() + " - " + user.getEmail());
-        }
-
-      
-        SongList songList = SongList.getInstance();
-        songList.sortByDifficulty();  
-        for (Song song : songList.getSongs()) {
-            System.out.println(song.getSongName() + " - Difficulty: " + song.getDifficulty());
-        }
-
- 
-        DataWriter writer = DataWriter.getInstance();
-        writer.saveUsers();
-        writer.saveSongs();
+        saveAll();
     }
 }
-    
-
