@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * {@code StreakSystem} class implements the {@link GamificationSystem} interface
+ * and tracks a user's activity streak over time.
+ */
 public class StreakSystem implements GamificationSystem {
     private int streakCount;
 

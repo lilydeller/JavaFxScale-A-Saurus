@@ -1,9 +1,19 @@
 package model;
 
+/**
+ * the {@code LevelSystem} class implements the {@link GamificationSystem} interface
+ * to manage a user's level progression in the application.
+*/
 public class LevelSystem implements GamificationSystem {
     private int currentLevel;
     private int maxLevel;
 
+    /**
+     * constructs a {@code LevelSystem} with a specified maximum level
+     * The user starts at level 1
+     *
+     * @param maxLevel the highest level the user can reach
+     */
     public LevelSystem(int maxLevel) {
         this.currentLevel = 1;
         this.maxLevel = maxLevel;

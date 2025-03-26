@@ -9,8 +9,8 @@ public class Instrument {
     private ArrayList<Flashcard> flashcards;
     private ArrayList<Lesson> lessons;
     private boolean isRecording;
-    private ArrayList<String> recordedNotes; // Stores recorded notes
-    private Piano piano; // Link to piano for interaction
+    private ArrayList<String> recordedNotes; 
+    private Piano piano; 
 
     public Instrument(String name) {
         this.name = name;
@@ -20,10 +20,10 @@ public class Instrument {
         this.lessons = new ArrayList<>();
         this.isRecording = false;
         this.recordedNotes = new ArrayList<>();
-        this.piano = new Piano(); // Initialize the piano
+        this.piano = new Piano(); 
     }
 
-    // Getters
+  
     public String getName() {
         return name;
     }
@@ -44,26 +44,34 @@ public class Instrument {
         return lessons;
     }
 
-    // Toggle sustain effect
+    /*
+     * Toggle sustain effect
+     */
     public void toggleSustain() {
         piano.toggleSustain();
         System.out.println(name + " sustain toggled.");
     }
 
-    // Start recording
+    /*
+     * Start recording
+     */
     public void startRecording() {
         isRecording = true;
         recordedNotes.clear();
         System.out.println("Recording started.");
     }
 
-    // Stop recording
+    /*
+     * stop recording
+     */
     public void stopRecording() {
         isRecording = false;
         System.out.println("Recording stopped.");
     }
 
-    // Play the recorded notes
+    /*
+     * play the recorded notes
+     */
     public void playRecording() {
         if (recordedNotes.isEmpty()) {
             System.out.println("No recording available.");
@@ -72,13 +80,17 @@ public class Instrument {
         }
     }
 
-    // Clear the recording
+    /*
+     * clear the recording
+     */
     public void clearRecording() {
         recordedNotes.clear();
         System.out.println("Recording cleared.");
     }
 
-    // Simulate pressing a key and recording it if active
+    /*
+     * Simulate pressing a key and recording it if active
+     */
     public void pressKey(Keys key) {
         piano.pressKey(key);
         if (isRecording) {
@@ -86,12 +98,16 @@ public class Instrument {
         }
     }
 
-    // Simulate releasing a key
+    /*
+     * Simulate releasing a key
+     */
     public void releaseKey(Keys key) {
         piano.releaseKey(key);
     }
 
-    // Play a song using stored measures
+    /*
+     * Play a song using stored measures
+     */
     public void playSong(Song song) {
         System.out.println("Now playing: " + song.getSongName());
         for (Measure measure : song.getMeasures()) {

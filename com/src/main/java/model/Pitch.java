@@ -1,5 +1,9 @@
 
 package model;
+/**
+ * {@code Pitch} enum represents the set of all standard musical pitches,
+ * including natural notes and enharmonic equivalents (e.g., C♯ and D♭).
+*/
 public enum Pitch {
 
     C,

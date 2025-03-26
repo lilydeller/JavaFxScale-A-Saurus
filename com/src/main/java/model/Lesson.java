@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Represents a lesson that includes a song, content, flashcards, and performance tracking.
+ */
+
 public class Lesson {
     private String title;
     private Song song;
@@ -15,6 +19,16 @@ public class Lesson {
     private ArrayList<Flashcard> flashcards;
     private Instrument instrument;
 
+    /**
+     * Creates a Lesson object
+     * @param title
+     * @param song
+     * @param lessonID
+     * @param difficulty
+     * @param content
+     * @param rating
+     * @param instrument
+     */
     public Lesson(String title, Song song, String lessonID, int difficulty, String content, double rating, Instrument instrument) {
         this.title = title;
         this.song = song;
@@ -27,6 +41,9 @@ public class Lesson {
         this.performanceScore = 0;
     }
 
+    /**
+     * Starts the lesson
+     */
     public void startLesson() {
         System.out.println("\nStarting Lesson: " + title);
         System.out.println("Song: " + song.getSongName());
@@ -53,9 +70,10 @@ public class Lesson {
         this.performanceScore = (int)(((double) correctCount / FlashcardList.getInstance().getFlashcards().size()) * 100);
     }
     
-    
+    /**
+     * Completes the lesson and checks your score
+     */
     public void completeLesson() {
-        System.out.println("Lesson complete!");
         System.out.println("Your performance score: " + performanceScore + "%");
     
         if (performanceScore == 100) {
@@ -69,7 +87,9 @@ public class Lesson {
     
 
     
-
+    /**
+     * displays feedback based on how the user does during the lesson
+     */
     public void displayFeedback() {
         System.out.println("Your performance score: " + performanceScore + "%");
         if (performanceScore >= 80) {
@@ -81,10 +101,19 @@ public class Lesson {
         }
     }
 
+    /**
+     * gets the song
+     * @return a Song
+     */
     public Song getSong() {
         return song;
     }
 
+    /**
+     * gets the flashcards for the lesson
+     * @param lessonID
+     * @return List of flashcards
+     */
     public List<Flashcard> getFlashcards(String lessonID) {
         return flashcards;
     }

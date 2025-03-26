@@ -10,17 +10,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * loads the data from a JSON file into corresponding lists
+ */
 public class DataLoader {
     private static DataLoader instance;
     private UserList userList;
     private SongList songList;
     private static ArrayList<Achievement> achievements = new ArrayList<>();
 
+    /**
+     * Creates a DataLoader object
+     */
     private DataLoader() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
     }
 
+    /**
+     * Retrieves the singleton instance of DataLoader
+     * @return a DataLoader instance
+     */
     public static DataLoader getInstance() {
         if (instance == null) {
             instance = new DataLoader();
@@ -28,6 +38,9 @@ public class DataLoader {
         return instance;
     }
 
+    /**
+     * loads all data
+     */
     public void loadAll() {
         loadUsers();
         loadSongs();
@@ -35,6 +48,9 @@ public class DataLoader {
         loadFlashcards(); 
     }
 
+    /**
+     * loads flashcards from a JSON file
+     */
     public static void loadFlashcards() {
         JSONParser parser = new JSONParser();
     
@@ -60,6 +76,9 @@ public class DataLoader {
     }
     
 
+    /**
+     * loads acheivements from a JSON file
+     */
     public static void loadAchievements() {
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("json/achievements.json")) {
@@ -80,10 +99,18 @@ public class DataLoader {
         }
     }
 
+    /**
+     * gets the list of achievements
+     * @return an ArrayList of achievements
+     */
     public static ArrayList<Achievement> getAchievements() {
         return achievements;
     }
 
+    /**
+     * loads users from a JSON file
+     * @return an ArrayList of users
+     */
     public static ArrayList<User> loadUsers() {
         ArrayList<User> users = new ArrayList<>();
     
@@ -104,14 +131,12 @@ public class DataLoader {
                 int streak = ((Long) userJson.get("streak")).intValue();
                 int level = ((Long) userJson.get("level")).intValue();
     
-                // Handle achievements
                 JSONArray achievementArray = (JSONArray) userJson.get("achievement");
                 ArrayList<String> achievements = new ArrayList<>();
                 for (Object achievement : achievementArray) {
                     achievements.add(achievement.toString());
                 }
     
-                // Handle leaderboard
                 JSONArray leaderboardArray = (JSONArray) userJson.get("leaderboard-ranking");
                 ArrayList<String> leaderboardRankings = new ArrayList<>();
                 for (Object ranking : leaderboardArray) {
@@ -127,79 +152,89 @@ public class DataLoader {
             e.printStackTrace();
         }
     
+        
+        UserList.getInstance().getUsers().clear();
+        UserList.getInstance().getUsers().addAll(users);
+    
         return users;
     }
     
     
 
+    /**
+     * loads songs from a JSON file
+     * @return an ArrayList of songs
+     */
     public static ArrayList<Song> loadSongs() {
-        JSONParser parser = new JSONParser();
         ArrayList<Song> songs = new ArrayList<>();
-
+        JSONParser parser = new JSONParser();
+    
         try (FileReader reader = new FileReader("json/songlist.json")) {
             JSONObject rootJson = (JSONObject) parser.parse(reader);
-            JSONArray songCategoriesArray = (JSONArray) rootJson.get("songlist");
-
-            for (Object categoryObj : songCategoriesArray) {
-                JSONObject categoryJson = (JSONObject) categoryObj;
-                JSONArray songsArray = (JSONArray) categoryJson.get("songs");
-
-                for (Object songObj : songsArray) {
-                    JSONObject songJson = (JSONObject) songObj;
-
-                    String songId = (String) songJson.get("id");
-                    String songName = (String) songJson.get("name");
-                    String artist = (String) songJson.get("artist");
-                    int songDifficulty = ((Long) songJson.get("difficulty")).intValue();
-                    String songLength = (String) songJson.get("length");
-                    String songGenre = (String) songJson.get("genre");
-
-                    JSONArray measuresArray = (JSONArray) songJson.get("measures");
-                    ArrayList<Measure> measures = new ArrayList<>();
-
-                    for (Object measureObj : measuresArray) {
-                        JSONObject measureJson = (JSONObject) measureObj;
-                        int measureNumber = ((Long) measureJson.get("measureNumber")).intValue();
-
-                        JSONArray chordsArray = (JSONArray) measureJson.get("chords");
-                        ArrayList<Chord> chords = new ArrayList<>();
-                        for (Object chordObj : chordsArray) {
-                            String chordStr = (String) chordObj;
-                            chords.add(Chord.fromString(chordStr)); // assuming this method exists
-                        }
-
-                        Measure measure = new Measure(measureNumber, chords);
-                        measures.add(measure);
+    
+            JSONArray songsArray = (JSONArray) rootJson.get("songs"); 
+            if (songsArray == null) {
+                songsArray = new JSONArray();
+                JSONArray difficultyGroups = (JSONArray) rootJson.get("songlist");
+                for (Object groupObj : difficultyGroups) {
+                    JSONObject groupJson = (JSONObject) groupObj;
+                    JSONArray groupSongs = (JSONArray) groupJson.get("songs");
+                    if (groupSongs != null) {
+                        songsArray.addAll(groupSongs);
                     }
-
-                    String sheetMusic = (String) songJson.get("sheetMusic");
-                    String tabsMusic = (String) songJson.get("tabsMusic");
-                    boolean metronome = (boolean) songJson.get("metronome");
-
-                    Song song = new Song(
-                            songId,
-                            songName,
-                            songDifficulty,
-                            songLength,
-                            songGenre,
-                            measures,
-                            sheetMusic,
-                            tabsMusic,
-                            metronome,
-                            artist
-                    );
-
-                    songs.add(song);
                 }
             }
-        } catch (IOException | ParseException e) {
+    
+            for (Object songObj : songsArray) {
+                JSONObject songJson = (JSONObject) songObj;
+    
+                String songId = (String) songJson.get("id");
+                String songName = (String) songJson.get("name");
+                String artist = (String) songJson.get("artist");
+                int songDifficulty = ((Long) songJson.get("difficulty")).intValue();
+                String songLength = (String) songJson.get("length");
+                String songGenre = (String) songJson.get("genre");
+    
+                JSONArray measuresArray = (JSONArray) songJson.get("measures");
+                ArrayList<Measure> measures = new ArrayList<>();
+    
+                for (Object measureObj : measuresArray) {
+                    JSONObject measureJson = (JSONObject) measureObj;
+                    int measureNumber = ((Long) measureJson.get("measureNumber")).intValue();
+    
+                    JSONArray chordsArray = (JSONArray) measureJson.get("chords");
+                    ArrayList<Chord> chords = new ArrayList<>();
+                    for (Object chordObj : chordsArray) {
+                        chords.add(Chord.fromString((String) chordObj));
+                    }
+    
+                    measures.add(new Measure(measureNumber, chords));
+                }
+    
+                String sheetMusic = (String) songJson.get("sheetMusic");
+                String tabsMusic = (String) songJson.get("tabsMusic");
+                boolean metronome = (Boolean) songJson.get("metronome");
+    
+                Song song = new Song(
+                    songId, songName, songDifficulty, songLength, songGenre,
+                    measures, sheetMusic, tabsMusic, metronome, artist
+                );
+    
+                songs.add(song);
+            }
+    
+            
+            SongList.getInstance().getSongs().clear();
+            SongList.getInstance().getSongs().addAll(songs);
+    
+        } catch (Exception e) {
+            System.out.println(" Error loading songs.");
             e.printStackTrace();
         }
-
-      
-        SongList.getInstance().getSongs().addAll(songs);
+    
         return songs;
     }
+    
 
     public static void main(String[] args) {
         ArrayList<User> users = DataLoader.loadUsers();

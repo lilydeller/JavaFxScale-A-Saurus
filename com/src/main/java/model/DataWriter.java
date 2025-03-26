@@ -8,11 +8,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The dataawriter class provides functionality to save user, song,
+ * and flashcard data into JSON files. It uses singleton pattern 
+ */
 public class DataWriter extends DataConstants {
     private static DataWriter instance;
     private UserList userList;
     private SongList songList;
 
+    /**
+     * private constructor to force singleton pattern
+     */
     private DataWriter() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
@@ -25,6 +32,9 @@ public class DataWriter extends DataConstants {
         return instance;
     }
 
+    /**
+     * saves all users in the {@code UserList} to a JSON file
+     */
     public static void saveUsers() {
         ArrayList<User> userList = UserList.getInstance().getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -47,6 +57,12 @@ public class DataWriter extends DataConstants {
     }
     
 
+    /**
+     * converts a {@code User} object to a {@code JSONObject}.
+     *
+     * @param user the user to convert
+     * @return a JSONObject representing the user
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_ID, user.getId().toString());
@@ -75,36 +91,12 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
     
-    public static void saveSongs() {
-        JSONArray jsonSongList = new JSONArray();
-        SongList songList = SongList.getInstance();
-        String[] difficulties = {"Easy", "Medium", "Hard"};
-
-        for (int i = 0; i < difficulties.length; i++) {
-            JSONObject difficultyGroup = new JSONObject();
-            difficultyGroup.put("difficulty_level", i + 1);
-            difficultyGroup.put("difficulty", difficulties[i]);
-            difficultyGroup.put("name", difficulties[i] + " Songs");
-
-            JSONArray jsonSongs = new JSONArray();
-            ArrayList<Song> songs = songList.getSongsByDifficulty(i + 1);
-            for (Song song : songs) {
-                jsonSongs.add(getSongJSON(song));
-            }
-
-            difficultyGroup.put("songs", jsonSongs);
-            jsonSongList.add(difficultyGroup);
-        }
-
-        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
-            file.write("{\"songlist\": " + jsonSongList.toJSONString() + "}");
-            file.flush();
-            System.out.println("Songs successfully saved to " + SONG_FILE_NAME);
-        } catch (IOException e) {
-            System.err.println("Error saving songs: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+    /**
+     * converts a {@code Song} object to a {@code JSONObject}
+     *
+     * @param song the song to convert
+     * @return a JSONObject representing the song
+     */
 
     public static JSONObject getSongJSON(Song song) {
         JSONObject songJSON = new JSONObject();
@@ -116,6 +108,8 @@ public class DataWriter extends DataConstants {
         songJSON.put(SHEET_MUSIC, song.getSheetMusic());
         songJSON.put(TABS_MUSIC, song.getTabsMusic());
         songJSON.put(METRONOME, song.isMetronomeEnabled());
+        songJSON.put("artist", song.getArtist());  
+
 
         JSONArray jsonMeasures = new JSONArray();
         for (Measure measure : song.getMeasures()) {
@@ -124,8 +118,43 @@ public class DataWriter extends DataConstants {
 
         songJSON.put(MEASURES, jsonMeasures);
         return songJSON;
+
+        
+
     }
 
+    /**
+     * saves all songs in the {@code SongList} to a JSON file.
+     */
+    public static void saveSongs() {
+        JSONArray jsonSongs = new JSONArray();
+        ArrayList<Song> allSongs = SongList.getInstance().getSongs();
+    
+        for (Song song : allSongs) {
+            jsonSongs.add(getSongJSON(song));
+        }
+    
+        JSONObject root = new JSONObject();
+        root.put("songs", jsonSongs);
+    
+        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
+            file.write(root.toJSONString());
+            file.flush();
+            System.out.println("✅ Songs saved to " + SONG_FILE_NAME);
+        } catch (IOException e) {
+            System.err.println("Error saving songs: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+
+
+    /**
+     * converts a {@code Measure} object to a {@code JSONObject}.
+     *
+     * @param measure the measure to convert
+     * @return a JSONObject representing the measure
+     */
     public static JSONObject getMeasureJSON(Measure measure) {
         JSONObject measureJSON = new JSONObject();
         measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
@@ -163,6 +192,12 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * converts a {@code Flashcard} object to a {@code JSONObject}.
+     *
+     * @param flashcard the flashcard to convert
+     * @return a JSONObject representing the flashcard
+     */
     public static JSONObject getFlashcardJSON(Flashcard flashcard) {
         JSONObject jsonFlashcard = new JSONObject();
         jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());

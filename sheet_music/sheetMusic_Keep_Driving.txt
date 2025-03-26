@@ -1,8 +1,46 @@
 Sheet Music for: Keep Driving
-Artist: null
+Artist: Unknown
 Instrument: Piano
 
-Measures:
-Measure 1: | Unknown  A  E  D  |
-Measure 2: | Unknown  D  Bm  E  |
-Measure 3: | Unknown  E  D  A  |
+
+=== Measure 1 ===
+B: - - ♩ - 
+A#: - - - - 
+A: - ♩ - ♩ 
+G#: - - - - 
+G: - - - - 
+F#: - - - - 
+F: - - - - 
+E: - ♩ ♩ - 
+D#: - - - - 
+D: - - - ♩ 
+C#: - - - - 
+C: - - - - 
+
+=== Measure 2 ===
+B: - - ♩ ♩ 
+A#: - - - - 
+A: - ♩ - - 
+G#: - - - - 
+G: - - - - 
+F#: - - - - 
+F: - - - - 
+E: - - - ♩ 
+D#: - - - - 
+D: - ♩ ♩ - 
+C#: - - - - 
+C: - - - - 
+
+=== Measure 3 ===
+B: - ♩ - - 
+A#: - - - - 
+A: - - ♩ ♩ 
+G#: - - - - 
+G: - - - - 
+F#: - - - - 
+F: - - - - 
+E: - ♩ - ♩ 
+D#: - - - - 
+D: - - ♩ - 
+C#: - - - - 
+C: - - - - 

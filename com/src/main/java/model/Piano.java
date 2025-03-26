@@ -2,15 +2,23 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ *  {@code Piano} class simulates a virtual piano instrument with support for
+ * key presses, volume and octave adjustments, sustain toggle, and basic recording functionality.
+ */
 public class Piano {
     private int octave;
     private int volume;
     private boolean isRecording;
     private ArrayList<String> recordedNotes;
 
+    /**
+     * constructs a {@code Piano} object with default settings:
+     * octave 4, volume 50, recording off, and an empty recording buffer.
+     */
     public Piano() {
-        this.octave = 4; // Default middle octave
-        this.volume = 50; // Default volume
+        this.octave = 4; 
+        this.volume = 50; 
         this.isRecording = false;
         this.recordedNotes = new ArrayList<>();
     }
