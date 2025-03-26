@@ -1,7 +1,0 @@
-Sheet Music for: Sign of the Times
-Artist: Harry Styles
-Instrument: Piano
-
-Measures:
-Measure 1: | G  B  D  G  |
-Measure 2: | A  C  E  A  |

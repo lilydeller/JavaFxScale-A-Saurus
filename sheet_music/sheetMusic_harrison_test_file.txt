@@ -1,9 +1,0 @@
-Sheet Music for: harrison test file
-Artist: harrison
-Instrument: Piano
-
-Measures:
-Measure 1: | C  G  Am  F  |
-Measure 2: | C  G  Am  F  |
-Measure 3: | C  G  Am  F  |
-Measure 4: | C  G  Am  F  |
