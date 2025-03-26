@@ -3,12 +3,23 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * {@code SheetMusic} class provides utility methods to convert a {@link Song}
+ * into a visual sheet music representation using a grid layout.
+ */
 public class SheetMusic {
     private static final String[] NOTE_ORDER = { "B", "A#", "A", "G#", "G", "F#", "F", "E", "D#", "D", "C#", "C" };
     private static final int ROWS = 12;      // 12 pitches
     private static final int COLS = 4;       // 4 beats per measure
     private static final int MEASURES_PER_LINE = 4; // display 4 horizontally
 
+    /**
+     * converts a {@link Song} into a visual sheet music format and prints it
+     * to the console in blocks of horizontally arranged measures.
+     *
+     * @param song the song to convert and display
+     */
     public static void convertToSheetMusic(Song song) {
         List<String[][]> allMeasures = new ArrayList<>();
         for (Measure measure : song.getMeasures()) {
@@ -21,6 +32,13 @@ public class SheetMusic {
         }
     }
 
+    /**
+     * converts a {@link Measure} into a 2D string array representing pitches and beats.
+     * notes are marked with a musical symbol ("♩") and empty spots are shown as "-".
+     *
+     * @param measure the measure to convert
+     * @return a 2D array visual representation of the measure
+     */
     public static String[][] generateVisualMeasure(Measure measure) {
         String[][] visual = new String[ROWS][COLS];
         for (int i = 0; i < ROWS; i++) {

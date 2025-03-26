@@ -8,11 +8,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The dataawriter class provides functionality to save user, song,
+ * and flashcard data into JSON files. It uses singleton pattern 
+ */
 public class DataWriter extends DataConstants {
     private static DataWriter instance;
     private UserList userList;
     private SongList songList;
 
+    /**
+     * private constructor to force singleton pattern
+     */
     private DataWriter() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
@@ -25,6 +32,9 @@ public class DataWriter extends DataConstants {
         return instance;
     }
 
+    /**
+     * saves all users in the {@code UserList} to a JSON file
+     */
     public static void saveUsers() {
         ArrayList<User> userList = UserList.getInstance().getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -47,6 +57,12 @@ public class DataWriter extends DataConstants {
     }
     
 
+    /**
+     * converts a {@code User} object to a {@code JSONObject}.
+     *
+     * @param user the user to convert
+     * @return a JSONObject representing the user
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_ID, user.getId().toString());
@@ -75,6 +91,12 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
     
+    /**
+     * converts a {@code Song} object to a {@code JSONObject}
+     *
+     * @param song the song to convert
+     * @return a JSONObject representing the song
+     */
 
     public static JSONObject getSongJSON(Song song) {
         JSONObject songJSON = new JSONObject();
@@ -101,6 +123,9 @@ public class DataWriter extends DataConstants {
 
     }
 
+    /**
+     * saves all songs in the {@code SongList} to a JSON file.
+     */
     public static void saveSongs() {
         JSONArray jsonSongs = new JSONArray();
         ArrayList<Song> allSongs = SongList.getInstance().getSongs();
@@ -124,6 +149,12 @@ public class DataWriter extends DataConstants {
     
 
 
+    /**
+     * converts a {@code Measure} object to a {@code JSONObject}.
+     *
+     * @param measure the measure to convert
+     * @return a JSONObject representing the measure
+     */
     public static JSONObject getMeasureJSON(Measure measure) {
         JSONObject measureJSON = new JSONObject();
         measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
@@ -161,6 +192,12 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * converts a {@code Flashcard} object to a {@code JSONObject}.
+     *
+     * @param flashcard the flashcard to convert
+     * @return a JSONObject representing the flashcard
+     */
     public static JSONObject getFlashcardJSON(Flashcard flashcard) {
         JSONObject jsonFlashcard = new JSONObject();
         jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());

@@ -3,6 +3,11 @@ package model;
 import music.Music;
 import java.util.ArrayList;
 
+/**
+ * the {@code MusicProgram} class manages instruments and plays songs
+ * using either predefined patterns or user-created content from the {@link SongList}.
+ *  integrates with the JFugue-based {@code Music} player to produce audible output
+ */
 public class MusicProgram {
     private ArrayList<Instrument> instruments = new ArrayList<>();
     private static Instrument currentInstrument;
@@ -23,6 +28,12 @@ public class MusicProgram {
         System.out.println("Instrument not found.");
     }
 
+    /**
+     * plays a song using the selected instrument(defaulted piano) Predefined songs have custom patterns. Otherwise, songs are
+     * retrieved from the {@link SongList} and played based on their {@link Measure} and {@link Chord} content.
+     *
+     * @param songName the name of the song to play
+     */
     public static void playSong(String songName) {
         if (currentInstrument == null) {
             System.out.println("No instrument selected, defaulting to Piano.");

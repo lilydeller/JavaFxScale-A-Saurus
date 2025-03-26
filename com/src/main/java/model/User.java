@@ -3,6 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * user class represents a user in the music application, holding information such as
+ * credentials, progress (level and streak), achievements, and social connections (friends)
+ * Users can log in, unlock achievements, and track their musical learning progress.
+ */
 public class User {
     private UUID id;
     private String userName;
@@ -18,7 +23,15 @@ public class User {
     private ArrayList<User> friends;
     private ArrayList<Achievement> unlockedAchievements = new ArrayList<>();
 
-    // Constructor for new users
+    /**
+     * constructs a new {@code User} with a unique ID and initial values.
+     *
+     * @param userName  the user's username
+     * @param firstName the user's first name
+     * @param lastName  the user's last name
+     * @param password  the user's password
+     * @param email     the user's email address
+     */
     public User(String userName, String firstName, String lastName, String password, String email) {
         this.id = UUID.randomUUID();
         this.userName = userName;
@@ -34,7 +47,19 @@ public class User {
         this.streak = 0;
     }
 
-    // Constructor for loading from JSON
+    /**
+     * constructs a {@code User} from pre-loaded data, typically from JSON.
+     *
+     * @param id           the user's UUID
+     * @param userName     the user's username
+     * @param firstName    the user's first name
+     * @param lastName     the user's last name
+     * @param password     the user's password
+     * @param email        the user's email address
+     * @param streak       the user's current streak
+     * @param level        the user's current level
+     * @param achievements a list of achievement names the user has unlocked
+     */
     public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements) {
         this.id = id;
         this.userName = userName;
