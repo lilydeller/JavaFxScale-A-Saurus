@@ -135,7 +135,7 @@ public class MusicAppFacade {
     }
 
     /*
-     * 
+     * saves users and songs to json 
      */
     public void saveAll() {
         UserList userList = UserList.getInstance();
@@ -143,52 +143,5 @@ public class MusicAppFacade {
         userList.saveUsers();
         songList.saveSongs();
     }
-    public static void main(String[] args) {
-        MusicAppFacade facade = MusicAppFacade.getInstance();
 
-        // Test Sign-up and Login
-        System.out.println("Testing Sign-up:");
-        User user = facade.signup("testUser", "test@example.com", "password123");
-        if (user != null) {
-            System.out.println("User signed up successfully: " + user.getUserName());
-        } else {
-            System.out.println("User already exists.");
-        }
-
-        System.out.println("\nTesting Login:");
-        user = facade.login("testUser", "password123");
-        if (user != null) {
-            System.out.println("User logged in successfully: " + user.getUserName());
-        } else {
-            System.out.println("Login failed.");
-        }
-
-        // Add user info
-        facade.addUserInfo("John", "Doe");
-        System.out.println("User info updated: " + user.getFirstName() + " " + user.getLastName());
-
-        // Test opening a song
-        System.out.println("\nTesting Open Song:");
-        Song song = facade.openSong("MySong");
-        if (song != null) {
-            System.out.println("Opened song: " + song.getSongName());
-        } else {
-            System.out.println("Song not found.");
-        }
-
-        // Test adding measures
-        System.out.println("\nTesting Add Measure:");
-        facade.addMeasure();
-        facade.addMeasure();
-
-        // Test playing and stopping song
-        System.out.println("\nTesting Play Song:");
-        facade.playSong();
-
-      
-
-        // Test logout
-        System.out.println("\nTesting Logout:");
-        facade.logout();
-    }
 }
