@@ -1,0 +1,87 @@
+/*
+ * @author lily deller
+ */
+package model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+
+/**
+ * tests recording behavior in our Instrument class
+ */
+public class InstrumentRecordingTest {
+
+    private Instrument instrument;
+    private Keys cKey;
+
+    @BeforeEach
+    public void setUp() {
+        instrument = new Instrument("Piano");
+        cKey = new Keys("C");
+    }
+
+    @Test
+    public void testStartRecordingClearsOldNotes() {
+        instrument.startRecording();
+        instrument.pressKey(cKey);
+        instrument.stopRecording();
+
+        instrument.startRecording(); 
+        instrument.stopRecording();
+
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        instrument.playRecording();
+        System.setOut(System.out); 
+
+        assertTrue(output.toString().contains("no recording available."), "recording should be cleared on startRecording");
+    }
+
+    @Test
+    public void testPressKeyRecordsDuringRecording() {
+        instrument.startRecording();
+        instrument.pressKey(cKey);
+        instrument.stopRecording();
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        instrument.playRecording();
+        System.setOut(System.out);
+
+        assertTrue(output.toString().contains("C"), "jey C should be in the recording");
+    }
+
+    @Test
+    public void testPressKeyDoesNotRecordWhenNotRecording() {
+        instrument.pressKey(cKey);  
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        instrument.playRecording();
+        System.setOut(System.out);
+
+        assertTrue(output.toString().contains("no recording available."), "nothing should be recorded when not recording");
+    }
+
+    @Test
+    public void testClearRecording() {
+        instrument.startRecording();
+        instrument.pressKey(cKey);
+        instrument.stopRecording();
+        instrument.clearRecording();
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        instrument.playRecording();
+        System.setOut(System.out);
+
+        assertTrue(output.toString().contains("no recording available."), "recording should be cleared");
+    }
+}
