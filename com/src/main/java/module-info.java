@@ -7,4 +7,5 @@ module scaleasaurus {
 
     opens scaleasaurus to javafx.fxml;
     exports scaleasaurus;
+
 }
