@@ -7,41 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_pane"
-            prefHeight="300.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/19" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.LoginController">
+<AnchorPane id="AnchorPane" fx:id="login_pane" prefHeight="620.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
             
     <children>
-      <Label layoutX="104.0" layoutY="14.0" text="Login">
+      <Label layoutX="84.0" layoutY="66.0" text="Scale-A-Saurus">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      
-      <Label layoutX="84.0" layoutY="71.0" text="Username:" />
-      <Label layoutX="84.0" layoutY="125.0" text="Password:" />
 
 
-      <Button layoutX="214.0" layoutY="173.0" mnemonicParsing="false"
-              onMouseClicked="#btnLoginClicked"
-              prefHeight="24.0" prefWidth="173.0" text="Login" />
+      <Button fx:id="btn_login" layoutX="107.0" layoutY="473.0" mnemonicParsing="false" onAction="#btnLoginClicked" onMouseClicked="#btnLoginClicked" prefHeight="24.0" prefWidth="173.0" text="Login" />
 
 
-      <TextField fx:id="txt_username" layoutX="215.0" layoutY="67.0" />
+      <TextField fx:id="txt_username" layoutX="119.0" layoutY="396.0" promptText="Username" />
 
 
-      <TextField fx:id="txt_password" layoutX="215.0" layoutY="121.0" />
+      <TextField fx:id="txt_password" layoutX="119.0" layoutY="430.0" promptText="Password" />
 
 
-      <Label fx:id="lbl_error" layoutX="212.0" layoutY="235.0" 
-             prefHeight="16.0" prefWidth="170.0" />
-
-  
-      <Button layoutX="14.0" layoutY="12.0"
-              mnemonicParsing="false" onMouseClicked="#back"
-              text="back" />
+      <Label fx:id="lbl_error" layoutX="218.0" layoutY="235.0" prefHeight="16.0" prefWidth="170.0" />
+      <Button fx:id="btn_signup" layoutX="138.0" layoutY="508.0" mnemonicParsing="false" onAction="#switchToSignUp" prefHeight="26.0" prefWidth="110.0" text="Sign up" textAlignment="CENTER" />
     </children>
 
 

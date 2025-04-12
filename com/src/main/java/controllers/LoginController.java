@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,7 +21,9 @@ public class LoginController {
     @FXML
     private Label lbl_error;
     @FXML
-    private Button btnLogin;    
+    private Button btn_login;    
+    @FXML
+    private Button btn_signup;
     @FXML
     private Button back;        
 
@@ -33,12 +37,23 @@ public class LoginController {
         User user = UserList.getInstance().getUser(username, password);
         
         
-        if (isValid) {
+        if (user != null) {
             lbl_error.setText("Login successful!");
+            switchToHome();
             
         } else {
             lbl_error.setText("Invalid credentials. Try again.");
         }
     }
-    App.setRoot("home");
+   
+    @FXML
+    private void switchToSignUp() throws IOException {
+        App.setRoot("signup");
+    }
+
+    @FXML
+    private void switchToHome() throws IOException {
+        App.setRoot("home");
+    }
+    
 }
