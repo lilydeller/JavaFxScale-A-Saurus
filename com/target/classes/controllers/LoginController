@@ -1,0 +1,49 @@
+package controllers;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+
+import model.User;
+import model.UserList;
+import model.MusicAppFacade;
+
+public class LoginController {
+
+    @FXML
+    private TextField txt_username;
+    @FXML
+    private TextField txt_password;
+    @FXML
+    private Label lbl_error;
+    @FXML
+    private Button btnLogin;    
+    @FXML
+    private Button back;        
+
+   
+    @FXML
+    private void btnLoginClicked() {
+
+        String username = txt_username.getText();
+        String password = txt_password.getText();
+
+        boolean isValid = false;
+        
+
+        
+        if (isValid) {
+            lbl_error.setText("Login successful!");
+            
+        } else {
+            lbl_error.setText("Invalid credentials. Try again.");
+        }
+    }
+
+
+    @FXML
+    private void back() {
+    }
+}

@@ -1,4 +1,4 @@
-package scaleasaurus;
+package controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;

@@ -5,7 +5,7 @@ module scaleasaurus {
     requires json.simple;
     requires junit;
 
-    opens scaleasaurus to javafx.fxml;
-    exports scaleasaurus;
+    opens controllers to javafx.fxml;
+    exports controllers;
 
 }
