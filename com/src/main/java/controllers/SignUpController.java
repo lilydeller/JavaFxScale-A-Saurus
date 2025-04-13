@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
 
 
 import model.User;
@@ -26,7 +27,7 @@ public class SignUpController {
 
     @FXML
     private void btnSignUpClicked(ActionEvent event) throws IOException {
-//implement singup user creation 
+
         
     }
     @FXML

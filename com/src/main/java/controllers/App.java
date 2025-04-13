@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.DataLoader;
+import model.User;
+import model.UserList;
 
 import java.io.IOException;
 public class App extends Application {
@@ -13,6 +16,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+         DataLoader.getInstance().loadAll();
+         /*
+          * test for if users are actually loaded correct 
+          */
+        System.out.println("Users loaded:");
+        for (User user : UserList.getInstance().getUsers()) {
+        System.out.println("- " + user.getUserName() + " (" + user.getEmail() + ")");
+    }
         scene = new Scene(loadFXML("login"), 640, 480);
         stage.setScene(scene);
         stage.show();

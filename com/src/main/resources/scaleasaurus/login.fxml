@@ -17,7 +17,7 @@
       </Label>
 
 
-      <Button fx:id="btn_login" layoutX="107.0" layoutY="473.0" mnemonicParsing="false" onAction="#btnLoginClicked" onMouseClicked="#btnLoginClicked" prefHeight="24.0" prefWidth="173.0" text="Login" />
+      <Button fx:id="btn_login" layoutX="107.0" layoutY="473.0" mnemonicParsing="false" onAction="#btnLoginClicked" prefHeight="24.0" prefWidth="173.0" text="Login" />
 
 
       <TextField fx:id="txt_username" layoutX="119.0" layoutY="396.0" promptText="Username" />
