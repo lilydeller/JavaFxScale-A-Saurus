@@ -1,11 +1,14 @@
 package controllers;
 
 import java.io.IOException;
-
+import java.util.ResourceBundle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import javafx.event.ActionEvent;
 
 
@@ -30,22 +33,19 @@ public class LoginController {
 
    
     @FXML
-    private void btnLoginClicked(ActionEvent event) throws IOException {
+private void btnLoginClicked(ActionEvent event) throws IOException {
+    String username = txt_username.getText();
+    String password = txt_password.getText();
 
-        String username = txt_username.getText();
-        String password = txt_password.getText();
-
-        User user = UserList.getInstance().getUser(username, password);
-        
-        
-        if (user != null) {
-            lbl_error.setText("Login successful!");
-            switchToHome();
-            
-        } else {
-            lbl_error.setText("Invalid credentials. Try again.");
-        }
+    User user = UserList.getInstance().getUser(username, password);
+    if (user != null) {
+        App.setRoot("home");
+    } else {
+        lbl_error.setText("invalid login");
     }
+}
+
+
    
     @FXML
     private void switchToSignUp() throws IOException {
