@@ -14,7 +14,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" 
             xmlns="http://javafx.com/javafx/23.0.1" 
             fx:controller="controllers.HomeController" 
-            prefWidth="375.0" prefHeight="812.0" 
+            prefWidth="375.0" prefHeight="667" 
             styleClass="home-root">
 
     <children>
@@ -45,7 +45,7 @@
 
         
         <VBox layoutX="40.0" layoutY="580.0" spacing="10.0">
-            <Button text="Find a Song!" styleClass="blue-button"/>
+            <Button fx:id="btn_findSong" onAction="#handleFindSong" text="Find a Song!" />
             <Button text="Create your own song!" styleClass="blue-button"/>
             <Button text="Continue last song played" styleClass="blue-outline"/>
         </VBox>

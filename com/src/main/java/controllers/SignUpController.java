@@ -31,13 +31,12 @@ public class SignUpController {
         
     }
     @FXML
-    private void switchToLogin() throws IOException {
-        App.setRoot("login");
-    }
-    @FXML 
-    private void switchToHome() throws IOException {
+    private void handleSignUp() throws IOException {
         App.setRoot("home");
     }
-    
 
+    @FXML
+    private void handleBack() throws IOException {
+        App.setRoot("login");
+    }
 }

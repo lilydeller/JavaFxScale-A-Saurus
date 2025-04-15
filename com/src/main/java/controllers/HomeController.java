@@ -32,4 +32,10 @@ public class HomeController implements Initializable {
         System.out.println("Logging out.");
         App.setRoot("login"); 
     }
-}
+
+        @FXML
+        private void handleFindSong(ActionEvent event) throws IOException {
+            App.setRoot("songsearch");
+        }
+        
+    }

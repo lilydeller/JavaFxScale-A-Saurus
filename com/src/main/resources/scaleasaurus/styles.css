@@ -56,7 +56,7 @@ home stuff
 */
 .home-root {
   -fx-background-color: #fef7ee;
-  -fx-background-image: url("../images/homedino.jpeg")
+ 
 }
 
 .home-title {
@@ -125,4 +125,178 @@ home stuff
   -fx-text-fill: white;
   -fx-background-radius: 10;
   -fx-pref-width: 250;
+}
+
+/*
+sign up stuff
+*/ 
+.signup-root {
+  -fx-background-color: #f6eddf;
+
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: bottom right;
+  -fx-background-size: 120px;
+  -fx-font-family: "Helvetica";
+}
+
+.signup-container {
+  -fx-background-color: #e3f78d;
+  -fx-background-radius: 30;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 12, 0, 0, 5);
+  -fx-spacing: 12;
+}
+
+.title {
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-font-style: italic;
+  -fx-text-fill: #215476;
+}
+
+.back-button {
+  -fx-background-color: #4caf50;
+  -fx-text-fill: white;
+  -fx-background-radius: 6;
+}
+
+/*
+song search
+*/ 
+
+.song-search-root {
+  -fx-background-color: #f4e7d3;
+  -fx-font-family: "Helvetica";
+}
+
+.search-bar {
+  -fx-background-color: #f4a261;
+  -fx-padding: 10;
+  -fx-background-radius: 5;
+}
+
+.search-bar TextField {
+  -fx-pref-width: 250;
+  -fx-background-radius: 5;
+  -fx-padding: 5 10;
+  -fx-font-size: 12pt;
+}
+
+.filter-section {
+  -fx-background-color: #cfe69e;
+  -fx-background-radius: 3;
+  -fx-padding: 10;
+}
+
+.filter-header {
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+  -fx-font-style: italic;
+  -fx-text-fill: #215476;
+}
+
+.filter-section Button {
+  -fx-background-color: white;
+  -fx-font-size: 11pt;
+  -fx-pref-width: 70;
+  -fx-background-radius: 8;
+  -fx-border-radius: 8;
+  -fx-cursor: hand;
+}
+
+.button {
+  -fx-background-color: #264c40;
+  -fx-text-fill: white;
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+  -fx-background-radius: 10;
+  -fx-pref-width: 240;
+  -fx-alignment: center;
+}
+.song-search-root {
+  -fx-background-color: #fdf5e6; 
+  -fx-font-family: "Helvetica";
+}
+
+.song-search-root .search-bar {
+  -fx-background-color: white;
+  -fx-background-radius: 8;
+  -fx-padding: 6;
+  -fx-border-color: #ccc;
+  -fx-border-radius: 8;
+}
+
+.song-search-root .search-button {
+  -fx-background-color: #2b5e45;
+  -fx-background-radius: 8;
+  -fx-padding: 4 6;
+  -fx-graphic-text-gap: 4;
+  -fx-font-size: 12px;
+}
+
+.song-search-root .category-label {
+  -fx-font-size: 14px;
+  -fx-font-style: italic;
+  -fx-text-fill: #2c5c80;
+}
+
+.song-search-root .category-button {
+  -fx-background-color: #f9f2e7; 
+  -fx-text-fill: #2e2e2e;
+  -fx-font-weight: bold;
+  -fx-background-radius: 10;
+  -fx-padding: 8 14;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 3, 0.1, 1, 1);
+}
+
+.song-search-root .find-button {
+  -fx-background-color: #2b5e45;
+  -fx-text-fill: white;
+  -fx-font-style: italic;
+  -fx-background-radius: 10;
+  -fx-padding: 8 18;
+}
+
+.song-search-root .back-button {
+  -fx-background-color: #63b859;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-background-radius: 8;
+}
+
+
+
+
+.button {
+  -fx-background-color: #264c40;
+  -fx-text-fill: white;
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+  -fx-background-radius: 10;
+  -fx-pref-width: 240;
+  -fx-alignment: center;
+}
+
+
+.search-box-wrapper {
+  -fx-background-color: #f4a261;
+  -fx-padding: 10;
+  -fx-background-radius: 5;
+}
+
+
+.filter-box-wrapper {
+  -fx-background-color: #cfe69e; 
+  -fx-background-radius: 3;
+  -fx-padding: 10;
+}
+
+
+.category-button {
+  -fx-background-color: #f9f3eb; 
+  -fx-font-size: 11pt;
+  -fx-pref-width: 80;
+  -fx-font-weight: bold;
+  -fx-background-radius: 12;
+  -fx-border-radius: 12;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
 }

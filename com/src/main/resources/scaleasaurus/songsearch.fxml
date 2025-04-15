@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.SongSearchController"
+            prefWidth="375.0" prefHeight="667.0"
+            styleClass="song-search-root">
+
+    <children>
+
+       
+  
+<Button text="Back" fx:id="btn_back" layoutX="15" layoutY="20"
+        onAction="#handleBack" styleClass="back-button" />
+
+
+<VBox layoutX="20" layoutY="70" spacing="5" styleClass="search-box-wrapper">
+    <HBox spacing="8">
+        <TextField fx:id="txt_search" promptText="Search by Song or Artist Name"
+                   styleClass="search-bar" prefWidth="250"/>
+        <Button fx:id="btn_search" styleClass="search-button" text="🔍" prefWidth="40"/>
+    </HBox>
+</VBox>
+
+
+<VBox layoutX="20" layoutY="130" spacing="20" prefWidth="335"
+      styleClass="filter-box-wrapper">
+
+    <Label text="artist" styleClass="category-label"/>
+    <GridPane hgap="10" vgap="10">
+        <children>
+            <Button text="All" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Button text="A–D" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Button text="I–O" styleClass="category-button" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <Button text="P–S" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Button text="T–W" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Button text="Y–Z" styleClass="category-button" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        </children>
+    </GridPane>
+
+    <Label text="genre" styleClass="category-label"/>
+    <GridPane hgap="10" vgap="10">
+        <children>
+            <Button text="All" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Button text="Pop" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Button text="Rock" styleClass="category-button" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <Button text="Classical" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Button text="Jazz" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        </children>
+    </GridPane>
+
+    <Label text="difficulty" styleClass="category-label"/>
+    <GridPane hgap="10" vgap="10">
+        <children>
+            <Button text="All" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Button text="1–4" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Button text="5–10" styleClass="category-button" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        </children>
+    </GridPane>
+
+</VBox>
+
+
+<Button layoutX="90" layoutY="560" text="Find song matches"
+        fx:id="btn_find" styleClass="find-button" />
+
+
+    </children>
+
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</AnchorPane>
