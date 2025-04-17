@@ -10,7 +10,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
 import model.*;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -56,43 +55,49 @@ public class CreateSongController {
     }
 
     @FXML
-    private void addMeasure() {
-        if (!currentChord.isEmpty()) {
-           // Measure measure = new Measure(measureNumber++, Chord.fromString(currentChord));
-           // measures.add(measure);
-            songElements.add("— New Measure —");
-            currentChord.clear();
-        } else {
-            songElements.add("⚠️ Measure skipped: no notes");
-        }
+private void addMeasure() {
+    if (!currentChord.isEmpty()) {
+
+        Chord chord = Chord.fromLabels(currentChord);
+
+     
+        ArrayList<Chord> chords = new ArrayList<>();
+        chords.add(chord);
+        Measure measure = new Measure(measureNumber++, chords);
+
+
+        measures.add(measure);
+        songElements.add("— New Measure —");
+
+      
+        currentChord.clear();
+    } else {
+        songElements.add("Measure skipped: no notes");
+    }
+}
+
+
+   @FXML
+private void saveSong() {
+    String name = songNameField.getText().trim();
+    if (name.isEmpty() || measures.isEmpty()) {
+        System.out.println("Please enter a song name and at least one measure.");
+        return;
     }
 
-    @FXML
-    private void saveSong() {
-        String name = songNameField.getText().trim();
-        if (name.isEmpty() || measures.isEmpty()) {
-            System.out.println("⚠️ Please enter a song name and at least one measure.");
-            return;
-        }
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+    String artist = (currentUser != null) ? currentUser.getUserName() : "Unknown";
 
-        Song newSong = new Song(
-                UUID.randomUUID().toString(),
-                name,
-                1,                      // default difficulty
-                "1:00",                 // default length
-                "Custom",               // default genre
-                measures,
-                "",                     // default sheet music
-                "",                     // default tabs
-                false,                  // default metronome
-                "Unknown"               // default artist
-        );
-
-        SongList.getInstance().addSong(newSong);
-        SongList.getInstance().saveSongs();
-
-        System.out.println("Song saved: " + newSong.getSongName());
-    }
+    MusicAppFacade.getInstance().createAndSaveSong(
+        name,
+        artist,
+        1,          // Default difficulty
+        "1:00",     // Default length
+        "Custom",   // Default genre
+        measures
+    );
+}
+    
 
     @FXML
     private void goToPiano() throws IOException {

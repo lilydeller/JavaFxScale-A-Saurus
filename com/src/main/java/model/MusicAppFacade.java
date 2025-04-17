@@ -1,8 +1,12 @@
 package model;
 
 import java.util.ArrayList;
-/*
- * operates the frontend actions a use can do 
+import java.util.UUID;
+
+
+/**
+ * MusicAppFacade manages frontend-facing operations like login,
+ * song creation, and interaction with the UserList and SongList.
  */
 public class MusicAppFacade {
     private static MusicAppFacade instance;
@@ -11,9 +15,7 @@ public class MusicAppFacade {
     private User currentUser;
     private Song currentSong;
 
-    /*
-     * construct singleton instance of facade 
-     */
+   
     private MusicAppFacade() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
@@ -21,10 +23,6 @@ public class MusicAppFacade {
         currentSong = null;
     }
 
-    /*
-     * getter method for facade instance 
-     * @return instance of facade 
-     */
     public static MusicAppFacade getInstance() {
         if (instance == null) {
             instance = new MusicAppFacade();
@@ -32,116 +30,101 @@ public class MusicAppFacade {
         return instance;
     }
 
-    /*
-     * logs in the user 
-     * @param username 
-     * @param password
-     * @return the current logged in user 
-     */
+    // Login logic
     public User login(String username, String password) {
-        UserList userlist = UserList.getInstance();
         currentUser = userList.getUser(username, password);
         return currentUser;
-        
     }
-    
-    /*
-     * creates new account for user to log into 
-     * @param username
-     * @param email
-     * @param password
-     * @return the new user, if already exists return null
-     */
+
+    // Signup logic
     public User signup(String username, String email, String password) {
-        if (userList.getUserByUsername(username) == null) { //make sure user doesnt alread exist;
-            currentUser = new User(username, "", "", password, ""); //call random UUID constructor 
+        if (userList.getUserByUsername(username) == null) {
+            currentUser = new User(username, "", "", password, email);
             userList.addUser(currentUser);
             return currentUser;
         }
-        return null; //user already exists
+        return null;
     }
 
-    /*
-     * update users info 
-     * @param firstName
-     * @param lastName
-     * @return currentUser , if user does not exist return null
-     */
+    // Set user info after signup
     public User addUserInfo(String firstName, String lastName) {
-        if (currentUser != null) { //make sure current user is already assigned 
+        if (currentUser != null) {
             currentUser.setFirstName(firstName);
             currentUser.setLastName(lastName);
             return currentUser;
         }
-        return null; //no current user exists 
+        return null;
     }
 
-    /*
-     * opens a song
-     * @param songName 
-     * @RETURN currentSong
-     */
+    // Accessors
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public Song getCurrentSong() {
+        return currentSong;
+    }
+
+    // Open a song by name
     public Song openSong(String songName) {
         currentSong = songList.getSong(songName);
         return currentSong;
     }
 
-    /*
-     * adds a measure 
-     */
+    // Add a new measure to current song
     public void addMeasure() {
         if (currentSong != null) {
-            int newMeasureNumber = currentSong.getMeasures().size() + 1; //number of measures until append new measure
+            int newMeasureNumber = currentSong.getMeasures().size() + 1;
             Measure newMeasure = new Measure(newMeasureNumber, new ArrayList<>());
-
-            currentSong.addMeasure(newMeasure); //append measure to song 
-            System.out.println("Added measure " + newMeasureNumber + " to song: " + currentSong.getSongName());
-        }
-        else {
-            System.out.println("no song is currently open");
+            currentSong.addMeasure(newMeasure);
+            System.out.println("Added measure " + newMeasureNumber + " to " + currentSong.getSongName());
+        } else {
+            System.out.println("No song is currently open");
         }
     }
 
-    /*
-     * plays a song 
-     */
+    // Play the current song
     public void playSong() {
         if (currentSong != null) {
             MusicProgram.playSong(currentSong.getSongName());
-        }
-        else {
-            System.out.println("no song is currently selected");
+        } else {
+            System.out.println("No song is selected.");
         }
     }
 
+    public void createAndSaveSong(String name, String artist, int difficulty, String length, String genre, ArrayList<Measure> measures) {
+        if (name == null || measures == null || measures.isEmpty()) {
+            System.out.println("Song must have a name and at least one measure.");
+            return;
+        }
     
-
-    /*
-     * logs out current user 
-     */
-    public void logout() {
-        if (currentUser != null) {
-            saveAll();
-            System.out.println("logging out: " + currentUser.getUserName());
-
-            currentUser = null;
-            currentSong = null;
-
-
-        }
-        else {
-            System.out.println("No one is logged in");
-        }
+        String songId = UUID.randomUUID().toString();
+        Song newSong = new Song(songId, name, difficulty, length, genre, measures, "", "", false, artist);
+    
+        songList.addSong(newSong);
+        songList.saveSongs();
+        currentSong = newSong;
+    
+        System.out.println("🎵 Song '" + name + "' by " + artist + " created and saved.");
     }
+    
+   
 
-    /*
-     * saves users and songs to json 
-     */
+    // Save everything
     public void saveAll() {
-        UserList userList = UserList.getInstance();
-        SongList songList = SongList.getInstance();
         userList.saveUsers();
         songList.saveSongs();
     }
 
+    // Logout current user
+    public void logout() {
+        if (currentUser != null) {
+            saveAll();
+            System.out.println("Logging out: " + currentUser.getUserName());
+            currentUser = null;
+            currentSong = null;
+        } else {
+            System.out.println("No user is currently logged in.");
+        }
+    }
 }

@@ -102,4 +102,19 @@ public class Chord {
         }
         return "Unknown";  
     }
+
+    public static Chord fromLabels(ArrayList<String> labels) {
+        ArrayList<Pitch> notes = new ArrayList<>();
+        for (String label : labels) {
+            for (Pitch pitch : Pitch.values()) {
+                String formatted = pitch.name().replace("_SHARP", "♯").replace("FLAT", "♭").replace("_", "");
+                if (formatted.equals(label)) {
+                    notes.add(pitch);
+                    break;
+                }
+            }
+        }
+        return new Chord(notes);
+    }
+    
 }
