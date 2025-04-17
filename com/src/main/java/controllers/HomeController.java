@@ -2,6 +2,11 @@ package controllers;
 import controllers.App;
 import java.io.IOException;
 import java.util.ResourceBundle;
+import javafx.scene.control.Label;
+import model.MusicAppFacade;
+import model.User;
+import music.Music;
+
 import java.net.URL;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,10 +20,19 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_logout;
+    @FXML
+    private Label lbl_username;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    // to do 
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+
+    if (currentUser != null) {
+        lbl_username.setText("Welcome, " + currentUser.getUserName() + "!");
+    }
+    else {
+        lbl_username.setText("Welcome!");
+    }
 }
 
     @FXML
