@@ -1,7 +1,6 @@
 .root {
   -fx-background-color: #fdf5ec; 
   -fx-font-family: "Helvetica";
-  -fx-background-image: url("../images/dino.jpeg");
   -fx-background-repeat: no-repeat;
   -fx-background-size: contain; 
   -fx-background-position: center bottom;

@@ -35,6 +35,7 @@
 
         <!-- ListView to show added notes/measures -->
         <ListView fx:id="noteListView" layoutX="20.0" layoutY="310.0" prefHeight="250.0" prefWidth="360.0"/>
+        <Button layoutX="20.0" layoutY="580.0" text="Save Song" onAction="#saveSong" prefWidth="360.0" />
         <Button fx:id="btnToPiano" text="Go to Piano" onAction="#goToPiano" />
 
 
