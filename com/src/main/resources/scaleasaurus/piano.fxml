@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.PianoController"
+            prefWidth="375" prefHeight="667"
+            styleClass="piano-root">
+
+    <HBox spacing="0">
+
+
+        <VBox fx:id="sheetMusicPane" prefWidth="150" styleClass="sheet-music-bg">
+            
+        </VBox>
+
+   
+        <VBox fx:id="pianoKeysPane" prefWidth="225" spacing="2" alignment="CENTER">
+            <children>
+                <Button fx:id="keyC" styleClass="piano-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyD" styleClass="piano-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyE" styleClass="piano-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyF" styleClass="piano-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyG" styleClass="piano-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyA" styleClass="piano-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyB" styleClass="piano-key" onAction="#handleKeyPress"/>
+            </children>
+        </VBox>
+
+    </HBox>
+
+
+    <Button fx:id="btnBack" layoutX="140" layoutY="620" text="Back" onAction="#handleBack" styleClass="back-button"/>
+
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+
+</AnchorPane>

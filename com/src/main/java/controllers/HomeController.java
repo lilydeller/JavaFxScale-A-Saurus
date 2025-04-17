@@ -1,5 +1,5 @@
 package controllers;
-
+import controllers.App;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import java.net.URL;
@@ -37,5 +37,11 @@ public class HomeController implements Initializable {
         private void handleFindSong(ActionEvent event) throws IOException {
             App.setRoot("songsearch");
         }
+
+        @FXML
+        private void handleCreateSong() throws IOException {
+        App.setRoot("createsong");  
+}
+
         
     }

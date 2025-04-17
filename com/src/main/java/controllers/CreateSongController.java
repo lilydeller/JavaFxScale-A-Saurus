@@ -1,5 +1,5 @@
 package controllers;
-
+import controllers.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +8,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
 import model.Pitch;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+
 
 public class CreateSongController {
 
@@ -59,6 +62,12 @@ public class CreateSongController {
     // You could add a method to get the song name, if needed
     public String getSongName() {
         return songNameField.getText();
+
+        @FXML
+        private void goToPiano() throws IOException {
+            App.setRoot("piano"); 
+        }
+        
     }
 }
 
