@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,7 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
-import model.Pitch;
+import model.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class CreateSongController {
 
@@ -18,51 +23,84 @@ public class CreateSongController {
     private FlowPane noteButtonPane;
 
     @FXML
-    private TextField songNameField;  // TextField for entering the song name
+    private TextField songNameField;
 
     private ObservableList<String> songElements;
 
+    private ArrayList<Measure> measures = new ArrayList<>();
+    private ArrayList<String> currentChord = new ArrayList<>();
+    private int measureNumber = 1;
+
     @FXML
     public void initialize() {
-        // Initialize ObservableList for song elements
         songElements = FXCollections.observableArrayList();
         noteListView.setItems(songElements);
-
-        // Ensure the FlowPane is initialized and buttons are added
         createNoteButtons();
     }
 
-    // Method to create note buttons and add them to the FlowPane
     private void createNoteButtons() {
         for (Pitch pitch : Pitch.values()) {
             String label = pitch.name().replace("_SHARP", "♯").replace("FLAT", "♭").replace("_", "");
             Button noteButton = new Button(label);
-            noteButton.setMinWidth(80);  // Set a fixed width for buttons
-            // Set action on button click to add the corresponding note
+            noteButton.setMinWidth(80);
             noteButton.setOnAction(e -> addNote(pitch));
-            noteButtonPane.getChildren().add(noteButton);  // Add button to FlowPane
+            noteButtonPane.getChildren().add(noteButton);
         }
     }
 
-    // Method to add a note to the song
     private void addNote(Pitch pitch) {
         String label = pitch.name().replace("_SHARP", "♯").replace("FLAT", "♭").replace("_", "");
-        songElements.add("Note: " + label);  // Add note to the song
+        songElements.add("Note: " + label);
+        currentChord.add(label);
     }
 
-    // Method to add a new measure
     @FXML
-    private void addMeasure() {
-        songElements.add("— New Measure —");  // Add a placeholder for a new measure
-    }
+private void addMeasure() {
+    if (!currentChord.isEmpty()) {
 
-    // You could add a method to get the song name, if needed
-    public String getSongName() {
-        return songNameField.getText();
+        Chord chord = Chord.fromLabels(currentChord);
+
+     
+        ArrayList<Chord> chords = new ArrayList<>();
+        chords.add(chord);
+        Measure measure = new Measure(measureNumber++, chords);
+
+
+        measures.add(measure);
+        songElements.add("— New Measure —");
+
+      
+        currentChord.clear();
+    } else {
+        songElements.add("Measure skipped: no notes");
     }
 }
 
 
+   @FXML
+private void saveSong() {
+    String name = songNameField.getText().trim();
+    if (name.isEmpty() || measures.isEmpty()) {
+        System.out.println("Please enter a song name and at least one measure.");
+        return;
+    }
 
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+    String artist = (currentUser != null) ? currentUser.getUserName() : "Unknown";
 
+    MusicAppFacade.getInstance().createAndSaveSong(
+        name,
+        artist,
+        1,          // Default difficulty
+        "1:00",     // Default length
+        "Custom",   // Default genre
+        measures
+    );
+}
+    
 
+    @FXML
+    private void goToPiano() throws IOException {
+        App.setRoot("piano");
+    }
+}

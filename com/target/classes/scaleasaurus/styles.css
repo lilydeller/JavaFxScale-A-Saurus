@@ -1,7 +1,6 @@
 .root {
   -fx-background-color: #fdf5ec; 
   -fx-font-family: "Helvetica";
-  -fx-background-image: url("../images/dino.jpeg");
   -fx-background-repeat: no-repeat;
   -fx-background-size: contain; 
   -fx-background-position: center bottom;
@@ -300,3 +299,33 @@ song search
   -fx-border-radius: 12;
   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
 }
+
+/*
+piano
+*/ 
+.piano-root {
+  -fx-background-color: #f6eddf;
+}
+
+.piano-key {
+  -fx-pref-height: 40;
+  -fx-pref-width: 200;
+  -fx-background-color: black;
+  -fx-border-color: #ddd;
+  -fx-background-radius: 4;
+}
+
+.piano-key.highlighted {
+  -fx-background-color: #00c853; 
+}
+
+.sheet-music-bg {
+  -fx-background-color: #f6eddf;
+}
+
+.back-button {
+  -fx-background-color: #4caf50;
+  -fx-text-fill: white;
+  -fx-background-radius: 6;
+}
+

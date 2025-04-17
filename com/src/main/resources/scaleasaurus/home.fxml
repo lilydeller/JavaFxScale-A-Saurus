@@ -46,7 +46,12 @@
         
         <VBox layoutX="40.0" layoutY="580.0" spacing="10.0">
             <Button fx:id="btn_findSong" onAction="#handleFindSong" text="Find a Song!" />
-            <Button text="Create your own song!" styleClass="blue-button"/>
+            <Button fx:id="btn_create_song"
+            layoutX="90" layoutY="300"
+            text="Create a Song!"
+            onAction="#handleCreateSong"
+            styleClass="button" />
+
             <Button text="Continue last song played" styleClass="blue-outline"/>
         </VBox>
 
