@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            fx:controller="controller.FlashcardController" 
+            prefWidth="375.0" prefHeight="667.0" 
+            styleClass="home-root">
+
+    <children>
+       
+        <Rectangle fx:id="frontRectangle" width="300" height="200" fill="lightblue" stroke="black" layoutX="37.5" layoutY="180">
+            <StackPane>
+                <Label fx:id="frontLabel" text="Question" style="-fx-font-size: 24px;" />
+            </StackPane>
+        </Rectangle>
+
+        
+        <Rectangle fx:id="backRectangle" width="300" height="200" fill="lightcoral" stroke="black" layoutX="37.5" layoutY="180" visible="false">
+            <StackPane>
+                <Label fx:id="backLabel" text="Answer" style="-fx-font-size: 24px;" />
+            </StackPane>
+        </Rectangle>
+
+       
+        <Button text="Flip Card" layoutX="137.5" layoutY="420" onAction="#handleClick" styleClass="green-pill"/>
+
+    </children>
+
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</AnchorPane>
