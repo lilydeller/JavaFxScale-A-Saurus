@@ -307,17 +307,44 @@ piano
   -fx-background-color: #f6eddf;
 }
 
-.piano-key {
-  -fx-pref-height: 40;
-  -fx-pref-width: 200;
-  -fx-background-color: black;
-  -fx-border-color: #ddd;
-  -fx-background-radius: 4;
+.white-key {
+  -fx-pref-width: 50px;
+  -fx-pref-height: 250px;
+  -fx-background-color: white;
+  -fx-border-color: black;
+  -fx-border-width: 1px;
 }
 
-.piano-key.highlighted {
-  -fx-background-color: #00c853; 
+.black-key {
+  -fx-pref-width: 30px;
+  -fx-pref-height: 150px;
+  -fx-background-color: black;
+  -fx-text-fill: white;
+  -fx-border-color: black;
+  -fx-border-width: 1px;
+  -fx-translate-y: 0;
+  -fx-z-index: 1;
 }
+
+.white-key-container {
+  -fx-background-color: transparent;
+  -fx-padding: 20;
+}
+
+.highlighted {
+  -fx-background-color: limegreen;
+}
+
+.back-button {
+  -fx-background-color: #4CAF50;
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-pref-width: 100px;
+  -fx-pref-height: 30px;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+}
+
 
 .sheet-music-bg {
   -fx-background-color: #f6eddf;

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
+
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
@@ -18,27 +21,46 @@
             prefWidth="375" prefHeight="667"
             styleClass="piano-root">
 
-    <HBox spacing="0">
+    <StackPane layoutX="0" layoutY="0">
 
-
-        <VBox fx:id="sheetMusicPane" prefWidth="150" styleClass="sheet-music-bg">
-            
-        </VBox>
-
-   
-        <VBox fx:id="pianoKeysPane" prefWidth="225" spacing="2" alignment="CENTER">
+        <HBox fx:id="whiteKeysPane" spacing="1" styleClass="white-key-container">
             <children>
-                <Button fx:id="keyC" styleClass="piano-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyD" styleClass="piano-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyE" styleClass="piano-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyF" styleClass="piano-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyG" styleClass="piano-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyA" styleClass="piano-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyB" styleClass="piano-key" onAction="#handleKeyPress"/>
+               
+                <Button fx:id="keyC4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyD4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyE4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyF4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyG4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyA4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyB4"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyC5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyD5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyE5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyF5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyG5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyA5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyB5"   onAction="#handleKeyPress" styleClass="white-key"/>
             </children>
-        </VBox>
+        </HBox>
 
-    </HBox>
+
+        <Pane fx:id="blackKeysPane" mouseTransparent="false">
+            <children>
+
+                <Button fx:id="keyCSharp4" layoutX="40"  layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyDSharp4" layoutX="90"  layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyFSharp4" layoutX="190" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyGSharp4" layoutX="240" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyASharp4" layoutX="290" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+
+                <Button fx:id="keyCSharp5" layoutX="390" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyDSharp5" layoutX="440" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyFSharp5" layoutX="540" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyGSharp5" layoutX="590" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+                <Button fx:id="keyASharp5" layoutX="640" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
+            </children>
+        </Pane>
+    </StackPane>
 
 
     <Button fx:id="btnBack" layoutX="140" layoutY="620" text="Back" onAction="#handleBack" styleClass="back-button"/>
@@ -46,5 +68,4 @@
     <stylesheets>
         <URL value="@styles.css"/>
     </stylesheets>
-
 </AnchorPane>

@@ -57,5 +57,11 @@ public class HomeController implements Initializable {
         App.setRoot("createsong");  
 }
 
+@FXML
+private void handleViewAllQuizzes() throws Exception {
+    App.setRoot("quizfolder"); 
+}
+
+
         
     }
