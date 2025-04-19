@@ -1,35 +1,184 @@
 {
-    "flashcards": [
-      {
-        "flashcardID": "550e8400-e29b-41d4-a716-446655440000",
-        "question": "How many keys are on a standard piano?",
-        "answer": "88"
-      },
-      {
-        "flashcardID": "c0a80112-4b6c-4fc2-9d9e-2f7a7c35e3d1",
-        "question": "What is the interval between C and G called?",
-        "answer": "Perfect fifth"
-      },
-      {
-        "flashcardID": "3f4a7a7b-732b-4e8a-84c9-06e1e2b3a76f",
-        "question": "Which composer is famous for 'Moonlight Sonata'?",
-        "answer": "Ludwig van Beethoven"
-      },
-      {
-        "flashcardID": "7a5d5a32-9a0d-4f3c-bf7e-8c3d90f2a111",
-        "question": "What are the white keys on a piano called?",
-        "answer": "Natural notes"
-      },
-      {
-        "flashcardID": "9e8baf3c-2b4a-42e9-b8f3-981fe23cd999",
-        "question": "What is the Italian term for 'slow' in music?",
-        "answer": "Adagio"
-      },
-      {
-        "flashcardID": "b7e5dc9d-27f3-4a16-92c9-7d3f5fa9babc",
-        "question": "What does the sustain pedal on a piano do?",
-        "answer": "It allows notes to continue sounding after the key is released"
-      }
-    ]
-  }
-  
+  "flashcards": [
+    {
+      "flashcardID": "48105cc5-1fdb-43d0-be70-1a6fb8aa407f",
+      "question": "What is middle C on a piano?",
+      "answer": "The C near the center of the keyboard (C4)",
+      "chapter": "chapter1"
+    },
+    {
+      "flashcardID": "8e9116cb-1a2b-40ec-81fb-83bfb10f6952",
+      "question": "How many white keys are on a standard piano?",
+      "answer": "52",
+      "chapter": "chapter1"
+    },
+    {
+      "flashcardID": "cac5b151-27ec-4c3e-9eb3-a5ebf30bf2fa",
+      "question": "What letter comes after G in piano notes?",
+      "answer": "A",
+      "chapter": "chapter1"
+    },
+    {
+      "flashcardID": "027ace31-2d68-41a8-bb9a-96cc82e522ab",
+      "question": "What are black keys called when going up?",
+      "answer": "Sharps",
+      "chapter": "chapter1"
+    },
+    {
+      "flashcardID": "2c9c3d8e-52b2-44f6-8113-7e45a2c7648d",
+      "question": "What do you call the distance between two notes?",
+      "answer": "Interval",
+      "chapter": "chapter1"
+    },
+    {
+      "flashcardID": "200d2ad1-5454-49f2-b869-6f322be004ef",
+      "question": "What notes form a C major chord?",
+      "answer": "C, E, G",
+      "chapter": "chapter2"
+    },
+    {
+      "flashcardID": "0088da70-1616-41bc-9f04-a8b9fb7839ba",
+      "question": "What is a triad?",
+      "answer": "A chord with three notes",
+      "chapter": "chapter2"
+    },
+    {
+      "flashcardID": "3b93c95e-f79a-466e-8e82-a1c9d9eb7dc8",
+      "question": "What is the root note of an F major chord?",
+      "answer": "F",
+      "chapter": "chapter2"
+    },
+    {
+      "flashcardID": "1afeedf2-12e3-455a-869b-5c56c1b37c0c",
+      "question": "What does a minor chord sound like compared to a major?",
+      "answer": "Sadder or darker",
+      "chapter": "chapter2"
+    },
+    {
+      "flashcardID": "3e0fbf11-9891-48c8-b975-d93a9c817c76",
+      "question": "What is a seventh chord?",
+      "answer": "A chord with four notes, including a seventh interval",
+      "chapter": "chapter2"
+    },
+    {
+      "flashcardID": "7562e46c-ba6c-4d4d-9532-63ffcb20ea02",
+      "question": "What is a time signature?",
+      "answer": "A symbol that tells how many beats per measure",
+      "chapter": "chapter3"
+    },
+    {
+      "flashcardID": "e4be1ede-05ce-474c-b609-8e670cb63f02",
+      "question": "What note value gets one beat in 4/4 time?",
+      "answer": "Quarter note",
+      "chapter": "chapter3"
+    },
+    {
+      "flashcardID": "9867da51-c294-4550-8a6f-c5d7a3a1c1c0",
+      "question": "How many eighth notes fit in one measure of 4/4?",
+      "answer": "8",
+      "chapter": "chapter3"
+    },
+    {
+      "flashcardID": "daf2edfb-59e9-4685-84b9-cae65c16f593",
+      "question": "What\u2019s the tempo term for \u201cwalking pace\u201d?",
+      "answer": "Andante",
+      "chapter": "chapter3"
+    },
+    {
+      "flashcardID": "73c6694b-e355-41a1-971f-9a3d3f101496",
+      "question": "What\u2019s a metronome used for?",
+      "answer": "Keeping a consistent tempo",
+      "chapter": "chapter3"
+    },
+    {
+      "flashcardID": "efcac058-4c61-4dd3-a5cf-a152dd1e8594",
+      "question": "What clef do pianists read for right hand?",
+      "answer": "Treble clef",
+      "chapter": "chapter4"
+    },
+    {
+      "flashcardID": "e8d12be9-9485-4572-9a72-a64ab6f746cf",
+      "question": "What clef is used for the left hand?",
+      "answer": "Bass clef",
+      "chapter": "chapter4"
+    },
+    {
+      "flashcardID": "9d3a1899-c3b3-487c-b8fe-ae7a96a10b1a",
+      "question": "What are the lines on the treble staff (EGBDF) known as?",
+      "answer": "Every Good Boy Deserves Fudge",
+      "chapter": "chapter4"
+    },
+    {
+      "flashcardID": "fd4a493d-1df9-4a39-b8bc-d969a89856b5",
+      "question": "What symbol raises a note by a half step?",
+      "answer": "Sharp (\u266f)",
+      "chapter": "chapter4"
+    },
+    {
+      "flashcardID": "b1aa649a-6325-47f2-b2ce-99f1731b53a7",
+      "question": "What symbol lowers a note by a half step?",
+      "answer": "Flat (\u266d)",
+      "chapter": "chapter4"
+    },
+    {
+      "flashcardID": "d1995fa8-821b-47fa-bb88-37dd535847fe",
+      "question": "What does forte mean?",
+      "answer": "Loud",
+      "chapter": "chapter5"
+    },
+    {
+      "flashcardID": "020d10fd-d2e0-4e72-b292-494508ab6083",
+      "question": "What does piano (p) mean?",
+      "answer": "Soft",
+      "chapter": "chapter5"
+    },
+    {
+      "flashcardID": "46da54dd-8ab0-4a67-b885-894a39fc7bf7",
+      "question": "What does crescendo mean?",
+      "answer": "Gradually get louder",
+      "chapter": "chapter5"
+    },
+    {
+      "flashcardID": "1298c27e-cb6f-4141-8a74-a13210511489",
+      "question": "What does staccato mean?",
+      "answer": "Short and detached",
+      "chapter": "chapter5"
+    },
+    {
+      "flashcardID": "2522d16b-5989-4411-8337-b00e9a63f3a0",
+      "question": "What does legato mean?",
+      "answer": "Smooth and connected",
+      "chapter": "chapter5"
+    },
+    {
+      "flashcardID": "9147d68f-781d-4b60-9267-6bdc56fffb4a",
+      "question": "Who composed \u201cClair de Lune\u201d?",
+      "answer": "Claude Debussy",
+      "chapter": "chapter6"
+    },
+    {
+      "flashcardID": "87ed0107-4729-4830-ba8a-b87becc3abad",
+      "question": "Who is a famous blind jazz pianist?",
+      "answer": "Ray Charles",
+      "chapter": "chapter6"
+    },
+    {
+      "flashcardID": "3cb6d044-2a7e-4a98-a35a-814e0ada786d",
+      "question": "What child prodigy composed music at age 5?",
+      "answer": "Wolfgang Amadeus Mozart",
+      "chapter": "chapter6"
+    },
+    {
+      "flashcardID": "7948dcf7-f0fc-4c84-af2e-64326490fdba",
+      "question": "What pianist is known for \u201cRhapsody in Blue\u201d?",
+      "answer": "George Gershwin",
+      "chapter": "chapter6"
+    },
+    {
+      "flashcardID": "4ddf2489-87b2-4bce-ae9a-cd714a0aebe1",
+      "question": "Who composed \u201cPrelude in C-sharp minor\u201d?",
+      "answer": "Sergei Rachmaninoff",
+      "chapter": "chapter6"
+    }
+  ]
+}

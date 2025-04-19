@@ -4,17 +4,18 @@ public class Flashcard {
     private String question;
     private String answer;
     private UUID flashcardID;
+    private String chapter; 
 
 
     /*
      * flashcard object
      */
-    public Flashcard(String question, String answer) {
-        this.flashcardID = UUID.randomUUID();
+    public Flashcard(UUID flashcardID, String question, String answer, String chapter) {
+        this.flashcardID = flashcardID;
         this.question = question;
         this.answer = answer;
+        this.chapter = chapter;
     }
-
     /*
      * getter method 
      * @return question 
@@ -41,6 +42,10 @@ public class Flashcard {
         return answer;
     }
 
+    public String getChapter() {
+        return chapter;
+    }
+
 
     /*
      * setter method 
@@ -59,6 +64,9 @@ public class Flashcard {
         this.answer = answer;
     }
 
+    public void setChapter(String chapter) {
+        this.chapter = chapter;
+    }
 
     /*checks if flashcard answer is correct
      * @param flashcardID

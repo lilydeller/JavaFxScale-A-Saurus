@@ -47,21 +47,33 @@ public class HomeController implements Initializable {
         App.setRoot("login"); 
     }
 
-        @FXML
-        private void handleFindSong(ActionEvent event) throws IOException {
-            App.setRoot("songsearch");
-        }
-
-        @FXML
-        private void handleCreateSong() throws IOException {
-        App.setRoot("createsong");  
+    @FXML
+    private void handleChooseReward() {
+        System.out.println("Choose reward clicked!");
+        /*
+         * TODO reward screen
+         */
+    }
+    
+    @FXML
+    private void handleFindSong() throws IOException {
+        App.setRoot("songsearch");
+    }
+    
+    @FXML
+    private void handleCreateSong() throws IOException {
+        App.setRoot("createsong");
+    }
+    
+    @FXML
+    private void handleContinueLastSong() throws IOException {
+        App.setRoot("piano"); 
+    }
+    
+    @FXML
+private void handleViewAllLessons() throws IOException {
+    App.setRoot("lessonfolder");
 }
-
-@FXML
-private void handleViewAllQuizzes() throws Exception {
-    App.setRoot("quizfolder"); 
-}
-
 
         
-    }
+}

@@ -28,6 +28,9 @@
        
         <Button text="Flip Card" layoutX="137.5" layoutY="420" onAction="#handleClick" styleClass="green-pill"/>
 
+        <Button text="Complete Lesson" layoutX="120" layoutY="470" onAction="#handleCompleteLesson" styleClass="green-pill"/>
+
+
     </children>
 
     <stylesheets>

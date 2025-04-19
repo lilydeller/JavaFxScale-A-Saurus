@@ -2,7 +2,7 @@ package controllers;
 import javafx.fxml.FXML;
 import controllers.App;
 
-public class QuizFolderController {
+public class LessonFolderController {
     
     @FXML private void handleChapter1() throws Exception {
         App.setRoot("flashcards_ch1");

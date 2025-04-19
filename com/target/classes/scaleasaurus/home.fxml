@@ -13,42 +13,49 @@
 
     <children>
 
-        
-        <Label fx:id="lbl_username" layoutX="25.0" layoutY="30.0" styleClass="home-title" text="Welcome username " />
 
-     
-        <ProgressBar layoutX="45.0" layoutY="79.0" prefWidth="280.0" progress="0.75" styleClass="points-bar" />
-        <Label layoutX="130.0" layoutY="82.0" styleClass="points-label" text="150 Dino Points ⭐" />
-        <Button layoutX="62.0" layoutY="109.0" styleClass="green-pill" text="choose reward" />
+    <Label fx:id="lbl_username" layoutX="25.0" layoutY="30.0" styleClass="home-title" text="Welcome username" />
 
-      
-        <VBox layoutX="53.0" layoutY="161.0" prefHeight="346.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">
-            <Label styleClass="lesson-title" text="Continue A Lesson!">
-            <font>
-               <Font size="46.0" />
-            </font></Label>
-            <HBox spacing="10.0">
-                <Label styleClass="progress-badge" text="75%" />
-                <Label text="Chapter 1: The Basics" />
-            </HBox>
-            <HBox spacing="10.0">
-                <Label styleClass="progress-badge" text="20%" />
-                <Label text="Chapter 2: Chords" />
-            </HBox>
-            <Button styleClass="quiz-button" text="View all quizzes" />
-            <Button fx:id="btn_findSong" onAction="#handleFindSong" text="Find a Song!" />
-            <Button fx:id="btn_create_song" onAction="#handleCreateSong" styleClass="button" text="Create a Song!" />
 
-            <Button styleClass="blue-outline" text="Continue last song played" />
-        </VBox>
+    <ProgressBar fx:id="dinoPointsBar" layoutX="45.0" layoutY="79.0" prefWidth="280.0" styleClass="points-bar" />
+    <Label fx:id="dinoPointsLabel" layoutX="130.0" layoutY="82.0" styleClass="points-label" text="150 Dino Points ⭐" />
 
-    
+ 
+    <Button fx:id="btn_chooseReward" layoutX="62.0" layoutY="109.0" styleClass="green-pill" text="choose reward"
+            onAction="#handleChooseReward" />
 
-        
-        <VBox layoutX="40.0" layoutY="580.0" spacing="10.0" />
 
-    </children>
+    <VBox layoutX="53.0" layoutY="161.0" prefHeight="346.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">
 
+        <Label styleClass="lesson-title" text="Continue A Lesson!">
+            <font><Font size="46.0" /></font>
+        </Label>
+
+        <HBox spacing="10.0">
+            <Label styleClass="progress-badge" text="75%" />
+            <Label text="Chapter 1: The Basics" />
+        </HBox>
+
+        <HBox spacing="10.0">
+            <Label styleClass="progress-badge" text="20%" />
+            <Label text="Chapter 2: Chords" />
+        </HBox>
+
+        <Button fx:id="btn_viewLessons" styleClass="lesson-button" text="View all lessons" onAction="#handleViewAllLessons" />
+
+        <Button fx:id="btn_findSong" text="Find a Song!" onAction="#handleFindSong" />
+
+        <Button fx:id="btn_createSong" styleClass="button" text="Create a Song!" onAction="#handleCreateSong" />
+
+        <Button fx:id="btn_continueLast" styleClass="blue-outline" text="Continue last song played"
+                onAction="#handleContinueLastSong" />
+
+    </VBox>
+
+  
+    <VBox layoutX="40.0" layoutY="580.0" spacing="10.0" />
+
+</children>
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>

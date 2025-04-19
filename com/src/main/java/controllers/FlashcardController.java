@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
@@ -8,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.Flashcard;
 import model.FlashcardList;
+import model.MusicAppFacade;
+import model.User;
 
 public class FlashcardController {
 
@@ -16,6 +21,7 @@ public class FlashcardController {
     @FXML private Label frontLabel;
     @FXML private Label backLabel;
     
+    private String currentChapter;
     private Flashcard currentFlashcard;
     private FlashcardList flashcardList;
     private RotateTransition flipTransition;
@@ -34,14 +40,21 @@ public class FlashcardController {
         flipTransition.setCycleCount(1);
     }
 
-    
-    public void loadNextFlashcard() {
-        if (!flashcardList.getFlashcards().isEmpty()) {
-            currentFlashcard = flashcardList.getFlashcards().get(0); 
-            frontLabel.setText(currentFlashcard.getQuestion());
-            backLabel.setText(currentFlashcard.getAnswer());
-        }
+    public void setChapter(String chapter) {
+        this.currentChapter = chapter;
     }
+    
+
+    
+  List<Flashcard> chapterFlashcards = flashcardList.getFlashcards().stream()
+    .filter(f -> f.getChapter().equals(currentChapter))
+    .collect(Collectors.toList());
+
+if (!chapterFlashcards.isEmpty()) {
+    currentFlashcard = chapterFlashcards.get(0); 
+    frontLabel.setText(currentFlashcard.getQuestion());
+    backLabel.setText(currentFlashcard.getAnswer());
+}
 
     
     @FXML
@@ -60,5 +73,16 @@ public class FlashcardController {
         }
         flipTransition.play();
     }
+    @FXML
+private void handleCompleteLesson() {
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+
+    if (!currentUser.hasCompletedChapter(currentChapter)) {
+        currentUser.addPoints(20);
+        currentUser.markChapterComplete(currentChapter);
+        MusicAppFacade.getInstance().saveAll();
+    }
+}
+
 }
 

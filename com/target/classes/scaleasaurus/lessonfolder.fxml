@@ -12,7 +12,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.FlashcardFolderController"
+            fx:controller="controllers.LessonFolderController"
             prefWidth="375" prefHeight="667"
             style="-fx-background-color: #eaf5d5;">
 
@@ -27,7 +27,7 @@
         <Button fx:id="chapter2Btn" text="Chapter 2: Meet the Musicians" onAction="#handleChapter2" styleClass="chapter-button"/>
         <Button fx:id="chapter3Btn" text="Chapter 3: Music Theory 101" onAction="#handleChapter3" styleClass="chapter-button"/>
         <Button fx:id="chapter4Btn" text="Chapter 4: Reading Rhythm" onAction="#handleChapter4" styleClass="chapter-button"/>
-        <Button fx:id="chapter5Btn" text="Chapter 5: Keys & Scales" onAction="#handleChapter5" styleClass="chapter-button"/>
+        <Button fx:id="chapter5Btn" text="Chapter 5: Keys &amp; Scales" onAction="#handleChapter5" styleClass="chapter-button"/>
         <Button fx:id="chapter6Btn" text="Chapter 6: Chords in Harmony" onAction="#handleChapter6" styleClass="chapter-button"/>
     </VBox>
 

@@ -75,8 +75,9 @@ public class FlashcardList {
                 UUID id = UUID.fromString((String) card.get("flashcardID"));
                 String question = (String) card.get("question");
                 String answer = (String) card.get("answer");
+                String chapter = (String) card.get("chapter");
 
-                Flashcard flashcard = new Flashcard(question, answer);
+                Flashcard flashcard = new Flashcard(id, question, answer, chapter);
              
                 flashcards.add(flashcard);
             }
