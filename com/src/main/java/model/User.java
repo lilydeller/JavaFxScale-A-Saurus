@@ -157,6 +157,10 @@ public class User {
         friends.add(friend);
     }
 
+    public ArrayList<User> getFriends() {
+        return friends;
+    }    
+
     public void removeFriend(User friend) {
         friends.remove(friend);
     }

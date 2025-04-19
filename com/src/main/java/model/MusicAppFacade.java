@@ -57,6 +57,39 @@ public class MusicAppFacade {
         return null;
     }
 
+    public User searchUserByUsername(String username) {
+        return UserList.getInstance().getUserByUsername(username);
+    }
+    
+    public User searchUserByName(String firstName, String lastName) {
+        return UserList.getInstance().getUserByName(firstName, lastName);
+    }
+    
+    public boolean addFriendToCurrentUser(User friend) {
+        if (currentUser != null && friend != null && !currentUser.getUserName().equals(friend.getUserName())) {
+            currentUser.addFriend(friend);
+            UserList.getInstance().saveUsers();
+            return true;
+        }
+        return false;
+    }
+
+    public User getUserByUsername(String username) {
+        return UserList.getInstance().getUserByUsername(username);
+    }
+    
+    public User getUserByFullName(String firstName, String lastName) {
+        for (User u : UserList.getInstance().getUsers()) {
+            if (u.getFirstName().equalsIgnoreCase(firstName)
+                    && u.getLastName().equalsIgnoreCase(lastName)) {
+                return u;
+            }
+        }
+        return null;
+    }
+    
+    
+
     // Accessors
     public User getCurrentUser() {
         return currentUser;

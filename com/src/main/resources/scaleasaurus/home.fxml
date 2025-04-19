@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="667" prefWidth="375.0" styleClass="home-root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
 
@@ -16,13 +17,16 @@
         <Label fx:id="lbl_username" layoutX="25.0" layoutY="30.0" styleClass="home-title" text="Welcome username " />
 
      
-        <ProgressBar layoutX="25.0" layoutY="80.0" prefWidth="280.0" progress="0.75" styleClass="points-bar" />
+        <ProgressBar layoutX="45.0" layoutY="79.0" prefWidth="280.0" progress="0.75" styleClass="points-bar" />
         <Label layoutX="130.0" layoutY="82.0" styleClass="points-label" text="150 Dino Points ⭐" />
-        <Button layoutX="110.0" layoutY="110.0" styleClass="green-pill" text="choose reward" />
+        <Button layoutX="62.0" layoutY="109.0" styleClass="green-pill" text="choose reward" />
 
       
-        <VBox layoutX="25.0" layoutY="160.0" spacing="10.0" styleClass="lesson-box">
-            <Label styleClass="lesson-title" text="Continue A Lesson!" />
+        <VBox layoutX="53.0" layoutY="161.0" prefHeight="346.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">
+            <Label styleClass="lesson-title" text="Continue A Lesson!">
+            <font>
+               <Font size="46.0" />
+            </font></Label>
             <HBox spacing="10.0">
                 <Label styleClass="progress-badge" text="75%" />
                 <Label text="Chapter 1: The Basics" />
@@ -32,17 +36,16 @@
                 <Label text="Chapter 2: Chords" />
             </HBox>
             <Button styleClass="quiz-button" text="View all quizzes" />
+            <Button fx:id="btn_findSong" onAction="#handleFindSong" text="Find a Song!" />
+            <Button fx:id="btn_create_song" onAction="#handleCreateSong" styleClass="button" text="Create a Song!" />
+
+            <Button styleClass="blue-outline" text="Continue last song played" />
         </VBox>
 
     
 
         
-        <VBox layoutX="40.0" layoutY="580.0" spacing="10.0">
-            <Button fx:id="btn_findSong" onAction="#handleFindSong" text="Find a Song!" />
-            <Button fx:id="btn_create_song" layoutX="90" layoutY="300" onAction="#handleCreateSong" styleClass="button" text="Create a Song!" />
-
-            <Button styleClass="blue-outline" text="Continue last song played" />
-        </VBox>
+        <VBox layoutX="40.0" layoutY="580.0" spacing="10.0" />
 
     </children>
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.SearchFriendController"
+            prefWidth="375.0" prefHeight="667.0"
+            styleClass="search-friend-screen">
+
+    <children>
+        <Button layoutX="20" layoutY="20" text="Back"
+                onAction="#handleBack" styleClass="back-button"/>
+
+        <VBox layoutX="30" layoutY="100" spacing="15"
+              styleClass="search-box" prefWidth="315" padding="20">
+            <Label text="Search for friend:" styleClass="title-label"/>
+            <TextField fx:id="firstNameField" promptText="first name"/>
+            <TextField fx:id="lastNameField" promptText="last name"/>
+
+            <Label text="Or" styleClass="or-label"/>
+
+            <TextField fx:id="usernameField" promptText="username"/>
+
+            <Button text="Add Friend" onAction="#handleAddFriend"
+                    styleClass="add-friend-button"/>
+            <Label fx:id="statusLabel" styleClass="status-label"/>
+        </VBox>
+    </children>
+
+    <stylesheets>
+        <URL value="@styles.css"/>
+    </stylesheets>
+</AnchorPane>

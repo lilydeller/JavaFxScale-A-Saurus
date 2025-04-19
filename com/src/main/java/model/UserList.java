@@ -80,6 +80,18 @@ public class UserList {
         return null;
     }
 
+    public User getUserByName(String firstName, String lastName) {
+        for (User user : users) {
+            if (user.getFirstName().equalsIgnoreCase(firstName) &&
+                user.getLastName().equalsIgnoreCase(lastName)) {
+                return user;
+            }
+        }
+        return null;
+    }
+    
+
+
     public ArrayList<User> getUsers() {
         return users;
     }

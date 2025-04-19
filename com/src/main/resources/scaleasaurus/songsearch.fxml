@@ -38,34 +38,37 @@
     <Label text="artist" styleClass="category-label"/>
     <GridPane hgap="10" vgap="10">
         <children>
-            <Button text="All" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Button text="A–D" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Button text="I–O" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-            <Button text="P–S" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <Button text="T–W" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-            <Button text="Y–Z" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-        </children>
-    </GridPane>
 
-    <Label text="genre" styleClass="category-label"/>
-    <GridPane hgap="10" vgap="10">
-        <children>
-            <Button text="All" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Button text="Pop" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Button text="Rock" styleClass="category-button" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-            <Button text="Classical" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <Button text="Jazz" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        </children>
-    </GridPane>
+    <Button text="All" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Button text="A–D" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <Button text="I–O" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Button text="P–S" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Button text="T–W" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Button text="Y–Z" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+</children>
+</GridPane>
 
-    <Label text="difficulty" styleClass="category-label"/>
-    <GridPane hgap="10" vgap="10">
-        <children>
-            <Button text="All" styleClass="category-button" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Button text="1–4" styleClass="category-button" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-            <Button text="5–10" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-        </children>
-    </GridPane>
+<Label text="genre" styleClass="category-label"/>
+<GridPane hgap="10" vgap="10">
+    <children>
+    
+        <Button text="All" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Button text="Pop" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Button text="Rock" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Button text="Classical" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Button text="Jazz" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </children>
+</GridPane>
+
+<Label text="difficulty" styleClass="category-label"/>
+<GridPane hgap="10" vgap="10">
+    <children>
+ 
+        <Button text="All" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Button text="1–4" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Button text="5–10" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    </children>
+</GridPane>
 
 </VBox>
 
