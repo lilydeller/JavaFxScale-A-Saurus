@@ -69,4 +69,5 @@ public abstract class DataConstants {
     protected static final String FLASHCARD_ID = "flashcardID";
     protected static final String FLASHCARD_QUESTION = "question";
     protected static final String FLASHCARD_ANSWER = "answer";
+    protected static final String FLASHCARD_CHAPTER = "chapter";
 }

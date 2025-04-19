@@ -203,6 +203,7 @@ public class DataWriter extends DataConstants {
         jsonFlashcard.put(FLASHCARD_ID, flashcard.getFlashcardID().toString());
         jsonFlashcard.put(FLASHCARD_QUESTION, flashcard.getQuestion());
         jsonFlashcard.put(FLASHCARD_ANSWER, flashcard.getAnswer());
+        jsonFlashcard.put(FLASHCARD_CHAPTER, flashcard.getChapter());
         return jsonFlashcard;
     }
 

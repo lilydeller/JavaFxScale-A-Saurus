@@ -31,7 +31,6 @@ public class FlashcardController {
     public void initialize() {
         flashcardList = FlashcardList.getInstance();
         flashcardList.loadFlashcards();
-        loadNextFlashcard();
         
         
         flipTransition = new RotateTransition(Duration.seconds(0.5), frontRectangle);
@@ -42,19 +41,25 @@ public class FlashcardController {
 
     public void setChapter(String chapter) {
         this.currentChapter = chapter;
+        loadNextFlashcard();
     }
     
 
-    
-  List<Flashcard> chapterFlashcards = flashcardList.getFlashcards().stream()
+    private void loadNextFlashcard() {
+        List<Flashcard> chapterFlashcards = flashcardList.getFlashcards().stream()
     .filter(f -> f.getChapter().equals(currentChapter))
     .collect(Collectors.toList());
 
-if (!chapterFlashcards.isEmpty()) {
+    if (!chapterFlashcards.isEmpty()) {
     currentFlashcard = chapterFlashcards.get(0); 
     frontLabel.setText(currentFlashcard.getQuestion());
     backLabel.setText(currentFlashcard.getAnswer());
-}
+    }
+    else {
+        frontLabel.setText("No flashcards found for this chapter");
+        backLabel.setText("");
+    }
+}  
 
     
     @FXML

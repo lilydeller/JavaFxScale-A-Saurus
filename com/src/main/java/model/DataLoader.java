@@ -62,9 +62,25 @@ public class DataLoader {
                 JSONObject flashcardJson = (JSONObject) obj;
                 String question = (String) flashcardJson.get("question");
                 String answer = (String) flashcardJson.get("answer");
+                String chapter = (String) flashcardJson.get("chapter");
     
-                Flashcard flashcard = new Flashcard(question, answer);
-                FlashcardList.getInstance().addFlashcard(flashcard);
+                String uuidString = (String) flashcardJson.get("flashcardID");
+                UUID flashcardID = null;
+                if (uuidString != null) {
+                    try {
+                        flashcardID = UUID.fromString(uuidString);
+                    }
+                    catch (IllegalArgumentException e) {
+                        System.out.println("Invalid UUID format for flashcard: " + flashcardJson);
+                    }
+                }
+
+
+                //check if flahscard has all valid variables
+                if (question != null && answer != null && flashcardID != null && chapter != null) {
+                    Flashcard flashcard = new Flashcard(flashcardID, question, answer, chapter);
+                    FlashcardList.getInstance().addFlashcard(flashcard);
+                }
             }
     
             System.out.println("Flashcards Loaded: " + FlashcardList.getInstance().getFlashcards().size());
@@ -130,6 +146,12 @@ public class DataLoader {
                 String password = (String) userJson.get("password");
                 int streak = ((Long) userJson.get("streak")).intValue();
                 int level = ((Long) userJson.get("level")).intValue();
+                int points = ((Long) userJson.get("points")).intValue();
+                JSONArray chaptersArray = (JSONArray) userJson.get("completedChapters");
+                ArrayList<String> completedChapters = new ArrayList<>();
+                for (Object chapter : chaptersArray) {
+                    completedChapters.add(chapter.toString());
+                }
     
                 JSONArray achievementArray = (JSONArray) userJson.get("achievement");
                 ArrayList<String> achievements = new ArrayList<>();
@@ -143,7 +165,7 @@ public class DataLoader {
                     leaderboardRankings.add(ranking.toString());
                 }
     
-                User user = new User(uuid, username, firstName, lastName, password, email, streak, level, achievements);
+                User user = new User(uuid, username, firstName, lastName, password, email, streak, level, achievements, points, completedChapters);
                 user.setLeaderboardRanking(leaderboardRankings);
                 users.add(user);
             }

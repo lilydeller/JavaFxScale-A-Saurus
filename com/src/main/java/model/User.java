@@ -18,10 +18,12 @@ public class User {
     private ArrayList<Lesson> lessons;
     private int level;
     private int streak;
+    private int points;
     private ArrayList<String> achievements;
     private ArrayList<String> leaderboardRanking;
     private ArrayList<User> friends;
     private ArrayList<Achievement> unlockedAchievements = new ArrayList<>();
+    private ArrayList<String> completedChapters;
 
     /**
      * constructs a new {@code User} with a unique ID and initial values.
@@ -45,6 +47,8 @@ public class User {
         this.friends = new ArrayList<>();
         this.level = 1;
         this.streak = 0;
+        this.points = 0;
+        this.completedChapters = new ArrayList<>();
     }
 
     /**
@@ -60,7 +64,7 @@ public class User {
      * @param level        the user's current level
      * @param achievements a list of achievement names the user has unlocked
      */
-    public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements) {
+    public User(UUID id, String userName, String firstName, String lastName, String password, String email, int streak, int level, ArrayList<String> achievements, int points, ArrayList<String> completedChapters) {
         this.id = id;
         this.userName = userName;
         this.firstName = firstName;
@@ -73,6 +77,8 @@ public class User {
         this.leaderboardRanking = new ArrayList<>();
         this.lessons = new ArrayList<>();
         this.friends = new ArrayList<>();
+        this.points = points;
+        this.completedChapters =  completedChapters != null ? completedChapters : new ArrayList<>();
     }
 
     public UUID getId() {
@@ -137,6 +143,13 @@ public class User {
         this.level = level;
     }
 
+    public int getPoints() {
+        return points;
+    }
+    public void addPoints(int amount) {
+        this.points += amount;
+    }
+
     public ArrayList<String> getAchievements() {
         return achievements;
     }
@@ -197,6 +210,19 @@ public class User {
             }
         }
         return unlockedAchievements;
+    }
+    public boolean hasCompletedChapter(String chapter) {
+        return completedChapters.contains(chapter);
+    }
+
+    public void markChapterComplete(String chapter) {
+        if (!completedChapters.contains(chapter)) {
+            completedChapters.add(chapter);
+        }
+    }
+
+    public ArrayList<String> getCompletedChapters() {
+        return completedChapters;
     }
     
 
