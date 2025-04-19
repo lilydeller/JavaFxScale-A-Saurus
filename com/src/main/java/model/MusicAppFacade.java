@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -115,6 +116,13 @@ public class MusicAppFacade {
         userList.saveUsers();
         songList.saveSongs();
     }
+
+    
+    public List<Song> filterSongs(String query, String artistRange, String genre, int difficultyRange) {
+        return SongList.getInstance().filterSongs(query, artistRange, genre, difficultyRange);
+    }
+    
+    
 
     // Logout current user
     public void logout() {

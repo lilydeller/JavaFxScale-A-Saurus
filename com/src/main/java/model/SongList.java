@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Manages a collection of Song objects
@@ -165,6 +166,64 @@ public class SongList {
         }
         return songsByArtist;
     }
-}    
- 
+
+    public ArrayList<Song> getSongsByGenre(String genre) {
+        ArrayList<Song> result = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getGenre().equalsIgnoreCase(genre)) {
+                result.add(song);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Song> getSongsByLengthRange(int minSeconds, int maxSeconds) {
+        ArrayList<Song> result = new ArrayList<>();
+        for (Song song : songs) {
+            int lengthInSeconds = convertLengthToSeconds(song.getLength());
+            if (lengthInSeconds >= minSeconds && lengthInSeconds <= maxSeconds) {
+                result.add(song);
+            }
+        }
+        return result;
+    }
+    
+    public List<Song> filterSongs(String query, String artistRange, String genre, int difficultyRange) {
+    ArrayList<Song> filtered = new ArrayList<>();
+
+    for (Song song : songs) {
+        boolean matchesQuery = (query == null || query.isEmpty()) ||
+                song.getSongName().toLowerCase().contains(query.toLowerCase()) ||
+                song.getArtist().toLowerCase().contains(query.toLowerCase());
+
+        boolean matchesArtistRange = artistRange.equals("All") ||
+                (!song.getArtist().isEmpty() &&
+                        isArtistInRange(song.getArtist().toUpperCase().charAt(0), artistRange));
+
+        boolean matchesGenre = genre.equals("All") || song.getGenre().equalsIgnoreCase(genre);
+
+        boolean matchesDifficulty = difficultyRange == 0 ||
+                (difficultyRange == 1 && song.getDifficulty() <= 4) ||
+                (difficultyRange == 2 && song.getDifficulty() >= 5);
+
+        if (matchesQuery && matchesArtistRange && matchesGenre && matchesDifficulty) {
+            filtered.add(song);
+        }
+    }
+
+    return filtered;
+}
+
+private boolean isArtistInRange(char letter, String range) {
+    switch (range) {
+        case "A–D": return letter >= 'A' && letter <= 'D';
+        case "I–O": return letter >= 'I' && letter <= 'O';
+        case "P–S": return letter >= 'P' && letter <= 'S';
+        case "T–W": return letter >= 'T' && letter <= 'W';
+        case "Y–Z": return letter >= 'Y' && letter <= 'Z';
+        default: return true; 
+    }
+}
+
+}
 

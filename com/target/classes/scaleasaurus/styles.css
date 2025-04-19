@@ -356,3 +356,9 @@ piano
   -fx-background-radius: 6;
 }
 
+.selected-filter {
+  -fx-background-color: #9CD5FF; 
+  -fx-border-color: #333;
+  -fx-font-weight: bold;
+}
+
