@@ -1,184 +1,284 @@
 {
-  "flashcards": [
+  "chapters": [
     {
-      "flashcardID": "48105cc5-1fdb-43d0-be70-1a6fb8aa407f",
-      "question": "What is middle C on a piano?",
-      "answer": "The C near the center of the keyboard (C4)",
-      "chapter": "chapter1"
+      "chapterID": "chapter-1",
+      "title": "Piano Basics",
+      "flashcards": [
+        {
+          "flashcardID": "1a1f1a1f-0001-4a1f-a1f1-000000000001",
+          "question": "How many keys are on a standard piano?",
+          "answer": "88"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0002-4a1f-a1f1-000000000002",
+          "question": "What are the white keys on a piano called?",
+          "answer": "Natural notes"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0003-4a1f-a1f1-000000000003",
+          "question": "What is the name for the black keys in music theory?",
+          "answer": "Sharps and flats"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0004-4a1f-a1f1-000000000004",
+          "question": "Which note comes after G?",
+          "answer": "A"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0005-4a1f-a1f1-000000000005",
+          "question": "What is Middle C also called?",
+          "answer": "C4"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0006-4a1f-a1f1-000000000006",
+          "question": "How many black keys are in one octave?",
+          "answer": "5"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0007-4a1f-a1f1-000000000007",
+          "question": "How many white keys are in one octave?",
+          "answer": "7"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0008-4a1f-a1f1-000000000008",
+          "question": "What is the lowest note on a standard piano?",
+          "answer": "A0"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0009-4a1f-a1f1-000000000009",
+          "question": "What is the highest note on a standard piano?",
+          "answer": "C8"
+        },
+        {
+          "flashcardID": "1a1f1a1f-0010-4a1f-a1f1-000000000010",
+          "question": "What does a piano key produce when pressed?",
+          "answer": "A musical note"
+        }
+      ]
     },
     {
-      "flashcardID": "8e9116cb-1a2b-40ec-81fb-83bfb10f6952",
-      "question": "How many white keys are on a standard piano?",
-      "answer": "52",
-      "chapter": "chapter1"
+      "chapterID": "chapter-2",
+      "title": "Music Theory Fun",
+      "flashcards": [
+        {
+          "flashcardID": "2b2f2b2f-0001-4b2f-b2f2-000000000011",
+          "question": "What is the interval between C and G called?",
+          "answer": "Perfect fifth"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0002-4b2f-b2f2-000000000012",
+          "question": "What is a chord made of three notes called?",
+          "answer": "A triad"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0003-4b2f-b2f2-000000000013",
+          "question": "What does a flat symbol (♭) do to a note?",
+          "answer": "Lowers it by a half step"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0004-4b2f-b2f2-000000000014",
+          "question": "What does a sharp symbol (♯) do to a note?",
+          "answer": "Raises it by a half step"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0005-4b2f-b2f2-000000000015",
+          "question": "How many semitones are in an octave?",
+          "answer": "12"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0006-4b2f-b2f2-000000000016",
+          "question": "What is the Italian term for 'slow' in music?",
+          "answer": "Adagio"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0007-4b2f-b2f2-000000000017",
+          "question": "What’s the musical term for gradually getting louder?",
+          "answer": "Crescendo"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0008-4b2f-b2f2-000000000018",
+          "question": "What key has no sharps or flats?",
+          "answer": "C major"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0009-4b2f-b2f2-000000000019",
+          "question": "What is the relative minor of C major?",
+          "answer": "A minor"
+        },
+        {
+          "flashcardID": "2b2f2b2f-0010-4b2f-b2f2-000000000020",
+          "question": "What does 'legato' mean?",
+          "answer": "To play smoothly and connected"
+        }
+      ]
     },
     {
-      "flashcardID": "cac5b151-27ec-4c3e-9eb3-a5ebf30bf2fa",
-      "question": "What letter comes after G in piano notes?",
-      "answer": "A",
-      "chapter": "chapter1"
+      "chapterID": "chapter-3",
+      "title": "Famous Composers & Pieces",
+      "flashcards": [
+        {
+          "flashcardID": "3c3f3c3f-0001-4c3f-c3f3-000000000021",
+          "question": "Which composer is famous for 'Moonlight Sonata'?",
+          "answer": "Ludwig van Beethoven"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0002-4c3f-c3f3-000000000022",
+          "question": "Who composed 'Für Elise'?",
+          "answer": "Ludwig van Beethoven"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0003-4c3f-c3f3-000000000023",
+          "question": "Who wrote 'The Entertainer' ragtime classic?",
+          "answer": "Scott Joplin"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0004-4c3f-c3f3-000000000024",
+          "question": "Which composer went deaf later in life but kept composing?",
+          "answer": "Ludwig van Beethoven"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0005-4c3f-c3f3-000000000025",
+          "question": "Which Russian composer wrote 'The Nutcracker'?",
+          "answer": "Pyotr Ilyich Tchaikovsky"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0006-4c3f-c3f3-000000000026",
+          "question": "Which pianist was known as a child prodigy and composed over 600 pieces?",
+          "answer": "Wolfgang Amadeus Mozart"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0007-4c3f-c3f3-000000000027",
+          "question": "Who composed 'Clair de Lune'?",
+          "answer": "Claude Debussy"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0008-4c3f-c3f3-000000000028",
+          "question": "What nationality was Chopin?",
+          "answer": "Polish"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0009-4c3f-c3f3-000000000029",
+          "question": "Which German composer is known for 'Well-Tempered Clavier'?",
+          "answer": "Johann Sebastian Bach"
+        },
+        {
+          "flashcardID": "3c3f3c3f-0010-4c3f-c3f3-000000000030",
+          "question": "Who composed 'Rhapsody in Blue'?",
+          "answer": "George Gershwin"
+        }
+      ]
     },
     {
-      "flashcardID": "027ace31-2d68-41a8-bb9a-96cc82e522ab",
-      "question": "What are black keys called when going up?",
-      "answer": "Sharps",
-      "chapter": "chapter1"
+      "chapterID": "chapter-4",
+      "title": "Piano Technique",
+      "flashcards": [
+        {
+          "flashcardID": "4d4f4d4f-0001-4d4f-d4f4-000000000031",
+          "question": "What does the sustain pedal on a piano do?",
+          "answer": "It allows notes to continue sounding after the key is released"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0002-4d4f-d4f4-000000000032",
+          "question": "What is the best finger position for playing scales?",
+          "answer": "Curved fingers with relaxed wrists"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0003-4d4f-d4f4-000000000033",
+          "question": "What is 'hand independence' in piano playing?",
+          "answer": "The ability to play different rhythms or notes in each hand"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0004-4d4f-d4f4-000000000034",
+          "question": "What is the term for playing notes quickly and evenly?",
+          "answer": "Fast finger technique"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0005-4d4f-d4f4-000000000035",
+          "question": "Which pedal creates a softer sound on the piano?",
+          "answer": "Soft pedal (una corda)"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0006-4d4f-d4f4-000000000036",
+          "question": "How many pedals does a grand piano usually have?",
+          "answer": "Three"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0007-4d4f-d4f4-000000000037",
+          "question": "What is 'arpeggio' in piano playing?",
+          "answer": "Playing the notes of a chord one after another"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0008-4d4f-d4f4-000000000038",
+          "question": "What is a common warm-up exercise for pianists?",
+          "answer": "Hanon exercises"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0009-4d4f-d4f4-000000000039",
+          "question": "Why is it important to keep your wrists relaxed while playing?",
+          "answer": "To avoid tension and injury"
+        },
+        {
+          "flashcardID": "4d4f4d4f-0010-4d4f-d4f4-000000000040",
+          "question": "What do scales help pianists develop?",
+          "answer": "Finger strength and accuracy"
+        }
+      ]
     },
     {
-      "flashcardID": "2c9c3d8e-52b2-44f6-8113-7e45a2c7648d",
-      "question": "What do you call the distance between two notes?",
-      "answer": "Interval",
-      "chapter": "chapter1"
-    },
-    {
-      "flashcardID": "200d2ad1-5454-49f2-b869-6f322be004ef",
-      "question": "What notes form a C major chord?",
-      "answer": "C, E, G",
-      "chapter": "chapter2"
-    },
-    {
-      "flashcardID": "0088da70-1616-41bc-9f04-a8b9fb7839ba",
-      "question": "What is a triad?",
-      "answer": "A chord with three notes",
-      "chapter": "chapter2"
-    },
-    {
-      "flashcardID": "3b93c95e-f79a-466e-8e82-a1c9d9eb7dc8",
-      "question": "What is the root note of an F major chord?",
-      "answer": "F",
-      "chapter": "chapter2"
-    },
-    {
-      "flashcardID": "1afeedf2-12e3-455a-869b-5c56c1b37c0c",
-      "question": "What does a minor chord sound like compared to a major?",
-      "answer": "Sadder or darker",
-      "chapter": "chapter2"
-    },
-    {
-      "flashcardID": "3e0fbf11-9891-48c8-b975-d93a9c817c76",
-      "question": "What is a seventh chord?",
-      "answer": "A chord with four notes, including a seventh interval",
-      "chapter": "chapter2"
-    },
-    {
-      "flashcardID": "7562e46c-ba6c-4d4d-9532-63ffcb20ea02",
-      "question": "What is a time signature?",
-      "answer": "A symbol that tells how many beats per measure",
-      "chapter": "chapter3"
-    },
-    {
-      "flashcardID": "e4be1ede-05ce-474c-b609-8e670cb63f02",
-      "question": "What note value gets one beat in 4/4 time?",
-      "answer": "Quarter note",
-      "chapter": "chapter3"
-    },
-    {
-      "flashcardID": "9867da51-c294-4550-8a6f-c5d7a3a1c1c0",
-      "question": "How many eighth notes fit in one measure of 4/4?",
-      "answer": "8",
-      "chapter": "chapter3"
-    },
-    {
-      "flashcardID": "daf2edfb-59e9-4685-84b9-cae65c16f593",
-      "question": "What\u2019s the tempo term for \u201cwalking pace\u201d?",
-      "answer": "Andante",
-      "chapter": "chapter3"
-    },
-    {
-      "flashcardID": "73c6694b-e355-41a1-971f-9a3d3f101496",
-      "question": "What\u2019s a metronome used for?",
-      "answer": "Keeping a consistent tempo",
-      "chapter": "chapter3"
-    },
-    {
-      "flashcardID": "efcac058-4c61-4dd3-a5cf-a152dd1e8594",
-      "question": "What clef do pianists read for right hand?",
-      "answer": "Treble clef",
-      "chapter": "chapter4"
-    },
-    {
-      "flashcardID": "e8d12be9-9485-4572-9a72-a64ab6f746cf",
-      "question": "What clef is used for the left hand?",
-      "answer": "Bass clef",
-      "chapter": "chapter4"
-    },
-    {
-      "flashcardID": "9d3a1899-c3b3-487c-b8fe-ae7a96a10b1a",
-      "question": "What are the lines on the treble staff (EGBDF) known as?",
-      "answer": "Every Good Boy Deserves Fudge",
-      "chapter": "chapter4"
-    },
-    {
-      "flashcardID": "fd4a493d-1df9-4a39-b8bc-d969a89856b5",
-      "question": "What symbol raises a note by a half step?",
-      "answer": "Sharp (\u266f)",
-      "chapter": "chapter4"
-    },
-    {
-      "flashcardID": "b1aa649a-6325-47f2-b2ce-99f1731b53a7",
-      "question": "What symbol lowers a note by a half step?",
-      "answer": "Flat (\u266d)",
-      "chapter": "chapter4"
-    },
-    {
-      "flashcardID": "d1995fa8-821b-47fa-bb88-37dd535847fe",
-      "question": "What does forte mean?",
-      "answer": "Loud",
-      "chapter": "chapter5"
-    },
-    {
-      "flashcardID": "020d10fd-d2e0-4e72-b292-494508ab6083",
-      "question": "What does piano (p) mean?",
-      "answer": "Soft",
-      "chapter": "chapter5"
-    },
-    {
-      "flashcardID": "46da54dd-8ab0-4a67-b885-894a39fc7bf7",
-      "question": "What does crescendo mean?",
-      "answer": "Gradually get louder",
-      "chapter": "chapter5"
-    },
-    {
-      "flashcardID": "1298c27e-cb6f-4141-8a74-a13210511489",
-      "question": "What does staccato mean?",
-      "answer": "Short and detached",
-      "chapter": "chapter5"
-    },
-    {
-      "flashcardID": "2522d16b-5989-4411-8337-b00e9a63f3a0",
-      "question": "What does legato mean?",
-      "answer": "Smooth and connected",
-      "chapter": "chapter5"
-    },
-    {
-      "flashcardID": "9147d68f-781d-4b60-9267-6bdc56fffb4a",
-      "question": "Who composed \u201cClair de Lune\u201d?",
-      "answer": "Claude Debussy",
-      "chapter": "chapter6"
-    },
-    {
-      "flashcardID": "87ed0107-4729-4830-ba8a-b87becc3abad",
-      "question": "Who is a famous blind jazz pianist?",
-      "answer": "Ray Charles",
-      "chapter": "chapter6"
-    },
-    {
-      "flashcardID": "3cb6d044-2a7e-4a98-a35a-814e0ada786d",
-      "question": "What child prodigy composed music at age 5?",
-      "answer": "Wolfgang Amadeus Mozart",
-      "chapter": "chapter6"
-    },
-    {
-      "flashcardID": "7948dcf7-f0fc-4c84-af2e-64326490fdba",
-      "question": "What pianist is known for \u201cRhapsody in Blue\u201d?",
-      "answer": "George Gershwin",
-      "chapter": "chapter6"
-    },
-    {
-      "flashcardID": "4ddf2489-87b2-4bce-ae9a-cd714a0aebe1",
-      "question": "Who composed \u201cPrelude in C-sharp minor\u201d?",
-      "answer": "Sergei Rachmaninoff",
-      "chapter": "chapter6"
+      "chapterID": "chapter-5",
+      "title": "Piano Pop Culture & Trivia",
+      "flashcards": [
+        {
+          "flashcardID": "5e5f5e5f-0001-4e5f-e5f5-000000000041",
+          "question": "Which artist is famous for the song 'Piano Man'?",
+          "answer": "Billy Joel"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0002-4e5f-e5f5-000000000042",
+          "question": "What movie features a magical piano-playing skeleton?",
+          "answer": "Coco"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0003-4e5f-e5f5-000000000043",
+          "question": "Which cartoon cat plays piano in a famous meme?",
+          "answer": "Keyboard Cat"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0004-4e5f-e5f5-000000000044",
+          "question": "Which singer famously played piano with their foot on stage?",
+          "answer": "Jerry Lee Lewis"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0005-4e5f-e5f5-000000000045",
+          "question": "What’s the name of the iconic piano in 'Peanuts' comics?",
+          "answer": "Schroeder's piano"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0006-4e5f-e5f5-000000000046",
+          "question": "Which Pixar short features a piano battle?",
+          "answer": "One Man Band"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0007-4e5f-e5f5-000000000047",
+          "question": "Which popular game features rhythm-based piano tiles?",
+          "answer": "Magic Tiles 3"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0008-4e5f-e5f5-000000000048",
+          "question": "What kind of piano is used in most concert halls?",
+          "answer": "Grand piano"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0009-4e5f-e5f5-000000000049",
+          "question": "Which famous jazz musician was known for playing the piano with flair?",
+          "answer": "Duke Ellington"
+        },
+        {
+          "flashcardID": "5e5f5e5f-0010-4e5f-e5f5-000000000050",
+          "question": "In what show does the character Tom play classical piano?",
+          "answer": "Tom and Jerry"
+        }
+      ]
     }
   ]
 }

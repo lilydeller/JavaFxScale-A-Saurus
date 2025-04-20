@@ -1,6 +1,8 @@
 package model;
 
-import music.Music;
+import javax.sound.midi.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MusicProgram {
@@ -33,89 +35,57 @@ public class MusicProgram {
 
         switch (songName.toLowerCase()) {
             case "twinkle twinkle little star":
-                playTwinkle();
+                playMidi("path/to/twinkle_twinkle.mid");
                 break;
             case "autumn leaves":
-                playAutumnLeaves();
+                playMidi("path/to/autumn_leaves.mid");
                 break;
             case "bohemian rhapsody":
-                playBohemianRhapsody();
+                playMidi("path/to/bohemian_rhapsody.mid");
                 break;
             case "keep driving":
-                playKeepDriving();
+                playMidi("path/to/keep_driving.mid");
                 break;
             case "fine line":
-                playFineLine();
+                playMidi("path/to/fine_line.mid");
                 break;
             case "sign of the times":
-                playSignOfTheTimes();
+                playMidi("path/to/sign_of_the_times.mid");
+                break;
+            case "still dre":
+                playMidi("path/to/still_dre.mid");
                 break;
             default:
                 System.out.println("Song not found!");
         }
     }
 
-    // Helper method to repeat the song pattern multiple times to simulate longer duration
-    private static void repeatPattern(String pattern, int repetitions) {
-        for (int i = 0; i < repetitions; i++) {
-            Music.playPattern(pattern);
-            try {
-                Thread.sleep(800); // 0.8 second pause between loops to give it some realistic timing
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    private static void playMidi(String midiFilePath) {
+        try {
+            File midiFile = new File(midiFilePath);
+            Sequence sequence = MidiSystem.getSequence(midiFile);
+            Sequencer sequencer = MidiSystem.getSequencer();
+
+            if (sequencer == null) {
+                System.out.println("MIDI sequencer not available.");
+                return;
             }
+
+            sequencer.open();
+            sequencer.setSequence(sequence);
+            sequencer.start();
+
+            System.out.println("Playing MIDI file: " + midiFilePath);
+
+            // Wait for the sequencer to finish playing
+            while (sequencer.isRunning()) {
+                Thread.sleep(100);
+            }
+
+            sequencer.close();
+        } catch (InvalidMidiDataException | IOException | InterruptedException e) {
+            e.printStackTrace();
         }
-    }
-
-    private static void playTwinkle() {
-        String pattern = (
-            "C5q C5q G5q G5q A5q A5q G5h | F5q F5q E5q E5q D5q D5q C5h | " +
-            "G5q G5q F5q F5q E5q E5q D5h | G5q G5q F5q F5q E5q E5q D5h | " +
-            "C5q C5q G5q G5q A5q A5q G5h | F5q F5q E5q E5q D5q D5q C5h"
-        );
-        repeatPattern(pattern, 2);  // Play ~30 times to simulate full-length song
-    }
-
-    private static void playAutumnLeaves() {
-        String pattern = (
-            "C5q F5q Bb4q Eb5q | Am4q D4q Gm4q C4h | " +
-            "Dm4q G4q C4q F4q | Gm4q C4q F4q Bb4q | " +
-            "C5q F5q Bb4q Eb5q | Am4q D4q Gm4q C4h"
-        );
-        repeatPattern(pattern, 3);  // Repeat to match length of a typical song
-    }
-
-    private static void playBohemianRhapsody() {
-        String pattern = (
-            "G4q C5q F4q Bb4q | C5q G4q F4q Bb4h | " +
-            "Eb4q G4q Bb4q D5q | F4q A4q C5q Eb5h | " +
-            "C5q D5q Bb4q G4q | F4q G4q Bb4q C5h"
-        );
-        repeatPattern(pattern, 3);  // Longer loop to match song duration
-    }
-
-    private static void playKeepDriving() {
-        String pattern = (
-            "F#4q A4q E4q D4q | F#4q A4q E4q D4q | C#4q D4q B3q E4q | F#4q E4q D4h | " +
-            "E4q D4q C#4q B3q | A4q B4q C#5q D5h"
-        );
-        repeatPattern(pattern, 3);  // Loop enough times to extend song length
-    }
-
-    private static void playFineLine() {
-        String pattern = (
-            "C4q E4q G4q C5q | D4q F4q A4q D5q | E4q G4q B4q E5q | F4q A4q C5q F5q | " +
-            "C4q E4q G4q C5q | D4q F4q A4q D5q"
-        );
-        repeatPattern(pattern, 3);  // Repeat to simulate longer duration
-    }
-
-    private static void playSignOfTheTimes() {
-        String pattern = (
-            "G3q B3q D4q G4q | A3q C4q E4q A4q | F3q A3q C4q F4q | G3q B3q D4q G4h | " +
-            "E4q G4q B4q E5q | F4q A4q C5q F5h"
-        );
-        repeatPattern(pattern, 4);  // Increase repetitions for longer duration
     }
 
     public static void main(String[] args) {
@@ -124,12 +94,14 @@ public class MusicProgram {
         player.addInstrument(piano);
         player.setCurrentInstrument("Piano");
 
+        // Play songs using their MIDI files
         player.playSong("Twinkle Twinkle Little Star");
         player.playSong("Bohemian Rhapsody");
         player.playSong("Keep Driving");
         player.playSong("Autumn Leaves");
         player.playSong("Fine Line");
         player.playSong("Sign of the Times");
+        player.playSong("Still DRE");
     }
 }
 
