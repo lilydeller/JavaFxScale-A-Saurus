@@ -7,6 +7,7 @@ import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import model.Flashcard;
@@ -20,8 +21,8 @@ public class FlashcardController {
     @FXML private Rectangle backRectangle;
     @FXML private Label frontLabel;
     @FXML private Label backLabel;
-    @FXML private StackPane frontStack;
-    @FXML private StackPane backStack;
+    @FXML private StackPane frontStack, backStack;
+
     
     
     private String currentChapter;
@@ -30,12 +31,16 @@ public class FlashcardController {
     private RotateTransition flipTransition;
     private List<Flashcard> chapterFlashcards;
     private int currentIndex = 0;  
+    private boolean showingFront = true;
 
     
     @FXML
     public void initialize() {
-        flipTransition = new RotateTransition(Duration.seconds(0.5));
-        flipTransition.setCycleCount(1);
+        frontStack.setRotationAxis(Rotate.Y_AXIS);
+        backStack.setRotationAxis(Rotate.Y_AXIS);
+
+        frontStack.setVisible(true);
+        backStack.setVisible(false);
     }
 
     public void setChapter(String chapter) {
@@ -59,8 +64,11 @@ public class FlashcardController {
             frontLabel.setText(currentFlashcard.getQuestion());
             backLabel.setText(currentFlashcard.getAnswer());
 
-            frontRectangle.setVisible(true);
-            backRectangle.setVisible(false);
+            frontStack.setVisible(true);
+            backStack.setVisible(false);
+
+            frontStack.setRotate(0);
+            backStack.setRotate(0);
         } else {
             frontLabel.setText("You've finished this set!");
             backLabel.setText("");
@@ -69,36 +77,33 @@ public class FlashcardController {
 
     @FXML
     public void handleClick() {
+        StackPane hidePane = showingFront ? frontStack : backStack;
+        StackPane showPane = showingFront ? backStack  : frontStack;
+        showingFront = !showingFront;
+
+        // 1) rotate the visible side from 0° → 90°
+        RotateTransition hideAnim = new RotateTransition(Duration.seconds(0.25), hidePane);
+        hideAnim.setFromAngle(0);
+        hideAnim.setToAngle(90);
+        hideAnim.setOnFinished(evt -> {
+            // once it’s edge‑on, hide it and reset its angle
+            hidePane.setVisible(false);
+            hidePane.setRotate(0);
+
+            // prepare the other pane: set it edge‑on and visible
+            showPane.setRotate(-90);
+            showPane.setVisible(true);
+
+            // 2) rotate the new pane from –90° → 0°
+            RotateTransition showAnim = new RotateTransition(Duration.seconds(0.25), showPane);
+            showAnim.setFromAngle(-90);
+            showAnim.setToAngle(0);
+            showAnim.play();
+        });
+        hideAnim.play();
+    }
    
-    if (frontRectangle == null || backRectangle == null || flipTransition == null) {
-        System.out.println("flipping transition or rectangles are not properly initialized");
-        return;
-    }
 
-
-    if (backRectangle.isVisible()) {
-    
-        flipTransition.setNode(backRectangle);
-        flipTransition.setFromAngle(180);
-        flipTransition.setToAngle(360);
-        flipTransition.setOnFinished(event -> {
-            backRectangle.setVisible(false);
-            frontRectangle.setVisible(true);
-        });
-    } else {
-     
-        flipTransition.setNode(frontRectangle);
-        flipTransition.setFromAngle(0);
-        flipTransition.setToAngle(180);
-        flipTransition.setOnFinished(event -> {
-            frontRectangle.setVisible(false);
-            backRectangle.setVisible(true);
-        });
-    }
-
-
-    flipTransition.play();
-}
 
 
     @FXML
@@ -117,4 +122,5 @@ public class FlashcardController {
         currentIndex++;
         loadNextFlashcard();
     }
+
 }
