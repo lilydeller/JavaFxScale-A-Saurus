@@ -95,6 +95,10 @@ public class MusicAppFacade {
         return currentUser;
     }
 
+    public void setCurrentSong(Song song) {
+        this.currentSong = song;
+    }
+
     public Song getCurrentSong() {
         return currentSong;
     }

@@ -24,6 +24,8 @@ public class User {
     private ArrayList<User> friends;
     private ArrayList<Achievement> unlockedAchievements = new ArrayList<>();
     private ArrayList<String> completedChapters;
+    private ArrayList<Song> savedSongs = new ArrayList<>();
+
 
     /**
      * constructs a new {@code User} with a unique ID and initial values.
@@ -224,6 +226,11 @@ public class User {
     public ArrayList<String> getCompletedChapters() {
         return completedChapters;
     }
+
+    public ArrayList<Song> getSavedSongs() {
+        return savedSongs;
+    }
+    
     
 
     @Override
