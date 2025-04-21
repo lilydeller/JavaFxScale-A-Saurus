@@ -68,23 +68,31 @@ public class FlashcardList {
 
         try (FileReader reader = new FileReader("json/flashcard.json")) {
             JSONObject root = (JSONObject) parser.parse(reader);
-            JSONArray flashcardArray = (JSONArray) root.get("flashcards");
+            JSONArray chaptersArray = (JSONArray) root.get("chapters");
 
-            for (Object obj : flashcardArray) {
-                JSONObject card = (JSONObject) obj;
-                UUID id = UUID.fromString((String) card.get("flashcardID"));
-                String question = (String) card.get("question");
-                String answer = (String) card.get("answer");
-                String chapter = (String) card.get("chapter");
-
-                Flashcard flashcard = new Flashcard(id, question, answer, chapter);
-             
-                flashcards.add(flashcard);
+            for (Object chapterObj : chaptersArray) {
+                JSONObject chapterJson = (JSONObject) chapterObj;
+                String chapterID = (String) chapterJson.get("chapterID");
+                JSONArray flashcardArray = (JSONArray) chapterJson.get("flashcards");
+    
+                for (Object flashcardObj : flashcardArray) {
+                    JSONObject flashcardJson = (JSONObject) flashcardObj;
+    
+                    UUID id = UUID.fromString((String) flashcardJson.get("flashcardID"));
+                    String question = (String) flashcardJson.get("question");
+                    String answer = (String) flashcardJson.get("answer");
+    
+                    Flashcard flashcard = new Flashcard(id, question, answer, chapterID);
+                    FlashcardList.getInstance().addFlashcard(flashcard);
+                }
             }
-
-            System.out.println("Flashcards loaded: " + flashcards.size());
+    
+            System.out.println("Flashcards Loaded: " + FlashcardList.getInstance().getFlashcards().size());
+    
         } catch (IOException | ParseException e) {
-            System.out.println(" Error loading flashcards: " + e.getMessage());
+            System.out.println("Error loading flashcards");
+            e.printStackTrace();
         }
     }
 }
+    

@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" 
             xmlns="http://javafx.com/javafx/23.0.1" 
-            fx:controller="controller.FlashcardController" 
+            fx:controller="controllers.FlashcardController" 
             prefWidth="375.0" prefHeight="667.0" 
             styleClass="home-root">
 
-    <children>
-       
-        <Rectangle fx:id="frontRectangle" width="300" height="200" fill="lightblue" stroke="black" layoutX="37.5" layoutY="180">
-            <StackPane>
-                <Label fx:id="frontLabel" text="Question" style="-fx-font-size: 24px;" />
-            </StackPane>
-        </Rectangle>
+    <StackPane fx:id="frontStack" layoutX="37.5" layoutY="180" prefWidth="300" prefHeight="200">
+        <Rectangle fx:id="frontRectangle" width="300" height="200" fill="lightblue" stroke="black"/>
+        <Label fx:id="frontLabel" text="Question" style="-fx-font-size: 24px;" />
+    </StackPane>
 
-        
-        <Rectangle fx:id="backRectangle" width="300" height="200" fill="lightcoral" stroke="black" layoutX="37.5" layoutY="180" visible="false">
-            <StackPane>
-                <Label fx:id="backLabel" text="Answer" style="-fx-font-size: 24px;" />
-            </StackPane>
-        </Rectangle>
+    <StackPane fx:id="backStack" layoutX="37.5" layoutY="180" prefWidth="300" prefHeight="200" visible="false">
+        <Rectangle fx:id="backRectangle" width="300" height="200" fill="lightcoral" stroke="black"/>
+        <Label fx:id="backLabel" text="Answer" style="-fx-font-size: 24px;" />
+    </StackPane>
 
-       
-        <Button text="Flip Card" layoutX="137.5" layoutY="420" onAction="#handleClick" styleClass="green-pill"/>
-
-        <Button text="Complete Lesson" layoutX="120" layoutY="470" onAction="#handleCompleteLesson" styleClass="green-pill"/>
-
-
-    </children>
+    <Button text="Flip Card" layoutX="137.5" layoutY="420" onAction="#handleClick" styleClass="green-pill"/>
+    <Button text="Next Card" layoutX="137.5" layoutY="470" onAction="#handleNextCard" styleClass="green-pill"/>
+    <Button text="Complete Lesson" layoutX="120" layoutY="520" onAction="#handleCompleteLesson" styleClass="green-pill"/>
 
     <stylesheets>
         <URL value="@styles.css"/>

@@ -9,7 +9,7 @@ public class FlashcardTest {
 
     @BeforeEach
     public void setUp() {
-        flashcard = new Flashcard("What notes are in a C major chord?", "C E G");
+        //flashcard = new Flashcard("What notes are in a C major chord?", "C E G");
     }
 
     @Test

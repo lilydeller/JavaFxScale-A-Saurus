@@ -2,7 +2,7 @@ package model;
 
 import music.Music;
 
-public class MusicProgram {
+public class MusicDriver {
     public void playSong(String songName) {
         try {
             if (songName.equalsIgnoreCase("Twinkle Twinkle Little Star")) {
