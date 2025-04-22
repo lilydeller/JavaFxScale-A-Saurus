@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Measure {
     private ArrayList<Chord> chords;
     private int measureNumber;
+    private ArrayList<String> notes;
 
     /**
      * Creates a Measure object with a specific measure number and list of chords
@@ -17,6 +18,14 @@ public class Measure {
      */
     public Measure(int measureNumber, ArrayList<Chord> chords) {
         this.measureNumber = measureNumber;
+        this.notes = notes;
+        this.chords = (chords != null) ? chords : new ArrayList<>();
+        this.notes = new ArrayList<>(); 
+    }
+
+    public Measure(int measureNumber, ArrayList<String> notes, ArrayList<Chord> chords) {
+        this.measureNumber = measureNumber;
+        this.notes = (notes != null) ? notes : new ArrayList<>();
         this.chords = (chords != null) ? chords : new ArrayList<>();
     }
 
@@ -55,6 +64,15 @@ public class Measure {
         return measureNumber;
     }
 
+    public ArrayList<String> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(ArrayList<String> notes) {
+        this.notes = notes;
+    }
+
+
    /**
     * returns a string representation of the measure object
     *
@@ -65,6 +83,7 @@ public class Measure {
         return "Measure{" +
                 "measureNumber=" + measureNumber +
                 ", chords=" + chords +
+                ", notes=" + notes +
                 '}';
     }
 }

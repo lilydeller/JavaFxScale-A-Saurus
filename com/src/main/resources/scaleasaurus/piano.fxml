@@ -23,25 +23,25 @@
 
     <StackPane layoutX="0" layoutY="0">
 
-        <HBox fx:id="whiteKeysPane" spacing="1" styleClass="white-key-container">
+        <VBox fx:id="whiteKeysPane" spacing="1" styleClass="white-key-container" rotate="90">
             <children>
                
-                <Button fx:id="keyC4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyD4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyE4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyF4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyG4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyA4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyB4"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyC5"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyD5"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyE5"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyF5"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyG5"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyA5"   onAction="#handleKeyPress" styleClass="white-key"/>
-                <Button fx:id="keyB5"   onAction="#handleKeyPress" styleClass="white-key"/>
+                <Button fx:id="keyC4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyD4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyE4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyF4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyG4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyA4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyB4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyC5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyD5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyE5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyF5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyG5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyA5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
+                <Button fx:id="keyB5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
             </children>
-        </HBox>
+        </VBox>
 
 
         <Pane fx:id="blackKeysPane" mouseTransparent="false">

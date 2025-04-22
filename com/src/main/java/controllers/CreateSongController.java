@@ -91,9 +91,9 @@ private void saveSong() {
     MusicAppFacade.getInstance().createAndSaveSong(
         name,
         artist,
-        1,          // Default difficulty
-        "1:00",     // Default length
-        "Custom",   // Default genre
+        1,          
+        "1:00",     
+        "Custom",  
         measures
     );
 }

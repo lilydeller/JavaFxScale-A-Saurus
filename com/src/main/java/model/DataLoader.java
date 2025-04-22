@@ -228,24 +228,48 @@ public class DataLoader {
                     JSONObject measureJson = (JSONObject) measureObj;
                     int measureNumber = ((Long) measureJson.get("measureNumber")).intValue();
     
-                    JSONArray chordsArray = (JSONArray) measureJson.get("chords");
+
+
+                JSONArray chordsArray = (JSONArray) measureJson.get("chords");
+                JSONArray notesArray = (JSONArray) measureJson.get("notes");
+
                     ArrayList<Chord> chords = new ArrayList<>();
-                    for (Object chordObj : chordsArray) {
+                    ArrayList<String> notes = new ArrayList<>();
+
+                        if (chordsArray != null) {
+                        for (Object chordObj : chordsArray) {
                         chords.add(Chord.fromString((String) chordObj));
-                    }
-    
-                    measures.add(new Measure(measureNumber, chords));
+    }
+}
+
+                        if (notesArray != null) {
+                        for (Object noteObj : notesArray) {
+                        notes.add((String) noteObj);
+    }
+}
+
+measures.add(new Measure(measureNumber, notes, chords));
+
                 }
     
                 String sheetMusic = (String) songJson.get("sheetMusic");
                 String tabsMusic = (String) songJson.get("tabsMusic");
                 boolean metronome = (Boolean) songJson.get("metronome");
+
+          
+int tempo = songJson.get("tempo") != null ? ((Long) songJson.get("tempo")).intValue() : 0;
+String instrument = (String) songJson.get("instrument");
+
     
                 Song song = new Song(
                     songId, songName, songDifficulty, songLength, songGenre,
                     measures, sheetMusic, tabsMusic, metronome, artist
+
                 );
-    
+                song.setTempo(tempo);
+                song.setInstrument(instrument);
+
+
                 songs.add(song);
             }
     

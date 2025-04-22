@@ -1,1 +1,405 @@
-{"songs":[{"difficulty":1,"measures":[{"measureNumber":1,"chords":["C","G","A","F"]},{"measureNumber":2,"chords":["F","C","G","C"]}],"artist":"Unknown","metronome":true,"name":"Twinkle Twinkle Little Star","length":"1:30","genre":"Classical","id":"98d47b10-91d1-48a5-a68c-2b1d1ffb1c01","sheetMusic":"Twinkle_Sheet.pdf","tabsMusic":"Twinkle_Tabs.txt"},{"difficulty":2,"measures":[{"measureNumber":1,"chords":["C","E","G","C"]},{"measureNumber":2,"chords":["D","F","A","D"]}],"artist":"Harry Styles","metronome":true,"name":"Fine Line","length":"3:45","genre":"Pop","id":"aa11bb22-cc33-dd44-ee55-ff6677889900","sheetMusic":"FineLine_Sheet.pdf","tabsMusic":"FineLine_Tabs.txt"},{"difficulty":3,"measures":[{"measureNumber":1,"chords":["Unknown","A","E","D"]},{"measureNumber":2,"chords":["Unknown","D","Bm","E"]},{"measureNumber":3,"chords":["Unknown","E","D","A"]}],"artist":"Harry Styles","metronome":false,"name":"Keep Driving","length":"2:50","genre":"Pop","id":"f23c45d6-6789-01fa-bc34-567890abcdef","sheetMusic":"KeepDriving_Sheet.pdf","tabsMusic":"KeepDriving_Tabs.txt"},{"difficulty":3,"measures":[{"measureNumber":1,"chords":["Unknown","Unknown","Unknown","Unknown"]},{"measureNumber":2,"chords":["Unknown","Unknown","Unknown","Unknown"]}],"artist":"Unknown","metronome":false,"name":"Autumn Leaves","length":"4:15","genre":"Jazz","id":"d56e7f89-1234-5678-90ab-cd12ef345678","sheetMusic":"Autumn_Leaves_Sheet.pdf","tabsMusic":"Autumn_Leaves_Tabs.txt"},{"difficulty":3,"measures":[{"measureNumber":1,"chords":["G","B","D","G"]},{"measureNumber":2,"chords":["A","C","E","A"]}],"artist":"Harry Styles","metronome":true,"name":"Sign of the Times","length":"4:10","genre":"Pop","id":"bb22cc33-dd44-ee55-ff66-77889900aabb","sheetMusic":"SignOfTheTimes_Sheet.pdf","tabsMusic":"SignOfTheTimes_Tabs.txt"},{"difficulty":1,"measures":[{"measureNumber":1,"chords":["C","G","Am","F"]},{"measureNumber":2,"chords":["C","G","Am","F"]},{"measureNumber":3,"chords":["C","G","Am","F"]}],"artist":"lily","metronome":false,"name":"testsong","length":"0:14","genre":"pop","id":"song6","sheetMusic":"sheet_music\/sheetMusic_testsong.txt","tabsMusic":"tabs.txt"},{"difficulty":5,"measures":[{"measureNumber":1,"chords":["C","G","Am","F"]},{"measureNumber":2,"chords":["C","G","Am","F"]},{"measureNumber":3,"chords":["C","G","Am","F"]},{"measureNumber":4,"chords":["C","G","Am","F"]},{"measureNumber":5,"chords":["C","G","Am","F"]}],"artist":"lily","metronome":false,"name":"lilytestsong","length":"0:52","genre":"pop","id":"song7","sheetMusic":"sheet_music\/sheetMusic_lilytestsong.txt","tabsMusic":"tabs.txt"},{"difficulty":5,"measures":[{"measureNumber":1,"chords":["C","G","Am","F"]},{"measureNumber":2,"chords":["C","G","Am","F"]},{"measureNumber":3,"chords":["C","G","Am","F"]},{"measureNumber":4,"chords":["C","G","Am","F"]},{"measureNumber":5,"chords":["C","G","Am","F"]}],"artist":"lily","metronome":false,"name":"lilytestsong","length":"0:20","genre":"pop","id":"song8","sheetMusic":"sheet_music\/sheetMusic_lilytestsong.txt","tabsMusic":"tabs.txt"},{"difficulty":5,"measures":[{"measureNumber":1,"chords":["C","G","Am","F"]},{"measureNumber":2,"chords":["C","G","Am","F"]},{"measureNumber":3,"chords":["C","G","Am","F"]}],"artist":"lily","metronome":false,"name":"lily'sbestsongever","length":"0:40","genre":"pop","id":"song9","sheetMusic":"sheet_music\/sheetMusic_lily'sbestsongever.txt","tabsMusic":"tabs.txt"},{"difficulty":5,"measures":[{"measureNumber":1,"chords":["C","G","Am","F"]},{"measureNumber":2,"chords":["C","G","Am","F"]},{"measureNumber":3,"chords":["C","G","Am","F"]}],"artist":"abby","metronome":false,"name":"abbysbestsong","length":"0:20","genre":"pop","id":"song10","sheetMusic":"sheet_music\/sheetMusic_abbysbestsong.txt","tabsMusic":"tabs.txt"},{"difficulty":1,"measures":[{"measureNumber":1,"chords":["Unknown"]}],"artist":"Unknown","metronome":false,"name":"lily's song","length":"1:00","genre":"Custom","id":"55f79458-5fab-45b4-a92f-363d6b4ae793","sheetMusic":"","tabsMusic":""},{"difficulty":1,"measures":[{"measureNumber":1,"chords":["Unknown"]},{"measureNumber":2,"chords":["Unknown"]}],"artist":"Unknown","metronome":false,"name":"custom song","length":"1:00","genre":"Custom","id":"d3ab59d2-6717-4ff9-b83f-1d1899428109","sheetMusic":"","tabsMusic":""}]}
+{
+    "songs": [
+      {
+        "difficulty": 4,
+        "artist": "Harry Styles",
+        "metronome": true,
+        "name": "Fine Line (Full Melody)",
+        "length": "3:45",
+        "genre": "Pop",
+        "id": "fineline",
+        "sheetMusic": "FineLine_Sheet.pdf",
+        "tabsMusic": "FineLine_Tabs.txt",
+        "tempo": 75,
+        "instrument": "Piano",
+        "measures": [
+          {
+            "measureNumber": 1,
+            "notes": [
+              "G4q",
+              "B4i",
+              "B4i",
+              "D5i+D5i",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 2,
+            "notes": [
+              "G4q",
+              "B4i",
+              "B4i",
+              "D5i+D5i",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 3,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 4,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 5,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 6,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 7,
+            "notes": [
+              "B4i+B4i",
+              "C#5q",
+              "D5i+D5i",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 8,
+            "notes": [
+              "G4q",
+              "B4i+B4i",
+              "D5i+D5i",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 9,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 10,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 11,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 12,
+            "notes": [
+              "F#4q",
+              "G4i+B4i",
+              "B4q",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 13,
+            "notes": [
+              "A4i+B4i",
+              "C#5q",
+              "D5q",
+              "E5i+E5i",
+              "C#5q"
+            ]
+          },
+          {
+            "measureNumber": 14,
+            "notes": [
+              "C#5i+D5i",
+              "B4i+A4i",
+              "G4q",
+              "G4q",
+              "B4q"
+            ]
+          },
+          {
+            "measureNumber": 15,
+            "notes": [
+              "B4q+D5q",
+              "C#5q",
+              "B4q",
+              "G4q",
+              "B4q+A4q"
+            ]
+          },
+          {
+            "measureNumber": 16,
+            "notes": [
+              "B4i+D5i",
+              "C#5i+B4i",
+              "A4q",
+              "G4q",
+              "B4q+G4q"
+            ]
+          }
+        ]
+      },
+      {
+        "difficulty": 3,
+        "artist": "Radiohead",
+        "metronome": true,
+        "name": "Creep (Melody)",
+        "length": "2:30",
+        "genre": "Alternative",
+        "id": "creep",
+        "sheetMusic": "Creep_Sheet.pdf",
+        "tabsMusic": "Creep_Tabs.txt",
+        "tempo": 90,
+        "instrument": "Electric_Piano_2",
+        "measures": [
+          {
+            "measureNumber": 1,
+            "notes": [
+              "E4i+G4i+B4i",
+              "B3h"
+            ]
+          },
+          {
+            "measureNumber": 2,
+            "notes": [
+              "E4i+G4i+B4i",
+              "B3h"
+            ]
+          },
+          {
+            "measureNumber": 3,
+            "notes": [
+              "F#4i+A4i+C#5i",
+              "B3h"
+            ]
+          },
+          {
+            "measureNumber": 4,
+            "notes": [
+              "A4i+C#5i+E5i",
+              "D5q",
+              "C#5q"
+            ]
+          },
+          {
+            "measureNumber": 5,
+            "notes": [
+              "F#4i+A4i",
+              "G4q",
+              "E4q"
+            ]
+          },
+          {
+            "measureNumber": 6,
+            "notes": [
+              "A4i+G#4i+F#4i",
+              "E4q"
+            ]
+          },
+          {
+            "measureNumber": 7,
+            "notes": [
+              "G#4q+A4q+B4q"
+            ]
+          },
+          {
+            "measureNumber": 8,
+            "notes": [
+              "C#5i+B4i+A4i",
+              "C#5h"
+            ]
+          }
+        ]
+      },
+      {
+        "difficulty": 4,
+        "artist": "Justin Hurwitz",
+        "metronome": true,
+        "name": "Mia & Sebastian's Theme",
+        "length": "2:10",
+        "genre": "Film Score",
+        "id": "mia-theme",
+        "sheetMusic": "Mia_Sheet.pdf",
+        "tabsMusic": "Mia_Tabs.txt",
+        "tempo": 80,
+        "instrument": "Acoustic_Grand",
+        "measures": [
+          {
+            "measureNumber": 1,
+            "notes": [
+              "G4q",
+              "A4q",
+              "B4q+D5q"
+            ]
+          },
+          {
+            "measureNumber": 2,
+            "notes": [
+              "C5q+B4q",
+              "A4q+G4q"
+            ]
+          },
+          {
+            "measureNumber": 3,
+            "notes": [
+              "G4q",
+              "A4q",
+              "B4q+D5q"
+            ]
+          },
+          {
+            "measureNumber": 4,
+            "notes": [
+              "C5q+B4q",
+              "A4q+G4q"
+            ]
+          },
+          {
+            "measureNumber": 5,
+            "notes": [
+              "D5i+F#5i+A5i",
+              "G5q"
+            ]
+          },
+          {
+            "measureNumber": 6,
+            "notes": [
+              "F#5q+D5q",
+              "E5q+C5q"
+            ]
+          },
+          {
+            "measureNumber": 7,
+            "notes": [
+              "A4q+C5q",
+              "G4q+B4q"
+            ]
+          },
+          {
+            "measureNumber": 8,
+            "notes": [
+              "F#4q",
+              "D5q+G5q"
+            ]
+          }
+        ]
+      },
+      {
+        "difficulty": 3,
+        "artist": "Coldplay",
+        "metronome": true,
+        "name": "The Scientist (Melody)",
+        "length": "3:00",
+        "genre": "Rock",
+        "id": "scientist",
+        "sheetMusic": "Scientist_Sheet.pdf",
+        "tabsMusic": "Scientist_Tabs.txt",
+        "tempo": 75,
+        "instrument": "Piano",
+        "measures": [
+          {
+            "measureNumber": 1,
+            "notes": [
+              "D5i",
+              "C5i",
+              "A4i",
+              "B4i"
+            ]
+          },
+          {
+            "measureNumber": 2,
+            "notes": [
+              "C5i",
+              "A4i",
+              "G4i",
+              "A4i"
+            ]
+          },
+          {
+            "measureNumber": 3,
+            "notes": [
+              "D5i",
+              "E5i",
+              "F5i",
+              "E5i",
+              "D5q"
+            ]
+          },
+          {
+            "measureNumber": 4,
+            "notes": [
+              "C5i",
+              "D5i",
+              "E5i",
+              "D5i",
+              "C5q"
+            ]
+          },
+          {
+            "measureNumber": 5,
+            "notes": [
+              "D5q",
+              "D5q",
+              "E5q",
+              "F5q"
+            ]
+          },
+          {
+            "measureNumber": 6,
+            "notes": [
+              "C5i",
+              "C5i",
+              "B4i",
+              "A4i",
+              "G4q"
+            ]
+          },
+          {
+            "measureNumber": 7,
+            "notes": [
+              "A4q",
+              "B4q",
+              "C5q",
+              "B4q"
+            ]
+          },
+          {
+            "measureNumber": 8,
+            "notes": [
+              "A4q",
+              "G4q",
+              "F#4q",
+              "E4q"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

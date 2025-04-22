@@ -225,5 +225,13 @@ private boolean isArtistInRange(char letter, String range) {
     }
 }
 
+public void loadSongs() {
+    ArrayList<Song> loaded = DataLoader.loadSongs(); 
+    songs.clear();
+    songs.addAll(loaded);
+    System.out.println("Songs loaded: " + songs.size());
+}
+
+
 }
 

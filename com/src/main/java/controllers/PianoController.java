@@ -4,6 +4,7 @@ import controllers.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import org.jfugue.player.Player;
@@ -23,6 +24,8 @@ public class PianoController {
     @FXML private Button keyCSharp5, keyDSharp5, keyFSharp5, keyGSharp5, keyASharp5;
 
     @FXML private Button btnBack;
+
+    @FXML private AnchorPane pianoRoot;
 
 
     @FXML

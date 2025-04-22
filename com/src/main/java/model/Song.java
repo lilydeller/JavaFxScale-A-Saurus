@@ -16,6 +16,8 @@ public class Song {
     private String sheetMusic;
     private String tabsMusic;
     private boolean metronome;
+    private int tempo;
+    private String instrument;
 
     /**
      * Creates a song object
@@ -60,6 +62,22 @@ public class Song {
     */ 
     public String getSongName() {
         return songName;
+    }
+
+    public int getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
+
+    public String getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(String instrument) {
+        this.instrument = instrument;
     }
 
     /**

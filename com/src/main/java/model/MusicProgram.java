@@ -1,10 +1,13 @@
 package model;
 
-import javax.sound.midi.*;
-import java.io.File;
-import java.io.IOException;
+import music.Music;
 import java.util.ArrayList;
 
+/**
+ * the {@code MusicProgram} class manages instruments and plays songs
+ * using either predefined patterns or user-created content from the {@link SongList}.
+ *  integrates with the JFugue-based {@code Music} player to produce audible output
+ */
 public class MusicProgram {
     private ArrayList<Instrument> instruments = new ArrayList<>();
     private static Instrument currentInstrument;
@@ -25,83 +28,70 @@ public class MusicProgram {
         System.out.println("Instrument not found.");
     }
 
+    /**
+     * plays a song using the selected instrument(defaulted piano) Predefined songs have custom patterns. Otherwise, songs are
+     * retrieved from the {@link SongList} and played based on their {@link Measure} and {@link Chord} content.
+     *
+     * @param songName the name of the song to play
+     */
     public static void playSong(String songName) {
         if (currentInstrument == null) {
             System.out.println("No instrument selected, defaulting to Piano.");
             currentInstrument = new Instrument("Piano");
         }
-
+    
         System.out.println("\n🎵 Now Playing: " + songName + " on " + currentInstrument.getName());
-
-        switch (songName.toLowerCase()) {
-            case "twinkle twinkle little star":
-                playMidi("path/to/twinkle_twinkle.mid");
-                break;
-            case "autumn leaves":
-                playMidi("path/to/autumn_leaves.mid");
-                break;
-            case "bohemian rhapsody":
-                playMidi("path/to/bohemian_rhapsody.mid");
-                break;
-            case "keep driving":
-                playMidi("path/to/keep_driving.mid");
-                break;
-            case "fine line":
-                playMidi("path/to/fine_line.mid");
-                break;
-            case "sign of the times":
-                playMidi("path/to/sign_of_the_times.mid");
-                break;
-            case "still dre":
-                playMidi("path/to/still_dre.mid");
-                break;
-            default:
-                System.out.println("Song not found!");
+    
+        
+        Song song = SongList.getInstance().getSong(songName);
+        if (song == null) {
+            System.out.println("Song not found!");
+            return;
         }
-    }
+    
+        StringBuilder pattern = new StringBuilder();
 
-    private static void playMidi(String midiFilePath) {
-        try {
-            File midiFile = new File(midiFilePath);
-            Sequence sequence = MidiSystem.getSequence(midiFile);
-            Sequencer sequencer = MidiSystem.getSequencer();
-
-            if (sequencer == null) {
-                System.out.println("MIDI sequencer not available.");
-                return;
+        String instrument = song.getInstrument();
+                if (instrument != null && !instrument.isEmpty()) {
+                pattern.append("I[").append(instrument).append("] ");
+            } else {
+                pattern.append("I[Piano] ");
             }
 
-            sequencer.open();
-            sequencer.setSequence(sequence);
-            sequencer.start();
 
-            System.out.println("Playing MIDI file: " + midiFilePath);
+    
+        for (Measure measure : song.getMeasures()) {
+            if (measure.getNotes() != null && !measure.getNotes().isEmpty()) {
+                if (measure.getNotes().size() == 1 || !measure.getNotes().get(0).contains("+")) {
+             
+                    for (String note : measure.getNotes()) {
+                        pattern.append(note).append(" ");
+                    }
+                } else {
 
-            // Wait for the sequencer to finish playing
-            while (sequencer.isRunning()) {
-                Thread.sleep(100);
-            }
-
-            sequencer.close();
-        } catch (InvalidMidiDataException | IOException | InterruptedException e) {
-            e.printStackTrace();
+                    for (String chord : measure.getNotes()) {
+                        pattern.append(chord).append(" ");
+                    }
+                }
+                
+            pattern.append("| ");
         }
+        Music.playPattern(pattern.toString().trim());
     }
-
+}
+    
     public static void main(String[] args) {
         MusicProgram player = new MusicProgram();
         Instrument piano = new Instrument("Piano");
         player.addInstrument(piano);
         player.setCurrentInstrument("Piano");
 
-        // Play songs using their MIDI files
-        player.playSong("Twinkle Twinkle Little Star");
-        player.playSong("Bohemian Rhapsody");
-        player.playSong("Keep Driving");
-        player.playSong("Autumn Leaves");
-        player.playSong("Fine Line");
-        player.playSong("Sign of the Times");
-        player.playSong("Still DRE");
+        SongList.getInstance().loadSongs();
+      
+        player.playSong("Fine Line (Full Melody)");
+        player.playSong("Creep (Melody)");
+        player.playSong("Mia & Sebastian's Theme");
+        player.playSong("The Scientist (Melody)");
+
     }
 }
-

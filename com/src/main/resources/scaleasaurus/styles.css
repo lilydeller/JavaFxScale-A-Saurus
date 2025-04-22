@@ -313,6 +313,7 @@ piano
   -fx-background-color: white;
   -fx-border-color: black;
   -fx-border-width: 1px;
+  -fx-focus-traversable: true;
 }
 
 .black-key {

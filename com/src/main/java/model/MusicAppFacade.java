@@ -113,7 +113,7 @@ public class MusicAppFacade {
     public void addMeasure() {
         if (currentSong != null) {
             int newMeasureNumber = currentSong.getMeasures().size() + 1;
-            Measure newMeasure = new Measure(newMeasureNumber, new ArrayList<>());
+            Measure newMeasure = new Measure(newMeasureNumber, new ArrayList<Chord>());
             currentSong.addMeasure(newMeasure);
             System.out.println("Added measure " + newMeasureNumber + " to " + currentSong.getSongName());
         } else {
