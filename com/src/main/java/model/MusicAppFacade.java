@@ -172,4 +172,9 @@ public class MusicAppFacade {
             System.out.println("No user is currently logged in.");
         }
     }
+
+    public void setCurrentUser(User user)
+    {
+        this.currentUser = user;
+    }
 }

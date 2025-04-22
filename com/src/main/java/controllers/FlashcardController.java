@@ -1,10 +1,13 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
@@ -115,6 +118,16 @@ public class FlashcardController {
             currentUser.markChapterComplete(currentChapter);
             MusicAppFacade.getInstance().saveAll();
         }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scaleasaurus/lessonfolder.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        App.setRoot(root);
     }
 
     @FXML

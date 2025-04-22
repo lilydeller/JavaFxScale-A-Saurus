@@ -40,6 +40,7 @@ private void btnLoginClicked(ActionEvent event) throws IOException {
 
     User user = UserList.getInstance().getUser(username, password);
     if (user != null) {
+        MusicAppFacade.getInstance().setCurrentUser(user);
         App.setRoot("home");
     } else {
         lbl_error.setText("invalid login");

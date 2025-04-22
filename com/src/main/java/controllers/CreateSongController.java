@@ -86,7 +86,8 @@ private void saveSong() {
     }
 
     User currentUser = MusicAppFacade.getInstance().getCurrentUser();
-    String artist = (currentUser != null) ? currentUser.getUserName() : "Unknown";
+    String artist = currentUser.getUserName();
+
 
     MusicAppFacade.getInstance().createAndSaveSong(
         name,
