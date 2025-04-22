@@ -5,82 +5,100 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.SongSearchController"
-            prefWidth="375.0" prefHeight="667.0"
-            styleClass="song-search-root">
+<AnchorPane prefHeight="667.0" prefWidth="375.0" styleClass="song-search-root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SongSearchController">
 
     <children>
 
        
   
-<Button text="Back" fx:id="btn_back" layoutX="15" layoutY="20"
-        onAction="#handleBack" styleClass="back-button" />
+<Button fx:id="btn_back" layoutX="14.0" layoutY="616.0" onAction="#handleBack" styleClass="back-button" text="Back" />
 
 
-<VBox layoutX="20" layoutY="70" spacing="5" styleClass="search-box-wrapper">
-    <HBox spacing="8">
-        <TextField fx:id="txt_search" promptText="Search by Song or Artist Name"
-                   styleClass="search-bar" prefWidth="250"/>
-        <Button fx:id="btn_search" styleClass="search-button" text="🔍" prefWidth="40"/>
+<VBox layoutX="30.0" layoutY="38.0" prefHeight="62.0" prefWidth="314.0" spacing="5" styleClass="search-box-wrapper">
+    <HBox prefHeight="0.0" prefWidth="370.0" spacing="8">
+        <TextField fx:id="txt_search" prefWidth="250" promptText="Search by Song or Artist Name" styleClass="search-bar" />
+        <Button fx:id="btn_search" onAction="#handleSearch" prefHeight="26.0" prefWidth="102.0" styleClass="search-button" text="🔍" />
     </HBox>
 </VBox>
 
 
-<VBox layoutX="20" layoutY="130" spacing="20" prefWidth="335"
-      styleClass="filter-box-wrapper">
+<VBox layoutX="12.0" layoutY="110.0" prefHeight="390.0" prefWidth="350.0" spacing="20" styleClass="filter-box-wrapper">
 
-    <Label text="artist" styleClass="category-label"/>
+    <Label prefHeight="20.0" prefWidth="316.0" styleClass="category-label" text="artist" />
     <GridPane hgap="10" vgap="10">
         <children>
 
-    <Button text="All" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-    <Button text="A–D" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-    <Button text="I–O" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-    <Button text="P–S" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <Button text="T–W" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    <Button text="Y–Z" styleClass="category-button" onAction="#handleLetterFilter" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+    <Button onAction="#handleLetterFilter" styleClass="category-button" text="All" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Button onAction="#handleLetterFilter" styleClass="category-button" text="A–D" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <Button onAction="#handleLetterFilter" styleClass="category-button" text="I–O" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+    <Button onAction="#handleLetterFilter" styleClass="category-button" text="P–S" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Button onAction="#handleLetterFilter" styleClass="category-button" text="T–W" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button onAction="#handleLetterFilter" styleClass="category-button" text="Y–Z" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 </children>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
 </GridPane>
 
-<Label text="genre" styleClass="category-label"/>
+<Label prefHeight="20.0" prefWidth="286.0" styleClass="category-label" text="genre" />
 <GridPane hgap="10" vgap="10">
     <children>
     
-        <Button text="All" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <Button text="Pop" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Button text="Rock" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-        <Button text="Classical" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <Button text="Jazz" styleClass="category-button" onAction="#handleGenreFilter" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Button onAction="#handleGenreFilter" styleClass="category-button" text="All" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Button onAction="#handleGenreFilter" styleClass="category-button" text="Pop" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button onAction="#handleGenreFilter" styleClass="category-button" text="Rock" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Button onAction="#handleGenreFilter" styleClass="category-button" text="Classical" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Button onAction="#handleGenreFilter" styleClass="category-button" text="Jazz" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
 </GridPane>
 
-<Label text="difficulty" styleClass="category-label"/>
+<Label styleClass="category-label" text="difficulty" />
 <GridPane hgap="10" vgap="10">
     <children>
  
-        <Button text="All" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <Button text="1–4" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Button text="5–10" styleClass="category-button" onAction="#handleDifficultyFilter" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Button onAction="#handleDifficultyFilter" styleClass="category-button" text="All" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Button onAction="#handleDifficultyFilter" styleClass="category-button" text="1–4" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button onAction="#handleDifficultyFilter" styleClass="category-button" text="5–10" GridPane.columnIndex="2" GridPane.rowIndex="0" />
     </children>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+            </rowConstraints>
 </GridPane>
 
 </VBox>
-
-
-<Button fx:id="btn_search" styleClass="search-button" text="🔍" onAction="#handleSearch" />
-<Button layoutX="90" layoutY="560" text="Find song matches" fx:id="btn_find" styleClass="find-button" onAction="#handleSearch"/>
+<Button fx:id="btn_find" layoutX="68.0" layoutY="525.0" onAction="#handleSearch" styleClass="find-button" text="Find song matches" />
 
 
 
     </children>
 
     <stylesheets>
-        <URL value="@styles.css"/>
+        <URL value="@styles.css" />
     </stylesheets>
 </AnchorPane>

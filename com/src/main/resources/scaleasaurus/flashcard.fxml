@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -6,53 +7,29 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controllers.FlashcardController"
-            prefWidth="375.0" prefHeight="667.0"
-            styleClass="home-root"
-            stylesheets="@styles.css">
+<AnchorPane prefHeight="667.0" prefWidth="375.0" styleClass="home-root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlashcardController">
 
-    <StackPane fx:id="frontStack" layoutX="37.5" layoutY="180" prefWidth="300" prefHeight="200">
-        <Rectangle fx:id="frontRectangle" width="300" height="200" fill="lightblue" stroke="black"/>
-        <Label fx:id="frontLabel"
-               wrapText="true"
-               textAlignment="CENTER"
-               alignment="CENTER"
-               maxWidth="280"
-               style="-fx-font-size: 18px;">
+    <StackPane fx:id="frontStack" layoutX="37.5" layoutY="180" prefHeight="200" prefWidth="300">
+        <Label fx:id="frontLabel" alignment="CENTER" maxWidth="280" style="-fx-font-size: 18px;" textAlignment="CENTER" wrapText="true">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+        </Label>
+        <Rectangle fx:id="frontRectangle" fill="lightblue" height="200" stroke="black" width="300" />
+    </StackPane>
+
+    <StackPane fx:id="backStack" layoutX="37.5" layoutY="180" prefHeight="200" prefWidth="300" visible="false">
+        <Rectangle fx:id="backRectangle" fill="lightblue" height="200" stroke="black" width="300" />
+        <Label fx:id="backLabel" alignment="CENTER" maxWidth="280" style="-fx-font-size: 18px;" textAlignment="CENTER" wrapText="true">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
         </Label>
     </StackPane>
 
-    <StackPane fx:id="backStack" layoutX="37.5" layoutY="180" prefWidth="300" prefHeight="200" visible="false">
-        <Rectangle fx:id="backRectangle" width="300" height="200" fill="lightblue" stroke="black"/>
-        <Label fx:id="backLabel"
-               wrapText="true"
-               textAlignment="CENTER"
-               alignment="CENTER"
-               maxWidth="280"
-               style="-fx-font-size: 18px;">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-        </Label>
-    </StackPane>
-
-    <Button text="Flip Card"
-            layoutX="137.5" layoutY="420"
-            onAction="#handleClick"
-            styleClass="green-pill"/>
-    <Button text="Next Card"
-            layoutX="137.5" layoutY="470"
-            onAction="#handleNextCard"
-            styleClass="green-pill"/>
-    <Button text="Complete Lesson"
-            layoutX="120" layoutY="520"
-            onAction="#handleCompleteLesson"
-            styleClass="green-pill"/>
+    <Button layoutX="68.0" layoutY="413.0" onAction="#handleClick" styleClass="green-pill" text="Flip Card" />
+    <Button layoutX="68.0" layoutY="461.0" onAction="#handleNextCard" styleClass="green-pill" text="Next Card" />
+    <Button layoutX="68.0" layoutY="508.0" onAction="#handleCompleteLesson" styleClass="green-pill" text="Complete Lesson" />
 
 
 
