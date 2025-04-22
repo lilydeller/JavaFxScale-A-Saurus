@@ -45,26 +45,6 @@
   -fx-underline: true;
   -fx-cursor: hand;
 }
-/*
-navigation bar stuff
-*/
-.nav-button {
-  -fx-background-color: #34495e; /* Dark gray for default */
-  -fx-text-fill: white;
-  -fx-border-radius: 5px;
-  -fx-padding: 10px;
-}
-
-/* Style for highlighted button */
-.nav-button-highlighted {
-  -fx-background-color: #64c126; /* Highlighted blue */
-  -fx-text-fill: white;
-  -fx-border-radius: 5px;
-  -fx-padding: 10px;
-}
-
-
-
 
 /*
 home stuff 
