@@ -10,7 +10,7 @@
         "id": "fineline",
         "sheetMusic": "FineLine_Sheet.pdf",
         "tabsMusic": "FineLine_Tabs.txt",
-        "tempo": 75,
+        "tempo": 100,
         "instrument": "Piano",
         "measures": [
           {
@@ -402,4 +402,3 @@
       }
     ]
   }
-  

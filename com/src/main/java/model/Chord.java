@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Chord {
     private List<Pitch> notes;
@@ -116,5 +117,10 @@ public class Chord {
         }
         return new Chord(notes);
     }
+
+    public String getNotesAsString() {
+        return notes.stream().map(Pitch::toString).collect(Collectors.joining("+"));
+    }
+
     
 }

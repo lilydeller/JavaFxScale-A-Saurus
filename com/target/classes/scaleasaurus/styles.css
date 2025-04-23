@@ -304,23 +304,19 @@ piano
 }
 
 .white-key {
-  -fx-pref-width: 50px;
-  -fx-pref-height: 250px;
+  -fx-pref-width: 30;
+  -fx-pref-height: 120;
   -fx-background-color: white;
   -fx-border-color: black;
-  -fx-border-width: 1px;
-  -fx-focus-traversable: true;
 }
 
+
 .black-key {
-  -fx-pref-width: 30px;
-  -fx-pref-height: 150px;
+  -fx-pref-width: 20;
+  -fx-pref-height: 80;
   -fx-background-color: black;
-  -fx-text-fill: white;
-  -fx-border-color: black;
-  -fx-border-width: 1px;
   -fx-translate-y: 0;
-  -fx-z-index: 1;
+  -fx-z-index: 10;
 }
 
 .white-key-container {
@@ -332,14 +328,13 @@ piano
   -fx-background-color: limegreen;
 }
 
+
 .back-button {
-  -fx-background-color: #4CAF50;
+  -fx-background-color: limegreen;
   -fx-text-fill: white;
-  -fx-font-size: 16px;
-  -fx-pref-width: 100px;
-  -fx-pref-height: 30px;
-  -fx-border-radius: 5;
-  -fx-background-radius: 5;
+  -fx-font-weight: bold;
+  -fx-border-radius: 8;
+  -fx-padding: 5;
 }
 
 

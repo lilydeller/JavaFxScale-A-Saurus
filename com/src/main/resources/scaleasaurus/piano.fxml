@@ -5,67 +5,41 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
-
+<?import javafx.scene.canvas.Canvas?> 
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.PianoController"
-            prefWidth="375" prefHeight="667"
-            styleClass="piano-root">
-
-    <StackPane layoutX="0" layoutY="0">
-
-        <VBox fx:id="whiteKeysPane" spacing="1" styleClass="white-key-container" rotate="90">
-            <children>
-               
-                <Button fx:id="keyC4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyD4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyE4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyF4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyG4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyA4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyB4"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyC5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyD5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyE5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyF5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyG5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyA5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-                <Button fx:id="keyB5"   onAction="#handleKeyPress" styleClass="white-key" rotate="90"/>
-            </children>
-        </VBox>
+            prefWidth="768" prefHeight="667"
+            style="-fx-background-color: #f4f1e9;">
 
 
-        <Pane fx:id="blackKeysPane" mouseTransparent="false">
-            <children>
-
-                <Button fx:id="keyCSharp4" layoutX="40"  layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyDSharp4" layoutX="90"  layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyFSharp4" layoutX="190" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyGSharp4" layoutX="240" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyASharp4" layoutX="290" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-
-                <Button fx:id="keyCSharp5" layoutX="390" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyDSharp5" layoutX="440" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyFSharp5" layoutX="540" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyGSharp5" layoutX="590" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-                <Button fx:id="keyASharp5" layoutX="640" layoutY="0" styleClass="black-key" onAction="#handleKeyPress"/>
-            </children>
-        </Pane>
-    </StackPane>
+    <ScrollPane layoutX="0" layoutY="0" prefWidth="300" prefHeight="667"
+                style="-fx-background-color: transparent;" fitToWidth="true">
+        <Canvas fx:id="sheetCanvas" width="300" height="1200"
+                style="-fx-background-color: #fefee2;" />
+    </ScrollPane>
 
 
-    <Button fx:id="btnBack" layoutX="140" layoutY="620" text="Back" onAction="#handleBack" styleClass="back-button"/>
+    <VBox fx:id="whiteKeyBox" layoutX="300" layoutY="0" prefWidth="468" prefHeight="667" spacing="0"
+          style="-fx-background-color: #f9f7f3;" />
 
-    <stylesheets>
-        <URL value="@styles.css"/>
-    </stylesheets>
+
+    <Pane fx:id="blackKeyPane" layoutX="300" layoutY="0" prefWidth="468" prefHeight="667" pickOnBounds="false" />
+
+  
+    <Button fx:id="btnSaveExit" layoutX="20" layoutY="620" prefWidth="180" prefHeight="40"
+            onAction="#handleSaveExit"
+            text="Save &amp; Exit"
+            style="-fx-background-color: #264d3b; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" />
 </AnchorPane>

@@ -161,7 +161,6 @@ public class MusicAppFacade {
     
     
 
-    // Logout current user
     public void logout() {
         if (currentUser != null) {
             saveAll();
@@ -173,8 +172,32 @@ public class MusicAppFacade {
         }
     }
 
+    public void addSongToCurrentUser(Song song) {
+        if (currentUser == null) {
+            System.out.println(" No user is currently logged in.");
+            return;
+        }
+    
+   
+        if (currentUser.getSavedSongs().contains(song)) {
+            System.out.println(" Song already saved.");
+            return;
+        }
+    
+        currentUser.getSavedSongs().add(song);
+        System.out.println("Song added to user: " + currentUser.getUserName());
+    }
+
     public void setCurrentUser(User user)
     {
         this.currentUser = user;
+    }
+
+    public void saveCurrentSession() {
+        if (currentUser != null && currentSong != null) {
+            currentUser.setLastSong(currentSong.getSongName());
+         
+            DataWriter.saveUsers(); 
+        }
     }
 }

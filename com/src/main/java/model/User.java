@@ -25,6 +25,7 @@ public class User {
     private ArrayList<Achievement> unlockedAchievements = new ArrayList<>();
     private ArrayList<String> completedChapters;
     private ArrayList<Song> savedSongs = new ArrayList<>();
+    private String lastSong;
 
 
     /**
@@ -111,6 +112,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setLastSong(String lastSong) {
+        this.lastSong = lastSong;
+    }
+
+    public String getLastSong() {
+        return lastSong;
     }
 
     public String getEmail() {

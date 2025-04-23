@@ -23,6 +23,7 @@ public class SongResultsController {
     
     @FXML
     public void initialize() {
+
         resultsContainer.getChildren().clear();
 
         if (filteredSongs == null || filteredSongs.isEmpty()) {
@@ -41,30 +42,34 @@ public class SongResultsController {
             Label genre = new Label("Genre: " + song.getGenre());
 
             Button play = new Button("Play Along");
-            Button sheet = new Button("View Sheet Music");
+    
             Button save = new Button("Save to My Songs");
 
-            play.setOnAction(e -> MusicAppFacade.getInstance().openSong(song.getSongName()));
-            sheet.setOnAction(e -> {
-                /*
-                 * lily TODOopen sheet music file 
-                 */
-                System.out.println("Viewing: " + song.getSheetMusic());
-            });
-            save.setOnAction(e -> {
-                /*
-                 * TODO implement saving song to user prof
-                 */
-                System.out.println("Saved song: " + song.getSongName());
+            play.setOnAction(e -> {
+                MusicAppFacade.getInstance().setCurrentSong(song);
+                try {
+                    App.setRoot("piano");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             });
 
-            HBox buttonRow = new HBox(play, sheet, save);
+         
+            save.setOnAction(e -> {
+                MusicAppFacade.getInstance().addSongToCurrentUser(song);
+                System.out.println(" Saved: " + song.getSongName());
+            });
+
+            HBox buttonRow = new HBox(play,save);
             buttonRow.setSpacing(10);
 
             songBox.getChildren().addAll(name, difficulty, length, genre, buttonRow);
             resultsContainer.getChildren().add(songBox);
         }
     }
+
+    
+
 
     @FXML
     private void handleBack() throws IOException {

@@ -34,6 +34,8 @@ public class MusicProgram {
      *
      * @param songName the name of the song to play
      */
+   
+
     public static void playSong(String songName) {
         if (currentInstrument == null) {
             System.out.println("No instrument selected, defaulting to Piano.");
@@ -58,26 +60,20 @@ public class MusicProgram {
                 pattern.append("I[Piano] ");
             }
 
-
-    
-        for (Measure measure : song.getMeasures()) {
-            if (measure.getNotes() != null && !measure.getNotes().isEmpty()) {
-                if (measure.getNotes().size() == 1 || !measure.getNotes().get(0).contains("+")) {
-             
-                    for (String note : measure.getNotes()) {
-                        pattern.append(note).append(" ");
-                    }
-                } else {
-
-                    for (String chord : measure.getNotes()) {
-                        pattern.append(chord).append(" ");
-                    }
+    for (Measure measure : song.getMeasures()) {
+        if (measure.getNotes() != null && !measure.getNotes().isEmpty()) {
+            for (String chord : measure.getNotes()) {
+                if (!chord.equalsIgnoreCase("Unknown")) {
+                    pattern.append(chord).append(" ");
                 }
-                
+            }
             pattern.append("| ");
         }
-        Music.playPattern(pattern.toString().trim());
     }
+
+
+    System.out.println("🎼 Playing pattern: " + pattern);
+    Music.playPattern(pattern.toString().trim());
 }
     
     public static void main(String[] args) {

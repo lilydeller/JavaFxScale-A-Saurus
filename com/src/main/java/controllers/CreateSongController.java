@@ -97,6 +97,14 @@ private void saveSong() {
         "Custom",  
         measures
     );
+    Song createdSong = SongList.getInstance().getSong(name);
+    MusicAppFacade.getInstance().setCurrentSong(createdSong);
+
+    try {
+        App.setRoot("piano");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 }
     
 
