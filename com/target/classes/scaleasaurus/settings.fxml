@@ -17,7 +17,10 @@
 
         <Button fx:id="btn_editProfile" layoutX="100.0" layoutY="120.0" text="Edit Profile" onAction="#onEditProfileClicked" />
         <Button fx:id="btn_notifications" layoutX="100.0" layoutY="180.0" text="Notifications" onAction="#onNotificationsClicked" />
-        <Button fx:id="btn_help" layoutX="100.0" layoutY="240.0" text="Help & Support" onAction="#onHelpClicked" />
-        <Button fx:id="btn_back" layoutX="100.0" layoutY="300.0" text="Back" onAction="#onBackClicked" />
+        <Button fx:id="btn_help" layoutX="100.0" layoutY="240.0" text="Help &amp; Support" onAction="#onHelpClicked" />
+        <Button fx:id="btn_back" layoutX="100.0"
+         layoutY="300.0" text="Back" onAction="#onBackClicked" />
+
+        <fx:include source="navbar.fxml" />
     </children>
 </AnchorPane>

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.text.Font?>
+<?import javafx.fxml.FXMLLoader?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -36,6 +37,8 @@
                 prefWidth="90"
                 onAction="#handleViewSong"
                 styleClass="green-pill" />
+
+                <fx:include source="navbar.fxml" />
     </children>
 
     <stylesheets>

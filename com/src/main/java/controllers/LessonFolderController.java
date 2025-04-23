@@ -79,4 +79,24 @@ private void handleChapter6() throws IOException {
     App.setRoot(root);
 }
 
+@FXML
+public void goHome() throws IOException {
+    App.setRoot("home");
+}
+
+@FXML
+public void goSongs() throws IOException {
+    App.setRoot("songssearch");
+}
+
+@FXML
+public void goLessons() throws IOException {
+    App.setRoot("lessonfolder");
+}
+
+@FXML
+public void goUser() throws IOException {
+    App.setRoot("settings");
+}
+
 }

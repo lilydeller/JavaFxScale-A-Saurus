@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.fxml.FXMLLoader?>
 
 <AnchorPane prefHeight="667" prefWidth="375" style="-fx-background-color: #eaf5d5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LessonFolderController">
 
@@ -22,6 +23,7 @@
         <Button fx:id="chapter6Btn" onAction="#handleChapter6" styleClass="chapter-button" text="Chapter 6: Chords in Harmony" />
     </VBox>
 
+     <fx:include source="navbar.fxml" />
     
 
     <stylesheets>

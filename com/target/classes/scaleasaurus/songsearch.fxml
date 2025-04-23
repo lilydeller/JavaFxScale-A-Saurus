@@ -11,13 +11,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="667.0" prefWidth="375.0" styleClass="song-search-root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SongSearchController">
+<VBox xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.SongSearchController"
+      prefHeight="667.0" prefWidth="375.0"
+      styleClass="song-search-root">
 
+
+<AnchorPane prefHeight="610.0" prefWidth="375.0">
     <children>
-
-       
-  
-<Button fx:id="btn_back" layoutX="14.0" layoutY="616.0" onAction="#handleBack" styleClass="back-button" text="Back" />
+        <Button fx:id="btn_back" layoutX="14.0" layoutY="616.0" onAction="#handleBack" styleClass="back-button" text="Back" />
 
 
 <VBox layoutX="30.0" layoutY="38.0" prefHeight="62.0" prefWidth="314.0" spacing="5" styleClass="search-box-wrapper">
@@ -97,8 +100,12 @@
 
 
     </children>
+</AnchorPane>
+
+
+    <fx:include source="navbar.fxml" />
 
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
-</AnchorPane>
+</VBox>

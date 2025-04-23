@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -14,6 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import model.Chord; 
 
 import model.Song;
@@ -31,6 +34,8 @@ public class PianoController {
     @FXML private AnchorPane pianoRoot;
     @FXML private Canvas sheetCanvas;
     @FXML private VBox whiteKeyBox;
+    @FXML private ScrollPane sheetScrollPane;
+
 
     @FXML private Pane blackKeyPane;
 
@@ -104,18 +109,14 @@ public class PianoController {
 
     private void loadAndPlaySong(Song song) {
         if (song == null) return;
-    
         currentNotes.clear();
-    
         for (Measure measure : song.getMeasures()) {
             for (String chordLabel : measure.getNotes()) {
                 if (!chordLabel.equalsIgnoreCase("Unknown")) {
-                    Chord chord = Chord.fromString(chordLabel);
-                    currentNotes.add(chord.getNotesAsString());
+                    currentNotes.add(chordLabel);
                 }
             }
         }
-    
         noteIndex = 0;
         drawSheetMusic(currentNotes);
         scheduleNotes();
@@ -127,27 +128,45 @@ public class PianoController {
         GraphicsContext gc = sheetCanvas.getGraphicsContext2D();
         gc.setFill(Color.BEIGE);
         gc.fillRect(0, 0, sheetCanvas.getWidth(), sheetCanvas.getHeight());
-
         gc.setStroke(Color.BLACK);
-        for (int i = 0; i < 5; i++) {
-            gc.strokeLine(0, 30 + i * 10, sheetCanvas.getWidth(), 30 + i * 10);
+        gc.setLineWidth(2);
+        double top = 40;         
+        double spacing = 15;
+        for (int i = 0; i < 20; i++) {
+            double x = 10 + i * 20; 
+            gc.setStroke(Color.LIGHTGRAY);
+            gc.strokeLine(x, 0, x, sheetCanvas.getHeight());
         }
-
+        
         double y = 20;
+        gc.setFont(Font.font("Serif", FontWeight.BOLD, 24));
         for (String note : notes) {
-            String[] pitches = note.split("\\+");
+            String[] pitches = note.contains("+") ? note.split("\\+") : new String[] { note };
             for (String pitch : pitches) {
-                double x = noteToX(pitch.replaceAll("[^A-G#0-9]", ""));
+                String clean = pitch.replaceAll("[^A-G#0-9]", "");
+                String duration = pitch.replaceAll("[A-G#0-9]", "");
+                double x = noteToX(clean);
+                String symbol = duration.equals("i") ? "♪" : "♩";
                 gc.setFill(Color.BLACK);
-                gc.fillOval(x, y, 10, 10);
+                gc.fillText(symbol, x, y);
             }
             y += 25;
         }
     }
-
     private double noteToX(String pitch) {
-        return 10 + Math.random() * 200; 
+        return switch (pitch) {
+            case "C4" -> 10;  case "C#4" -> 20;  case "D4" -> 30;
+            case "D#4" -> 40; case "E4"  -> 50;  case "F4" -> 60;
+            case "F#4" -> 70; case "G4"  -> 80;  case "G#4" -> 90;
+            case "A4"  -> 100; case "A#4" -> 110; case "B4" -> 120;
+            case "C5"  -> 130; case "C#5" -> 140; case "D5" -> 150;
+            case "D#5" -> 160; case "E5"  -> 170; case "F5" -> 180;
+            case "F#5" -> 190; case "G5"  -> 200; case "G#5" -> 210;
+            case "A5"  -> 220; case "A#5" -> 230; case "B5" -> 240;
+            default -> 80; 
+        };
     }
+    
 
     private double noteToY(String pitch) {
         return switch (pitch) {
@@ -171,15 +190,24 @@ public class PianoController {
 
     private void highlightNextNote() {
         if (noteIndex >= currentNotes.size()) return;
+    
         GraphicsContext gc = sheetCanvas.getGraphicsContext2D();
-        double x = 20 + noteIndex * NOTE_SPACING;
-        String[] notes = currentNotes.get(noteIndex).split("\\+");
+    
+        
+            
+            
+    
+        String[] pitches = currentNotes.get(noteIndex).split("\\+");
         gc.setFill(Color.LIMEGREEN);
-        for (String pitch : notes) {
+    
+        for (String pitch : pitches) {
             String clean = pitch.replaceAll("[^A-G#0-9]", "");
-            double y = noteToY(clean);
-            gc.fillOval(x, y, 10, 10);
-
+            String duration = pitch.replaceAll("[A-G#0-9]", "");
+            String symbol = duration.equals("i") ? "♪" : "♩";
+            player.play(clean + duration);
+    
+            double x = noteToX(clean); 
+    
             Button key = keyMap.get(clean);
             if (key != null) {
                 key.setStyle("-fx-background-color: lightgreen;");
@@ -193,8 +221,19 @@ public class PianoController {
                 }, 400);
             }
         }
+    
+        
+        double scrollHeight = sheetCanvas.getHeight();
+        double visibleHeight = sheetScrollPane.getViewportBounds().getHeight();
+        double y = 40 + noteIndex * NOTE_SPACING;
+
+        double scrollY = Math.max(0, (y - visibleHeight / 2) / (scrollHeight - visibleHeight));
+        sheetScrollPane.setVvalue(scrollY);
+
+    
         noteIndex++;
     }
+    
 
     @FXML
     public void handleSaveExit() throws IOException {

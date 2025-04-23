@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import model.MusicAppFacade;
 import model.Song;
 
+import java.io.IOException;
 import java.util.List;
 
 public class SongSearchController {
@@ -94,4 +95,24 @@ public class SongSearchController {
     private void handleBack() throws Exception {
         App.setRoot("home");
     }
+
+@FXML
+public void goHome() throws IOException {
+    App.setRoot("home");
+}
+
+@FXML
+public void goSongs() throws IOException {
+    App.setRoot("songssearch");
+}
+
+@FXML
+public void goLessons() throws IOException {
+    App.setRoot("lessonfolder");
+}
+
+@FXML
+public void goUser() throws IOException {
+    App.setRoot("settings");
+}
 }

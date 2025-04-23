@@ -28,14 +28,31 @@ public class SettingsController {
         App.setRoot("add a friend");  
     }
 
-    @FXML
-    private void goToQuizMenu(ActionEvent event) throws IOException {
-        App.setRoot("quiz menu");  
-    }
+
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
         App.setRoot("login");
     }
+
+    @FXML
+public void goHome() throws IOException {
+    App.setRoot("home");
+}
+
+@FXML
+public void goSongs() throws IOException {
+    App.setRoot("songssearch");
+}
+
+@FXML
+public void goLessons() throws IOException {
+    App.setRoot("lessonfolder");
+}
+
+@FXML
+public void goUser() throws IOException {
+    App.setRoot("userprofile");
+}
 
 }

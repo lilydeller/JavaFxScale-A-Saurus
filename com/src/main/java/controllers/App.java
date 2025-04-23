@@ -29,9 +29,11 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setRoot(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("/scaleasaurus/" + fxml + ".fxml"));
+        scene.setRoot(loader.load());
     }
+    
 
     public static void setRoot(Parent root) {
         scene.setRoot(root);

@@ -24,11 +24,16 @@
             style="-fx-background-color: #f4f1e9;">
 
 
-    <ScrollPane layoutX="0" layoutY="0" prefWidth="300" prefHeight="667"
-                style="-fx-background-color: transparent;" fitToWidth="true">
-        <Canvas fx:id="sheetCanvas" width="300" height="1200"
-                style="-fx-background-color: #fefee2;" />
-    </ScrollPane>
+    <ScrollPane fx:id="sheetScrollPane"
+            layoutX="0" layoutY="0"
+            prefWidth="300" prefHeight="667"
+            style="-fx-background-color: transparent;"
+            fitToWidth="true">
+    <Canvas fx:id="sheetCanvas"
+            width="400" height="2000"
+            style="-fx-background-color: #fefee2;" />
+</ScrollPane>
+
 
 
     <VBox fx:id="whiteKeyBox" layoutX="300" layoutY="0" prefWidth="468" prefHeight="667" spacing="0"

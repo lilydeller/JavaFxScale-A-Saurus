@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.fxml.FXMLLoader?>
 
 <AnchorPane prefHeight="667.0" prefWidth="375.0" styleClass="home-root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlashcardController">
 
@@ -32,5 +33,6 @@
     <Button layoutX="68.0" layoutY="508.0" onAction="#handleCompleteLesson" styleClass="green-pill" text="Complete Lesson" />
 
 
+    <fx:include source="navbar.fxml" />
 
 </AnchorPane>

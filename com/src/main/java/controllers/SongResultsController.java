@@ -75,4 +75,24 @@ public class SongResultsController {
     private void handleBack() throws IOException {
         App.setRoot("songsearch");
     }
+
+@FXML
+public void goHome() throws IOException {
+    App.setRoot("home");
+}
+
+@FXML
+public void goSongs() throws IOException {
+    App.setRoot("songssearch");
+}
+
+@FXML
+public void goLessons() throws IOException {
+    App.setRoot("lessonfolder");
+}
+
+@FXML
+public void goUser() throws IOException {
+    App.setRoot("settings");
+}
 }

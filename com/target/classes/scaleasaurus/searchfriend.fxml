@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.fxml.FXMLLoader?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.SearchFriendController"
@@ -27,6 +28,9 @@
                     styleClass="add-friend-button"/>
             <Label fx:id="statusLabel" styleClass="status-label"/>
         </VBox>
+
+        <fx:include source="navbar.fxml" />
+        
     </children>
 
     <stylesheets>

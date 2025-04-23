@@ -18,9 +18,9 @@ public class Measure {
      */
     public Measure(int measureNumber, ArrayList<Chord> chords) {
         this.measureNumber = measureNumber;
-        this.notes = notes;
+        this.notes = (notes != null) ? notes : new ArrayList<>();
         this.chords = (chords != null) ? chords : new ArrayList<>();
-        this.notes = new ArrayList<>(); 
+        
     }
 
     public Measure(int measureNumber, ArrayList<String> notes, ArrayList<Chord> chords) {

@@ -5,15 +5,22 @@
 <?import javafx.geometry.Insets?>
 
 
-<ScrollPane fx:id="scrollPane" fitToWidth="true" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.SongResultsController" prefWidth="375" prefHeight="667"
-            styleClass="piano-root">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.SongResultsController"
+      prefWidth="375" prefHeight="667"
+      spacing="0" styleClass="piano-root">
 
-    <content>
-        <VBox fx:id="resultsContainer" spacing="10">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-        </VBox>
-    </content>
-</ScrollPane>
+ 
+    <ScrollPane fx:id="scrollPane" fitToWidth="true" prefHeight="600">
+        <content>
+            <VBox fx:id="resultsContainer" spacing="10">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+            </VBox>
+        </content>
+    </ScrollPane>
+
+
+    <fx:include source="navbar.fxml" />
+</VBox>

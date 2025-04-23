@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import java.net.URL?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.NavbarController"
+      spacing="10"
+      prefHeight="60.0"
+      prefWidth="375.0"
+      styleClass="navbar">
+
+    <children>
+        <Button text="Home" fx:id="homeBtn" onAction="#goHome" styleClass="nav-button"/>
+        <Button text="Find Song" onAction="#goFindSong" styleClass="nav-button"/>
+        <Button text="Lessons" onAction="#goLessons" styleClass="nav-button"/>
+        <Button text="User" onAction="#goUser" styleClass="nav-button"/>
+    </children>
+
+   <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</HBox>

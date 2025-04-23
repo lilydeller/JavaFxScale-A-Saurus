@@ -354,3 +354,25 @@ piano
   -fx-font-weight: bold;
 }
 
+/*
+nav bar
+*/ 
+.navbar {
+  -fx-background-color: #f1f1f1;
+  -fx-padding: 10px;
+  -fx-alignment: center;
+  -fx-spacing: 20px;
+  -fx-border-color: #ccc;
+  -fx-border-width: 1px 0 0 0;
+  -fx-position: absolute;
+}
+
+.nav-button {
+  -fx-background-color: transparent;
+  -fx-text-fill: #264d3b;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-pref-width: 80px;
+  -fx-pref-height: 40px;
+  -fx-border-color: transparent;
+}
