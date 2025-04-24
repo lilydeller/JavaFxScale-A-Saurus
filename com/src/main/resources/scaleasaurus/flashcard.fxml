@@ -11,12 +11,12 @@
 <AnchorPane prefHeight="667.0" prefWidth="375.0" styleClass="home-root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlashcardController">
 
     <StackPane fx:id="frontStack" layoutX="37.5" layoutY="180" prefHeight="200" prefWidth="300">
+         <Rectangle fx:id="frontRectangle" fill="lightblue" height="200" stroke="black" width="300" />
         <Label fx:id="frontLabel" alignment="CENTER" maxWidth="280" style="-fx-font-size: 18px;" textAlignment="CENTER" wrapText="true">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
         </Label>
-        <Rectangle fx:id="frontRectangle" fill="lightblue" height="200" stroke="black" width="300" />
     </StackPane>
 
     <StackPane fx:id="backStack" layoutX="37.5" layoutY="180" prefHeight="200" prefWidth="300" visible="false">
