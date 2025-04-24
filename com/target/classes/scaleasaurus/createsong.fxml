@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -8,12 +9,16 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="667" prefWidth="375" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateSongController">
+<AnchorPane prefHeight="667" prefWidth="375" style="-fx-background-color: #eaf5d5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateSongController">
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
 
     <children>
 
         <!-- Song Name Label -->
-        <Label layoutX="20.0" layoutY="20.0" text="Song Name">
+        <Label layoutX="148.0" layoutY="24.0" text="Song Name">
             <font>
                 <Font size="16.0" />
             </font>
@@ -28,14 +33,19 @@
         </FlowPane>
 
         <!-- Add Measure Button -->
-        <Button layoutX="20.0" layoutY="270.0" onAction="#addMeasure" prefHeight="26.0" prefWidth="348.0" text="Add Measure" />
+        <Button layoutX="74.0" layoutY="273.0" onAction="#addMeasure" prefHeight="26.0" prefWidth="348.0" style="-fx-background-color: 2d5f4d; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="Add Measure" />
 
         <!-- ListView to show added notes/measures -->
         <ListView fx:id="noteListView" layoutX="20.0" layoutY="310.0" prefHeight="250.0" prefWidth="348.0" />
-        <Button layoutX="20.0" layoutY="580.0" onAction="#saveSong" prefHeight="26.0" prefWidth="348.0" text="Save Song" />
-        <Button fx:id="btnToPiano" layoutX="150.0" layoutY="7.0" onAction="#goToPiano" text="Go to Piano" />
 
-    <fx:include source="navbar.fxml" layoutY="620.0" layoutX="0.0" />
+        <!-- Save Song Button -->
+        <Button layoutX="74.0" layoutY="568.0" onAction="#saveSong" prefHeight="26.0" prefWidth="348.0" style="-fx-background-color: 2d5f4d; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="Save Song" />
+
+        <!-- Go to Piano Button -->
+        <Button fx:id="btnToPiano" layoutX="74.0" layoutY="100.0" onAction="#goToPiano" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: 2d5f4d; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="Go to Piano" />
+
+        <!-- Navbar include -->
+        <fx:include layoutX="0.0" layoutY="620.0" source="navbar.fxml" />
 
     </children>
 </AnchorPane>
