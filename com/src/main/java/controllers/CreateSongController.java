@@ -18,7 +18,7 @@ import java.util.UUID;
 
 public class CreateSongController {
 
-   @FXML
+@FXML
 private TextField songNameField;
 
 @FXML

@@ -136,6 +136,8 @@ public class MusicAppFacade {
             return;
         }
     
+        songList.loadSongs(); 
+    
         String songId = UUID.randomUUID().toString();
         Song newSong = new Song(songId, name, difficulty, length, genre, measures, "", "", false, artist);
     
@@ -143,7 +145,7 @@ public class MusicAppFacade {
         songList.saveSongs();
         currentSong = newSong;
     
-        System.out.println("🎵 Song '" + name + "' by " + artist + " created and saved.");
+        System.out.println("🎵 Song '" + name + "' by " + artist + "' created and saved.");
     }
     
    
