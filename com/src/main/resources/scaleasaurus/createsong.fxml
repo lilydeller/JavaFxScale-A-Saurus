@@ -33,14 +33,19 @@
         </VBox>
 
         <VBox layoutX="30.0" layoutY="420.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
-            <ComboBox fx:id="notesDropdown" promptText="Choose notes" />
+            <ListView fx:id="notesListView" prefHeight="100.0" style="-fx-background-color: #ddfd98;" />
+            <Button layoutX="30.0" layoutY="500.0" prefWidth="310.0" text="Add Selected Notes" onAction="#addSelectedNotes" style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-weight: bold;" />
         </VBox>
 
      
 
     </children>
 
-         <fx:include source="navbar.fxml" />
+         <fx:include source="navbar.fxml">
+    <AnchorPane.bottomAnchor>0.0</AnchorPane.bottomAnchor>
+    <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
+    <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
+</fx:include>
 
     <stylesheets>
     <URL value="@styles.css" />

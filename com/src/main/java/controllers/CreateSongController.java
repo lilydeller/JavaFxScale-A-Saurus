@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
 import model.*;
@@ -33,7 +34,7 @@ private ComboBox<String> genreDropdown;
 private TextField durationField;
 
 @FXML
-private ComboBox<String> notesDropdown;
+private ListView<String> notesListView;
 
     private ObservableList<String> songElements;
 
@@ -41,23 +42,32 @@ private ComboBox<String> notesDropdown;
     private ArrayList<String> currentChord = new ArrayList<>();
     private int measureNumber = 1;
 
-    @FXML
  
-private void initialize() {
-    measuresDropdown.getItems().addAll("4", "8", "12", "16");
-    difficultyDropdown.getItems().addAll("Easy", "Medium", "Hard");
-    genreDropdown.getItems().addAll("Pop", "Rock", "Jazz", "Classical", "Other");
-    notesDropdown.getItems().addAll("C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B");
+    @FXML
+    public void initialize() {
+        measuresDropdown.getItems().addAll("4", "8", "12", "16");
+        difficultyDropdown.getItems().addAll("Easy", "Medium", "Hard");
+        genreDropdown.getItems().addAll("Pop", "Rock", "Jazz", "Classical", "Other");
+    
+        notesListView.getItems().addAll("C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B");
+        notesListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+    
+    @FXML
+    private void addSelectedNotes() {
+    ObservableList<String> selectedNotes = notesListView.getSelectionModel().getSelectedItems();
 
-   
-    notesDropdown.setOnAction(e -> {
-        String selectedNote = notesDropdown.getValue();
-        if (selectedNote != null) {
-            currentChord.add(selectedNote);
-            System.out.println("Added note: " + selectedNote);
-        }
-    });
+    if (selectedNotes.isEmpty()) {
+        System.out.println("No notes selected to add!");
+        return;
+    }
+
+    currentChord.clear(); 
+    currentChord.addAll(selectedNotes);
+
+    System.out.println("Added notes: " + currentChord);
 }
+
     
 
     private void createNoteButtons() {
