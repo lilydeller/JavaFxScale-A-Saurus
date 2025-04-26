@@ -42,6 +42,9 @@
         <Button fx:id="btn_createSong" onAction="#handleCreateSong" styleClass="button" text="Create a Song!" />
 
         <Button fx:id="btn_continueLast" onAction="#handleContinueLastSong" styleClass="blue-outline" text="Continue last song played" />
+
+         <Button fx:id="btn_leaderboard" onAction="#handleViewLeaderboard" styleClass="button" text="View Leaderboard" />
+         
          <ImageView fitHeight="144.0" fitWidth="247.0">
             <image>
                <Image url="@../images/dino2.png" />

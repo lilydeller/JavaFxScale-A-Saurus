@@ -169,6 +169,15 @@ public class User {
         this.achievements = achievements;
     }
 
+    public ArrayList<User> getLeaderboard() {
+        ArrayList<User> leaderboard = new ArrayList<>(friends);
+        leaderboard.add(this); 
+    
+        leaderboard.sort((u1, u2) -> Integer.compare(u2.getPoints(), u1.getPoints())); 
+        return leaderboard;
+    }
+    
+
     public ArrayList<String> getLeaderboardRanking() {
         return leaderboardRanking;
     }

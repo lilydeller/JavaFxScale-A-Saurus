@@ -75,5 +75,10 @@ private void handleViewAllLessons() throws IOException {
     App.setRoot("lessonfolder");
 }
 
+@FXML
+private void handleViewLeaderboard() throws IOException {
+    App.setRoot("leaderboard");
+}
+
         
 }
