@@ -33,6 +33,6 @@
     <Button layoutX="68.0" layoutY="508.0" onAction="#handleCompleteLesson" styleClass="green-pill" text="Complete Lesson" />
 
 
-    <fx:include source="navbar.fxml" />
+    <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
 
 </AnchorPane>

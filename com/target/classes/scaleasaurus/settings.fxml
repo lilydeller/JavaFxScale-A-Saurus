@@ -21,6 +21,6 @@
         <Button fx:id="btn_back" layoutX="100.0"
          layoutY="300.0" text="Back" onAction="#onBackClicked" />
 
-        <fx:include source="navbar.fxml" />
+        <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
     </children>
 </AnchorPane>

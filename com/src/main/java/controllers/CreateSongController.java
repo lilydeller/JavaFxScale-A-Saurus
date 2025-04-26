@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
@@ -16,14 +17,23 @@ import java.util.UUID;
 
 public class CreateSongController {
 
-    @FXML
-    private ListView<String> noteListView;
+   @FXML
+private TextField songNameField;
 
-    @FXML
-    private FlowPane noteButtonPane;
+@FXML
+private ComboBox<String> measuresDropdown;
 
-    @FXML
-    private TextField songNameField;
+@FXML
+private ComboBox<String> difficultyDropdown;
+
+@FXML
+private ComboBox<String> genreDropdown;
+
+@FXML
+private TextField durationField;
+
+@FXML
+private ComboBox<String> notesDropdown;
 
     private ObservableList<String> songElements;
 
@@ -32,11 +42,23 @@ public class CreateSongController {
     private int measureNumber = 1;
 
     @FXML
-    public void initialize() {
-        songElements = FXCollections.observableArrayList();
-        noteListView.setItems(songElements);
-        createNoteButtons();
-    }
+ 
+private void initialize() {
+    measuresDropdown.getItems().addAll("4", "8", "12", "16");
+    difficultyDropdown.getItems().addAll("Easy", "Medium", "Hard");
+    genreDropdown.getItems().addAll("Pop", "Rock", "Jazz", "Classical", "Other");
+    notesDropdown.getItems().addAll("C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B");
+
+   
+    notesDropdown.setOnAction(e -> {
+        String selectedNote = notesDropdown.getValue();
+        if (selectedNote != null) {
+            currentChord.add(selectedNote);
+            System.out.println("Added note: " + selectedNote);
+        }
+    });
+}
+    
 
     private void createNoteButtons() {
         for (Pitch pitch : Pitch.values()) {
@@ -44,9 +66,10 @@ public class CreateSongController {
             Button noteButton = new Button(label);
             noteButton.setMinWidth(80);
             noteButton.setOnAction(e -> addNote(pitch));
-            noteButtonPane.getChildren().add(noteButton);
+         
         }
     }
+    
 
     private void addNote(Pitch pitch) {
         String label = pitch.name().replace("_SHARP", "♯").replace("FLAT", "♭").replace("_", "");

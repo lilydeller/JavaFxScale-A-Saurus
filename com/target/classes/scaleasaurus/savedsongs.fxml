@@ -38,7 +38,7 @@
                 onAction="#handleViewSong"
                 styleClass="green-pill" />
 
-                <fx:include source="navbar.fxml" />
+                <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
     </children>
 
     <stylesheets>

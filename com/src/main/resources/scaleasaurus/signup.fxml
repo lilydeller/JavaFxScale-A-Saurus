@@ -31,7 +31,7 @@
         </VBox>
 
 
-        <Button fx:id="btn_back" layoutX="14.0" layoutY="616.0" onAction="#handleBack" styleClass="back-button" text="Back" />
+        <Button fx:id="btn_back" layoutX="68.0" layoutY="516.0" onAction="#handleBack" styleClass="back-button" text="Back" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" />
 
 

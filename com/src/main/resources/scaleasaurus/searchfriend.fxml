@@ -29,7 +29,7 @@
             <Label fx:id="statusLabel" styleClass="status-label"/>
         </VBox>
 
-        <fx:include source="navbar.fxml" />
+        <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
         
     </children>
 

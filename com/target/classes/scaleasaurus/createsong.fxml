@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="667" prefWidth="375" style="-fx-background-color: #eaf5d5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateSongController">
-
-    <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
+<AnchorPane prefHeight="667" prefWidth="375" style="-fx-background-color: #f0e4d0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateSongController">
 
     <children>
 
-        <!-- Song Name Label -->
-        <Label layoutX="148.0" layoutY="24.0" text="Song Name">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Label>
+        <Label layoutX="90.0" layoutY="20.0" text="Create your own song!" style="-fx-font-size: 22px; -fx-font-style: italic; -fx-font-weight: bold; -fx-text-fill: #245744;" />
 
-        <!-- Song Name Input Field -->
-        <TextField fx:id="songNameField" layoutX="20.0" layoutY="50.0" prefHeight="26.0" prefWidth="348.0" promptText="Enter song name" />
+        <VBox layoutX="30.0" layoutY="70.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            <TextField fx:id="songNameField" promptText="Enter custom song name" />
+        </VBox>
 
-        <!-- FlowPane with note buttons (for adding notes) -->
-        <FlowPane fx:id="noteButtonPane" hgap="10" layoutX="20.0" layoutY="100.0" prefWrapLength="360.0" vgap="10">
-            <!-- Dynamically added note buttons will go here -->
-        </FlowPane>
+        <VBox layoutX="30.0" layoutY="140.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            <ComboBox fx:id="measuresDropdown" promptText="Select number of measures" />
+        </VBox>
 
-        <!-- Add Measure Button -->
-        <Button layoutX="74.0" layoutY="273.0" onAction="#addMeasure" prefHeight="26.0" prefWidth="348.0" style="-fx-background-color: 2d5f4d; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="Add Measure" />
+        <VBox layoutX="30.0" layoutY="210.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            <ComboBox fx:id="difficultyDropdown" promptText="Select difficulty" />
+        </VBox>
 
-        <!-- ListView to show added notes/measures -->
-        <ListView fx:id="noteListView" layoutX="20.0" layoutY="310.0" prefHeight="250.0" prefWidth="348.0" />
+        <VBox layoutX="30.0" layoutY="280.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            <ComboBox fx:id="genreDropdown" promptText="Select genre" />
+        </VBox>
 
-        <!-- Save Song Button -->
-        <Button layoutX="74.0" layoutY="568.0" onAction="#saveSong" prefHeight="26.0" prefWidth="348.0" style="-fx-background-color: 2d5f4d; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="Save Song" />
+        <VBox layoutX="30.0" layoutY="350.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            <TextField fx:id="durationField" promptText="Enter duration (e.g. 1:00)" />
+        </VBox>
 
-        <!-- Go to Piano Button -->
-        <Button fx:id="btnToPiano" layoutX="74.0" layoutY="100.0" onAction="#goToPiano" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: 2d5f4d; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;" text="Go to Piano" />
+        <VBox layoutX="30.0" layoutY="420.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            <ComboBox fx:id="notesDropdown" promptText="Choose notes" />
+        </VBox>
 
-        <!-- Navbar include -->
-        <fx:include layoutX="0.0" layoutY="620.0" source="navbar.fxml" />
+     
 
     </children>
+
+         <fx:include source="navbar.fxml" />
+
+    <stylesheets>
+    <URL value="@styles.css" />
+</stylesheets>
+
+
 </AnchorPane>

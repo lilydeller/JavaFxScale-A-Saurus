@@ -3,7 +3,8 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -15,16 +16,10 @@
 
 
     <Label fx:id="lbl_username" layoutX="78.0" layoutY="45.0" styleClass="home-title" text="Welcome username" />
-
-
-    <ProgressBar fx:id="dinoPointsBar" layoutX="48.0" layoutY="81.0" prefWidth="280.0" styleClass="points-bar" />
     <Label fx:id="dinoPointsLabel" layoutX="130.0" layoutY="82.0" styleClass="points-label" text="150 Dino Points ⭐" />
 
- 
-    <Button fx:id="btn_chooseReward" layoutX="68.0" layoutY="109.0" onAction="#handleChooseReward" styleClass="green-pill" text="choose reward" />
 
-
-    <VBox layoutX="53.0" layoutY="161.0" prefHeight="346.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">
+    <VBox layoutX="53.0" layoutY="112.0" prefHeight="468.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">
 
         <Label styleClass="lesson-title" text="Continue A Lesson!">
             <font><Font size="46.0" /></font>
@@ -47,6 +42,11 @@
         <Button fx:id="btn_createSong" onAction="#handleCreateSong" styleClass="button" text="Create a Song!" />
 
         <Button fx:id="btn_continueLast" onAction="#handleContinueLastSong" styleClass="blue-outline" text="Continue last song played" />
+         <ImageView fitHeight="144.0" fitWidth="247.0">
+            <image>
+               <Image url="@../images/dino2.png" />
+            </image>
+         </ImageView>
 
     </VBox>
 
