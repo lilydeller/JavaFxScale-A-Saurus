@@ -20,7 +20,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_logout;
-    
+
     @FXML
     private Label lbl_username;
 
@@ -89,6 +89,12 @@ private void handleViewAllLessons() throws IOException {
 private void handleViewLeaderboard() throws IOException {
     App.setRoot("leaderboard");
 }
+
+@FXML
+private void handleFreePlay() throws IOException {
+    App.setRoot("freeplay");
+}
+
 
         
 }

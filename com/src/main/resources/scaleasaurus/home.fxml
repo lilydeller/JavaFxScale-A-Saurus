@@ -46,6 +46,11 @@
 
          <Button fx:id="btn_leaderboard" onAction="#handleViewLeaderboard" styleClass="button" text="View Leaderboard" />
          
+         <Button fx:id="btn_freePlay" onAction="#handleFreePlay" 
+        text="Free Play" 
+        style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-padding: 10 20;" 
+        prefWidth="220.0" />
+
          <ImageView fitHeight="144.0" fitWidth="247.0">
             <image>
                <Image url="@../images/dino2.png" />
