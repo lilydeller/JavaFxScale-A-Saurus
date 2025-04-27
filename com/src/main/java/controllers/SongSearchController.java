@@ -26,6 +26,9 @@ public class SongSearchController {
     private Button selectedDifficultyButton;
 
 
+    /*
+     * filters songs based on selected letter 
+     */
     @FXML
     private void handleLetterFilter(ActionEvent e) {
         Button clicked = (Button) e.getSource();
@@ -38,6 +41,9 @@ public class SongSearchController {
     }
 
 
+    /*
+     * filters songs based on genre 
+     */
     @FXML
     private void handleGenreFilter(ActionEvent e) {
         Button clicked = (Button) e.getSource();
@@ -49,6 +55,9 @@ public class SongSearchController {
         selectedGenre = clicked.getText();
     }
 
+    /*
+     * filter songs based on diffculty 
+     */
     @FXML
     private void handleDifficultyFilter(ActionEvent e) {
         Button clicked = (Button) e.getSource();
@@ -60,6 +69,9 @@ public class SongSearchController {
         selectedDifficulty = clicked.getText();
     }
 
+    /*
+     * searches songs based on the filter settings 
+     */
     @FXML
     private void handleSearch(ActionEvent e) throws Exception {
         String query = txt_search.getText().trim();
@@ -86,31 +98,45 @@ public class SongSearchController {
             difficultyRange
         );
     
+        //displays results on song result screen after feeding it the filterd songs 
         SongResultsController.setResults(results);
         App.setRoot("songresults");
     }
     
 
+    /*
+     * moves to home 
+     */
     @FXML
     private void handleBack() throws Exception {
         App.setRoot("home");
     }
 
+    /*
+     * moves to home
+     */
 @FXML
 public void goHome() throws IOException {
     App.setRoot("home");
 }
-
+/*
+ * moves to song search
+ */
 @FXML
 public void goSongs() throws IOException {
     App.setRoot("songssearch");
 }
-
+/*
+ * moves to lesson folder 
+ */
 @FXML
 public void goLessons() throws IOException {
     App.setRoot("lessonfolder");
 }
 
+/*
+ * moves to settings 
+ */
 @FXML
 public void goUser() throws IOException {
     App.setRoot("settings");

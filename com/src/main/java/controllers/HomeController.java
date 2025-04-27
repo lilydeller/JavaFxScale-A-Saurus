@@ -17,17 +17,25 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_profile;
-
     @FXML
     private Button btn_logout;
 
     @FXML
     private Label lbl_username;
 
+
+
+    /*
+     * displays the currently logged in user on the home screen when loading 
+     */
     @FXML
     private Label dinoPointsLabel;
 
 
+
+    /*
+     * displays the currently logged in user on the home screen when loading 
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     refreshHomeScreen();
@@ -41,16 +49,20 @@ public void refreshHomeScreen() {
         lbl_username.setText("Welcome, " + currentUser.getUserName() + "!");
         dinoPointsLabel.setText(currentUser.getDinoPoints() + " Dino Points ⭐");
     } else {
-        lbl_username.setText("Welcome!");
+        lbl_username.setText("Welcome! ");
         dinoPointsLabel.setText("0 Dino Points ⭐");
     }
 }
+
     @FXML
     private void onProfileClicked(ActionEvent event) {
 
         System.out.println("Profile clicked");
     }
 
+    /*
+     * logs current user out and returns to login 
+     */
     @FXML
     private void onLogoutClicked(ActionEvent event) throws IOException {
         System.out.println("Logging out.");
@@ -65,30 +77,45 @@ public void refreshHomeScreen() {
          */
     }
     
+    /*
+     * moves to songsearch screen 
+     */
     @FXML
     private void handleFindSong() throws IOException {
         App.setRoot("songsearch");
     }
     
+    /*
+     * moves to create song screen
+     */
     @FXML
     private void handleCreateSong() throws IOException {
         App.setRoot("createsong");
     }
     
+    /*
+     * moves to piano screen 
+     */
     @FXML
     private void handleContinueLastSong() throws IOException {
         App.setRoot("piano"); 
     }
     
+    /*
+     * moves to lessonfolder screen 
+     */
     @FXML
-private void handleViewAllLessons() throws IOException {
-    App.setRoot("lessonfolder");
-}
-
-@FXML
-private void handleViewLeaderboard() throws IOException {
-    App.setRoot("leaderboard");
-}
+    private void handleViewAllLessons() throws IOException {
+        App.setRoot("lessonfolder")
+    }
+    
+    /*
+     * moves to leader board screen 
+     */
+    @FXML
+    private void handleViewLeaderboard() throws IOException {
+        App.setRoot("leaderboard");
+    }
 
 @FXML
 private void handleFreePlay() throws IOException {

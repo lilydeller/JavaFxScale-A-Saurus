@@ -23,12 +23,18 @@ public class SavedSongsController {
 
     private User currentUser;
 
+    /*
+     * takes current user and loads songs by user 
+     */
     @FXML
     public void initialize() {
         currentUser = MusicAppFacade.getInstance().getCurrentUser();
         loadUserSongs();
     }
 
+    /*
+     * loads songs from saved song list 
+     */
     private void loadUserSongs() {
         savedSongsListView.getItems().clear();
         for (Song song : currentUser.getSavedSongs()) {
@@ -38,6 +44,9 @@ public class SavedSongsController {
 
     
 
+    /*
+     * sets selected song as current song 
+     */
     @FXML
     private void handleViewSong() {
         int selectedIndex = savedSongsListView.getSelectionModel().getSelectedIndex();
@@ -53,21 +62,32 @@ public class SavedSongsController {
         }
     }
 
+/*
+ * moves to home 
+ */
 @FXML
 public void goHome() throws IOException {
     App.setRoot("home");
 }
 
+/*
+ * moves to song search 
+ */
 @FXML
 public void goSongs() throws IOException {
     App.setRoot("songssearch");
 }
 
+
+/*
+ * moves to lesson folder 
+ */
 @FXML
 public void goLessons() throws IOException {
     App.setRoot("lessonfolder");
 }
 
+/*moves to settings  */
 @FXML
 public void goUser() throws IOException {
     App.setRoot("settings");

@@ -21,11 +21,17 @@ public class LeaderboardController {
     @FXML
     private VBox leaderboardVBox;
 
+    /*
+     * takes current user and loads friends list sorting by most points 
+     */
     @FXML
     public void initialize() {
         populateLeaderboard();
     }
 
+    /*
+     *moves to search friend screen 
+     */
     @FXML
     private void populateLeaderboard() {
         leaderboardVBox.getChildren().clear();
