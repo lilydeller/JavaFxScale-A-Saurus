@@ -89,23 +89,44 @@ private ListView<String> notesListView;
 
     @FXML
     private void addMeasure() {
-        if (!currentChord.isEmpty()) {
-          
-            Chord chord = Chord.fromLabels(currentChord); 
-            
-            ArrayList<Chord> chords = new ArrayList<>();
-            chords.add(chord);
-    
-            Measure measure = new Measure(measureNumber++, chords);
-            measures.add(measure);
-    
-            System.out.println("Added Measure #" + measureNumber + " with chords: " + currentChord);
-    
-            currentChord.clear();
-        } else {
-            System.out.println("No notes to add in measure!");
+    if (!currentChord.isEmpty()) {
+        ArrayList<String> notes = new ArrayList<>();
+        
+
+        for (String note : currentChord) {
+            notes.add(convertLabelToNote(note) + "q"); 
         }
+        
+        Measure measure = new Measure(measureNumber++, notes, new ArrayList<>());
+        measures.add(measure);
+        
+        System.out.println("Added Measure #" + (measureNumber - 1) + " with notes: " + notes);
+        
+        currentChord.clear();
+    } else {
+        System.out.println("No notes to add in measure!");
     }
+}
+
+private String convertLabelToNote(String label) {
+    switch (label) {
+        case "C": return "C4";
+        case "C♯": return "C#4";
+        case "D": return "D4";
+        case "D♯": return "D#4";
+        case "E": return "E4";
+        case "F": return "F4";
+        case "F♯": return "F#4";
+        case "G": return "G4";
+        case "G♯": return "G#4";
+        case "A": return "A4";
+        case "A♯": return "A#4";
+        case "B": return "B4";
+        default: return "C4"; 
+    }
+}
+
+
     
 
     @FXML
@@ -144,7 +165,7 @@ private ListView<String> notesListView;
         MusicAppFacade.getInstance().setCurrentSong(createdSong);
     
         try {
-            App.setRoot("piano");
+            App.setRoot("songresults");
         } catch (IOException e) {
             e.printStackTrace();
         }

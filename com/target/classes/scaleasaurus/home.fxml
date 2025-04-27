@@ -16,12 +16,11 @@
 
 
     <Label fx:id="lbl_username" layoutX="78.0" layoutY="45.0" styleClass="home-title" text="Welcome username" />
-   <Label fx:id="dinoPointsLabel" layoutX="200" layoutY="20"
-       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #245744;" />
+   <Label fx:id="dinoPointsLabel" layoutX="200" layoutY="20" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #245744;" />
 
 
 
-    <VBox layoutX="53.0" layoutY="112.0" prefHeight="468.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">
+    <VBox layoutX="36.0" layoutY="96.0" prefHeight="505.0" prefWidth="309.0" spacing="10.0" styleClass="lesson-box">
 
         <Label styleClass="lesson-title" text="Continue A Lesson!">
             <font><Font size="46.0" /></font>
@@ -37,7 +36,7 @@
             <Label text="Chapter 2: Chords" />
         </HBox>
 
-        <Button fx:id="btn_viewLessons" onAction="#handleViewAllLessons" styleClass="lesson-button" text="View all lessons" />
+        <Button fx:id="btn_viewLessons" onAction="#handleViewAllLessons" prefHeight="31.0" prefWidth="290.0" styleClass="lesson-button" text="View all lessons" />
 
         <Button fx:id="btn_findSong" onAction="#handleFindSong" text="Find a Song!" />
 

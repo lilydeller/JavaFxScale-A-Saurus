@@ -29,16 +29,9 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
-
-    if (currentUser != null) {
-        lbl_username.setText("Welcome, " + currentUser.getUserName() + "!");
-        dinoPointsLabel.setText(currentUser.getDinoPoints() + " Dino Points ⭐");
-    } else {
-        lbl_username.setText("Welcome!");
-        dinoPointsLabel.setText("0 Dino Points ⭐");
-    }
+    refreshHomeScreen();
 }
+
 
 public void refreshHomeScreen() {
     User currentUser = MusicAppFacade.getInstance().getCurrentUser();

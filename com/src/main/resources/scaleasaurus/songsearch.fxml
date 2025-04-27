@@ -19,9 +19,9 @@
         
 
 
-<VBox layoutX="36.0" layoutY="38.0" prefHeight="62.0" prefWidth="314.0" spacing="5" styleClass="search-box-wrapper">
+<VBox layoutX="20.0" layoutY="38.0" prefHeight="62.0" prefWidth="350.0" spacing="5" styleClass="search-box-wrapper">
     <HBox prefHeight="0.0" prefWidth="370.0" spacing="8">
-        <TextField fx:id="txt_search" prefHeight="34.0" prefWidth="304.0" promptText="Search by Song or Artist Name" styleClass="search-bar" />
+        <TextField fx:id="txt_search" prefHeight="34.0" prefWidth="331.0" promptText="Search by Song or Artist Name" styleClass="search-bar" />
     </HBox>
 </VBox>
 
@@ -90,7 +90,7 @@
 </GridPane>
 
 </VBox>
-<Button fx:id="btn_find" layoutX="73.0" layoutY="511.0" onAction="#handleSearch" styleClass="find-button" text="Find song matches" />
+<Button fx:id="btn_find" layoutX="73.0" layoutY="525.0" onAction="#handleSearch" styleClass="find-button" text="Find song matches" />
 
 
 
