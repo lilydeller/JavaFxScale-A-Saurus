@@ -73,6 +73,9 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_PASSWORD, user.getPassword());
         userDetails.put(USER_STREAK, user.getStreak());
         userDetails.put(USER_LEVEL, user.getLevel());
+
+        userDetails.put("points", user.getDinoPoints());
+
     
         JSONArray achievementsArray = new JSONArray();
         for (Achievement achievement : user.viewAchievements()) {

@@ -26,6 +26,7 @@ public class User {
     private ArrayList<String> completedChapters;
     private ArrayList<Song> savedSongs = new ArrayList<>();
     private String lastSong;
+    private int dinoPoints = 0; 
 
 
     /**
@@ -86,6 +87,19 @@ public class User {
 
     public UUID getId() {
         return id;
+    }
+
+    public void addDinoPoints(int amount) {
+        this.dinoPoints += amount;
+    }
+    
+
+    public int getDinoPoints() {
+        return dinoPoints;
+    }
+
+    public void setDinoPoints(int dinoPoints) {
+        this.dinoPoints = dinoPoints;
     }
 
     public boolean login(String userName, String password) {

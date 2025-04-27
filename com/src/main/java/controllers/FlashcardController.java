@@ -79,6 +79,17 @@ public class FlashcardController {
     }
 
     @FXML
+    private void handleFinishLesson() {
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+    if (currentUser != null) {
+        currentUser.addDinoPoints(20);
+        MusicAppFacade.getInstance().saveAll();
+        System.out.println("🏆 Awarded 20 points!");
+        }
+
+    }
+
+    @FXML
     public void handleClick() {
         StackPane hidePane = showingFront ? frontStack : backStack;
         StackPane showPane = showingFront ? backStack  : frontStack;

@@ -16,7 +16,9 @@
 
 
     <Label fx:id="lbl_username" layoutX="78.0" layoutY="45.0" styleClass="home-title" text="Welcome username" />
-    <Label fx:id="dinoPointsLabel" layoutX="130.0" layoutY="82.0" styleClass="points-label" text="150 Dino Points ⭐" />
+   <Label fx:id="dinoPointsLabel" layoutX="200" layoutY="20"
+       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #245744;" />
+
 
 
     <VBox layoutX="53.0" layoutY="112.0" prefHeight="468.0" prefWidth="270.0" spacing="10.0" styleClass="lesson-box">

@@ -23,24 +23,40 @@ public class HomeController implements Initializable {
     @FXML
     private Label lbl_username;
 
+    @FXML
+    private Label dinoPointsLabel;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     User currentUser = MusicAppFacade.getInstance().getCurrentUser();
 
     if (currentUser != null) {
         lbl_username.setText("Welcome, " + currentUser.getUserName() + "!");
-    }
-    else {
+        dinoPointsLabel.setText(currentUser.getDinoPoints() + " Dino Points ⭐");
+    } else {
         lbl_username.setText("Welcome!");
+        dinoPointsLabel.setText("0 Dino Points ⭐");
     }
 }
 
+public void refreshHomeScreen() {
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+
+    if (currentUser != null) {
+        lbl_username.setText("Welcome, " + currentUser.getUserName() + "!");
+        dinoPointsLabel.setText(currentUser.getDinoPoints() + " Dino Points ⭐");
+    } else {
+        lbl_username.setText("Welcome!");
+        dinoPointsLabel.setText("0 Dino Points ⭐");
+    }
+}
     @FXML
     private void onProfileClicked(ActionEvent event) {
 
         System.out.println("Profile clicked");
     }
-    
+
     @FXML
     private void onLogoutClicked(ActionEvent event) throws IOException {
         System.out.println("Logging out.");
