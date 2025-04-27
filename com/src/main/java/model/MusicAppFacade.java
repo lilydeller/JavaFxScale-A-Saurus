@@ -59,6 +59,16 @@ public class MusicAppFacade {
         return null;
     }
 
+    public void refreshCurrentUser() {
+        String username = currentUser.getUserName();
+        String password = currentUser.getPassword(); 
+        User reloadedUser = UserList.getInstance().getUser(username, password);
+        if (reloadedUser != null) {
+            currentUser = reloadedUser;
+        }
+    }
+    
+
     public User searchUserByUsername(String username) {
         return UserList.getInstance().getUserByUsername(username);
     }

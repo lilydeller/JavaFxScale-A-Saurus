@@ -84,7 +84,8 @@ public class FlashcardController {
     if (currentUser != null) {
         currentUser.addDinoPoints(20);
         MusicAppFacade.getInstance().saveAll();
-        System.out.println("🏆 Awarded 20 points!");
+        MusicAppFacade.getInstance().refreshCurrentUser();
+        System.out.println("Awarded 20 points!");
         }
 
     }
@@ -122,24 +123,21 @@ public class FlashcardController {
 
     @FXML
     private void handleCompleteLesson() {
-        User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
 
-        if (!currentUser.hasCompletedChapter(currentChapter)) {
-            currentUser.addPoints(20);
-            currentUser.markChapterComplete(currentChapter);
-            MusicAppFacade.getInstance().saveAll();
-        }
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scaleasaurus/lessonfolder.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        App.setRoot(root);
+    if (!currentUser.hasCompletedChapter(currentChapter)) {
+        currentUser.addDinoPoints(20);
+        currentUser.markChapterComplete(currentChapter);
+        MusicAppFacade.getInstance().saveAll();
     }
+    try {
+        MusicAppFacade.getInstance().refreshCurrentUser();
+        App.setRoot("home");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
     @FXML
     private void handleNextCard() {
@@ -147,10 +145,12 @@ public class FlashcardController {
         loadNextFlashcard();
     }
 
-@FXML
-public void goHome() throws IOException {
-    App.setRoot("home");
-}
+    @FXML
+    public void goHome() throws IOException {
+        MusicAppFacade.getInstance().refreshCurrentUser();  // <-- refresh first!
+        App.setRoot("home");
+    }
+    
 
 @FXML
 public void goSongs() throws IOException {

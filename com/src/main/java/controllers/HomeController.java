@@ -20,6 +20,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private Button btn_logout;
+    
     @FXML
     private Label lbl_username;
 
