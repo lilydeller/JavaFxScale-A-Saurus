@@ -4,11 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.SongResultsController"
             prefWidth="375" prefHeight="667"
-            styleClass="piano-root">
+            style="-fx-background-color: #fdf5ec;"> 
 
     <VBox fx:id="mainVBox" spacing="0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="50.0">
         <ScrollPane fx:id="scrollPane" fitToWidth="true" prefHeight="600">
