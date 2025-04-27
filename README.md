@@ -1,3 +1,6 @@
+app vid: https://www.youtube.com/watch?v=_6IWJ0Yq43g
+
+
 backend walkthru: https://www.youtube.com/watch?v=EII5ZuR95HQ
 
 
