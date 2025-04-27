@@ -15,7 +15,7 @@ public class Song {
     private ArrayList<Measure> measures;
     private String sheetMusic;
     private String tabsMusic;
-    private boolean metronome;
+    private boolean metronomeEnabled;
     private int tempo;
     private String instrument;
 
@@ -33,19 +33,24 @@ public class Song {
      * @param metronome
      * @param artist
      */
-    public Song(String songId, String songName, int difficulty, String length, String genre,
-            ArrayList<Measure> measures, String sheetMusic, String tabsMusic, boolean metronome, String artist) {
-    this.songId = songId;
-    this.songName = songName;
+    public Song(String id, String name, int difficulty, String length, String genre,
+            ArrayList<Measure> measures, String sheetMusic, String tabsMusic,
+            boolean metronome, String artist, int tempo, String instrument) {
+
+    this.songId = id;
+    this.songName = name;
     this.difficulty = difficulty;
     this.length = length;
     this.genre = genre;
-    this.measures = measures != null ? measures : new ArrayList<>();
+    this.measures = measures;
     this.sheetMusic = sheetMusic;
     this.tabsMusic = tabsMusic;
-    this.metronome = metronome;
-    this.artist = artist; 
+    this.metronomeEnabled = metronome;
+    this.artist = artist;
+    this.tempo = tempo;
+    this.instrument = instrument;
 }
+
 
 
     /**
@@ -149,7 +154,7 @@ public class Song {
      * @return true if metronome is enabled, fasle otherwise
      */
     public boolean isMetronomeEnabled() {
-        return metronome;
+        return metronomeEnabled;
     }
 
     /**
@@ -166,7 +171,7 @@ public class Song {
      * toggles the metronome setting
      */
     public void toggleMetronome() {
-        metronome = !metronome;
+        metronomeEnabled = !metronomeEnabled;
     }
 
     /**
@@ -186,5 +191,4 @@ public class Song {
                 '}';
     }
 
-    
 }

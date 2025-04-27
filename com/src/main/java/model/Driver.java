@@ -145,18 +145,18 @@ public class Driver {
                             measures.add(new Measure(i + 1, chords));
                         }
 
-                        Song customSong = new Song(
-                                "song" + (songList.getSongs().size() + 1),
-                                newSongName, difficulty, length, genre,
-                                measures,
-                                "sheet_music/sheetMusic_" + newSongName.replaceAll(" ", "_") + ".txt",
-                                "tabs.txt", false,
-                                newArtist
-                        );
+                      //  Song customSong = new Song(
+                            //    "song" + (songList.getSongs().size() + 1),
+                             //  newSongName, difficulty, length, genre,
+                            //    measures,
+                            //    "sheet_music/sheetMusic_" + newSongName.replaceAll(" ", "_") + ".txt",
+                           //     "tabs.txt", false,
+                           //     newArtist
+                      //  );
 
-                        songList.addSong(customSong);
+                        //songList.addSong(customSong);
                         songList.saveSongs();
-                        saveSheetMusic(customSong);
+                      //  saveSheetMusic(customSong);
 
                         System.out.println("Song '" + newSongName + "' by " + newArtist + " created and saved!");
                         System.out.println("\nNow Playing: " + newSongName);

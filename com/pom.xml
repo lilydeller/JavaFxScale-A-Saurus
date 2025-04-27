@@ -160,7 +160,7 @@
 
           <launcher>launcher</launcher>
 
-          <mainClass>hellofx/org.openjfx.hellofx.App</mainClass>
+          <mainClass>scaleasaurus.controllers.App</mainClass>
 
         </configuration>
 

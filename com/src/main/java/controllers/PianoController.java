@@ -193,8 +193,6 @@ public class PianoController {
     
         GraphicsContext gc = sheetCanvas.getGraphicsContext2D();
     
-        
-            
             
     
         String[] pitches = currentNotes.get(noteIndex).split("\\+");

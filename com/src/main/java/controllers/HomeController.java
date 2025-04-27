@@ -40,7 +40,7 @@ public class HomeController implements Initializable {
 
         System.out.println("Profile clicked");
     }
-
+    
     @FXML
     private void onLogoutClicked(ActionEvent event) throws IOException {
         System.out.println("Logging out.");

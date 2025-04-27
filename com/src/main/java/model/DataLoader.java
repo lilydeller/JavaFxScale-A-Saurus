@@ -257,15 +257,14 @@ measures.add(new Measure(measureNumber, notes, chords));
                 boolean metronome = (Boolean) songJson.get("metronome");
 
           
-int tempo = songJson.get("tempo") != null ? ((Long) songJson.get("tempo")).intValue() : 0;
-String instrument = (String) songJson.get("instrument");
+                int tempo = songJson.get("tempo") != null ? ((Long) songJson.get("tempo")).intValue() : 0;
+                String instrument = (String) songJson.get("instrument");
 
     
                 Song song = new Song(
                     songId, songName, songDifficulty, songLength, songGenre,
-                    measures, sheetMusic, tabsMusic, metronome, artist
-
-                );
+                    measures, sheetMusic, tabsMusic, metronome, artist, tempo, instrument
+            );
                 song.setTempo(tempo);
                 song.setInstrument(instrument);
 

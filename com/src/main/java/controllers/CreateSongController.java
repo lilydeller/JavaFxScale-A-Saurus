@@ -45,6 +45,7 @@ private ListView<String> notesListView;
  
     @FXML
     public void initialize() {
+        songElements = FXCollections.observableArrayList();
         measuresDropdown.getItems().addAll("4", "8", "12", "16");
         difficultyDropdown.getItems().addAll("Easy", "Medium", "Hard");
         genreDropdown.getItems().addAll("Pop", "Rock", "Jazz", "Classical", "Other");
@@ -88,7 +89,7 @@ private ListView<String> notesListView;
     }
 
     @FXML
-private void addMeasure() {
+    private void addMeasure() {
     if (!currentChord.isEmpty()) {
 
         Chord chord = Chord.fromLabels(currentChord);
@@ -110,7 +111,7 @@ private void addMeasure() {
 }
 
 
-   @FXML
+@FXML
 private void saveSong() {
     String name = songNameField.getText().trim();
     if (name.isEmpty() || measures.isEmpty()) {
@@ -119,19 +120,47 @@ private void saveSong() {
     }
 
     User currentUser = MusicAppFacade.getInstance().getCurrentUser();
-    String artist = currentUser.getUserName();
+    String artist = (currentUser != null) ? currentUser.getUserName() : "Unknown Artist";
 
+    int difficulty = 1;
+    String difficultySelected = difficultyDropdown.getValue();
+    if (difficultySelected != null) {
+        if (difficultySelected.equalsIgnoreCase("Easy")) difficulty = 2;
+        else if (difficultySelected.equalsIgnoreCase("Medium")) difficulty = 4;
+        else if (difficultySelected.equalsIgnoreCase("Hard")) difficulty = 6;
+    }
 
-    MusicAppFacade.getInstance().createAndSaveSong(
+    String genre = genreDropdown.getValue() != null ? genreDropdown.getValue() : "Other";
+    String duration = durationField.getText().trim();
+    if (duration.isEmpty()) duration = "1:00";
+
+    // 🔥 Here’s where we generate realistic values like your old songs:
+    String sheetMusic = name.replaceAll(" ", "_") + "_Sheet.pdf";
+    String tabsMusic = name.replaceAll(" ", "_") + "_Tabs.txt";
+    int tempo = 80; // Default tempo (can make this adjustable later)
+    String instrument = "Piano"; // Default instrument (adjustable too)
+
+    // Actually create the song
+    Song newSong = new Song(
+        UUID.randomUUID().toString(),
         name,
+        difficulty,
+        duration,
+        genre,
+        measures,
+        sheetMusic,
+        tabsMusic,
+        false,    // metronome off by default (can change)
         artist,
-        1,          
-        "1:00",     
-        "Custom",  
-        measures
+        tempo,
+        instrument
     );
-    Song createdSong = SongList.getInstance().getSong(name);
-    MusicAppFacade.getInstance().setCurrentSong(createdSong);
+
+    SongList.getInstance().addSong(newSong);
+    SongList.getInstance().saveSongs();
+    MusicAppFacade.getInstance().setCurrentSong(newSong);
+
+    System.out.println("🎵 Song created and saved: " + newSong.getSongName());
 
     try {
         App.setRoot("piano");
@@ -139,7 +168,7 @@ private void saveSong() {
         e.printStackTrace();
     }
 }
-    
+ 
 
     @FXML
     private void goToPiano() throws IOException {

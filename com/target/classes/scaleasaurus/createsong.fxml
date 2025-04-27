@@ -1,56 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="667" prefWidth="375" style="-fx-background-color: #f0e4d0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CreateSongController">
 
     <children>
 
-        <Label layoutX="90.0" layoutY="20.0" text="Create your own song!" style="-fx-font-size: 22px; -fx-font-style: italic; -fx-font-weight: bold; -fx-text-fill: #245744;" />
-
-        <VBox layoutX="30.0" layoutY="70.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+        <VBox layoutX="30.0" layoutY="20.0" prefWidth="310.0" spacing="15.0" style="-fx-background-color: #ddfd98; -fx-padding: 15;">
+            
+            <Label style="-fx-font-size: 22px; -fx-font-style: italic; -fx-font-weight: bold; -fx-text-fill: #245744;" text="Create your own song!" />
+            
             <TextField fx:id="songNameField" promptText="Enter custom song name" />
-        </VBox>
-
-        <VBox layoutX="30.0" layoutY="140.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
-            <ComboBox fx:id="measuresDropdown" promptText="Select number of measures" />
-        </VBox>
-
-        <VBox layoutX="30.0" layoutY="210.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
-            <ComboBox fx:id="difficultyDropdown" promptText="Select difficulty" />
-        </VBox>
-
-        <VBox layoutX="30.0" layoutY="280.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
-            <ComboBox fx:id="genreDropdown" promptText="Select genre" />
-        </VBox>
-
-        <VBox layoutX="30.0" layoutY="350.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
+            
+            <ComboBox fx:id="measuresDropdown" prefHeight="25.0" prefWidth="283.0" promptText="Select number of measures" />
+            
+            <ComboBox fx:id="difficultyDropdown" prefHeight="25.0" prefWidth="297.0" promptText="Select difficulty" />
+            
+            <ComboBox fx:id="genreDropdown" prefHeight="25.0" prefWidth="281.0" promptText="Select genre" />
+            
             <TextField fx:id="durationField" promptText="Enter duration (e.g. 1:00)" />
+            
+            <ListView fx:id="notesListView" prefHeight="100.0" />
+            
+            <Button onAction="#addSelectedNotes" style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-weight: bold;" text="Add Selected Notes" />
+            
+            <Button onAction="#addMeasure" style="-fx-background-color: #ed8f33; -fx-text-fill: white; -fx-font-weight: bold;" text="Add Measure" />
+            
+            <Button onAction="#saveSong" prefHeight="31.0" prefWidth="287.0" style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-weight: bold;" text="Save Song" />
+        
         </VBox>
 
-        <VBox layoutX="30.0" layoutY="420.0" prefWidth="310.0" style="-fx-background-color: #ddfd98; -fx-padding: 10;">
-            <ListView fx:id="notesListView" prefHeight="100.0" style="-fx-background-color: #ddfd98;" />
-            <Button layoutX="30.0" layoutY="500.0" prefWidth="310.0" text="Add Selected Notes" onAction="#addSelectedNotes" style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-weight: bold;" />
-             <Button text="Save Song" onAction="#saveSong" style="-fx-background-color: #ed8f33; -fx-text-fill: white; -fx-font-weight: bold;" />
-        </VBox>
-
-     
+        <fx:include source="navbar.fxml">
+            <AnchorPane.bottomAnchor>0.0</AnchorPane.bottomAnchor>
+            <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
+            <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
+        </fx:include>
 
     </children>
 
-         <fx:include source="navbar.fxml">
-    <AnchorPane.bottomAnchor>0.0</AnchorPane.bottomAnchor>
-    <AnchorPane.leftAnchor>0.0</AnchorPane.leftAnchor>
-    <AnchorPane.rightAnchor>0.0</AnchorPane.rightAnchor>
-</fx:include>
-
     <stylesheets>
-    <URL value="@styles.css" />
-</stylesheets>
-
+        <URL value="@styles.css" />
+    </stylesheets>
 
 </AnchorPane>

@@ -13,6 +13,7 @@ public class MusicAppFacade {
     private static MusicAppFacade instance;
     private UserList userList;
     private SongList songList;
+    
     private User currentUser;
     private Song currentSong;
 
@@ -20,6 +21,7 @@ public class MusicAppFacade {
     private MusicAppFacade() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
+        songList.loadSongs();
         currentUser = null;
         currentSong = null;
     }
@@ -139,7 +141,9 @@ public class MusicAppFacade {
         songList.loadSongs(); 
     
         String songId = UUID.randomUUID().toString();
-        Song newSong = new Song(songId, name, difficulty, length, genre, measures, "", "", false, artist);
+        int defaultTempo = 90; 
+        String defaultInstrument = "Piano"; 
+        Song newSong = new Song(songId, name, difficulty, length, genre, measures, "", "", false, artist, defaultTempo, defaultInstrument);
     
         songList.addSong(newSong);
         songList.saveSongs();
