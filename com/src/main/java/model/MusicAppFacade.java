@@ -13,6 +13,7 @@ public class MusicAppFacade {
     private static MusicAppFacade instance;
     private UserList userList;
     private SongList songList;
+    
     private User currentUser;
     private Song currentSong;
 
@@ -20,6 +21,7 @@ public class MusicAppFacade {
     private MusicAppFacade() {
         userList = UserList.getInstance();
         songList = SongList.getInstance();
+        songList.loadSongs();
         currentUser = null;
         currentSong = null;
     }
@@ -56,6 +58,16 @@ public class MusicAppFacade {
         }
         return null;
     }
+
+    public void refreshCurrentUser() {
+        String username = currentUser.getUserName();
+        String password = currentUser.getPassword(); 
+        User reloadedUser = UserList.getInstance().getUser(username, password);
+        if (reloadedUser != null) {
+            currentUser = reloadedUser;
+        }
+    }
+    
 
     public User searchUserByUsername(String username) {
         return UserList.getInstance().getUserByUsername(username);
@@ -136,17 +148,19 @@ public class MusicAppFacade {
             return;
         }
     
-        songList.loadSongs(); 
-    
         String songId = UUID.randomUUID().toString();
-        Song newSong = new Song(songId, name, difficulty, length, genre, measures, "", "", false, artist);
+        int defaultTempo = 90;
+        String defaultInstrument = "Piano";
+        Song newSong = new Song(songId, name, difficulty, length, genre, measures, "", "", false, artist, defaultTempo, defaultInstrument);
     
-        songList.addSong(newSong);
-        songList.saveSongs();
+        songList.addSong(newSong);   
+        songList.saveSongs();        
         currentSong = newSong;
     
         System.out.println("🎵 Song '" + name + "' by " + artist + "' created and saved.");
     }
+    
+    
     
    
 

@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: #eaf5d5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LessonFolderController">
+<AnchorPane prefHeight="667.0" prefWidth="375.0" style="-fx-background-color: #eaf5d5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LessonFolderController">
+    <children>
 
-    <stylesheets>
-        <URL value="@styles.css" />
-    </stylesheets>
+        <VBox alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefWidth="335.0" spacing="20.0">
 
-    <AnchorPane prefHeight="667.0" prefWidth="375.0">
+         
+            <VBox alignment="TOP_CENTER" prefHeight="579.0" prefWidth="335.0" spacing="15.0" style="-fx-background-color: #ddfd98; -fx-background-radius: 20; -fx-padding: 20;">
 
-     
-        <VBox fx:id="lessonVBox" layoutX="20.0" layoutY="40.0" spacing="10.0" AnchorPane.topAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               
+                <Label alignment="CENTER" maxWidth="Infinity" style="-fx-background-color: #6495ED; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10 20;" text="Lessons Available:" />
+
+              
+                <Button fx:id="btn_chapter1" onAction="#handleChapter1" prefWidth="280" 
+    style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-style: italic; -fx-font-size: 16px; -fx-background-radius: 10;" 
+    text="Chapter 1: The Basics of Piano" />
+
+<Button fx:id="btn_chapter2" onAction="#handleChapter2" prefWidth="280" 
+    style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-style: italic; -fx-font-size: 16px; -fx-background-radius: 10;" 
+    text="Chapter 2: Meet the Musicians" />
+
+<Button fx:id="btn_chapter3" onAction="#handleChapter3" prefWidth="280" 
+    style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-style: italic; -fx-font-size: 16px; -fx-background-radius: 10;" 
+    text="Chapter 3: Music Theory 101" />
+
+<Button fx:id="btn_chapter4" onAction="#handleChapter4" prefWidth="280" 
+    style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-style: italic; -fx-font-size: 16px; -fx-background-radius: 10;" 
+    text="Chapter 4: Reading Rhythm" />
+
+<Button fx:id="btn_chapter5" onAction="#handleChapter5" prefWidth="280" 
+    style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-style: italic; -fx-font-size: 16px; -fx-background-radius: 10;" 
+    text="Chapter 5: Keys &amp; Scales" />
+
+<Button fx:id="btn_chapter6" onAction="#handleChapter6" prefWidth="280" 
+    style="-fx-background-color: #245744; -fx-text-fill: white; -fx-font-style: italic; -fx-font-size: 16px; -fx-background-radius: 10;" 
+    text="Chapter 6: Chords in Harmony" />
             
-            <Label text="Select a Chapter" style="-fx-font-size: 24px; -fx-text-fill: #245744; -fx-font-weight: bold;">
-                <font>
-                    <Font name="System Bold" size="24.0" />
-                </font>
-            </Label>
+            <ImageView fitHeight="245.0" fitWidth="283.0">
+               <image>
+                  <Image url="@../images/dino3.png" />
+               </image>
+            </ImageView>
 
-            <Button fx:id="chapter1Btn" onAction="#handleChapter1" styleClass="chapter-button" text="Chapter 1: The Basics of Piano" />
-            <Button fx:id="chapter2Btn" onAction="#handleChapter2" styleClass="chapter-button" text="Chapter 2: Meet the Musicians" />
-            <Button fx:id="chapter3Btn" onAction="#handleChapter3" styleClass="chapter-button" text="Chapter 3: Music Theory 101" />
-            <Button fx:id="chapter4Btn" onAction="#handleChapter4" styleClass="chapter-button" text="Chapter 4: Reading Rhythm" />
-            <Button fx:id="chapter5Btn" onAction="#handleChapter5" styleClass="chapter-button" text="Chapter 5: Keys &amp; Scales" />
-            <Button fx:id="chapter6Btn" onAction="#handleChapter6" styleClass="chapter-button" text="Chapter 6: Chords in Harmony" />
+            </VBox> 
+
             
-        </VBox>
 
-    
-        <ImageView fitHeight="190.0" fitWidth="312.0" layoutX="31.5" layoutY="450.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="31.5">
-            <image>
-                <Image url="@../images/dino2.png" />
-            </image>
-        </ImageView>
+        </VBox> 
 
-        
-        <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" />
 
-    </AnchorPane>
-
-</StackPane>
+    </children>
+</AnchorPane>

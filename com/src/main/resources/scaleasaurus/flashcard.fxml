@@ -3,36 +3,48 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.fxml.FXMLLoader?>
 
 <AnchorPane prefHeight="667.0" prefWidth="375.0" styleClass="home-root" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlashcardController">
 
-    <StackPane fx:id="frontStack" layoutX="37.5" layoutY="180" prefHeight="200" prefWidth="300">
-         <Rectangle fx:id="frontRectangle" fill="lightblue" height="200" stroke="black" width="300" />
-        <Label fx:id="frontLabel" alignment="CENTER" maxWidth="280" style="-fx-font-size: 18px;" textAlignment="CENTER" wrapText="true">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-        </Label>
+    <StackPane fx:id="frontStack" layoutX="37.5" layoutY="160" prefHeight="150" prefWidth="300" onMouseClicked="#handleClick">
+    <Rectangle fx:id="frontRectangle" fill="lightgreen" height="150" stroke="black" width="300" arcWidth="20" arcHeight="20" pickOnBounds="false" />
+    <Label fx:id="frontLabel" alignment="CENTER" maxWidth="260" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #245744;" textAlignment="CENTER" wrapText="true" pickOnBounds="false">
+        <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+        </padding>
+    </Label>
     </StackPane>
 
-    <StackPane fx:id="backStack" layoutX="37.5" layoutY="180" prefHeight="200" prefWidth="300" visible="false">
-        <Rectangle fx:id="backRectangle" fill="lightblue" height="200" stroke="black" width="300" />
-        <Label fx:id="backLabel" alignment="CENTER" maxWidth="280" style="-fx-font-size: 18px;" textAlignment="CENTER" wrapText="true">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-        </Label>
+    <StackPane fx:id="backStack" layoutX="37.5" layoutY="160" prefHeight="150" prefWidth="300" visible="false" onMouseClicked="#handleClick">
+    <Rectangle fx:id="backRectangle" fill="white" height="150" stroke="black" width="300" arcWidth="20" arcHeight="20" pickOnBounds="false" />
+    <Label fx:id="backLabel" alignment="CENTER" maxWidth="260" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #245744;" textAlignment="CENTER" wrapText="true" pickOnBounds="false">
+        <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+        </padding>
+    </Label>
     </StackPane>
 
-    <Button layoutX="68.0" layoutY="413.0" onAction="#handleClick" styleClass="green-pill" text="Flip Card" />
+
     <Button layoutX="68.0" layoutY="461.0" onAction="#handleNextCard" styleClass="green-pill" text="Next Card" />
     <Button layoutX="68.0" layoutY="508.0" onAction="#handleCompleteLesson" styleClass="green-pill" text="Complete Lesson" />
 
 
     <fx:include source="navbar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+   <ImageView fitHeight="145.0" fitWidth="140.0" layoutX="238.0" layoutY="7.0">
+      <image>
+         <Image url="@../images/paw.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="83.0" fitWidth="93.0" layoutY="380.0">
+      <image>
+         <Image url="@../images/paw.png" />
+      </image>
+   </ImageView>
+   
 
 </AnchorPane>

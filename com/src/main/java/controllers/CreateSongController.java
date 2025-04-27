@@ -11,7 +11,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
 import model.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -45,6 +44,7 @@ private ListView<String> notesListView;
  
     @FXML
     public void initialize() {
+        songElements = FXCollections.observableArrayList();
         measuresDropdown.getItems().addAll("4", "8", "12", "16");
         difficultyDropdown.getItems().addAll("Easy", "Medium", "Hard");
         genreDropdown.getItems().addAll("Pop", "Rock", "Jazz", "Classical", "Other");
@@ -88,57 +88,89 @@ private ListView<String> notesListView;
     }
 
     @FXML
-private void addMeasure() {
+    private void addMeasure() {
     if (!currentChord.isEmpty()) {
+        ArrayList<String> notes = new ArrayList<>();
+        
 
-        Chord chord = Chord.fromLabels(currentChord);
-
-     
-        ArrayList<Chord> chords = new ArrayList<>();
-        chords.add(chord);
-        Measure measure = new Measure(measureNumber++, chords);
-
-
+        for (String note : currentChord) {
+            notes.add(convertLabelToNote(note) + "q"); 
+        }
+        
+        Measure measure = new Measure(measureNumber++, notes, new ArrayList<>());
         measures.add(measure);
-        songElements.add("— New Measure —");
-
-      
+        
+        System.out.println("Added Measure #" + (measureNumber - 1) + " with notes: " + notes);
+        
         currentChord.clear();
     } else {
-        songElements.add("Measure skipped: no notes");
+        System.out.println("No notes to add in measure!");
+    }
+}
+
+private String convertLabelToNote(String label) {
+    switch (label) {
+        case "C": return "C4";
+        case "C♯": return "C#4";
+        case "D": return "D4";
+        case "D♯": return "D#4";
+        case "E": return "E4";
+        case "F": return "F4";
+        case "F♯": return "F#4";
+        case "G": return "G4";
+        case "G♯": return "G#4";
+        case "A": return "A4";
+        case "A♯": return "A#4";
+        case "B": return "B4";
+        default: return "C4"; 
     }
 }
 
 
-   @FXML
-private void saveSong() {
-    String name = songNameField.getText().trim();
-    if (name.isEmpty() || measures.isEmpty()) {
-        System.out.println("Please enter a song name and at least one measure.");
-        return;
+    
+
+    @FXML
+    private void saveSong() {
+        String name = songNameField.getText().trim();
+        if (name.isEmpty() || measures.isEmpty()) {
+            System.out.println("Please enter a song name and at least one measure.");
+            return;
+        }
+    
+        User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+        String artist = currentUser != null ? currentUser.getUserName() : "Unknown";
+    
+
+        ArrayList<Measure> newMeasures = new ArrayList<>();
+        int measureNum = 1;
+        for (Measure oldMeasure : measures) {
+            ArrayList<String> notes = new ArrayList<>();
+            for (Chord chord : oldMeasure.getChords()) {
+                notes.add(Chord.chordToString(chord.getNotes()));  
+            }
+            Measure newMeasure = new Measure(measureNum++, notes, oldMeasure.getChords());
+            newMeasures.add(newMeasure);
+        }
+    
+        MusicAppFacade.getInstance().createAndSaveSong(
+            name,
+            artist,
+            1,          
+            "1:00",     
+            "Custom",   
+            newMeasures
+        );
+    
+        Song createdSong = SongList.getInstance().getSong(name);
+        MusicAppFacade.getInstance().setCurrentSong(createdSong);
+    
+        try {
+            App.setRoot("songresults");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
-    String artist = currentUser.getUserName();
-
-
-    MusicAppFacade.getInstance().createAndSaveSong(
-        name,
-        artist,
-        1,          
-        "1:00",     
-        "Custom",  
-        measures
-    );
-    Song createdSong = SongList.getInstance().getSong(name);
-    MusicAppFacade.getInstance().setCurrentSong(createdSong);
-
-    try {
-        App.setRoot("piano");
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
+    
     
 
     @FXML
@@ -146,23 +178,23 @@ private void saveSong() {
         App.setRoot("piano");
     }
 
-@FXML
-public void goHome() throws IOException {
+    @FXML
+    public void goHome() throws IOException {
     App.setRoot("home");
-}
+    }
 
-@FXML
-public void goSongs() throws IOException {
+    @FXML
+    public void goSongs() throws IOException {
     App.setRoot("songssearch");
-}
+    }
 
-@FXML
-public void goLessons() throws IOException {
+    @FXML
+    public void goLessons() throws IOException {
     App.setRoot("lessonfolder");
-}
+    }
 
-@FXML
-public void goUser() throws IOException {
+    @FXML
+    public void goUser() throws IOException {
     App.setRoot("settings");
-}
+    }
 }

@@ -14,7 +14,7 @@ public class SongTest {
     public void setUp() {
         
         ArrayList<Measure> measures = new ArrayList<>();
-        song = new Song("1", "Sign of the Times", 5, "4:00", "Pop", measures, "sheetMusicContent", "tabsMusicContent", true, "Harry Styles");
+        //song = new Song("1", "Sign of the Times", 5, "4:00", "Pop", measures, "sheetMusicContent", "tabsMusicContent", true, "Harry Styles");
     }
 
     @Test

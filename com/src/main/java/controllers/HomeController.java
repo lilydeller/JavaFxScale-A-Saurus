@@ -19,8 +19,18 @@ public class HomeController implements Initializable {
     private Button btn_profile;
     @FXML
     private Button btn_logout;
+    
     @FXML
     private Label lbl_username;
+
+
+
+    /*
+     * displays the currently logged in user on the home screen when loading 
+     */
+    @FXML
+    private Label dinoPointsLabel;
+
 
 
     /*
@@ -28,16 +38,21 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    refreshHomeScreen();
+}
+
+
+public void refreshHomeScreen() {
     User currentUser = MusicAppFacade.getInstance().getCurrentUser();
 
     if (currentUser != null) {
         lbl_username.setText("Welcome, " + currentUser.getUserName() + "!");
-    }
-    else {
+        dinoPointsLabel.setText(currentUser.getDinoPoints() + " Dino Points ⭐");
+    } else {
         lbl_username.setText("Welcome! ");
+        dinoPointsLabel.setText("0 Dino Points ⭐");
     }
 }
-
 
     @FXML
     private void onProfileClicked(ActionEvent event) {
