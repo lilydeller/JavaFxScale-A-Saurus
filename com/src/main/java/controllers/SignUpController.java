@@ -29,11 +29,17 @@ public class SignUpController {
     @FXML 
     private Label lbl_error;
 
+    /*
+     * calls helper method to handle sign up when press 
+     */
     @FXML
     private void btnSignUpClicked(ActionEvent event) throws IOException {
         handleSignUp();
         
     }
+    /*
+     * checks if user already exists, if not then create new user and add to userlist 
+     */
     @FXML
     private void handleSignUp() throws IOException {
         String username = txt_username.getText().trim();
@@ -61,10 +67,14 @@ public class SignUpController {
             return;
         }
 
+        //adds user and moves to home 
         facade.addUserInfo(firstName, lastName);
         App.setRoot("home");
     }
 
+    /*
+     * moves to login screen 
+     */
     @FXML
     private void handleBack() throws IOException {
         App.setRoot("login");

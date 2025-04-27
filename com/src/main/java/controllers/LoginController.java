@@ -32,28 +32,36 @@ public class LoginController {
     private Button back;  
           
 
-   
+    /*
+     * checks userlist if user exists, if exists then move to home screen
+     */
     @FXML
-private void btnLoginClicked(ActionEvent event) throws IOException {
-    String username = txt_username.getText();
-    String password = txt_password.getText();
+    private void btnLoginClicked(ActionEvent event) throws IOException {
+        String username = txt_username.getText();
+        String password = txt_password.getText();
 
-    User user = UserList.getInstance().getUser(username, password);
-    if (user != null) {
-        MusicAppFacade.getInstance().setCurrentUser(user);
-        App.setRoot("home");
-    } else {
-        lbl_error.setText("invalid login");
+        User user = UserList.getInstance().getUser(username, password);
+        if (user != null) {
+            MusicAppFacade.getInstance().setCurrentUser(user);
+            App.setRoot("home");
+        } 
+        else {
+            lbl_error.setText("invalid login");
+        }
     }
-}
 
 
-   
+   /*
+    * moves to signup screen 
+    */
     @FXML
     private void switchToSignUp() throws IOException {
         App.setRoot("signup");
     }
 
+    /*
+     * moves to home screen 
+     */
     @FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");

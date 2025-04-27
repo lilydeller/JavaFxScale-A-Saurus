@@ -13,6 +13,9 @@ public class SearchFriendController {
     @FXML private TextField usernameField;
     @FXML private Label statusLabel;
 
+    /*
+     * adds friend and saves it to friends list
+     */
     @FXML
     private void handleAddFriend() {
         MusicAppFacade facade = MusicAppFacade.getInstance();
@@ -22,13 +25,17 @@ public class SearchFriendController {
             return;
         }
 
-        String username = usernameField.getText().trim();
+        //grabs data from the textboxes 
+        String username = usernameField.getText().trim(); 
         String firstName = firstNameField.getText().trim();
         String lastName = lastNameField.getText().trim();
 
         User friend = null;
 
    
+        /*
+         * checks if user can actually add friend 
+         */
         if (!username.isEmpty()) {
             friend = facade.getUserByUsername(username);
         } else if (!firstName.isEmpty() && !lastName.isEmpty()) {
@@ -55,26 +62,40 @@ public class SearchFriendController {
         facade.saveAll();
     }
 
+    /*
+     * moves back to home 
+     */
     @FXML
     private void handleBack() throws Exception {
         App.setRoot("home");
     }
 
+    /*
+     * moves back to home 
+     */
 @FXML
 public void goHome() throws IOException {
     App.setRoot("home");
 }
 
+/*
+ * movse to song search 
+ */
 @FXML
 public void goSongs() throws IOException {
     App.setRoot("songssearch");
 }
-
+/*
+ * moves to lesson folder 
+ */
 @FXML
 public void goLessons() throws IOException {
     App.setRoot("lessonfolder");
 }
 
+/*
+ * moves to settings 
+ */
 @FXML
 public void goUser() throws IOException {
     App.setRoot("settings");

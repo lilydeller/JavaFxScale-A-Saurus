@@ -12,6 +12,9 @@ public class LeaderboardController {
     @FXML
     private ListView<String> leaderboardList;
 
+    /*
+     * takes current user and loads friends list sorting by most points 
+     */
     @FXML
     public void initialize() {
         User currentUser = MusicAppFacade.getInstance().getCurrentUser();
@@ -26,6 +29,9 @@ public class LeaderboardController {
         leaderboardList.getItems().add((leaderboard.size() + 1) + ". " + currentUser.getUserName() + " - " + currentUser.getPoints() + " points");
     }
 
+    /*
+     *moves to search friend screen 
+     */
     @FXML
     private void handleAddFriend() throws IOException {
     App.setRoot("searchfriend");  

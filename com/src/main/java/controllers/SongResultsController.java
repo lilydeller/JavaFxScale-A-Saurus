@@ -15,12 +15,16 @@ public class SongResultsController {
 
     private static List<Song> filteredSongs;
 
-   
+   /*
+    * filters songs based on search 
+    */
     public static void setResults(List<Song> songs) {
         filteredSongs = songs;
     }
 
-    
+    /*
+     * creates and displays a vbox for each song that is filtered 
+     */
     @FXML
     public void initialize() {
 
@@ -71,26 +75,41 @@ public class SongResultsController {
     
 
 
+    /*
+     * moves to song search 
+     */
     @FXML
     private void handleBack() throws IOException {
         App.setRoot("songsearch");
     }
 
+    /*
+     * moves back to home 
+     */
 @FXML
 public void goHome() throws IOException {
     App.setRoot("home");
 }
 
+/*
+ * moves to song search 
+ */
 @FXML
 public void goSongs() throws IOException {
     App.setRoot("songssearch");
 }
 
+/*
+ * moves to lesson folder 
+ */
 @FXML
 public void goLessons() throws IOException {
     App.setRoot("lessonfolder");
 }
 
+/*
+ * moves to settings 
+ */
 @FXML
 public void goUser() throws IOException {
     App.setRoot("settings");
