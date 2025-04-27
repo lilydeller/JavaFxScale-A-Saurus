@@ -160,17 +160,19 @@ public class DataWriter extends DataConstants {
      */
     public static JSONObject getMeasureJSON(Measure measure) {
         JSONObject measureJSON = new JSONObject();
-        measureJSON.put(MEASURE_NUMBER, measure.getMeasureNumber());
-
-        JSONArray jsonChords = new JSONArray();
-        for (Chord chord : measure.getChords()) {
-            String chordStr = Chord.chordToString(chord.getNotes());
-            jsonChords.add(chordStr);
+        measureJSON.put("measureNumber", measure.getMeasureNumber()); 
+        
+      
+        JSONArray jsonNotes = new JSONArray();
+        for (String note : measure.getNotes()) {
+            jsonNotes.add(note);
         }
-
-        measureJSON.put(CHORDS, jsonChords);
+        measureJSON.put("notes", jsonNotes);  
+    
         return measureJSON;
     }
+    
+  
 
     public void saveUserData(User user) {
         ArrayList<User> userList = this.userList.getUsers();

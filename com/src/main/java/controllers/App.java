@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.DataLoader;
 import model.User;
+import model.SongList;
+import model.Song;
 import model.UserList;
 
 import java.io.IOException;
@@ -24,6 +26,12 @@ public class App extends Application {
         for (User user : UserList.getInstance().getUsers()) {
         System.out.println("- " + user.getUserName() + " (" + user.getEmail() + ")");
     }
+
+         System.out.println("Songs loaded:");
+        for (Song song : SongList.getInstance().getSongs()) {
+        System.out.println("- " + song.getSongName() + " by " + song.getArtist());
+    }
+
         scene = new Scene(loadFXML("login"), 640, 480);
         stage.setScene(scene);
         stage.show();

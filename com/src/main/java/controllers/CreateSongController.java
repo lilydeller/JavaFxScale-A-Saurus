@@ -11,7 +11,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
 import model.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -90,108 +89,91 @@ private ListView<String> notesListView;
 
     @FXML
     private void addMeasure() {
-    if (!currentChord.isEmpty()) {
-
-        Chord chord = Chord.fromLabels(currentChord);
-
-     
-        ArrayList<Chord> chords = new ArrayList<>();
-        chords.add(chord);
-        Measure measure = new Measure(measureNumber++, chords);
-
-
-        measures.add(measure);
-        songElements.add("— New Measure —");
-
-      
-        currentChord.clear();
-    } else {
-        songElements.add("Measure skipped: no notes");
+        if (!currentChord.isEmpty()) {
+          
+            Chord chord = Chord.fromLabels(currentChord); 
+            
+            ArrayList<Chord> chords = new ArrayList<>();
+            chords.add(chord);
+    
+            Measure measure = new Measure(measureNumber++, chords);
+            measures.add(measure);
+    
+            System.out.println("Added Measure #" + measureNumber + " with chords: " + currentChord);
+    
+            currentChord.clear();
+        } else {
+            System.out.println("No notes to add in measure!");
+        }
     }
-}
+    
 
+    @FXML
+    private void saveSong() {
+        String name = songNameField.getText().trim();
+        if (name.isEmpty() || measures.isEmpty()) {
+            System.out.println("Please enter a song name and at least one measure.");
+            return;
+        }
+    
+        User currentUser = MusicAppFacade.getInstance().getCurrentUser();
+        String artist = currentUser != null ? currentUser.getUserName() : "Unknown";
+    
 
-@FXML
-private void saveSong() {
-    String name = songNameField.getText().trim();
-    if (name.isEmpty() || measures.isEmpty()) {
-        System.out.println("Please enter a song name and at least one measure.");
-        return;
+        ArrayList<Measure> newMeasures = new ArrayList<>();
+        int measureNum = 1;
+        for (Measure oldMeasure : measures) {
+            ArrayList<String> notes = new ArrayList<>();
+            for (Chord chord : oldMeasure.getChords()) {
+                notes.add(Chord.chordToString(chord.getNotes()));  
+            }
+            Measure newMeasure = new Measure(measureNum++, notes, oldMeasure.getChords());
+            newMeasures.add(newMeasure);
+        }
+    
+        MusicAppFacade.getInstance().createAndSaveSong(
+            name,
+            artist,
+            1,          
+            "1:00",     
+            "Custom",   
+            newMeasures
+        );
+    
+        Song createdSong = SongList.getInstance().getSong(name);
+        MusicAppFacade.getInstance().setCurrentSong(createdSong);
+    
+        try {
+            App.setRoot("piano");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-    User currentUser = MusicAppFacade.getInstance().getCurrentUser();
-    String artist = (currentUser != null) ? currentUser.getUserName() : "Unknown Artist";
-
-    int difficulty = 1;
-    String difficultySelected = difficultyDropdown.getValue();
-    if (difficultySelected != null) {
-        if (difficultySelected.equalsIgnoreCase("Easy")) difficulty = 2;
-        else if (difficultySelected.equalsIgnoreCase("Medium")) difficulty = 4;
-        else if (difficultySelected.equalsIgnoreCase("Hard")) difficulty = 6;
-    }
-
-    String genre = genreDropdown.getValue() != null ? genreDropdown.getValue() : "Other";
-    String duration = durationField.getText().trim();
-    if (duration.isEmpty()) duration = "1:00";
-
-    // 🔥 Here’s where we generate realistic values like your old songs:
-    String sheetMusic = name.replaceAll(" ", "_") + "_Sheet.pdf";
-    String tabsMusic = name.replaceAll(" ", "_") + "_Tabs.txt";
-    int tempo = 80; // Default tempo (can make this adjustable later)
-    String instrument = "Piano"; // Default instrument (adjustable too)
-
-    // Actually create the song
-    Song newSong = new Song(
-        UUID.randomUUID().toString(),
-        name,
-        difficulty,
-        duration,
-        genre,
-        measures,
-        sheetMusic,
-        tabsMusic,
-        false,    // metronome off by default (can change)
-        artist,
-        tempo,
-        instrument
-    );
-
-    SongList.getInstance().addSong(newSong);
-    SongList.getInstance().saveSongs();
-    MusicAppFacade.getInstance().setCurrentSong(newSong);
-
-    System.out.println("🎵 Song created and saved: " + newSong.getSongName());
-
-    try {
-        App.setRoot("piano");
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
- 
+    
+    
 
     @FXML
     private void goToPiano() throws IOException {
         App.setRoot("piano");
     }
 
-@FXML
-public void goHome() throws IOException {
+    @FXML
+    public void goHome() throws IOException {
     App.setRoot("home");
-}
+    }
 
-@FXML
-public void goSongs() throws IOException {
+    @FXML
+    public void goSongs() throws IOException {
     App.setRoot("songssearch");
-}
+    }
 
-@FXML
-public void goLessons() throws IOException {
+    @FXML
+    public void goLessons() throws IOException {
     App.setRoot("lessonfolder");
-}
+    }
 
-@FXML
-public void goUser() throws IOException {
+    @FXML
+    public void goUser() throws IOException {
     App.setRoot("settings");
-}
+    }
 }
